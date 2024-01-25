@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import Theme from "../../Component/Theme";
+import Theme from "../../Components/Theme";
 import styled from "@emotion/styled";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { validateNewPassword } from "./Validation";

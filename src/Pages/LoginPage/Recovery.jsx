@@ -7,7 +7,7 @@ import {
   styled,
 } from "@mui/material";
 import React, { useState } from "react";
-import Theme from "../../Component/Theme";
+import Theme from "../../Components/Theme";
 import ReactDOM from "react-dom";
 import { otpEmailValidate } from "./Validation";
 import { otpMobilelValidate } from "./Validation";

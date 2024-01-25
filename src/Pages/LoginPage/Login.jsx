@@ -11,17 +11,20 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useState } from "react";
-import Theme from "../../Component/Theme"; //**** Special import*/
+import Theme from "../../Components/Theme"; //**** Special import*/
 import { ThemeProvider } from "@mui/material";
 import login from "../../Assest/login.jpg";
 import { Padding, Visibility, VisibilityOff } from "@mui/icons-material";
 import PersonIcon from "@mui/icons-material/Person";
 import Recovery from "./Recovery";
 import Reset from "./Reset";
-import SuccessAlert from "../../Component/SuccessAlert";
+import SuccessAlert from "../../Components/SuccessAlert";
 import { Validation } from "./Validation";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { successAlert, errorAlert } from "../../Components/Alert";
+import { ToastContainer } from "react-toastify";
+import LoginUser from "../../API/Auth/LoginUser";
 
 const theme = Theme();
 
@@ -99,24 +102,31 @@ const Login = () => {
     setCustom(false);
   };
 
-  //validatios
+  //validations
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState({});
+  const [error, setError] = useState({ uname: "", password: "" });
   const navigate = useNavigate();
 
   const loginHandle = () => {
     setError(Validation(username, password));
+    if (error.uname !== "") {
+      errorAlert(error.uname);
+    } else if (error.password !== "") {
+      errorAlert(error.password);
+    } else {
+      handleSubmit();
+    }
   };
-  const handleSubmit = async (e) => {
-    e.preventDefault();
 
+  const handleSubmit = async () => {
     try {
-      const response = await axios.post("https://your-server-url/login", {
+      const response = LoginUser( {
         username,
         password,
       });
+      console.log(response);
 
       //const { role } = response.data;
       const { role } = "mother";
@@ -137,6 +147,7 @@ const Login = () => {
 
   return (
     <Box>
+      <ToastContainer />
       <ThemeProvider theme={theme}>
         <Stack
           display="flex"
