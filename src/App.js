@@ -30,10 +30,9 @@ function App() {
         <Routes>
           <Route path="/">
             <Route element={<LoginPersist />}>
+              <Route path="login" element={<Login />} />
               <Route element={<MainContent />}>
                 <Route path="/" element={<Home />} />
-                <Route path="/login" element={<Login />} />
-
                 <Route path="/aboutUs" element={<AboutUs />} />
                 <Route path="/contactUs" element={<ContactUs />} />
                 <Route path="/resource" element={<Resource />} />

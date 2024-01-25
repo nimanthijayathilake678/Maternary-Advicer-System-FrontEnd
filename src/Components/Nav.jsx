@@ -4,10 +4,12 @@ import { MenuItem } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import { Fragment } from "react";
 import useAuth from "../Hooks/useAuth";
+import { Link } from "react-router-dom";
+import Button from "@mui/material/Button";
 
 const Nav = () => {
   const { auth } = useAuth();
-
+  const location = useLocation();
 
   const navItems = [
     {
@@ -143,7 +145,9 @@ const Nav = () => {
                   </div>
                 </div>
                 {!auth ? (
-                  <button>Login</button>
+                  <Button to="./login" component={Link} variant="contained">
+                    Login
+                  </Button>
                 ) : (
                   <Menu as="div" className="ml-3 ">
                     <div className="items-center hidden sm:flex ">
@@ -171,7 +175,7 @@ const Nav = () => {
                         <Menu.Item>
                           {({ active }) => (
                             <a
-                              href={"/"+auth.authRole+"/profile"}
+                              href={"/" + auth.authRole + "/profile"}
                               className={classNames(
                                 active ? "bg-[#00A9BB]" : "",
                                 "block px-4 py-2 text-sm text-white-700"
@@ -185,7 +189,8 @@ const Nav = () => {
                         <Menu.Item>
                           {({ active }) => (
                             <a
-                              href={"/"+auth.authRole}                              className={classNames(
+                              href={"/" + auth.authRole}
+                              className={classNames(
                                 active ? "bg-[#00A9BB]" : "",
                                 "block px-4 py-2 text-sm text-white-700"
                               )}
@@ -232,12 +237,18 @@ const Nav = () => {
 
           <Disclosure.Panel className="sm:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1">
-              <div className="flex justify-center gap-4 items-center">
-                <span className="mr-3 text-[#2A777C] font-semibold">
-                  {auth.name}
-                </span>
-                <Avatar {...stringAvatar(auth.name)} />
-              </div>
+              {!auth ? (
+                <Button to="./login" component={Link} variant="contained">
+                  Login
+                </Button>
+              ) : (
+                <div className="flex justify-center gap-4 items-center">
+                  <span className="mr-3 text-[#2A777C] font-semibold">
+                    {auth.name}
+                  </span>
+                  <Avatar {...stringAvatar(auth.name)} />
+                </div>
+              )}
               <div></div>
 
               <div class="border border-gray-300 w-full"></div>
