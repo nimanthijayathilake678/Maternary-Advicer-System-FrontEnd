@@ -20,6 +20,7 @@ import FamilyProfile from "./Pages/Family/FamilyProfile";
 import Unauthorized from "./Pages/Unauthorized";
 import MidwifeEligibleCoupleRegistrationForm from "./Pages/Midwife/MidwifeEligibleCoupleRegistrationForm";
 import FamilyEligibleFamilyForm from "./Pages/Family/FamilyEligibleFamilyForm";
+import BabyRegistrationStepper from "./Pages/RegistrationPage/BabyRegistration/BabyRegistrationStepper";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -38,7 +39,8 @@ function App() {
                 <Route path="/resource" element={<Resource />} />
 
                 <Route element={<SideBarContent />}>
-                  <Route element={<Authenticate allowedRole={"midwife"} />}>
+                  <Route path="/register" element={<BabyRegistrationStepper />}/>
+                    <Route element={<Authenticate allowedRole={"midwife"} />}>
                     <Route path="/midwife/">
                       <Route path="" element={<MidwifeDashboard />} />
                       <Route path="eligibleFamilies/">
