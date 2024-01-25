@@ -2,16 +2,16 @@ import React, { useState } from 'react'
 
 export const Validation = (username,password) => {
 
-    let error={}
+    let error={uname:"",password:""}
 
-    if(username==""){
+    if(username===""){
         error.uname="Username Required*"
     }
     else if(username.length<5){
         error.uname="Username at least 6 characters length"
     }
 
-    if(password==""){
+    if(password===""){
         error.password="Password Required*"
     }
     else if(password.length<8){
