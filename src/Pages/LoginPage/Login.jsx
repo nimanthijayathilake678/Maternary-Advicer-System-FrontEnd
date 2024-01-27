@@ -122,7 +122,7 @@ const Login = () => {
 
   const handleSubmit = async () => {
     try {
-      const response = LoginUser( {
+      const response = LoginUser({
         username,
         password,
       });
@@ -188,7 +188,7 @@ const Login = () => {
               >
                 <img
                   src={login}
-                  alt="Main_Logo"
+                  alt="Login_image"
                   width="100%"
                   height="100%"
                   sx={{
@@ -360,7 +360,7 @@ const Login = () => {
                       <Button
                         variant="contained"
                         sx={{
-                          marginTop: "40px",
+                          marginTop: "2px",
                           width: "60vh",
                           height: 40,
                           [theme.breakpoints.down("md")]: {
