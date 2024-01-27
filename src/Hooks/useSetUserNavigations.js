@@ -1,5 +1,5 @@
 import { useEffect, useContext } from "react";
-import UserNavigationsContext from '../Contexts/UserNavigationsProvider';
+import UserNavigationsContext from "../Contexts/UserNavigationsProvider";
 import useAuth from "./useAuth";
 import { useNavigate } from "react-router-dom";
 

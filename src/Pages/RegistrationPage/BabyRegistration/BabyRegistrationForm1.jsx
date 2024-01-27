@@ -56,6 +56,11 @@ function BabyRegistrationForm1() {
 
     return errors;
   };
+  const [selectedDate, setSelectedDate] = useState(null);
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+  };
 
   //onSubmit={handleSubmit}
   return (

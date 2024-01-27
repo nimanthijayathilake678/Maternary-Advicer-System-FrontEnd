@@ -10,6 +10,9 @@ import Typography from "@mui/material/Typography";
 import { Grid } from "@mui/material";
 import { TextField } from "@mui/material";
 import BabyRegistrationForm1 from "./BabyRegistrationForm1";
+import BabyRegistrationForm2 from "./BabyRegistrationForm2";
+import BabyRegistrationForm3 from "./BabyRegistrationForm3";
+import BabyRegistrationForm4 from "./BabyRegistrationForm4";
 import Alert from "@mui/material/Alert";
 import AlertTitle from "@mui/material/AlertTitle";
 import ChildFriendlyIcon from "@mui/icons-material/ChildFriendly";
@@ -44,15 +47,15 @@ const steps = [
   },
   {
     label: "Baby Information",
-    description: <BabyRegistrationForm1 />,
+    description: <BabyRegistrationForm2 />,
   },
   {
     label: "Neonatal Examination",
-    description: <BabyRegistrationForm1 />,
+    description: <BabyRegistrationForm3 />,
   },
   {
     label: "Reasons For Special Care",
-    description: <BabyRegistrationForm1 />,
+    description: <BabyRegistrationForm4 />,
   },
 ];
 
@@ -84,24 +87,18 @@ export default function BabyRegistrationStepper() {
       alignItems="center"
       height="100%"
       flexDirection="column"
+      width="100%"
     >
-      <Grid container spacing={2} sx={{ width: "100%", margin: "auto" }}>
-        {/* First Grid Item: Side Navigation */}
-        <Grid item xs={2}>
-          <Paper
-            sx={{
-              padding: 2,
-              backgroundColor: "#FFFF", //white color
-              color: "#fff", // White text
-              height: "100%",
-            }}
-          >
-            {/* Add your side navigation content here */}
-            Side Navigation
-          </Paper>
-        </Grid>
-
-        {/* Second Grid Item: Registration Form */}
+      <div>
+        <span className=" text-xl  text-[#2A777C] text-center font-bold ">
+          Baby Registration
+        </span>
+      </div>
+      <Grid
+        container
+        spacing={2}
+        sx={{ width: "100%", margin: "auto", height: "100%" }}
+      >
         <Grid item xs={8}>
           <Paper sx={{ padding: 2, backgroundColor: "#fff" }}>
             <Stepper
@@ -114,6 +111,7 @@ export default function BabyRegistrationStepper() {
                 "& .Mui-active .MuiStepLabel-root .MuiStepIcon-root": {
                   color: theme.palette.secondary.main,
                 },
+                width: 800,
               }}
             >
               {steps.map((step, index) => (
