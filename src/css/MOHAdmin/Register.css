@@ -1,0 +1,58 @@
+
+.font{
+  
+    color: black;
+    text-decoration: underline;
+    margin-bottom: 30px;
+    
+  }
+  
+  .form{
+    background-color: #fff;
+    align-items: center;
+    width: 70%;
+    margin-left: 150px;
+    padding-bottom: 20px;
+    padding-top: 15px;
+    color: black;
+    
+    
+    
+  }
+  
+  .button{
+    margin-top: 20px;
+    margin-left: 200px;
+    
+   
+    
+  }
+  
+  @media screen and (max-width: 800px) {
+   
+    .form{
+      background-color: #fff;
+      align-items: center;
+      width: 80%;
+      margin-left: 50px;
+      padding-bottom: 10px;
+    }
+    .button{
+      margin-top: 20px;
+      margin-left: 100px;
+       
+    }
+    
+    
+  }
+  
+  @media screen and (max-width: 500px) {
+   
+   
+    .button{
+      margin-top: 20px;
+      margin-left: 50px;
+       
+    }
+   
+  }
