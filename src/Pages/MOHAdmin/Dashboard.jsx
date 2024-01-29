@@ -1,23 +1,24 @@
 import React from "react";
 import "../../css/MOHAdmin/MOHDashboard.css";
 import { NavLink } from "react-router-dom";
-import {
-  FaSearch,
-  FaUserAlt,
-  FaRegChartBar,
-  FaCommentAlt,
-  FaUsers,
-} from "react-icons/fa";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
-
+import medicare from "../../Assest/medicare.json";
+import DBMS from "../../Assest/DBMS.json";
+import midwifeReg from "../../Assest/midwieReg.json";
+import notification from "../../Assest/notification.json";
+import reports from "../../Assest/reports.json";
+import Lottie from "lottie-react";
+import Calendar from "../../Componenets/Calendar";
 
 function MOHDashboard() {
   return (
     <div>
       <div className="main-title">
-        <h3>DASHBOARD</h3>
+        <div>
+          <h2>Hello-Admin</h2>
+        </div>
+        <div>
+          <h4>Welcome to your Dashboard</h4>
+        </div>
       </div>
 
       <div className="main-cards">
@@ -25,7 +26,7 @@ function MOHDashboard() {
           <div className="card-inner">
             <h3>Register Users</h3>
             <div>
-              <FaUserAlt />
+              <Lottie style={{ height: 80 }} animationData={DBMS} />
             </div>
           </div>
         </NavLink>
@@ -34,7 +35,7 @@ function MOHDashboard() {
           <div className="card-inner">
             <h3>View Users</h3>
             <div>
-             <FaSearch />
+              <Lottie style={{ height: 80 }} animationData={midwifeReg} />
             </div>
           </div>
         </NavLink>
@@ -43,7 +44,7 @@ function MOHDashboard() {
           <div className="card-inner">
             <h3>Summary Report</h3>
             <div>
-              <FaRegChartBar />
+              <Lottie style={{ height: 80 }} animationData={reports} />
             </div>
           </div>
         </NavLink>
@@ -52,7 +53,7 @@ function MOHDashboard() {
           <div className="card-inner">
             <h3>Clinic Schedule</h3>
             <div>
-              <FaUsers />
+              <Lottie style={{ height: 80 }} animationData={medicare} />
             </div>
           </div>
         </NavLink>
@@ -61,21 +62,17 @@ function MOHDashboard() {
           <div className="card-inner">
             <h3>Messages</h3>
             <div>
-              <FaCommentAlt />
+              <Lottie style={{ height: 80 }} animationData={notification} />
             </div>
           </div>
         </NavLink>
       </div>
       <div className="dashbottom">
         <div className="calender">
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DateCalendar />
-          </LocalizationProvider>
-        </div><div >
-          
+          <Calendar />
         </div>
+        <div></div>
       </div>
-      
     </div>
   );
 }
