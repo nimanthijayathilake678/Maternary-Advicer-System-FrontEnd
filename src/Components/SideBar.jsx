@@ -3,14 +3,13 @@ import { RxDashboard } from "react-icons/rx";
 import { Link } from "react-router-dom";
 import { MdOutlineFamilyRestroom } from "react-icons/md";
 import { MdPregnantWoman } from "react-icons/md";
-import {useLocation} from 'react-router-dom';
-import useAuth from '../Hooks/useAuth';
+import { useLocation } from "react-router-dom";
+import useAuth from "../Hooks/useAuth";
 
 export default function SideBar() {
-  const {auth,setAuth} = useAuth();
+  const { auth, setAuth } = useAuth();
   const userRole = auth?.authRole;
   const location = useLocation();
-
 
   const midwifeRoutes = [
     {
@@ -73,7 +72,6 @@ export default function SideBar() {
     return classes.filter(Boolean).join(" ");
   };
 
-  
   return (
     <div className=" w-max drop-shadow-xl pl-2 pt-2 text-slate-600  bg-[#E4FEFF]  flex-col flex">
       {userRoute.map((item, index) => (

@@ -21,6 +21,7 @@ import Unauthorized from "./Pages/Unauthorized";
 import MidwifeEligibleCoupleRegistrationForm from "./Pages/Midwife/MidwifeEligibleCoupleRegistrationForm";
 import FamilyEligibleFamilyForm from "./Pages/Family/FamilyEligibleFamilyForm";
 import BabyRegistrationStepper from "./Pages/RegistrationPage/BabyRegistration/BabyRegistrationStepper";
+import BabyProfile from "./Pages/Family/Baby/BabyProfile";
 
 import VogMessages from "./Pages/VOGDoctor/Messages";
 import VogPatients from "./Pages/VOGDoctor/PatientHistory";
@@ -71,14 +72,14 @@ function MOHAdminRoutes(){
   const [count, setCount] = useState(0);
 
   return (
-    <BrowserRouter>
-      <AuthProvider>
+    <AuthProvider>
+      <BrowserRouter>
         <Routes>
           <Route path="/">
             <Route element={<LoginPersist />}>
               <Route path="login" element={<Login />} />
               <Route element={<MainContent />}>
-                <Route path="/" element={<Home />} />
+                <Route path="/home" element={<Home />} />
                 <Route path="/aboutUs" element={<AboutUs />} />
                 <Route path="/contactUs" element={<ContactUs />} />
                 <Route path="/resource" element={<Resource />} />
@@ -117,6 +118,10 @@ function MOHAdminRoutes(){
                         element={<FamilyPregnancies />}
                       />
                       <Route path="profile" element={<FamilyProfile />}></Route>
+                      <Route
+                        path="babyprofile"
+                        element={<BabyProfile />}
+                      ></Route>
                     </Route>
                   </Route>
                 </Route>
@@ -126,8 +131,8 @@ function MOHAdminRoutes(){
             <Route path="*" element={<PageNotFound />} />
           </Route>
         </Routes>
-      </AuthProvider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 

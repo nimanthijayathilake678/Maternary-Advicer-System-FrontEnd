@@ -4,7 +4,6 @@ import {
   Button,
   IconButton,
   InputAdornment,
-  Modal,
   Paper,
   Stack,
   TextField,
@@ -19,12 +18,8 @@ import PersonIcon from "@mui/icons-material/Person";
 import Recovery from "./Recovery";
 import Reset from "./Reset";
 import SuccessAlert from "../../Components/SuccessAlert";
-import { Validation } from "./Validation";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { successAlert, errorAlert } from "../../Components/Alert";
-import { ToastContainer } from "react-toastify";
-import LoginUser from "../../API/Auth/LoginUser";
+import useAuth from "../../Hooks/useAuth";
 
 const theme = Theme();
 
@@ -81,6 +76,8 @@ const Login = () => {
 
   const [responseAlert, setResponseAlert] = useState(false);
 
+  const authContext = useAuth();
+
   const resetPasswordModelOn = () => {
     setReset(true);
     setRecoveryModel(false);
@@ -106,48 +103,19 @@ const Login = () => {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState({ uname: "", password: "" });
+  const [error, setError] = useState({});
   const navigate = useNavigate();
 
-  const loginHandle = () => {
-    setError(Validation(username, password));
-    if (error.uname !== "") {
-      errorAlert(error.uname);
-    } else if (error.password !== "") {
-      errorAlert(error.password);
+  async function onSubmit() {
+    if (await authContext.login(username, password)) {
+      navigate("/home");
     } else {
-      handleSubmit();
+      console.log("Error: login credentials are wrong");
     }
-  };
-
-  const handleSubmit = async () => {
-    try {
-      const response = LoginUser({
-        username,
-        password,
-      });
-      console.log(response);
-
-      //const { role } = response.data;
-      const { role } = "mother";
-
-      if (role === "mother") {
-        navigate.push("/motherhome");
-      } else if (role === "midwife") {
-        navigate.push("/midwifehome");
-      } else if (role === "moh") {
-        navigate.push("/mohhome");
-      } else if (role === "hospitalstaff") {
-        navigate.push("/hospitalstaffhome");
-      }
-    } catch (error) {
-      console.error("Login failed", error);
-    }
-  };
+  }
 
   return (
     <Box>
-      <ToastContainer />
       <ThemeProvider theme={theme}>
         <Stack
           display="flex"
@@ -194,7 +162,7 @@ const Login = () => {
                   sx={{
                     [theme.breakpoints.down("md")]: {
                       width: "200px",
-                      height: "150px",
+                      height: "160px",
                     },
                   }}
                 ></img>
@@ -372,7 +340,7 @@ const Login = () => {
                             backgroundColor: theme.palette.secondary.main,
                           },
                         }}
-                        onClick={loginHandle}
+                        onClick={onSubmit}
                       >
                         <Typography variant="h6">Login</Typography>
                       </Button>
