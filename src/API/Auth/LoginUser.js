@@ -1,11 +1,7 @@
-import axios, { SERVER_URL } from "../api";
+import { apiClient } from "../ApiServer";
 
-const LoginUser = async (credentials) => {
-  const URL = SERVER_URL + "/authenticate";
-  return await axios.post(URL, credentials);
-};
-
-export default LoginUser;
+export const executeJwtAuthenticationService = (username, password) =>
+  apiClient.post("/authenticate", { username, password });
 
 // import axios from "axios";
 
