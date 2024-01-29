@@ -1,13 +1,13 @@
 import React from "react";
 import "../../css/MOHAdmin/MOHDashboard.css";
 import { NavLink } from "react-router-dom";
-import medicare from "../../assets/medicare.json";
-import DBMS from "../../assets/DBMS.json";
-import midwifeReg from "../../assets/midwieReg.json";
-import notification from "../../assets/notification.json";
-import reports from "../../assets/reports.json";
+import medicare from "../../Assest/medicare.json";
+import DBMS from "../../Assest/DBMS.json";
+import midwifeReg from "../../Assest/midwieReg.json";
+import notification from "../../Assest/notification.json";
+import reports from "../../Assest/reports.json";
 import Lottie from "lottie-react";
-import Calendar from "../../componenets/Calendar";
+import Calendar from "../../Components/Calendar";
 
 function VogDashboard() {
   return (
