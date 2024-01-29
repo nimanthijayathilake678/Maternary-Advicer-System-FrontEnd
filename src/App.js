@@ -27,13 +27,13 @@ import VogMessages from "./Pages/VOGDoctor/Messages";
 import VogPatients from "./Pages/VOGDoctor/PatientHistory";
 import VogDashboard from "./Pages/VOGDoctor/VogDashboard";
 import VogPersonal from "./Pages/VOGDoctor/Personal";
-import VOGSidebar from "./Componenets/VOGSidebar";
+import VOGSidebar from "./Components/VOGSidebar";
 
 import Dashboard from "./Pages/MOHAdmin/Dashboard";
 import Register from "./Pages/MOHAdmin/Register";
 import View from "./Pages/MOHAdmin/View";
 import Summary from "./Pages/MOHAdmin/Summary";
-import MOHSidebar from "./Componenets/MOHSidebar";
+import MOHSidebar from "./Components/MOHSidebar";
 import Messages from "./Pages/MOHAdmin/Messages";
 import Clinic from "./Pages/MOHAdmin/Clinic";
 
