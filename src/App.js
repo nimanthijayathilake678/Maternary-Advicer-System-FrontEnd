@@ -22,7 +22,52 @@ import MidwifeEligibleCoupleRegistrationForm from "./Pages/Midwife/MidwifeEligib
 import FamilyEligibleFamilyForm from "./Pages/Family/FamilyEligibleFamilyForm";
 import BabyRegistrationStepper from "./Pages/RegistrationPage/BabyRegistration/BabyRegistrationStepper";
 
+import VogMessages from "./Pages/VOGDoctor/Messages";
+import VogPatients from "./Pages/VOGDoctor/PatientHistory";
+import VogDashboard from "./Pages/VOGDoctor/VogDashboard";
+import VogPersonal from "./Pages/VOGDoctor/Personal";
+import VOGSidebar from "./Componenets/VOGSidebar";
+
+import Dashboard from "./Pages/MOHAdmin/Dashboard";
+import Register from "./Pages/MOHAdmin/Register";
+import View from "./Pages/MOHAdmin/View";
+import Summary from "./Pages/MOHAdmin/Summary";
+import MOHSidebar from "./Componenets/MOHSidebar";
+import Messages from "./Pages/MOHAdmin/Messages";
+import Clinic from "./Pages/MOHAdmin/Clinic";
+
+
 function App() {
+
+function VOGRoutes(){
+  <VOGSidebar>
+      <Routes>
+        <Route path="/vogdash" element={<VogDashboard />} />
+        <Route path="/vogpersonal" element={<VogPersonal />} />
+        <Route path="/vogpatients" element={<VogPatients />} />
+        <Route path="/vogmessages" element={<VogMessages />} />
+      </Routes>
+    </VOGSidebar>
+}
+
+
+
+function MOHAdminRoutes(){
+  <MOHSidebar>
+  <Routes>
+    <Route path="/mohadmindash" element={<Dashboard />} />
+    <Route path="/register" element={<Register />} />
+    <Route path="/view" element={<View />} />
+    <Route path="/summary" element={<Summary />} />
+    <Route path="/messages" element={<Messages />} />
+    <Route path="/clinic" element={<Clinic />} />
+  </Routes>
+</MOHSidebar>
+
+}
+
+
+
   const [count, setCount] = useState(0);
 
   return (
