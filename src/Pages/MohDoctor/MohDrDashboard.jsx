@@ -7,22 +7,22 @@ import Upcomings from "../../Components/Upcomings";
 import InputBase from "@mui/material/InputBase";
 import { Search } from "@mui/icons-material";
 import HappyFamily from "../../Assest/Lottie/HappyFamily.json";
-import marriedCouple from '../../Assest/Lottie/marriedCouple.json';
-import notification from '../../Assest/Lottie/notification.json';
+import referal from '../../Assest/Lottie/referal.json';
+import baby from '../../Assest/Lottie/baby.json';
 import medicare from '../../Assest/Lottie/medicare.json';
 import reports from '../../Assest/Lottie/reports.json';
 import pregnant from '../../Assest/Lottie/pregnant.json';
 import Lottie from 'lottie-react';
-import "../../css/Midwife/MidwifeDash.css"
+import "../../css/MohDoctor/MohDrDash.css"
 
-const MidwifeDashboard = () => {
+const MohDrDashboard = () => {
     
   
     return (
         <Box ml="20px"  >
             {/* HEADER */}
             <Box display="flex" justifyContent="space-between" alignItems="center">
-                <Header title="Hello - midwife" subtitle="Welcome to your dashboard" />
+                <Header title="Hello - MOH Dr" subtitle="Welcome to your dashboard" />
 
                 {/* SEARCH BOX */}
             <Box display="flex" bgcolor={"#e4e5e2"} borderRadius={"3px"} marginRight={"20px"}>
@@ -39,27 +39,14 @@ const MidwifeDashboard = () => {
                     <Lottie animationData={medicare} />
                 </div>
 
-                
-
-                <div className="cards">
-                    <div className="card-inner">
-                        <h8>MARRIED COUPLE REGISTRATION</h8>
-                        <Lottie style={{height:110}} animationData={marriedCouple}/>
-                    </div>
-                </div>
-                
-                <div className="cards">
-                    <div className="card-inner">
-                        <h8>PREGNANCY REGISTRATION</h8>
-                        <Lottie style={{height:100}} animationData={pregnant}/>
-                    </div>
-                </div>
                 <div className="cards">
                     <div className="card-inner">
                         <h8>ELIGIBLE FAMILIES</h8>
                         <Lottie style={{height:110}} animationData={HappyFamily}/>
                     </div>
                 </div>
+                
+
                 <div className="cards">
                     <div className="card-inner">
                         <h8>REGISTERED PREGNANT MOTHERS</h8>
@@ -67,6 +54,18 @@ const MidwifeDashboard = () => {
                     </div>
                 </div>
                 
+                <div className="cards">
+                    <div className="card-inner">
+                        <h8>BABIES</h8>
+                        <Lottie style={{height:90}} animationData={baby}/>
+                    </div>
+                </div>
+                <div className="cards">
+                    <div className="card-inner">
+                        <h8>REFERALS</h8>
+                        <Lottie style={{height:100}} animationData={referal}/>
+                    </div>
+                </div>
 
                 
             </div>
@@ -88,12 +87,6 @@ const MidwifeDashboard = () => {
                 
                 <div className="cards">
                     <div className="card-inner">
-                        <h8>NOTIFICATION HANDLING</h8>
-                        <Lottie style={{height:90}} animationData={notification}/>
-                    </div>
-                </div>
-                <div className="cards">
-                    <div className="card-inner">
                         <h8>SUMMARY REPORTS</h8>
                         <Lottie style={{height:100}} animationData={reports}/>
                     </div>
@@ -105,4 +98,4 @@ const MidwifeDashboard = () => {
     );
 
 };
-export default MidwifeDashboard;
+export default MohDrDashboard;
