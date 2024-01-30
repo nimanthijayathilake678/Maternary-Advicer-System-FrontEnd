@@ -37,30 +37,37 @@ import MOHSidebar from "./Components/MOHSidebar";
 import Messages from "./Pages/MOHAdmin/Messages";
 import Clinic from "./Pages/MOHAdmin/Clinic";
 
+
 function App() {
-  function VOGRoutes() {
-    <VOGSidebar>
+
+function VOGRoutes(){
+  <VOGSidebar>
       <Routes>
         <Route path="/vogdash" element={<VogDashboard />} />
         <Route path="/vogpersonal" element={<VogPersonal />} />
         <Route path="/vogpatients" element={<VogPatients />} />
         <Route path="/vogmessages" element={<VogMessages />} />
       </Routes>
-    </VOGSidebar>;
-  }
+    </VOGSidebar>
+}
 
-  function MOHAdminRoutes() {
-    <MOHSidebar>
-      <Routes>
-        <Route path="/mohadmindash" element={<Dashboard />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/view" element={<View />} />
-        <Route path="/summary" element={<Summary />} />
-        <Route path="/messages" element={<Messages />} />
-        <Route path="/clinic" element={<Clinic />} />
-      </Routes>
-    </MOHSidebar>;
-  }
+
+
+function MOHAdminRoutes(){
+  <MOHSidebar>
+  <Routes>
+    <Route path="/mohadmindash" element={<Dashboard />} />
+    <Route path="/register" element={<Register />} />
+    <Route path="/view" element={<View />} />
+    <Route path="/summary" element={<Summary />} />
+    <Route path="/messages" element={<Messages />} />
+    <Route path="/clinic" element={<Clinic />} />
+  </Routes>
+</MOHSidebar>
+
+}
+
+
 
   const [count, setCount] = useState(0);
 
