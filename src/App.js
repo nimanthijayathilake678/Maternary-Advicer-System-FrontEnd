@@ -78,6 +78,10 @@ function App() {
                 <Route path="/resource" element={<Resource />} />
 
                 <Route element={<SideBarContent />}>
+                  <Route
+                    path="/register"
+                    element={<BabyRegistrationStepper />}
+                  />
                   <Route element={<Authenticate allowedRole={"midwife"} />}>
                     <Route path="/midwife/">
                       <Route path="" element={<MidwifeDashboard />} />
@@ -107,10 +111,6 @@ function App() {
                         element={<FamilyPregnancies />}
                       />
                       <Route path="profile" element={<FamilyProfile />}></Route>
-                      <Route
-                        path="/register"
-                        element={<BabyRegistrationStepper />}
-                      />
                       <Route
                         path="babyprofile"
                         element={<BabyProfile />}

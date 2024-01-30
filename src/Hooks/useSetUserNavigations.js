@@ -6,11 +6,13 @@ import { useNavigate } from "react-router-dom";
 const useSetUserNavigations = (navigations) => {
   const { setUserNavigations } = useContext(UserNavigationsContext);
   const { auth } = useAuth();
-  const Role = auth?.authRole;
+  const Role = auth.position;
+  //const Role=auth.user.authRole;
   const navigate = useNavigate();
 
   useEffect(() => {
     !Role && navigate("/login");
+    console.log(position);
 
     navigations = navigations.map((navigation, index) => {
       return {
