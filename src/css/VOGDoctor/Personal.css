@@ -4,7 +4,7 @@
     padding-left: 20px;
 }
 
-
+/*
 
 
 form {
@@ -46,10 +46,10 @@ form {
   .update-button:hover {
     background-color: #1d24f3;
   }
-  
+  */
   
   /* Add your media queries here for responsive design */
-  @media screen and (max-width: 768px) {
+  /*@media screen and (max-width: 768px) {
     form {
       width: 80%;
     }
@@ -68,3 +68,6 @@ form {
         margin-left: 100px;
     }
   }
+
+
+  */
