@@ -1,13 +1,13 @@
 import React from "react";
 import "../../css/MOHAdmin/MOHDashboard.css";
 import { NavLink } from "react-router-dom";
-import medicare from "../../Assest/medicare.json";
-import DBMS from "../../Assest/DBMS.json";
-import midwifeReg from "../../Assest/midwieReg.json";
-import notification from "../../Assest/notification.json";
-import reports from "../../Assest/reports.json";
+import medicare from "../../Assest/Lottie/medicare.json";
+import DBMS from "../../Assest/Lottie/DBMS.json";
+import midwifeReg from "../../Assest/Lottie/midwieReg.json";
+import notification from "../../Assest/Lottie/notification.json";
+import reports from "../../Assest/Lottie/reports.json";
 import Lottie from "lottie-react";
-import Calendar from "../../Componenets/Calendar";
+import Calendar from "../../Components/Calendar";
 
 function MOHDashboard() {
   return (
