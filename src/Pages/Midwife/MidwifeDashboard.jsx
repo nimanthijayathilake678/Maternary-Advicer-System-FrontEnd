@@ -17,7 +17,6 @@ import '../../css/Midwife/MidwifeDash.css';
 
 const MidwifeDashboard = () => {
     
-  
     return (
         <Box ml="20px"  >
             {/* HEADER */}
