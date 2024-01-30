@@ -1,7 +1,7 @@
 import { apiClient } from "../API/ApiServer";
 import { executeJwtAuthenticationService } from "../API/Auth/LoginUser";
 
-const { createContext, useContext, useState } = require("react");
+const { createContext, useContext, useState, useEffect } = require("react");
 
 const AuthContext = createContext();
 
@@ -9,6 +9,14 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isAuthenticate, setIsAuthenticate] = useState(false);
   const [token, setToken] = useState(null);
+  const [position, setPosition] = useState(null);
+
+  const userData = null;
+  useEffect(() => {
+    console.log("User:", user);
+    console.log("IsAuthenticated:", isAuthenticate);
+    console.log("Position:", position);
+  }, [user, isAuthenticate, position]);
 
   async function login(username, password) {
     try {
@@ -18,18 +26,25 @@ export const AuthProvider = ({ children }) => {
       );
 
       if (response.status == 200) {
+        console.log("Success!");
         const jwtToken = "Bearer " + response.data.jwtToken;
+        const responseData = response.data;
+        const { user: userData } = responseData;
+        const { position: positionData } = userData;
 
         setIsAuthenticate(true);
-        setUser(response.data.user);
+        setUser(userData);
         setToken(jwtToken);
+        setPosition(positionData);
 
         apiClient.interceptors.request.use((config) => {
           console.log("intercepting and adding a token");
           config.headers.Authorization = jwtToken;
           return config;
         });
-
+        console.log(user);
+        console.log(userData);
+        console.log(isAuthenticate);
         return true;
       } else {
         logout();
@@ -50,7 +65,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ isAuthenticate, user, login, logout, token }}
+      value={{ isAuthenticate, user, login, logout, token, position }}
     >
       {children}
     </AuthContext.Provider>
