@@ -5,6 +5,7 @@
     background-image: url('./ResourceImage/new1.png');
     background-repeat: no-repeat;
     background-position: right;
+    position: relative;
 }
 
 .container1 {
@@ -13,6 +14,7 @@
     display: flex;
     justify-content: center;
     background-color: rgb(253, 245, 246);
+    position: relative;
 }
 
 .header {
@@ -36,20 +38,22 @@
     padding-top: 50px;
 }
 
-.header3 {
+.heade3 {
     font-size: small;
     padding-left: 200px;
+    
 }
 
 .image {
     width: 248px;
     height: 300px;
+    max-width: 100%;
 }
 
 .image1 {
     width: 30%;
     height: auto; /* Adjusted for responsiveness */
-    margin-left: 70%;
+   max-width: 100%;
 }
 
 .section {
@@ -60,6 +64,8 @@
     border: 1px solid #ccc;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 24px;
+    position: relative;
+
 }
 
 .title {
@@ -97,7 +103,7 @@
 
     .header1,
     .header2,
-    .header3 {
+    .heade3 {
         padding-left: 20px; /* Adjusted for responsiveness */
         
     }
@@ -106,4 +112,6 @@
         width: 80%; /* Adjusted for responsiveness */
         margin-left: 10%; /* Adjusted for responsiveness */
     }
+
+
 }
