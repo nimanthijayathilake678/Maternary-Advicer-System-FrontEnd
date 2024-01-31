@@ -109,11 +109,15 @@ export default function Reset({ reset, setReset, openAlertSuccess }) {
           </Stack>
           <Stack display="flex" direction="column" alignItems="center">
             <TitleBox>
-              <Typography variant="h5">Reset Password</Typography>
+              <Typography variant="h5" color="black">
+                Reset Password
+              </Typography>
             </TitleBox>
 
             <UserText>
-              <Typography variant="h8">Password must be:</Typography>
+              <Typography variant="h8" color="black">
+                Password must be:
+              </Typography>
             </UserText>
 
             <Stack sx={{ marginBottom: "20px" }}>
@@ -149,7 +153,9 @@ export default function Reset({ reset, setReset, openAlertSuccess }) {
             </Stack>
             <Stack display="flex" direction="column" spacing={2}>
               <UserText>
-                <Typography variant="h8">Enter New Password</Typography>
+                <Typography variant="h8" color="black">
+                  Enter New Password
+                </Typography>
               </UserText>
 
               <UserInputBox>
@@ -191,7 +197,9 @@ export default function Reset({ reset, setReset, openAlertSuccess }) {
               </UserInputBox>
 
               <UserText>
-                <Typography variant="h8">Confirm New Password</Typography>
+                <Typography variant="h8" color="black">
+                  Confirm New Password
+                </Typography>
               </UserText>
 
               <UserInputBox>

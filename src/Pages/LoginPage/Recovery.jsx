@@ -118,10 +118,12 @@ export default function Recovery({
 
           <Stack alignItems="center" spacing={3}>
             <UserTitleBox>
-              <Typography variant="h5">Recover Password</Typography>
+              <Typography variant="h5" color="black">
+                Recover Password
+              </Typography>
             </UserTitleBox>
             <Styledstack>
-              <Typography variant="h7">
+              <Typography variant="h7" color="black">
                 Select a recovery method to proceed
               </Typography>
             </Styledstack>
@@ -156,12 +158,12 @@ export default function Recovery({
             </Styledstack>
             <Styledstack>
               {email && (
-                <Typography variant="h8">
+                <Typography variant="h8" color="black">
                   You will recieve an OTP to your email,to recover your account
                 </Typography>
               )}
               {mobile && (
-                <Typography variant="h8">
+                <Typography variant="h8" color="black">
                   You will recieve an OTP to your Mobile number,to recover your
                   account
                 </Typography>
@@ -245,7 +247,9 @@ export default function Recovery({
                 },
               }}
             >
-              <Typography variant="h7">Enter OTP</Typography>
+              <Typography variant="h7" color="black">
+                Enter OTP
+              </Typography>
             </Stack>
 
             <Styledstack>
