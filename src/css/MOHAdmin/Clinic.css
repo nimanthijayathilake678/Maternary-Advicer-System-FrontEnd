@@ -1,0 +1,19 @@
+.main{
+    display: flex;
+}
+
+
+.calender{
+    display: flex;
+    margin-top: 70px;
+    margin-left: 5px;
+    background-color: #e4feff;
+    border-radius: 15%;
+    color: #0a0a0a;
+    margin-left: 10px;
+    border: 5px solid #00a9bb;
+  }
+
+  .card{
+    display: flex;
+  }

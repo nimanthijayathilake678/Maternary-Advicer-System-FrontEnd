@@ -21,7 +21,9 @@ import Unauthorized from "./Pages/Unauthorized";
 import MidwifeEligibleCoupleRegistrationForm from "./Pages/Midwife/MidwifeEligibleCoupleRegistrationForm";
 import FamilyEligibleFamilyForm from "./Pages/Family/FamilyEligibleFamilyForm";
 import BabyRegistrationStepper from "./Pages/RegistrationPage/BabyRegistration/BabyRegistrationStepper";
-
+import LandingPage from "./Pages/Resources/LandingPage";
+import BabyCare from "./Pages/Resources/BabyCare";
+import VogDashboard from "./Pages/VOGDoctor/VogDashboard";
 function App() {
   const [count, setCount] = useState(0);
 
@@ -33,10 +35,10 @@ function App() {
             <Route element={<LoginPersist />}>
               <Route path="login" element={<Login />} />
               <Route element={<MainContent />}>
-                <Route path="/" element={<Home />} />
+                <Route path="/" element={<LandingPage/>} />
                 <Route path="/aboutUs" element={<AboutUs />} />
                 <Route path="/contactUs" element={<ContactUs />} />
-                <Route path="/resource" element={<Resource />} />
+                <Route path="/resource" element={<BabyCare />} />
 
                 <Route element={<SideBarContent />}>
                   <Route path="/register" element={<BabyRegistrationStepper />}/>
@@ -71,6 +73,14 @@ function App() {
                       <Route path="profile" element={<FamilyProfile />}></Route>
                     </Route>
                   </Route>
+
+                  <Route elementt={<Authenticate allowedRole={"vog"} />}>
+                    <Route path="/vog/">
+                      <Route path="" element={<VogDashboard/>}/>
+                    </Route>
+                  </Route>
+
+                  
                 </Route>
               </Route>
             </Route>

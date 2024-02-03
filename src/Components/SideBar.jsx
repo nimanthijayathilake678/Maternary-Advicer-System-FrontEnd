@@ -52,7 +52,46 @@ export default function SideBar() {
       icon: <MdPregnantWoman className="w-6 h-auto" />,
       current: location.pathname === "/pregnancies",
     },
+
+    {
+      name: "My babies",
+      link: "/family/babies",
+      icon: <MdPregnantWoman className="w-6 h-auto" />,
+      current: location.pathname === "/pregnancies",
+    },
   ];
+
+
+  
+  const vogRoutes = [
+    {
+      name: "Dashboard",
+      link: "/vog",
+      icon: <RxDashboard className="w-6 h-auto " />,
+      current: location.pathname === "/",
+    },
+    {
+      name: "Personal",
+      link: "/vog/vogpersonal",
+      icon: <MdOutlineFamilyRestroom className="w-6 h-auto" />,
+      current: location.pathname === "/eligibleFamilies",
+    },
+    {
+      name: "Patients",
+      link: "/vog/vogpatients",
+      icon: <MdPregnantWoman className="w-6 h-auto" />,
+      current: location.pathname === "/pregnancies",
+    },
+
+    {
+      name: "Messages",
+      link: "/vog/messages",
+      icon: <MdPregnantWoman className="w-6 h-auto" />,
+      current: location.pathname === "/pregnancies",
+    },
+  ];
+
+  
 
   let userRoute = [];
 
@@ -64,6 +103,9 @@ export default function SideBar() {
     case "family":
       userRoute = familyRoutes;
       break;
+
+    case "vog":
+      userRoute = vogRoutes;
 
     default:
       userRoute = [];

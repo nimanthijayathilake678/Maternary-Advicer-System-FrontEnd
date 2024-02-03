@@ -1,0 +1,38 @@
+/* Styles for UserDetails component */
+.user-details {
+    margin: 20px;
+    color: black;
+  }
+  
+  .user-details label {
+    
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .user-details input {
+    width: 200px;
+    padding: 8px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+  }
+  
+  .user-details button {
+    padding: 8px 12px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .user-details .error-message {
+    color: red;
+    margin-top: 10px;
+  }
+  
+  .user-details .patient-details {
+    margin-top: 20px;
+  }
+  
+  /* Add more styles as needed */
+  

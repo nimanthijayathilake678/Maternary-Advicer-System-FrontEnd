@@ -178,7 +178,7 @@ const Nav = () => {
                               href={"/" + auth.authRole + "/profile"}
                               className={classNames(
                                 active ? "bg-[#00A9BB]" : "",
-                                "block px-4 py-2 text-sm text-white-700"
+                                "block px-4 py-2 text-sm text-gray-700"
                               )}
                             >
                               My Profile
@@ -192,7 +192,7 @@ const Nav = () => {
                               href={"/" + auth.authRole}
                               className={classNames(
                                 active ? "bg-[#00A9BB]" : "",
-                                "block px-4 py-2 text-sm text-white-700"
+                                "block px-4 py-2 text-sm text-gray-700"
                               )}
                             >
                               Dashboard
@@ -206,7 +206,7 @@ const Nav = () => {
                               href="#"
                               className={classNames(
                                 active ? "bg-[#00A9BB]" : "",
-                                "block px-4 py-2 text-sm text-white-700"
+                                "block px-4 py-2 text-sm text-gray-700"
                               )}
                             >
                               Setting

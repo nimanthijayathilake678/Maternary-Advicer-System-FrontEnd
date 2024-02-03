@@ -1,0 +1,85 @@
+.botomtxt{
+    background-color: rgb(253, 245, 246);
+    text-align: center;
+    font-weight: 500; 
+    margin-top: 10px;
+}
+
+.container{
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+}
+
+.careImage{
+    display: flex;
+    height: 292px;
+}
+
+.header{
+    height: 70px;
+    background-color:rgb(253, 245, 246);
+    text-align: center;
+}
+
+.image{
+    width: 292.2px;
+}
+
+.pregnancy{
+    background-color:rgb(253, 245, 246);
+    width: 100%;
+    height: 100px;
+    text-align: center;  
+}
+
+.section{
+    width: 294px;
+    height: 400px;
+    margin: 15px;
+    margin-top: 50px;
+    background-color:rgb(253, 245, 246);
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+     
+}
+
+.section2{
+    width: 294px;
+    height: 400px;
+    margin: 30px;
+    margin-top: 50px;
+    background-color:rgb(253, 245, 246);
+    border: 1px solid #ccc; 
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.section3{
+    width: 294px;
+    height: 400px;
+    margin: 70px;
+    margin-top: 50px;
+    background-color:rgb(253, 245, 246);
+    border: 1px solid #ccc; 
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+.title{
+    text-align: center;
+    height: 80px;
+    margin-top: 20px;
+}
+
+@media only screen and (max-width: 700px) {
+    .section {
+      width: 49.99999%;
+      margin: 6px 0;
+    }
+  }
+
+
+
+
+
