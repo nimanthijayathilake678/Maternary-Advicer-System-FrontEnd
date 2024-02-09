@@ -8,6 +8,7 @@ import BabyProfileForm2 from "../../../Components/BabyProfileComponents/BabyProf
 import Typography from "@mui/material/Typography";
 import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon";
 import HealthAndSafetyOutlinedIcon from "@mui/icons-material/HealthAndSafetyOutlined";
+import SideBar from "../../../Components/SideBar";
 
 export default function BabyProfile() {
   const Item = styled(Paper)(({ theme }) => ({
@@ -49,51 +50,47 @@ export default function BabyProfile() {
   };
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <div>
+    <Box sx={{ display: "flex" }}>
+      <SideBar />
+      <Box sx={{ flexGrow: 1, padding: "20px" }}>
         <Typography variant="h4" component="h2" style={topicStyle}>
-          Baby Registration
+          Baby Profile
         </Typography>
-      </div>
-      <Grid container spacing={2} sx={{ width: "100%", margin: "auto" }}>
-        <Grid item xs={12}>
-          <Grid container spacing={2} justifyContent="center">
-            <Grid item xs={12} md={6}>
-              <Item>
-                <Typography variant="h4" component="h2" style={subtopicStyle}>
-                  Basic Details
-                </Typography>
-                <BabyProfileForm1 />
-              </Item>
-            </Grid>
-            <HealthAndSafetyOutlinedIcon />
-            <Grid item xs={6} md={6}>
-              <Item>
-                <Typography variant="h4" component="h2" style={subtopicStyle}>
-                  Neonatal Examination
-                </Typography>
-                <BabyProfileForm2 />
-              </Item>
-            </Grid>
-            <Grid item xs={6} md={6}>
-              <Item>
-                <Typography variant="h4" component="h2" style={subtopicStyle}>
-                  Neonatal Examination
-                </Typography>
-                <BabyProfileForm2 />
-              </Item>
-            </Grid>
-            <Grid item xs={6} md={6}>
-              <Item>
-                <Typography variant="h4" component="h2" style={subtopicStyle}>
-                  Neonatal Examination
-                </Typography>
-                <BabyProfileForm2 />
-              </Item>
-            </Grid>
+        <Grid container spacing={2}>
+          <Grid item xs={12} md={6}>
+            <Item>
+              <Typography variant="h4" component="h2" style={subtopicStyle}>
+                Basic Details
+              </Typography>
+              <BabyProfileForm1 />
+            </Item>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Item>
+              <Typography variant="h4" component="h2" style={subtopicStyle}>
+                Neonatal Examination
+              </Typography>
+              <BabyProfileForm2 />
+            </Item>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Item>
+              <Typography variant="h4" component="h2" style={subtopicStyle}>
+                Neonatal Examination
+              </Typography>
+              <BabyProfileForm2 />
+            </Item>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Item>
+              <Typography variant="h4" component="h2" style={subtopicStyle}>
+                Neonatal Examination
+              </Typography>
+              <BabyProfileForm2 />
+            </Item>
           </Grid>
         </Grid>
-      </Grid>
+      </Box>
     </Box>
   );
 }

@@ -1,13 +1,10 @@
-.main{
-    color: black;
-    align-items: center;
-    padding-left: 20px;
+.main {
+  color: black;
+  align-items: center;
+  padding-left: 20px;
 }
 
-/*
-
-
-form {
+/* form {
     background-color: blanchedalmond;
     width: 75%;
     margin: 20px auto;
@@ -15,22 +12,20 @@ form {
     border-radius: 10px;
     
   }
-  
-  fieldset {
+   */
+/* fieldset {
     border: 1px solid #ccc;
     border-radius: 8px;
     padding: 10px;
     margin-bottom: 20px;
-  }
-  
+  } */
 
-  
-  label {
+/* label {
     display: block;
     margin-bottom: 8px;
-  }
+  } */
 
-  .update-button {
+/* .update-button {
     background-color: #6492f7;
     color: #fff;
     padding: 10px 20px;
@@ -42,14 +37,14 @@ form {
     margin-left: 400px;
     
   }
-  
-  .update-button:hover {
+   */
+/* .update-button:hover {
     background-color: #1d24f3;
   }
   */
-  
-  /* Add your media queries here for responsive design */
-  /*@media screen and (max-width: 768px) {
+
+/* Add your media queries here for responsive design */
+/*@media screen and (max-width: 768px) {
     form {
       width: 80%;
     }

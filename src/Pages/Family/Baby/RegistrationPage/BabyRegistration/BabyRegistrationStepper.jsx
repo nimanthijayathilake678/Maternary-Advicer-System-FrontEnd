@@ -16,7 +16,7 @@ import BabyRegistrationForm4 from "./BabyRegistrationForm4";
 import Alert from "@mui/material/Alert";
 import AlertTitle from "@mui/material/AlertTitle";
 import ChildFriendlyIcon from "@mui/icons-material/ChildFriendly";
-import Theme from "../../../Components/Theme";
+import Theme from "./Components/Theme";
 import { StepIconProps } from "@mui/material/StepIcon";
 
 function CustomStepIcon(props) {

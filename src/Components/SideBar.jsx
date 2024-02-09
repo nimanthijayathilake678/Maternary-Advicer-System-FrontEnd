@@ -65,7 +65,8 @@ export default function SideBar() {
       break;
 
     default:
-      userRoute = [];
+      //userRoute = [];
+      userRoute = familyRoutes; //default was updated as family temporary as userRole is still not functioning with backend
   }
 
   const classNames = (...classes) => {
