@@ -34,6 +34,9 @@ export const AuthProvider = ({ children }) => {
         const responseData = response.data;
         const { user: userData } = responseData;
         const { position: positionData } = userData;
+        const responseData = response.data;
+        const { user: userData } = responseData;
+        const { position: positionData } = userData;
 
         setIsAuthenticate(true);
         setUser(userData);
