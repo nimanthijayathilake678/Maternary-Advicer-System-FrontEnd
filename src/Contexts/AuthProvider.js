@@ -1,6 +1,7 @@
 import { apiClient } from "../API/ApiServer";
 import { executeJwtAuthenticationService } from "../API/Auth/LoginUser";
 
+//const { createContext, useContext, useState, useEffect } = require("react");
 const { createContext, useContext, useState, useEffect } = require("react");
 
 const AuthContext = createContext();
@@ -11,7 +12,8 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(null);
   const [position, setPosition] = useState(null);
 
-  const userData = null;
+  const role = null;
+
   useEffect(() => {
     console.log("User:", user);
     console.log("IsAuthenticated:", isAuthenticate);
@@ -27,6 +29,7 @@ export const AuthProvider = ({ children }) => {
 
       if (response.status == 200) {
         console.log("Success!");
+        console.log("Success!");
         const jwtToken = "Bearer " + response.data.jwtToken;
         const responseData = response.data;
         const { user: userData } = responseData;
@@ -34,7 +37,9 @@ export const AuthProvider = ({ children }) => {
 
         setIsAuthenticate(true);
         setUser(userData);
+        setUser(userData);
         setToken(jwtToken);
+        setPosition(positionData);
         setPosition(positionData);
 
         apiClient.interceptors.request.use((config) => {
@@ -42,6 +47,9 @@ export const AuthProvider = ({ children }) => {
           config.headers.Authorization = jwtToken;
           return config;
         });
+        console.log(user);
+        console.log(userData);
+        console.log(isAuthenticate);
         console.log(user);
         console.log(userData);
         console.log(isAuthenticate);
@@ -63,9 +71,21 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
   }
 
+  async function getPosition() {
+    return Promise.resolve(position);
+  }
+
   return (
     <AuthContext.Provider
-      value={{ isAuthenticate, user, login, logout, token, position }}
+      value={{
+        isAuthenticate,
+        user,
+        login,
+        logout,
+        token,
+        position,
+        getPosition,
+      }}
     >
       {children}
     </AuthContext.Provider>

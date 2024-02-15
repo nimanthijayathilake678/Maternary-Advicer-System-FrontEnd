@@ -9,7 +9,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Theme from "../../Components/Theme"; //**** Special import*/
 import { ThemeProvider } from "@mui/material";
 import login from "../../Assest/login.jpg";
@@ -22,7 +22,6 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 
 const theme = Theme();
-
 const DemoPaper = styled(Paper)(({ theme }) => ({
   width: 900,
   maxHeight: "80vh",
@@ -76,6 +75,8 @@ const Login = () => {
 
   const [responseAlert, setResponseAlert] = useState(false);
 
+  const [position, setPosition] = useState();
+
   const authContext = useAuth();
 
   const resetPasswordModelOn = () => {
@@ -108,14 +109,34 @@ const Login = () => {
 
   async function onSubmit() {
     if (await authContext.login(username, password)) {
-      navigate("/home");
+      handleNavigate();
     } else {
       console.log("Error: login credentials are wrong");
     }
   }
 
+  async function handleNavigate() {
+    console.log("Check omside the login");
+    console.log(await authContext.getPosition());
+    console.log(authContext.position);
+    navigate("/midwife");
+    return;
+  }
+
   return (
-    <Box>
+    <Box
+      flex="45%"
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        borderTopLeftRadius: theme.shape.borderRadius * 4, //6
+        borderBottomLeftRadius: theme.shape.borderRadius * 4, //6
+        [theme.breakpoints.down("sm")]: {
+          height: 300,
+        },
+      }}
+    >
       <ThemeProvider theme={theme}>
         <Stack
           display="flex"
@@ -145,7 +166,7 @@ const Login = () => {
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
-                  backgroundColor: theme.palette.primary.main,
+                  backgroundColor: theme.palette.primary.paper,
                   height: "80vh",
                   borderTopLeftRadius: theme.shape.borderRadius * 4, //6
                   borderBottomLeftRadius: theme.shape.borderRadius * 4, //6
