@@ -47,18 +47,11 @@ export const AuthProvider = ({ children }) => {
           config.headers.Authorization = jwtToken;
           return config;
         });
-        console.log(user);
-        console.log(userData);
-        console.log(isAuthenticate);
-        console.log(user);
-        console.log(userData);
-        console.log(isAuthenticate);
-        return true;
       } else {
         logout();
         console.error(response.status);
-        return false;
       }
+      return response;
     } catch (error) {
       console.error("Catch error");
       logout();

@@ -8,7 +8,6 @@ import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import { Grid } from "@mui/material";
-import { TextField } from "@mui/material";
 import BabyRegistrationForm1 from "./BabyRegistrationForm1";
 import BabyRegistrationForm2 from "./BabyRegistrationForm2";
 import BabyRegistrationForm3 from "./BabyRegistrationForm3";
@@ -16,8 +15,8 @@ import BabyRegistrationForm4 from "./BabyRegistrationForm4";
 import Alert from "@mui/material/Alert";
 import AlertTitle from "@mui/material/AlertTitle";
 import ChildFriendlyIcon from "@mui/icons-material/ChildFriendly";
-import Theme from "./Components/Theme";
-import { StepIconProps } from "@mui/material/StepIcon";
+import Theme from "../../../../../Components/Theme";
+import SideBar from "../../../../../Components/SideBar";
 
 function CustomStepIcon(props) {
   const { active, completed, icon } = props;
@@ -42,7 +41,7 @@ const theme = Theme();
 
 const steps = [
   {
-    label: "Basic Infromation",
+    label: "Basic Information",
     description: <BabyRegistrationForm1 />,
   },
   {
@@ -89,17 +88,34 @@ export default function BabyRegistrationStepper() {
       flexDirection="column"
       width="100%"
     >
-      <div>
-        <span className=" text-xl  text-[#2A777C] text-center font-bold ">
-          Baby Registration
-        </span>
-      </div>
       <Grid
         container
         spacing={2}
         sx={{ width: "100%", margin: "auto", height: "100%" }}
       >
+        {/* Sidebar */}
+        <Grid item xs={4}>
+          <Paper
+            sx={{ padding: 2, backgroundColor: "#f0f0f0", minHeight: "100vh" }}
+          >
+            <Typography variant="h6">Sidebar Content</Typography>
+          </Paper>
+        </Grid>
+        {/* Main Content */}
         <Grid item xs={8}>
+          <Typography
+            variant="h5"
+            style={{
+              marginBottom: "10px",
+              color: "#2A777C",
+              paddingBottom: "60px",
+              paddingLeft: "10px",
+              paddingTop: "40px",
+            }}
+          >
+            Register New Born Baby
+          </Typography>
+
           <Paper sx={{ padding: 2, backgroundColor: "#fff" }}>
             <Stepper
               activeStep={activeStep}

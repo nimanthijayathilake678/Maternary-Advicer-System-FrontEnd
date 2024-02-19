@@ -10,33 +10,89 @@ import {
   Slide,
 } from "@mui/material";
 
-function BabyProfileForm1() {
+function BabyProfileForm1({ babyDetails }) {
   const [isVisible, setIsVisible] = React.useState(true);
 
   return (
     <Slide direction="up" in={isVisible} mountOnEnter unmountOnExit>
-      <Card variant="outlined">
+      <Card variant="outlined" style={{ maxWidth: "700px", margin: "auto" }}>
         <CardContent style={{ display: "flex", alignItems: "center" }}>
-          <img
-            src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava5.webp"
-            alt="Baby Image"
-            style={{ width: "100px", marginRight: "20px" }}
-          />
-          <List style={{ width: "600px" }}>
+          <List style={{ width: "100%" }}>
             <ListItem>
-              <ListItemText primary="Division of MOH" />
+              <ListItemText
+                primaryTypographyProps={{ style: { marginLeft: "20px" } }}
+                primary={`Division of Regional MOH: Matara`}
+              />
             </ListItem>
             <Divider variant="middle" />
             <ListItem>
-              <ListItemText primary="MOH area" />
+              <ListItemText
+                primaryTypographyProps={{ style: { marginLeft: "20px" } }}
+                primary={`MOH Area: Matara`}
+              />
             </ListItem>
             <Divider variant="middle" />
             <ListItem>
-              <ListItemText primary="Mother Registration Number" />
+              <ListItemText
+                primaryTypographyProps={{ style: { marginLeft: "20px" } }}
+                primary={`Pregnancy No: P039449`}
+              />
             </ListItem>
             <Divider variant="middle" />
             <ListItem>
-              <ListItemText primary="Baby Registration Number" />
+              <ListItemText
+                primaryTypographyProps={{ style: { marginLeft: "20px" } }}
+                primary={`Baby Registration No: B7484848`}
+              />
+            </ListItem>
+            <Divider variant="middle" />
+            <ListItem>
+              <ListItemText
+                primaryTypographyProps={{ style: { marginLeft: "20px" } }}
+                primary={`Mother Registration No: M344553`}
+              />
+            </ListItem>
+            <Divider variant="middle" />
+            <ListItem>
+              <ListItemText
+                primaryTypographyProps={{ style: { marginLeft: "20px" } }}
+                primary={`Baby Name: K M Sithul`}
+              />
+            </ListItem>
+            <Divider variant="middle" />
+            <ListItem>
+              <ListItemText
+                primaryTypographyProps={{ style: { marginLeft: "20px" } }}
+                primary={`Mother Name: K M Malani`}
+              />
+            </ListItem>
+            <Divider variant="middle" />
+            <ListItem>
+              <ListItemText
+                primaryTypographyProps={{ style: { marginLeft: "20px" } }}
+                primary={`Baby Birthday: 2000/09/09`}
+              />
+            </ListItem>
+            <Divider variant="middle" />
+            <ListItem>
+              <ListItemText
+                primaryTypographyProps={{ style: { marginLeft: "20px" } }}
+                primary={`Baby Date of Registration: 2000/09/12`}
+              />
+            </ListItem>
+            <Divider variant="middle" />
+            <ListItem>
+              <ListItemText
+                primaryTypographyProps={{ style: { marginLeft: "20px" } }}
+                primary={`Baby Age: 3 days`}
+              />
+            </ListItem>
+            <Divider variant="middle" />
+            <ListItem>
+              <ListItemText
+                primaryTypographyProps={{ style: { marginLeft: "20px" } }}
+                primary={`Baby Address: Mathara`}
+              />
             </ListItem>
           </List>
         </CardContent>

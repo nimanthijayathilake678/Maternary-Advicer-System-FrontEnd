@@ -17,7 +17,7 @@ import FamilyProfile from "../Pages/Family/FamilyProfile";
 import Unauthorized from "../Pages/Unauthorized";
 import MidwifeEligibleCoupleRegistrationForm from "../Pages/Midwife/MidwifeEligibleCoupleRegistrationForm";
 import FamilyEligibleFamilyForm from "../Pages/Family/FamilyEligibleFamilyForm";
-//import BabyRegistrationStepper from "./Pages/RegistrationPage/BabyRegistration/BabyRegistrationStepper";
+import BabyRegistrationStepper from "../Pages/Family/Baby/RegistrationPage/BabyRegistration/BabyRegistrationStepper";
 import BabyProfile from "../Pages/Family/Baby/BabyProfile";
 
 import VogMessages from "../Pages/VOGDoctor/Messages";
@@ -33,6 +33,10 @@ import Summary from "../Pages/MOHAdmin/Summary";
 import MOHSidebar from "../Components/MOHSidebar";
 import Messages from "../Pages/MOHAdmin/Messages";
 import Clinic from "../Pages/MOHAdmin/Clinic";
+import BabyDashboard from "../Pages/Family/Baby/BabyDashboard";
+import MOHDashboard from "../Pages/MOHAdmin/Dashboard";
+import FamilyMyBabies from "../Pages/Family/FamilyMyBabies";
+import RegisterdBabies from "../Pages/Midwife/RegisterdBabies";
 
 export const AppRoutes = {
   loginpath: { path: "/login", component: <Login /> },
@@ -56,8 +60,17 @@ export const AppRoutes = {
     component: <FamilyProfile />,
   },
   family_baby_profile: {
-    path: "/family/babyProfile",
+    path: "/family/babyDashboard/babyProfile",
     component: <BabyProfile />,
+  },
+  family_baby_dashboard: {
+    path: "/family/babyDashboard",
+    component: <BabyDashboard />,
+  },
+
+  family_my_babies: {
+    path: "/family/mybabies",
+    component: <FamilyMyBabies />,
   },
 
   //Midwife Page ROutes
@@ -77,5 +90,25 @@ export const AppRoutes = {
   midwife_pregnancies: {
     path: "/midwife/pregancies",
     component: <MidwifePregnancies />,
+  },
+
+  midwife_registerdbabies: {
+    path: "/midwife/registerdbabies",
+    component: <RegisterdBabies />,
+  },
+  //moh page routes
+  moh: {
+    path: "/moh",
+    component: <MOHDashboard />,
+  },
+  moh: {
+    path: "/vog",
+    component: <VogDashboard />,
+  },
+
+  //vog page routes
+  vog: {
+    path: "/vog/newbaby",
+    component: <BabyRegistrationStepper />,
   },
 };
