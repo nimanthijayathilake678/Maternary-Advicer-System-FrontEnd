@@ -21,7 +21,7 @@ const MidwifeDashboard = () => {
   const authContext = useAuth();
 
   return (
-    <Box ml="20px">
+    <Box m="20px">
       {/* HEADER */}
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <Header title="Hello - midwife" subtitle="Welcome to your dashboard" />
