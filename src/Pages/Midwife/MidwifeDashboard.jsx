@@ -16,10 +16,15 @@ import Lottie from "lottie-react";
 import "../../css/Midwife/MidwifeDash.css";
 import useAuth from "../../Hooks/useAuth";
 import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const MidwifeDashboard = () => {
   const authContext = useAuth();
-
+  const navigate = useNavigate();
+  const handleNavigation = (url) => {
+    navigate(url);
+  };
   return (
     <Box ml="20px">
       {/* HEADER */}
@@ -69,6 +74,17 @@ const MidwifeDashboard = () => {
           <div className="card-inner">
             <h8>REGISTERED PREGNANT MOTHERS</h8>
             <Lottie style={{ height: 120 }} animationData={pregnant} />
+          </div>
+        </div>
+
+        <div className="cards">
+          <div className="card-inner">
+            <h8>REGISTERD BABIES</h8>
+            <Lottie
+              style={{ height: 120 }}
+              animationData={pregnant}
+              onClick={() => handleNavigation("/midwife/registerdbabies")}
+            />
           </div>
         </div>
       </div>

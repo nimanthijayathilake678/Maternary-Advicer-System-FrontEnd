@@ -1,96 +1,112 @@
-import React, { useState } from "react";
-import { styled } from "@mui/material/styles";
-import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
-import Grid from "@mui/material/Grid";
-import BabyProfileForm1 from "../../../Components/BabyProfileComponents/BabyProfileForm1";
-import BabyProfileForm2 from "../../../Components/BabyProfileComponents/BabyProfileForm2";
+import * as React from "react";
+import PropTypes from "prop-types";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
-import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon";
-import HealthAndSafetyOutlinedIcon from "@mui/icons-material/HealthAndSafetyOutlined";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid"; // Import Grid from Material-UI
+import Lottie from "react-lottie";
+import babyProfile from "../../../Assest/Lottie/babyProfile.json";
+import BabyDash from "../../../Assest/Lottie/BabyDash.json";
+import BabyProfileForm1 from "../../../Components/BabyProfileComponents/BabyProfileForm1";
 import SideBar from "../../../Components/SideBar";
+import { Margin } from "@mui/icons-material";
+import BabyGirl from "../../../Assest/Lottie/BabyGirl.json";
+import BabyItem from "../../../Assest/Lottie/BabyItem.json";
+function CustomTabPanel(props) {
+  const { children, value, index, ...other } = props;
 
-export default function BabyProfile() {
-  const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === "dark" ? "#E4FEFF" : "#00A9BB",
-    ...theme.typography.body2,
-    padding: theme.spacing(0.03),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
-  }));
-  const [profilePicture, setProfilePicture] = useState(
-    "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava5.webp"
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
   );
+}
 
-  const handlePictureChange = (event) => {
-    const file = event.target.files[0];
-    const reader = new FileReader();
+CustomTabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
+};
 
-    reader.onloadend = () => {
-      setProfilePicture(reader.result);
-    };
-
-    if (file) {
-      reader.readAsDataURL(file);
-    }
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
   };
-  const topicStyle = {
-    fontSize: "24px", // Increased font size
-    fontWeight: "bold", // Bold font weight
-    color: "#2A777C", // Custom color
-    marginBottom: "20px", // Added margin bottom for spacing
-    paddingTop: "10px",
-    paddingLeft: "10px",
-  };
-  const subtopicStyle = {
-    fontSize: "16px", // Increased font size
-    fontWeight: "bold", // Bold font weight
-    color: "#FFFFF", // Custom color
-    marginBottom: "10px", // Added margin bottom for spacing
+}
+
+export default function BasicTabs() {
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
   };
 
   return (
     <Box sx={{ display: "flex" }}>
       <SideBar />
-      <Box sx={{ flexGrow: 1, padding: "20px" }}>
-        <Typography variant="h4" component="h2" style={topicStyle}>
-          Baby Profile
-        </Typography>
-        <Grid container spacing={2}>
-          <Grid item xs={12} md={6}>
-            <Item>
-              <Typography variant="h4" component="h2" style={subtopicStyle}>
-                Basic Details
-              </Typography>
-              <BabyProfileForm1 />
-            </Item>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <Item>
-              <Typography variant="h4" component="h2" style={subtopicStyle}>
-                Neonatal Examination
-              </Typography>
-              <BabyProfileForm2 />
-            </Item>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <Item>
-              <Typography variant="h4" component="h2" style={subtopicStyle}>
-                Neonatal Examination
-              </Typography>
-              <BabyProfileForm2 />
-            </Item>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <Item>
-              <Typography variant="h4" component="h2" style={subtopicStyle}>
-                Neonatal Examination
-              </Typography>
-              <BabyProfileForm2 />
-            </Item>
-          </Grid>
+      <Grid container spacing={2}>
+        {" "}
+        {/* Grid container */}
+        <Grid item xs={6} md={3}>
+          {" "}
+          {/* Lottie animation grid item */}
+          <Typography>Baby</Typography>
+          <Box sx={{ p: 3 }}>
+            <div>
+              <Lottie
+                options={{
+                  loop: true,
+                  autoplay: true,
+                  animationData: BabyDash,
+                  rendererSettings: {
+                    preserveAspectRatio: "xMidYMid slice",
+                  },
+                }}
+                height={400}
+                width={400}
+              />
+            </div>
+          </Box>
         </Grid>
-      </Box>
+        <Grid item xs={12} md={8}>
+          {" "}
+          {/* Tabs grid item */}
+          <Box sx={{ p: 5 }}>
+            <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+              <Tabs value={value} onChange={handleChange}>
+                <Tab label="Basic Details" {...a11yProps(0)} />
+                <Tab label="Birth Infromation" {...a11yProps(1)} />
+                <Tab label="Neonatal Examination" {...a11yProps(2)} />
+                <Tab label="Special care " {...a11yProps(3)} />
+              </Tabs>
+            </Box>
+            <CustomTabPanel value={value} index={0}>
+              <BabyProfileForm1 />
+            </CustomTabPanel>
+            <CustomTabPanel value={value} index={1}>
+              <BabyProfileForm1 />
+            </CustomTabPanel>
+            <CustomTabPanel value={value} index={2}>
+              <BabyProfileForm1 />
+            </CustomTabPanel>
+            <CustomTabPanel value={value} index={3}>
+              <BabyProfileForm1 />
+            </CustomTabPanel>
+          </Box>
+        </Grid>
+      </Grid>
     </Box>
   );
 }

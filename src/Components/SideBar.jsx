@@ -74,14 +74,14 @@ export default function SideBar() {
   };
 
   return (
-    <div className=" w-max drop-shadow-xl pl-2 pt-2 text-slate-600  bg-[#E4FEFF]  flex-col flex">
+    <div className=" w-max drop-shadow-xl pl-2 pt-2 text-slate-600  bg-[#00A9BB]  flex-col flex">
       {userRoute.map((item, index) => (
         <a
           key={index}
           className={classNames(
             item.current
               ? "text-white  bg-[#00A9BB]"
-              : "text-slate-600  hover:text-[#00A9BB] hover:bg-white",
+              : "text-slate-600  hover:text-[#00A9BB] hover:bg-[#2A777C]",
             "flex w-max px-3 items-center gap-3  py-2 font-semibold rounded-l-xl"
           )}
           href={item.link}

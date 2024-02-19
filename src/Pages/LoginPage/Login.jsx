@@ -108,20 +108,38 @@ const Login = () => {
   const navigate = useNavigate();
 
   async function onSubmit() {
-    if (await authContext.login(username, password)) {
-      handleNavigate();
+    const response = await authContext.login(username, password);
+    console.log(response.data.user);
+    const position = response.data.user.position;
+    if (response.status === 200) {
+      if (position == "MOH") {
+        navigate("/moh");
+      } else if (position == "Midwife") {
+        navigate("/midwife");
+      } else if (position == "Family") {
+        navigate("/family");
+      } else if (position == "VogDoctor") {
+        navigate("/vog");
+      } else {
+        navigate("/family/babyDashboard");
+      }
     } else {
       console.log("Error: login credentials are wrong");
     }
   }
 
-  async function handleNavigate() {
-    console.log("Check omside the login");
-    console.log(await authContext.getPosition());
-    console.log(authContext.position);
-    navigate("/midwife");
-    return;
-  }
+  // async function handleNavigate(position) {
+  //   console.log("Check omside the login");
+  //   console.log(await authContext.getPosition());
+  //   console.log(authContext.position);
+  //   if (position == "MOH") {
+  //     navigate("/home");
+  //   } else if (position == "Midwife") {
+  //     navigate("/midwife");
+  //   }
+  //   // navigate("/midwife");
+  //   return;
+  // }
 
   return (
     <Box
