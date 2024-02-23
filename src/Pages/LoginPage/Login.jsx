@@ -13,6 +13,7 @@ import React, { useEffect, useState } from "react";
 import Theme from "../../Components/Theme"; //**** Special import*/
 import { ThemeProvider } from "@mui/material";
 import login from "../../Assest/login.jpg";
+import login2 from "../../Assest/login2.jpg";
 import { Padding, Visibility, VisibilityOff } from "@mui/icons-material";
 import PersonIcon from "@mui/icons-material/Person";
 import Recovery from "./Recovery";
@@ -194,7 +195,7 @@ const Login = () => {
                 }}
               >
                 <img
-                  src={login}
+                  src={login2}
                   alt="Login_image"
                   width="100%"
                   height="100%"

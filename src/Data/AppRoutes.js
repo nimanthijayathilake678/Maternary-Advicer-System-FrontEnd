@@ -37,6 +37,12 @@ import BabyDashboard from "../Pages/Family/Baby/BabyDashboard";
 import MOHDashboard from "../Pages/MOHAdmin/Dashboard";
 import FamilyMyBabies from "../Pages/Family/FamilyMyBabies";
 import RegisterdBabies from "../Pages/Midwife/RegisterdBabies";
+import BabyRegistrationForm1 from "../Pages/Family/Baby/RegistrationPage/BabyRegistration/BabyRegistrationForm1";
+import BabyImmunization from "../Pages/Family/Baby/BabyImmunization";
+import BabyReferels from "../Pages/Family/Baby/BabyReferels";
+import BabyNutrients from "../Pages/Family/Baby/BabyNutrients";
+import BabyWeight from "../Pages/Family/Baby/BabyWeight";
+import RegisterNewBorn from "../Pages/VOGDoctor/RegisterNewBorn";
 
 export const AppRoutes = {
   loginpath: { path: "/login", component: <Login /> },
@@ -72,6 +78,24 @@ export const AppRoutes = {
     path: "/family/mybabies",
     component: <FamilyMyBabies />,
   },
+  family_baby_immunization: {
+    path: "/family/babyDashboard/immunization",
+    component: <BabyImmunization />,
+  },
+
+  family_baby_referels: {
+    path: "/family/babyDashboard/immunization/referels",
+    component: <BabyReferels />,
+  },
+
+  family_baby_nutrients: {
+    path: "/family/babyDashboard/nutrients",
+    component: <BabyNutrients />,
+  },
+  family_baby_weight: {
+    path: "/family/babyDashboard/weight",
+    component: <BabyWeight />,
+  },
 
   //Midwife Page ROutes
   midwife_home: { path: "/midwife", component: <MidwifeDashboard /> },
@@ -106,9 +130,13 @@ export const AppRoutes = {
     component: <VogDashboard />,
   },
 
-  //vog page routes
+  // vog page routes
+  // vog: {
+  //   path: "/vog/newbaby",
+  //   component: <BabyRegistrationStepper />,
+  // },
   vog: {
     path: "/vog/newbaby",
-    component: <BabyRegistrationStepper />,
+    component: <BabyRegistrationForm1 />,
   },
 };
