@@ -7,8 +7,9 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Button from "@mui/material/Button";
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import { Link } from "react-router-dom";
 import SideBar from "../../Components/SideBar";
+import Grid from "@mui/material/Grid";
 
 const columns = [
   { id: "Baby", label: "Baby", minWidth: 40 },
@@ -19,7 +20,7 @@ const columns = [
   { id: "Immature", label: "Immature", minWidth: 40 },
   { id: "Sex", label: "Sex", minWidth: 40 },
   { id: "Age", label: "Age", minWidth: 40 },
-  { id: "More", label: "Baby Profile", minWidth: 40 }, // New column for "More"
+  { id: "More", label: "Baby Profile", minWidth: 40 },
 ];
 
 function createData(
@@ -72,67 +73,81 @@ const FamilyMyBabies = () => {
   };
 
   return (
-    <div className="pt-10 px-10">
-      <div className="flex relative items-center">
-        <div>
-          <span className="text-xl text-[#2A777C] text-center font-bold">
-            My Babies
-          </span>
+    <Grid container spacing={3}>
+      <Grid item xs={3} display={"flex"}>
+        <SideBar />
+      </Grid>
+      <Grid item xs={9} display={"flex"}>
+        <div className="pt-10 px-10">
+          <div className="flex relative items-center">
+            <div>
+              <span className="text-xl text-[#2A777C] text-center font-bold">
+                My Babies
+              </span>
+            </div>
+          </div>
+
+          <div className="bottom-0 right-0"></div>
+
+          <Paper className="mt-5" sx={{ width: "100%", overflow: "hidden" }}>
+            <TableContainer sx={{ maxHeight: 440 }}>
+              <Table stickyHeader aria-label="sticky table">
+                <TableHead>
+                  <TableRow>
+                    {columns.map((column) => (
+                      <TableCell
+                        key={column.id}
+                        align="center"
+                        style={{
+                          minWidth: column.minWidth,
+                          backgroundColor: "#00A9BB",
+                          color: "white",
+                        }}
+                      >
+                        {column.label}
+                      </TableCell>
+                    ))}
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {rows
+                    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                    .map((row, index) => {
+                      return (
+                        <TableRow
+                          hover
+                          role="checkbox"
+                          tabIndex={-1}
+                          key={index}
+                        >
+                          {columns.map((column) => {
+                            const value = row[column.id];
+                            return (
+                              <TableCell key={column.id} align="center">
+                                {column.id === "More" ? (
+                                  <Link to="/family/babyDashboard">
+                                    <Button variant="contained" color="primary">
+                                      More
+                                    </Button>
+                                  </Link>
+                                ) : (
+                                  value
+                                )}
+                              </TableCell>
+                            );
+                          })}
+                        </TableRow>
+                      );
+                    })}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </Paper>
         </div>
-      </div>
+      </Grid>
+    </Grid>
 
-      <div className="bottom-0 right-0"></div>
-
-      <Paper className="mt-5" sx={{ width: "100%", overflow: "hidden" }}>
-        <TableContainer sx={{ maxHeight: 440 }}>
-          <Table stickyHeader aria-label="sticky table">
-            <TableHead>
-              <TableRow>
-                {columns.map((column) => (
-                  <TableCell
-                    key={column.id}
-                    align="center"
-                    style={{
-                      minWidth: column.minWidth,
-                      backgroundColor: "#00A9BB",
-                      color: "white",
-                    }}
-                  >
-                    {column.label}
-                  </TableCell>
-                ))}
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {rows
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((row, index) => {
-                  return (
-                    <TableRow hover role="checkbox" tabIndex={-1} key={index}>
-                      {columns.map((column) => {
-                        const value = row[column.id];
-                        return (
-                          <TableCell key={column.id} align="center">
-                            {column.id === "More" ? (
-                              <Link to="/family/babyDashboard">
-                                <Button variant="contained" color="primary">
-                                  More
-                                </Button>
-                              </Link>
-                            ) : (
-                              value
-                            )}
-                          </TableCell>
-                        );
-                      })}
-                    </TableRow>
-                  );
-                })}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </Paper>
-    </div>
+    //////////////////////////////////////////
   );
 };
 

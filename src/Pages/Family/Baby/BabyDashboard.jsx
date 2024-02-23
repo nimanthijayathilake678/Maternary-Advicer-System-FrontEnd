@@ -16,6 +16,14 @@ import { useNavigate } from "react-router-dom";
 import BabyGirl from "../../../Assest/Lottie/BabyGirl.json";
 import BabyItem from "../../../Assest/Lottie/BabyItem.json";
 import baby from "../../../Assest/Lottie/baby.json";
+import clinic from "../../../Assest/Lottie/clinic.json";
+import profile from "../../../Assest/Lottie/profile.json";
+import reports from "../../../Assest/Lottie/reports.json";
+import notification from "../../../Assest/Lottie/notification.json";
+import baby3 from "../../../Assest/Lottie/baby3.json";
+import baby2 from "../../../Assest/Lottie/baby2.json";
+import UpcomingsBaby from "../../../Components/BabyProfileComponents/UpcommingsBaby";
+
 const BabyDashboard = () => {
   const navigate = useNavigate();
   const [value, setValue] = React.useState("one");
@@ -49,34 +57,112 @@ const BabyDashboard = () => {
       <Grid container style={{ margin: "15px 0", justifyContent: "center" }}>
         {/* Lottie Animation */}
         <Grid item xs={12} sm={3}>
-          <Lottie style={{ height: 200 }} animationData={BabyItem} />
+          <Lottie style={{ height: 280 }} animationData={baby2} />
         </Grid>
 
         {/* Grid items */}
         <Grid item xs={12} sm={9}>
           <Grid container spacing={2}>
-            {[...Array(4)].map((_, index) => (
-              <Grid key={index} item xs={12} sm={3}>
-                <div className="cards">
-                  <div className="card-inner">
-                    <h8
-                      onClick={() =>
-                        handleNavigation("/family/babyDashboard/babyProfile")
-                      }
-                    >
-                      BASIC INFORMATION
-                    </h8>
-                    <Lottie
-                      style={{ height: 100 }}
-                      animationData={baby}
-                      onClick={() =>
-                        handleNavigation("/family/babyDashboard/babyProfile")
-                      }
-                    />
-                  </div>
+            <Grid item xs={12} sm={3}>
+              <div className="cards">
+                <div className="card-inner">
+                  <h8
+                    onClick={() =>
+                      handleNavigation("/family/babyDashboard/babyProfile")
+                    }
+                  >
+                    BASIC INFORMATION
+                  </h8>
+                  <Lottie
+                    style={{ height: 100 }}
+                    animationData={profile}
+                    onClick={() =>
+                      handleNavigation("/family/babyDashboard/babyProfile")
+                    }
+                  />
                 </div>
-              </Grid>
-            ))}
+              </div>
+            </Grid>
+            <Grid item xs={12} sm={3}>
+              <div className="cards">
+                <div className="card-inner">
+                  <h8
+                    onClick={() =>
+                      handleNavigation("/family/babyDashboard/immunization")
+                    }
+                  >
+                    BABY IMMUNIZATION
+                  </h8>
+                  <Lottie
+                    style={{ height: 100 }}
+                    animationData={reports}
+                    onClick={() =>
+                      handleNavigation("/family/babyDashboard/immunization")
+                    }
+                  />
+                </div>
+              </div>
+            </Grid>
+            <Grid item xs={12} sm={3}>
+              <div className="cards">
+                <div className="card-inner">
+                  <h8
+                    onClick={() =>
+                      handleNavigation("/family/babyDashboard/nutrients")
+                    }
+                  >
+                    BABY NUTRIENTS
+                  </h8>
+                  <Lottie
+                    style={{ height: 100 }}
+                    animationData={baby}
+                    onClick={() =>
+                      handleNavigation("/family/babyDashboard/nutrients")
+                    }
+                  />
+                </div>
+              </div>
+            </Grid>
+            <Grid item xs={12} sm={3}>
+              <div className="cards">
+                <div className="card-inner">
+                  <h8
+                    onClick={() =>
+                      handleNavigation("/family/babyDashboard/babyProfile")
+                    }
+                  >
+                    BABY SPECIAL CARE
+                  </h8>
+                  <Lottie
+                    style={{ height: 100 }}
+                    animationData={BabyItem}
+                    onClick={() =>
+                      handleNavigation("/family/babyDashboard/babyProfile")
+                    }
+                  />
+                </div>
+              </div>
+            </Grid>
+            <Grid item xs={12} sm={3}>
+              <div className="cards">
+                <div className="card-inner">
+                  <h8
+                    onClick={() =>
+                      handleNavigation("/family/babyDashboard/weight")
+                    }
+                  >
+                    BABY GROWTH
+                  </h8>
+                  <Lottie
+                    style={{ height: 80 }}
+                    animationData={baby3}
+                    onClick={() =>
+                      handleNavigation("/family/babyDashboard/weight")
+                    }
+                  />
+                </div>
+              </div>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
@@ -84,7 +170,7 @@ const BabyDashboard = () => {
       {/* Second row */}
       <Grid container spacing={2} style={{ justifyContent: "center" }}>
         {/* Calendar */}
-        <Grid item xs={12} sm={5}>
+        <Grid item xs={12} sm={4}>
           <div className="calendar">
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DateCalendar />
@@ -99,7 +185,7 @@ const BabyDashboard = () => {
               <h3>Upcoming Clinics</h3>
             </div>
             <div>
-              <Upcomings />
+              <UpcomingsBaby />
             </div>
           </div>
         </Grid>

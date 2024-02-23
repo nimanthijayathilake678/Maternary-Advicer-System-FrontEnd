@@ -67,31 +67,12 @@ function BabyProfileForm1({ babyDetails }) {
               />
             </ListItem>
             <Divider variant="middle" />
-            <ListItem>
-              <ListItemText
-                primaryTypographyProps={{ style: { marginLeft: "20px" } }}
-                primary={`Baby Birthday: 2000/09/09`}
-              />
-            </ListItem>
+
             <Divider variant="middle" />
             <ListItem>
               <ListItemText
                 primaryTypographyProps={{ style: { marginLeft: "20px" } }}
                 primary={`Baby Date of Registration: 2000/09/12`}
-              />
-            </ListItem>
-            <Divider variant="middle" />
-            <ListItem>
-              <ListItemText
-                primaryTypographyProps={{ style: { marginLeft: "20px" } }}
-                primary={`Baby Age: 3 days`}
-              />
-            </ListItem>
-            <Divider variant="middle" />
-            <ListItem>
-              <ListItemText
-                primaryTypographyProps={{ style: { marginLeft: "20px" } }}
-                primary={`Baby Address: Mathara`}
               />
             </ListItem>
           </List>
