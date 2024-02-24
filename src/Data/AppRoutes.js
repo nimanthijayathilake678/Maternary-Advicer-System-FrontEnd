@@ -131,12 +131,13 @@ export const AppRoutes = {
   },
 
   // vog page routes
-  // vog: {
-  //   path: "/vog/newbaby",
-  //   component: <BabyRegistrationStepper />,
-  // },
+
   vog: {
     path: "/vog/newbaby",
     component: <BabyRegistrationForm1 />,
+  },
+  vog: {
+    path: "/vog/newbornhealth",
+    component: <BabyRegistrationStepper />,
   },
 };
