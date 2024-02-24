@@ -23,7 +23,9 @@ import notification from "../../../Assest/Lottie/notification.json";
 import baby3 from "../../../Assest/Lottie/baby3.json";
 import baby2 from "../../../Assest/Lottie/baby2.json";
 import UpcomingsBaby from "../../../Components/BabyProfileComponents/UpcommingsBaby";
-
+import babyDash from "../../../Assest/Lottie/BabyDash.json";
+import babyprofile from "../../../Assest/Lottie/babyProfile.json";
+import medicare from "../../../Assest/Lottie/medicare.json";
 const BabyDashboard = () => {
   const navigate = useNavigate();
   const [value, setValue] = React.useState("one");
@@ -37,9 +39,14 @@ const BabyDashboard = () => {
   return (
     <Box>
       {/* HEADER */}
+
       <Grid container justifyContent="space-between" alignItems="center">
         <Grid item>
-          <Header title="Hello - Baby" subtitle="Welcome to your dashboard" />
+          <Header
+            title="Hello - Baby"
+            subtitle="Welcome to your dashboard"
+            style={{ color: "[#2A777C]" }}
+          />
         </Grid>
 
         {/* SEARCH BOX */}
@@ -52,12 +59,11 @@ const BabyDashboard = () => {
           </Box>
         </Grid>
       </Grid>
-
       {/* Main content */}
       <Grid container style={{ margin: "15px 0", justifyContent: "center" }}>
         {/* Lottie Animation */}
         <Grid item xs={12} sm={3}>
-          <Lottie style={{ height: 280 }} animationData={baby2} />
+          <Lottie style={{ height: 280 }} animationData={baby} />
         </Grid>
 
         {/* Grid items */}
@@ -114,8 +120,8 @@ const BabyDashboard = () => {
                     BABY NUTRIENTS
                   </h8>
                   <Lottie
-                    style={{ height: 100 }}
-                    animationData={baby}
+                    style={{ height: 150 }}
+                    animationData={baby2}
                     onClick={() =>
                       handleNavigation("/family/babyDashboard/nutrients")
                     }
@@ -126,19 +132,11 @@ const BabyDashboard = () => {
             <Grid item xs={12} sm={3}>
               <div className="cards">
                 <div className="card-inner">
-                  <h8
-                    onClick={() =>
-                      handleNavigation("/family/babyDashboard/babyProfile")
-                    }
-                  >
-                    BABY SPECIAL CARE
-                  </h8>
+                  <h8 onClick={() => handleNavigation("")}>BABY CARE</h8>
                   <Lottie
-                    style={{ height: 100 }}
-                    animationData={BabyItem}
-                    onClick={() =>
-                      handleNavigation("/family/babyDashboard/babyProfile")
-                    }
+                    style={{ height: 150 }}
+                    animationData={babyDash}
+                    onClick={() => handleNavigation("")}
                   />
                 </div>
               </div>
@@ -163,14 +161,33 @@ const BabyDashboard = () => {
                 </div>
               </div>
             </Grid>
+            <Grid item xs={12} sm={3}>
+              <div className="cards">
+                <div className="card-inner">
+                  <h8
+                    onClick={() =>
+                      handleNavigation("/family/babyDashboard/weight")
+                    }
+                  >
+                    BABY EYE SIGHT
+                  </h8>
+                  <Lottie
+                    style={{ height: 80 }}
+                    animationData={BabyItem}
+                    onClick={() =>
+                      handleNavigation("/family/babyDashboard/weight")
+                    }
+                  />
+                </div>
+              </div>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
-
       {/* Second row */}
       <Grid container spacing={2} style={{ justifyContent: "center" }}>
         {/* Calendar */}
-        <Grid item xs={12} sm={4}>
+        <Grid item xs={12} sm={3}>
           <div className="calendar">
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DateCalendar />
@@ -188,6 +205,9 @@ const BabyDashboard = () => {
               <UpcomingsBaby />
             </div>
           </div>
+        </Grid>
+        <Grid item xs={12} sm={3}>
+          <Lottie style={{ height: 280 }} animationData={clinic} />
         </Grid>
       </Grid>
     </Box>

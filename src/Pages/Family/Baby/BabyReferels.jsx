@@ -143,13 +143,22 @@ function BabyReferels() {
                     fullWidth
                   />
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={6}>
+                  <Link to="/family/babyDashboard/immunization">
+                    <Button
+                      variant="contained"
+                      onClick={handleVaccineAdd}
+                      style={{ marginTop: "1em" }}
+                    >
+                      Back
+                    </Button>
+                  </Link>
                   <Button
                     variant="contained"
                     onClick={handleVaccineAdd}
-                    style={{ marginTop: "1em" }}
+                    style={{ marginTop: "1em", marginLeft: "10px" }}
                   >
-                    Add Referral
+                    Add Referels
                   </Button>
                 </Grid>
               </Grid>
