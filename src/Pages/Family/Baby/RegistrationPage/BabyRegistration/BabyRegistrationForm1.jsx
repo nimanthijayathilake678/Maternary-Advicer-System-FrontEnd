@@ -47,7 +47,7 @@ function BabyRegistrationForm1() {
             </Box>
 
             {/* Form */}
-            <Box sx={{ width: "75%", paddingBottom: "128px" }}>
+            <Box sx={{ width: "100%", paddingBottom: "128px" }}>
               <Box
                 sx={{
                   paddingTop: "100px",
