@@ -22,7 +22,7 @@ function VogDashboard() {
       </div>
 
       <div className="main-cards">
-        <NavLink to="/vogpersonal" className="card">
+        <NavLink to="/vog/personal_Info" className="card">
           <div className="card-inner">
             <h3>Personal Information</h3>
             <div>
@@ -31,7 +31,7 @@ function VogDashboard() {
           </div>
         </NavLink>
 
-        <NavLink to="/vogpatients" className="card">
+        <NavLink to="/vog/patient_history" className="card">
           <div className="card-inner">
             <h3>Patients Details</h3>
             <div>
@@ -40,7 +40,7 @@ function VogDashboard() {
           </div>
         </NavLink>
 
-        <NavLink to="/vogmessages" className="card">
+        <NavLink to="/vog/messages" className="card">
           <div className="card-inner">
             <h3>Messages</h3>
             <div>
@@ -57,6 +57,18 @@ function VogDashboard() {
             </div>
           </div>
         </NavLink>
+
+        <NavLink to="/vog/add_patients_details" className="card">
+          <div className="card-inner">
+            <h3>Add Patients Details</h3>
+            <div>
+              <Lottie style={{ height: 80 }} animationData={notification} />
+            </div>
+          </div>
+        </NavLink>
+
+
+
       </div>
       <div className="main-cards">
         <NavLink to="/vog/newbornhealth" className="card">
