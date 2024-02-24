@@ -178,8 +178,7 @@ export const AppRoutes = {
     path: "/vog",
     component: <VogDashboard />,
   },
- vog_new_baby: {
-
+ vog_newbaby: {
     path: "/vog/newbaby",
     component: <BabyRegistrationForm1 />,
   },
@@ -218,5 +217,5 @@ export const AppRoutes = {
   mohdoc_babies: {
     path: "/mohdrdash/babies",
     component: < MohDrDashboard/>,
-
-};
+  },
+}
