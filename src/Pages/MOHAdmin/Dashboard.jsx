@@ -22,7 +22,7 @@ function MOHDashboard() {
       </div>
 
       <div className="main-cards">
-        <NavLink to="/register" className="card">
+        <NavLink to="/moh/register" className="card">
           <div className="card-inner">
             <h3>Register Users</h3>
             <div>
@@ -31,7 +31,7 @@ function MOHDashboard() {
           </div>
         </NavLink>
 
-        <NavLink to="/view" className="card">
+        <NavLink to="/moh/view" className="card">
           <div className="card-inner">
             <h3>View Users</h3>
             <div>
@@ -40,7 +40,7 @@ function MOHDashboard() {
           </div>
         </NavLink>
 
-        <NavLink to="/summary" className="card">
+        <NavLink to="/moh/summary" className="card">
           <div className="card-inner">
             <h3>Summary Report</h3>
             <div>
@@ -49,7 +49,7 @@ function MOHDashboard() {
           </div>
         </NavLink>
 
-        <NavLink to="/clinic" className="card">
+        <NavLink to="/moh/clinic" className="card">
           <div className="card-inner">
             <h3>Clinic Schedule</h3>
             <div>
@@ -58,7 +58,7 @@ function MOHDashboard() {
           </div>
         </NavLink>
 
-        <NavLink to="/messages" className="card">
+        <NavLink to="/moh/messages" className="card">
           <div className="card-inner">
             <h3>Messages</h3>
             <div>

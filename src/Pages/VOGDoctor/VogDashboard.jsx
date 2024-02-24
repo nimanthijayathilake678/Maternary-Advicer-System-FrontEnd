@@ -74,7 +74,9 @@ function VogDashboard() {
         <div className="calender">
           <Calendar />
         </div>
-        <div></div>
+        <div>
+          
+        </div>
       </div>
     </div>
   );

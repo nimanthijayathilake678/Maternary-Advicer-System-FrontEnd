@@ -25,9 +25,9 @@ import VogPatients from "../Pages/VOGDoctor/PatientHistory";
 import VogDashboard from "../Pages/VOGDoctor/VogDashboard";
 import AddPatientsDetails from "../Pages/VOGDoctor/AddPatientsDetails";
 import Personal from "../Pages/VOGDoctor/Personal";
+import MohDrDashboard from "../Pages/MohDoctor/MohDrDashboard";
 
-
-import Dashboard from "../Pages/MOHAdmin/Dashboard";
+import MOHDashboard from "../Pages/MOHAdmin/Dashboard";
 import Register from "../Pages/MOHAdmin/Register";
 import View from "../Pages/MOHAdmin/View";
 import Summary from "../Pages/MOHAdmin/Summary";
@@ -35,7 +35,6 @@ import MOHSidebar from "../Components/MOHSidebar";
 import Messages from "../Pages/MOHAdmin/Messages";
 import Clinic from "../Pages/MOHAdmin/Clinic";
 import BabyDashboard from "../Pages/Family/Baby/BabyDashboard";
-import MOHDashboard from "../Pages/MOHAdmin/Dashboard";
 import FamilyMyBabies from "../Pages/Family/FamilyMyBabies";
 import RegisterdBabies from "../Pages/Midwife/RegisterdBabies";
 import BabyRegistrationForm1 from "../Pages/Family/Baby/RegistrationPage/BabyRegistration/BabyRegistrationForm1";
@@ -44,6 +43,12 @@ import BabyReferels from "../Pages/Family/Baby/BabyReferels";
 import BabyNutrients from "../Pages/Family/Baby/BabyNutrients";
 import BabyWeight from "../Pages/Family/Baby/BabyWeight";
 import RegisterNewBorn from "../Pages/VOGDoctor/RegisterNewBorn";
+import { Message } from "@mui/icons-material";
+import LandingPage from "../Pages/Resources/LandingPage";
+import BabyCare from "../Pages/Resources/BabyCare";
+import BirthControl from "../Pages/Resources/BirthControl";
+import Pregnancy from "../Pages/Resources/Pregnancy";
+import Planing from "../Pages/Resources/Planing";
 
 
 export const AppRoutes = {
@@ -51,7 +56,26 @@ export const AppRoutes = {
   login: { path: "/", component: <Login /> },
 
   // Home page routes
-  home: { path: "/home", component: <Home /> },
+  home: { path: "/home", component: <LandingPage /> },
+
+
+  resources_1:{
+    path: "/birthcontrol",
+    component: <BirthControl />,
+  },
+  resources_2:{
+    path: "/planingbaby",
+    component: <Planing />,
+  },
+  resources_3:{
+    path: "/pregnancy",
+    component: <Pregnancy />,
+  },
+  resources_4:{
+    path: "/babycare",
+    component: <BabyCare />,
+  },
+
 
   //FamilyPage routes
   family_home: { path: "/family", component: <FamilyDashboard /> },
@@ -122,22 +146,40 @@ export const AppRoutes = {
     path: "/midwife/registerdbabies",
     component: <RegisterdBabies />,
   },
+
   //moh page routes
   moh: {
     path: "/moh",
-    component: <Dashboard />,
+    component: <MOHDashboard />,
   },
-  moh: {
+  moh_register: {
+    path: "/moh/register",
+    component: <Register />,
+  },
+  moh_view: {
+    path: "/moh/view",
+    component: <View />,
+  },
+  moh_summary: {
+    path: "/moh/summary",
+    component: <Summary />,
+  },
+  moh_summary: {
+    path: "/moh/clinic",
+    component: <Clinic />,
+  },
+  moh_message: {
+    path: "/moh/messages",
+    component: <Messages />,
+  },
+
+//vog doctor
+
+  vog: {
     path: "/vog",
     component: <VogDashboard />,
   },
-
-  // vog page routes
-  // vog: {
-  //   path: "/vog/newbaby",
-  //   component: <BabyRegistrationStepper />,
-  // },
-  vog: {
+  vog_newbaby: {
     path: "/vog/newbaby",
     component: <BabyRegistrationForm1 />,
   },
@@ -154,11 +196,27 @@ export const AppRoutes = {
     component: < VogPatients/>,
   },
 
-
-
   vog_add_patients_details: {
     path: "/vog/add_patients_details",
     component: < AddPatientsDetails/>,
+  },
+
+  //Moh doctor
+  mohdoc_dashboard: {
+    path: "/mohdrdash",
+    component: < MohDrDashboard/>,
+  },
+  mohdoc_eligibleFam: {
+    path: "/mohdrdash/eligible_families",
+    component: < MohDrDashboard/>,
+  },
+  mohdoc_pregnat_moms: {
+    path: "/mohdrdash/pregnat_moms",
+    component: < MohDrDashboard/>,
+  },
+  mohdoc_babies: {
+    path: "/mohdrdash/babies",
+    component: < MohDrDashboard/>,
   },
 
 };
