@@ -133,10 +133,7 @@ export const AppRoutes = {
     path: "/midwife/eligibleFamilyRegister",
     component: <MidwifeEligibleFamilies />,
   },
-  //   midwife_Profile: {
-  //     path: "/family/familyProfile",
-  //     component: <MidwifeProfile />,
-  //   },
+ 
   midwife_pregnancies: {
     path: "/midwife/pregancies",
     component: <MidwifePregnancies />,
@@ -146,6 +143,7 @@ export const AppRoutes = {
     path: "/midwife/registerdbabies",
     component: <RegisterdBabies />,
   },
+
 
   //moh page routes
   moh: {
@@ -173,16 +171,19 @@ export const AppRoutes = {
     component: <Messages />,
   },
 
-//vog doctor
+ // vog page routes
+
 
   vog: {
     path: "/vog",
     component: <VogDashboard />,
   },
-  vog_newbaby: {
+ vog_new_baby: {
+
     path: "/vog/newbaby",
     component: <BabyRegistrationForm1 />,
   },
+
   vog_personal: {
     path: "/vog/personal_Info",
     component: <Personal />,
@@ -195,11 +196,11 @@ export const AppRoutes = {
     path: "/vog/patient_history",
     component: < VogPatients/>,
   },
-
   vog_add_patients_details: {
     path: "/vog/add_patients_details",
     component: < AddPatientsDetails/>,
   },
+
 
   //Moh doctor
   mohdoc_dashboard: {
@@ -217,6 +218,5 @@ export const AppRoutes = {
   mohdoc_babies: {
     path: "/mohdrdash/babies",
     component: < MohDrDashboard/>,
-  },
 
 };
