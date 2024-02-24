@@ -54,59 +54,79 @@ export default function BasicTabs() {
   };
 
   return (
-    <Box sx={{ display: "flex" }}>
-      <SideBar />
-      <Grid container spacing={2}>
-        {" "}
-        {/* Grid container */}
-        <Grid item xs={6} md={3}>
-          {" "}
-          {/* Lottie animation grid item */}
-          <Typography>Baby</Typography>
-          <Box sx={{ p: 3 }}>
+    <div>
+      <Box
+        component="form"
+        sx={{
+          "& .MuiTextField-root": { m: 1 },
+        }}
+        noValidate
+        autoComplete="off"
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        height="100%"
+        flexDirection="column"
+      >
+        <Grid container spacing={3}>
+          <Grid item xs={3} display={"flex"}>
+            <SideBar />
+          </Grid>
+
+          <Grid
+            item
+            xs={9}
+            style={{ paddingTop: "100px", paddingRight: "120px" }}
+          >
             <div>
-              <Lottie
-                options={{
-                  loop: true,
-                  autoplay: true,
-                  animationData: BabyDash,
-                  rendererSettings: {
-                    preserveAspectRatio: "xMidYMid slice",
-                  },
-                }}
-                height={400}
-                width={400}
-              />
+              <span className="text-xl text-[#2A777C] text-center font-bold">
+                Baby Health
+              </span>
             </div>
-          </Box>
-        </Grid>
-        <Grid item xs={12} md={8}>
-          {" "}
-          {/* Tabs grid item */}
-          <Box sx={{ p: 5 }}>
-            <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-              <Tabs value={value} onChange={handleChange}>
-                <Tab label="Basic Details" {...a11yProps(0)} />
-                <Tab label="Birth Infromation" {...a11yProps(1)} />
-                <Tab label="Neonatal Examination" {...a11yProps(2)} />
-                <Tab label="Special care " {...a11yProps(3)} />
-              </Tabs>
+            <Box
+              sx={{
+                width: "100%",
+                border: "1px solid #ccc",
+                padding: "80px",
+                display: "flex",
+              }}
+            >
+              <Grid display={"flex"}>
+                <Grid item xs={12} md={8}>
+                  <Box>
+                    <Box
+                      sx={{
+                        borderBottom: 1,
+                        borderColor: "divider",
+                        display: "flex",
+                      }}
+                    >
+                      <Tabs value={value} onChange={handleChange}>
+                        <Tab label="Basic Details" {...a11yProps(0)} />
+                        <Tab label="Birth Infromation" {...a11yProps(1)} />
+                        <Tab label="Neonatal Examination" {...a11yProps(2)} />
+                        <Tab label="Special care " {...a11yProps(3)} />
+                      </Tabs>
+                    </Box>
+                    <CustomTabPanel value={value} index={0}>
+                      <BabyProfileForm1 />
+                    </CustomTabPanel>
+                    <CustomTabPanel value={value} index={1}>
+                      <BabyProfileForm1 />
+                    </CustomTabPanel>
+                    <CustomTabPanel value={value} index={2}>
+                      <BabyProfileForm1 />
+                    </CustomTabPanel>
+                    <CustomTabPanel value={value} index={3}>
+                      <BabyProfileForm1 />
+                    </CustomTabPanel>
+                  </Box>
+                </Grid>
+              </Grid>
             </Box>
-            <CustomTabPanel value={value} index={0}>
-              <BabyProfileForm1 />
-            </CustomTabPanel>
-            <CustomTabPanel value={value} index={1}>
-              <BabyProfileForm1 />
-            </CustomTabPanel>
-            <CustomTabPanel value={value} index={2}>
-              <BabyProfileForm1 />
-            </CustomTabPanel>
-            <CustomTabPanel value={value} index={3}>
-              <BabyProfileForm1 />
-            </CustomTabPanel>
-          </Box>
+          </Grid>
         </Grid>
-      </Grid>
-    </Box>
+      </Box>
+    </div>
   );
 }
