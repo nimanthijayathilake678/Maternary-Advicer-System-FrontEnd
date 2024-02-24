@@ -23,8 +23,9 @@ import BabyProfile from "../Pages/Family/Baby/BabyProfile";
 import VogMessages from "../Pages/VOGDoctor/Messages";
 import VogPatients from "../Pages/VOGDoctor/PatientHistory";
 import VogDashboard from "../Pages/VOGDoctor/VogDashboard";
-import VogPersonal from "../Pages/VOGDoctor/Personal";
-import VOGSidebar from "../Components/VOGSidebar";
+import AddPatientsDetails from "../Pages/VOGDoctor/AddPatientsDetails";
+import Personal from "../Pages/VOGDoctor/Personal";
+
 
 import Dashboard from "../Pages/MOHAdmin/Dashboard";
 import Register from "../Pages/MOHAdmin/Register";
@@ -43,6 +44,7 @@ import BabyReferels from "../Pages/Family/Baby/BabyReferels";
 import BabyNutrients from "../Pages/Family/Baby/BabyNutrients";
 import BabyWeight from "../Pages/Family/Baby/BabyWeight";
 import RegisterNewBorn from "../Pages/VOGDoctor/RegisterNewBorn";
+
 
 export const AppRoutes = {
   loginpath: { path: "/login", component: <Login /> },
@@ -123,7 +125,7 @@ export const AppRoutes = {
   //moh page routes
   moh: {
     path: "/moh",
-    component: <MOHDashboard />,
+    component: <Dashboard />,
   },
   moh: {
     path: "/vog",
@@ -139,4 +141,24 @@ export const AppRoutes = {
     path: "/vog/newbaby",
     component: <BabyRegistrationForm1 />,
   },
+  vog_personal: {
+    path: "/vog/personal_Info",
+    component: <Personal />,
+  },
+  vog_messages: {
+    path: "/vog/messages",
+    component: < VogMessages/>,
+  },
+  vog_patients_history: {
+    path: "/vog/patient_history",
+    component: < VogPatients/>,
+  },
+
+
+
+  vog_add_patients_details: {
+    path: "/vog/add_patients_details",
+    component: < AddPatientsDetails/>,
+  },
+
 };

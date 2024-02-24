@@ -1,3 +1,4 @@
+
 import "../../css/VOGDoctor/PatientHistory.css";
 import React, { useState } from 'react';
 
@@ -48,11 +49,10 @@ const PatientHistory = () => {
     {patientDetails && (
       <div className="patient-details">
         <h2>Patient Details:</h2>
-        {/* Display patient details here using patientDetails */}
-        {/* Example: */}
+                                                     
         <p>Name: {patientDetails.fullName}</p>
         <p>NIC No.: {patientDetails.nicNo}</p>
-        {/* Add other details accordingly */}
+        
       </div>
     )}
   </div>
@@ -60,3 +60,15 @@ const PatientHistory = () => {
 };
 
 export default PatientHistory;
+
+/*
+import React from 'react'
+
+function PatientHistory() {
+  return (
+    <div style={{color:'#000', fontSize:'20px'}}>PatientHistory</div>
+  )
+}
+
+export default PatientHistory
+*/

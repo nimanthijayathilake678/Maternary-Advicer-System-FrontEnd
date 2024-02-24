@@ -2,6 +2,7 @@
 .user-details {
     margin: 20px;
     color: black;
+    display: flex;
   }
   
   .user-details label {
@@ -18,11 +19,14 @@
   }
   
   .user-details button {
+    margin-left: 50px;
     padding: 8px 12px;
     background-color: #4caf50;
     color: #fff;
     border: none;
     cursor: pointer;
+    height: fit-content;
+    border-radius: 10px;
   }
   
   .user-details .error-message {
