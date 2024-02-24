@@ -132,10 +132,14 @@ export const AppRoutes = {
   },
 
 
-  vog: {
+  // vog page routes
+
+
+  vog_new_baby: {
     path: "/vog/newbaby",
     component: <BabyRegistrationForm1 />,
   },
+
   vog_personal: {
     path: "/vog/personal_Info",
     component: <Personal />,
@@ -152,6 +156,12 @@ export const AppRoutes = {
 vog_add_patients_details: {
     path: "/vog/add_patients_details",
     component: < AddPatientsDetails/>,
+  },
+
+
+  vog: {
+    path: "/vog/newbornhealth",
+    component: <BabyRegistrationStepper />,
   },
 
 };

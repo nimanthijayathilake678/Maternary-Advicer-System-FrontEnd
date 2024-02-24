@@ -1,315 +1,163 @@
 import React, { useState } from "react";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import { FormControl, InputLabel, Input, InputAdornment } from "@mui/material";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormLabel from "@mui/material/FormLabel";
-import { styled } from "@mui/material/styles";
-import Divider from "@mui/material/Divider";
-import Chip from "@mui/material/Chip";
+import {
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  Grid,
+  Radio,
+  RadioGroup,
+  Box,
+  Divider,
+} from "@mui/material";
 
 function BabyRegistrationForm1() {
-  const [signupData, setSignupData] = useState({
-    babyRegNum: "",
-    mohDivision: "",
-    midwifeDivisionName: "",
-    babyName: "",
-    pregRegNum: "",
-    babyBirthDay: "",
-    babyRegDate: "",
-    motherName: "",
-    motherAge: "",
-    motherAddress: "",
+  const [babyData, setBabyData] = useState({
+    premature: "",
+    feedingChallenges: "",
+    lowBirthWeight: "",
+    inheritedDiseases: "",
+    motherUnstability: "",
+    developmentDelays: "",
   });
 
-  const [errors, setErrors] = useState({});
-
-  const handleSignup = (e) => {
+  const handleFormSubmit = (e) => {
     e.preventDefault();
-
-    // Validate the form data
-    const validationErrors = validateForm(signupData);
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      return;
-    }
-
-    // Perform signup logic here with signupData
-    console.log("Signup data:", signupData);
+    console.log("Baby Data:", babyData);
   };
 
-  const handleChange = (e) => {
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
-
-    // Clear validation errors when the user starts typing
-    setErrors({});
-
-    setSignupData({ ...signupData, [name]: value });
+    setBabyData({ ...babyData, [name]: value });
   };
 
-  const validateForm = (data) => {
-    let errors = {};
-
-    // Perform your validations here
-    if (!data.babyRegNum) {
-      errors.babyRegNum = "Baby Registration Number is required";
-    }
-
-    // Add validations for other fields...
-
-    return errors;
-  };
-
-  const Root = styled("div")(({ theme }) => ({
-    width: "100%",
-    ...theme.typography.body2,
-    color: theme.palette.text.secondary,
-    "& > :not(style) ~ :not(style)": {
-      marginTop: theme.spacing(2),
-    },
-  }));
-  //////////////////////////////////////////////////////////////////////////////////////////////////////
-
-  //onSubmit={handleSubmit}
   return (
     <div>
-      <form>
+      <form onSubmit={handleFormSubmit}>
         <Box
           component="form"
           sx={{
-            "& .MuiTextField-root": { m: 1 },
+            "& .MuiFormControl-root": { m: 1 },
           }}
           noValidate
           autoComplete="off"
           display="flex"
           justifyContent="center"
           alignItems="center"
-          height="60vh"
+          height="100%"
           flexDirection="column"
         >
-          <Root>
-            <div>
-              <Divider textAlign="left">Examination Part 03</Divider>
-            </div>
-            <Grid container spacing={6} sx={{ width: "90%" }}>
-              <Grid container xs={12}>
-                <Grid
-                  item
-                  xs={6}
-                  sx={{ padding: "1em 2em 0em 10em !important" }}
+          <Grid container spacing={2} sx={{ width: "90%" }}>
+            <Grid item xs={12} md={6}>
+              <FormControl component="fieldset">
+                <FormLabel component="legend">Premature baby</FormLabel>
+                <RadioGroup
+                  row
+                  name="premature"
+                  value={babyData.premature}
+                  onChange={handleInputChange}
                 >
-                  <div>
-                    <label>Premature baby</label>
-                  </div>
-                </Grid>
-                <Grid
-                  item
-                  xs={6}
-                  sx={{ padding: "1em 1em 0em 1em !important" }}
-                >
-                  <FormControl>
-                    <FormLabel id="BPremature"></FormLabel>
-                    <RadioGroup
-                      row
-                      aria-labelledby="demo-row-radio-buttons-group-label"
-                      name="row-radio-buttons-group"
-                    >
-                      <FormControlLabel
-                        value="Yes"
-                        control={<Radio />}
-                        label="Yes"
-                      />
-                      <FormControlLabel
-                        value="No"
-                        control={<Radio />}
-                        label="No"
-                      />
-                    </RadioGroup>
-                  </FormControl>
-                </Grid>
-                <Grid
-                  item
-                  xs={6}
-                  sx={{
-                    padding: "1em 2em 0em 10em !important",
-                  }}
-                >
-                  <div>
-                    <label style={{ marginBottom: "50px" }}>
-                      Feeding challenges
-                    </label>
-                  </div>
-                </Grid>
-                <Grid
-                  item
-                  xs={6}
-                  sx={{ padding: "1em 1em 0em 1em !important" }}
-                >
-                  <FormControl>
-                    <FormLabel id="BFeddingChallenges"></FormLabel>
-                    <RadioGroup
-                      row
-                      aria-labelledby="demo-row-radio-buttons-group-label"
-                      name="row-radio-buttons-group"
-                    >
-                      <FormControlLabel
-                        value="Yes"
-                        control={<Radio />}
-                        label="Yes"
-                      />
-                      <FormControlLabel
-                        value="No"
-                        control={<Radio />}
-                        label="No"
-                      />
-                    </RadioGroup>
-                  </FormControl>
-                </Grid>
-                <Grid
-                  item
-                  xs={6}
-                  sx={{ padding: "1em 2em 0em 10em !important" }}
-                >
-                  <div>
-                    <label>Low birth weight</label>
-                  </div>
-                </Grid>
-                <Grid
-                  item
-                  xs={6}
-                  sx={{ padding: "1em 1em 0em 1em !important" }}
-                >
-                  <FormControl>
-                    <FormLabel id="BLowBirthWeigth"></FormLabel>
-                    <RadioGroup
-                      row
-                      aria-labelledby="demo-row-radio-buttons-group-label"
-                      name="row-radio-buttons-group"
-                    >
-                      <FormControlLabel
-                        value="Yes"
-                        control={<Radio />}
-                        label="Yes"
-                      />
-                      <FormControlLabel
-                        value="No"
-                        control={<Radio />}
-                        label="No"
-                      />
-                    </RadioGroup>
-                  </FormControl>
-                </Grid>
-                <Grid
-                  item
-                  xs={6}
-                  sx={{ padding: "1em 2em 0em 10em !important" }}
-                >
-                  <div>
-                    <label>Inherited diseases</label>
-                  </div>
-                </Grid>
-                <Grid
-                  item
-                  xs={6}
-                  sx={{ padding: "1em 1em 0em 1em !important" }}
-                >
-                  <FormControl>
-                    <FormLabel id="BInheritedDiseases"></FormLabel>
-                    <RadioGroup
-                      row
-                      aria-labelledby="demo-row-radio-buttons-group-label"
-                      name="row-radio-buttons-group"
-                    >
-                      <FormControlLabel
-                        value="Yes"
-                        control={<Radio />}
-                        label="Yes"
-                      />
-                      <FormControlLabel
-                        value="No"
-                        control={<Radio />}
-                        label="No"
-                      />
-                    </RadioGroup>
-                  </FormControl>
-                </Grid>
-
-                <Grid
-                  item
-                  xs={6}
-                  sx={{ padding: "1em 2em 0em 10em !important" }}
-                >
-                  <div>
-                    <label>Mother unstability after birth</label>
-                  </div>
-                </Grid>
-                <Grid
-                  item
-                  xs={6}
-                  sx={{ padding: "1em 1em 0em 1em !important" }}
-                >
-                  <FormControl>
-                    <FormLabel id="BMotherUnstability"></FormLabel>
-                    <RadioGroup
-                      row
-                      aria-labelledby="demo-row-radio-buttons-group-label"
-                      name="row-radio-buttons-group"
-                    >
-                      <FormControlLabel
-                        value="Yes"
-                        control={<Radio />}
-                        label="Yes"
-                      />
-                      <FormControlLabel
-                        value="No"
-                        control={<Radio />}
-                        label="No"
-                      />
-                    </RadioGroup>
-                  </FormControl>
-                </Grid>
-
-                <Grid
-                  item
-                  xs={6}
-                  sx={{ padding: "1em 2em 0em 10em !important" }}
-                >
-                  <div>
-                    <label>Development delays</label>
-                  </div>
-                </Grid>
-                <Grid
-                  item
-                  xs={6}
-                  sx={{ padding: "1em 1em 0em 1em !important" }}
-                >
-                  <FormControl>
-                    <FormLabel id="BDevelopmentDelays"></FormLabel>
-                    <RadioGroup
-                      row
-                      aria-labelledby="demo-row-radio-buttons-group-label"
-                      name="row-radio-buttons-group"
-                    >
-                      <FormControlLabel
-                        value="Yes"
-                        control={<Radio />}
-                        label="Yes"
-                      />
-                      <FormControlLabel
-                        value="No"
-                        control={<Radio />}
-                        label="No"
-                      />
-                    </RadioGroup>
-                  </FormControl>
-                </Grid>
-              </Grid>
+                  <FormControlLabel
+                    value="Yes"
+                    control={<Radio />}
+                    label="Yes"
+                  />
+                  <FormControlLabel value="No" control={<Radio />} label="No" />
+                </RadioGroup>
+              </FormControl>
             </Grid>
-          </Root>
+            <Grid item xs={12} md={6}>
+              <FormControl component="fieldset">
+                <FormLabel component="legend">Feeding challenges</FormLabel>
+                <RadioGroup
+                  row
+                  name="feedingChallenges"
+                  value={babyData.feedingChallenges}
+                  onChange={handleInputChange}
+                >
+                  <FormControlLabel
+                    value="Yes"
+                    control={<Radio />}
+                    label="Yes"
+                  />
+                  <FormControlLabel value="No" control={<Radio />} label="No" />
+                </RadioGroup>
+              </FormControl>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <FormControl component="fieldset">
+                <FormLabel component="legend">Low birth weight</FormLabel>
+                <RadioGroup
+                  row
+                  name="lowBirthWeight"
+                  value={babyData.lowBirthWeight}
+                  onChange={handleInputChange}
+                >
+                  <FormControlLabel
+                    value="Yes"
+                    control={<Radio />}
+                    label="Yes"
+                  />
+                  <FormControlLabel value="No" control={<Radio />} label="No" />
+                </RadioGroup>
+              </FormControl>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <FormControl component="fieldset">
+                <FormLabel component="legend">Inherited diseases</FormLabel>
+                <RadioGroup
+                  row
+                  name="inheritedDiseases"
+                  value={babyData.inheritedDiseases}
+                  onChange={handleInputChange}
+                >
+                  <FormControlLabel
+                    value="Yes"
+                    control={<Radio />}
+                    label="Yes"
+                  />
+                  <FormControlLabel value="No" control={<Radio />} label="No" />
+                </RadioGroup>
+              </FormControl>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <FormControl component="fieldset">
+                <FormLabel component="legend">
+                  Mother unstability after birth
+                </FormLabel>
+                <RadioGroup
+                  row
+                  name="motherUnstability"
+                  value={babyData.motherUnstability}
+                  onChange={handleInputChange}
+                >
+                  <FormControlLabel
+                    value="Yes"
+                    control={<Radio />}
+                    label="Yes"
+                  />
+                  <FormControlLabel value="No" control={<Radio />} label="No" />
+                </RadioGroup>
+              </FormControl>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <FormControl component="fieldset">
+                <FormLabel component="legend">Development delays</FormLabel>
+                <RadioGroup
+                  row
+                  name="developmentDelays"
+                  value={babyData.developmentDelays}
+                  onChange={handleInputChange}
+                >
+                  <FormControlLabel
+                    value="Yes"
+                    control={<Radio />}
+                    label="Yes"
+                  />
+                  <FormControlLabel value="No" control={<Radio />} label="No" />
+                </RadioGroup>
+              </FormControl>
+            </Grid>
+          </Grid>
         </Box>
       </form>
     </div>
