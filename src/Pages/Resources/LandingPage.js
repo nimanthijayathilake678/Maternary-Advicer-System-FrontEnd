@@ -5,6 +5,7 @@ import birthcontrol from './ResourceImage/birthControl.png'
 import pregnancy from './ResourceImage/pregnancy.png'
 import babyCare from './ResourceImage/babyCare.png'
 import planingBaby from './ResourceImage/planingBaby.png'
+import { NavLink } from "react-router-dom";
 
 export default function LandingPage() {
   return (
@@ -26,6 +27,7 @@ export default function LandingPage() {
         </div>
         
         <div className={Landing_css.container1}>
+        <NavLink to="/birthcontrol">
             <div className={Landing_css.section}>
                 <div className={Landing_css.image}>
                     <img src={birthcontrol} alt={Landing_css.image} className={Landing_css.image}/>
@@ -37,7 +39,8 @@ export default function LandingPage() {
                     </span>
                 </div>
             </div>
-
+            </NavLink>
+            <NavLink to="/planingbaby">
             <div className={Landing_css.section}>
                 <div className={Landing_css.image}>
                     <img src={planingBaby} alt={Landing_css.image} className={Landing_css.image}/>
@@ -49,7 +52,8 @@ export default function LandingPage() {
                     </span>
                 </div>
             </div>
-
+            </NavLink>
+            <NavLink to="/pregnancy">
             <div className={Landing_css.section}>
                 <div className={Landing_css.image}>
                     <img src={pregnancy} alt={Landing_css.image} className={Landing_css.image}/>
@@ -61,7 +65,8 @@ export default function LandingPage() {
                     </span>
                 </div>
             </div>
-
+            </NavLink>
+            <NavLink to="/babycare">
             <div className={Landing_css.section}>
                 <div className={Landing_css.image}>
                     <img src={babyCare} alt={Landing_css.image} className={Landing_css.image}/>
@@ -73,7 +78,7 @@ export default function LandingPage() {
                     </span>
                 </div>
             </div>
-
+            </NavLink>
         </div>
 
     </div>
