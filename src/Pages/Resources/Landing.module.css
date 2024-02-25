@@ -22,6 +22,7 @@
     padding-top: 200px;
     font-size: 60px;
     font-weight: 700;
+    color: black;
 }
 
 .header1 {
@@ -29,6 +30,7 @@
     width: 100%;
     height: 100px;
     padding-top: 50px;
+    color: black;
 }
 
 .header2 {
@@ -36,11 +38,13 @@
     font-size: 30px;
     padding-left: 140px;
     padding-top: 50px;
+    color: black;
 }
 
 .heade3 {
     font-size: small;
     padding-left: 200px;
+    color: black;
     
 }
 
