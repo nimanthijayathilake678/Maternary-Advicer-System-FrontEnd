@@ -199,6 +199,10 @@ export const AppRoutes = {
     path: "/vog/add_patients_details",
     component: < AddPatientsDetails/>,
   },
+  vog_add_patients_details1: {
+    path: "/vog/add_patients_details1",
+    component: < AddPatientsDetails/>,
+  },
 
 
   //Moh doctor
