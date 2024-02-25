@@ -107,23 +107,41 @@ function Personal() {
     };
 
     return (
-        <div className='container'>
-        <div className="title">
-            <h2>Personal Informations</h2>
-            </div>
-            <p>ID: {userData.id}</p>
-            <p>Full Name: {userData.fullName}</p>
-            <p>NIC No: {userData.nicNo}</p>
-            <p>Birthday: {userData.birthday}</p>
-            <p>Contact No: {userData.contactNo}</p>
-            <p>Email: {userData.email}</p>
-            <p>Sex: {userData.sex}</p>
-            <p>Married Status: {userData.marriedStatus}</p>
-            <p>Occupation: {userData.occupation}</p>
-            <p>Area: {userData.area}</p>
-            <p>Username: {userData.username}</p>
-        </div>
-    );
+    <div className="main">
+      <div className="title">
+        <h1>Personal Information</h1>
+      </div>
+      <div className="view">
+        {users.map((user) => (
+          <form key={user.id}>
+            <fieldset>
+              <label>Full Name:{user.fullName}</label>
+              <br />
+              <label>NIC: {user.nicNo}</label>
+              <br />
+              <label>Birthday: {user.birthday}</label>
+              <br />
+              <label>Contact No: {user.contactNo}</label>
+              <br />
+              <label>Email: {user.email}</label>
+              <br />
+              <label>Sex: {user.sex}</label>
+              <br />
+              <label>Married Status: {user.marriedStatus}</label>
+              <br />
+              <label>Occupation: {user.occupation}</label>
+              <br />
+              <label>Area: {user.area}</label>
+            
+            </fieldset>
+          </form>
+        ))}
+        <button className="update-button" onClick={handleUpdate}>
+        Update
+      </button>
+      </div>
+    </div>
+  );
 }
 
 export default Personal;
