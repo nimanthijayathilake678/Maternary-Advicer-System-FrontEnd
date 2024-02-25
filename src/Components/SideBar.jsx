@@ -53,6 +53,33 @@ export default function SideBar() {
     },
   ];
 
+  const vogRoutes = [
+    {
+      name: "Dashboard",
+      link: "/vog",
+      icon: <RxDashboard className="w-6 h-auto " />,
+      current: location.pathname === "/",
+    },
+    {
+      name: "Personal Information",
+      link: "/vog/personal_Info",
+      icon: <MdOutlineFamilyRestroom className="w-6 h-auto" />,
+      current: location.pathname === "/personal_Info",
+    },
+    {
+      name: "Patient Details",
+      link: "/vog/patient_history",
+      icon: <MdPregnantWoman className="w-6 h-auto" />,
+      current: location.pathname === "/pregnancies",
+    },
+    {
+      name: "Add Patient Details",
+      link: "/vog/add_patients_details",
+      icon: <MdPregnantWoman className="w-6 h-auto" />,
+      current: location.pathname === "/patient_history",
+    },
+  ];
+
   let userRoute = [];
 
   switch (userRole) {
