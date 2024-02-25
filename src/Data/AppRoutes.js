@@ -43,6 +43,7 @@ import BabyReferels from "../Pages/Family/Baby/BabyReferels";
 import BabyNutrients from "../Pages/Family/Baby/BabyNutrients";
 import BabyWeight from "../Pages/Family/Baby/BabyWeight";
 import RegisterNewBorn from "../Pages/VOGDoctor/RegisterNewBorn";
+import BabyNewBornHelath from "../Pages/Family/Baby/BabyNewBornHelath";
 
 export const AppRoutes = {
   loginpath: { path: "/login", component: <Login /> },
@@ -96,7 +97,10 @@ export const AppRoutes = {
     path: "/family/babyDashboard/weight",
     component: <BabyWeight />,
   },
-
+  family_baby_newborn_health: {
+    path: "/family/babyDashboard/babyhealth",
+    component: <BabyNewBornHelath />,
+  },
   //Midwife Page ROutes
   midwife_home: { path: "/midwife", component: <MidwifeDashboard /> },
   midwife_eligible_couple_register: {

@@ -166,16 +166,16 @@ const BabyDashboard = () => {
                 <div className="card-inner">
                   <h8
                     onClick={() =>
-                      handleNavigation("/family/babyDashboard/weight")
+                      handleNavigation("/family/babyDashboard/babyhealth")
                     }
                   >
-                    BABY EYE SIGHT
+                    Baby Helath
                   </h8>
                   <Lottie
                     style={{ height: 80 }}
                     animationData={BabyItem}
                     onClick={() =>
-                      handleNavigation("/family/babyDashboard/weight")
+                      handleNavigation("/family/babyDashboard/babyhealth")
                     }
                   />
                 </div>
