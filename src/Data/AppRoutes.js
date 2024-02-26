@@ -49,6 +49,8 @@ import Pregnancy from "../Pages/Resources/Pregnancy";
 import Planing from "../Pages/Resources/Planing";
 
 import BabyNewBornHelath from "../Pages/Family/Baby/BabyNewBornHelath";
+import BabyProfileForm1 from "../Components/BabyProfileComponents/BabyProfileForm1";
+import BabyDetails from "../Pages/Family/Baby/BabyDetails";
 
 export const AppRoutes = {
   loginpath: { path: "/login", component: <Login /> },
@@ -88,10 +90,17 @@ export const AppRoutes = {
     path: "/family/familyProfile",
     component: <FamilyProfile />,
   },
+
+  // family_baby_profile: {
+  //   path: "/family/babyDashboard/babyProfile",
+  //   component: <BabyProfile />,
+  // },
+
   family_baby_profile: {
     path: "/family/babyDashboard/babyProfile",
-    component: <BabyProfile />,
+    component: <BabyDetails />,
   },
+
   family_baby_dashboard: {
     path: "/family/babyDashboard",
     component: <BabyDashboard />,
@@ -180,7 +189,10 @@ export const AppRoutes = {
     path: "/vog/newbaby",
     component: <BabyRegistrationForm1 />,
   },
-
+  vog_babyhealth: {
+    path: "/vog/newbabyhealth",
+    component: <BabyRegistrationStepper />,
+  },
   vog_personal: {
     path: "/vog/personal_Info",
     component: <Personal />,
