@@ -1,5 +1,4 @@
 import ContactUs from "../Pages/ContactUs";
-import Home from "../Pages/Home";
 import Resource from "../Pages/Resource";
 import AboutUs from "../Pages/AboutUs";
 import PageNotFound from "../Pages/PageNotFound";
@@ -31,7 +30,6 @@ import MOHDashboard from "../Pages/MOHAdmin/Dashboard";
 import Register from "../Pages/MOHAdmin/Register";
 import View from "../Pages/MOHAdmin/View";
 import Summary from "../Pages/MOHAdmin/Summary";
-
 import Messages from "../Pages/MOHAdmin/Messages";
 import Clinic from "../Pages/MOHAdmin/Clinic";
 import BabyDashboard from "../Pages/Family/Baby/BabyDashboard";
@@ -47,17 +45,18 @@ import BabyCare from "../Pages/Resources/BabyCare";
 import BirthControl from "../Pages/Resources/BirthControl";
 import Pregnancy from "../Pages/Resources/Pregnancy";
 import Planing from "../Pages/Resources/Planing";
-
+import Home from "../Pages/Home";
 import BabyNewBornHelath from "../Pages/Family/Baby/BabyNewBornHelath";
 import BabyProfileForm1 from "../Components/BabyProfileComponents/BabyProfileForm1";
 import BabyDetails from "../Pages/Family/Baby/BabyDetails";
 
+
 export const AppRoutes = {
-  loginpath: { path: "/login", component: <Login /> },
-  login: { path: "/", component: <Login /> },
+  
+  login: { path: "/login", component: <Login /> },
 
   // Home page routes
-  home: { path: "/home", component: <LandingPage /> },
+  home: { path: "/", component: <Home /> },
 
   resources_1: {
     path: "/birthcontrol",
