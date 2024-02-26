@@ -110,8 +110,8 @@ const Login = () => {
 
   async function onSubmit() {
     const response = await authContext.login(username, password);
-    console.log(response.data.user);
-    const position = response.data.user.position;
+    console.log(response?.data.user);
+    const position = response?.data.user.position;
     if (response.status === 200) {
       if (position == "MOH") {
         navigate("/moh");
