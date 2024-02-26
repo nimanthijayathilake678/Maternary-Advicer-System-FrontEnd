@@ -8,7 +8,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
-//import axios from 'axios'; // Import axios for making HTTP requests
+import axios from 'axios'; // Import axios for making HTTP requests
+import { Box } from "@mui/material";
 
 const columns = [
   { id: 'id', label: 'ID', minWidth: 170 },
@@ -30,12 +31,12 @@ export default function StickyHeadTable() {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [rows, setRows] = useState([]);
-/*
+
   useEffect(() => {
     // Fetch data from backend when component mounts
     fetchData();
   }, []);
-/*
+
   const fetchData = async () => {
     try {
       const response = await axios.get('/api/data'); // Update the endpoint as per your backend
@@ -44,7 +45,7 @@ export default function StickyHeadTable() {
       console.error('Error fetching data:', error);
     }
   };
-*/
+
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -55,6 +56,12 @@ export default function StickyHeadTable() {
   };
 
   return (
+    <div>
+      <div className="title">
+        <span className="text">Registered Users Details</span>
+      </div>
+      <div>
+    <Box>
     <Paper sx={{ width: '100%', overflow: 'hidden' }}>
       <TableContainer sx={{ maxHeight: 440 }}>
         <Table stickyHeader aria-label="sticky table">
@@ -101,5 +108,8 @@ export default function StickyHeadTable() {
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
     </Paper>
+    </Box>
+    </div>
+    </div>
   );
 }
