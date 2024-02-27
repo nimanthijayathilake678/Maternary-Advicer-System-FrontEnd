@@ -50,6 +50,8 @@ import BabyNewBornHelath from "../Pages/Family/Baby/BabyNewBornHelath";
 import BabyProfileForm1 from "../Components/BabyProfileComponents/BabyProfileForm1";
 import BabyDetails from "../Pages/Family/Baby/BabyDetails";
 
+import PregnancyRegistration from "../Pages/Midwife/PregnancyRegistration";
+
 
 export const AppRoutes = {
   
@@ -140,6 +142,11 @@ export const AppRoutes = {
   midwife_eligible_families_register: {
     path: "/midwife/eligibleFamilyRegister",
     component: <MidwifeEligibleFamilies />,
+  },
+
+  midwife_pregnancy_registration:{
+    path:"/midwife/pregnancyRegistration",
+    component:<PregnancyRegistration/>
   },
 
   midwife_pregnancies: {
