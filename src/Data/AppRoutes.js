@@ -51,10 +51,10 @@ import BabyProfileForm1 from "../Components/BabyProfileComponents/BabyProfileFor
 import BabyDetails from "../Pages/Family/Baby/BabyDetails";
 
 import PregnancyRegistration from "../Pages/Midwife/PregnancyRegistration";
-
-
+import BabyRegistrationForm2 from "../Pages/Family/Baby/RegistrationPage/BabyRegistration/BabyRegistrationForm2";
+import BabyRegistrationForms from "../Pages/Family/Baby/RegistrationPage/BabyRegistration/BabyRegistrationForms";
+import VogRegisterdBabies from "../Pages/VOGDoctor/VogRegisterdBabies";
 export const AppRoutes = {
-  
   login: { path: "/login", component: <Login /> },
 
   // Home page routes
@@ -144,9 +144,9 @@ export const AppRoutes = {
     component: <MidwifeEligibleFamilies />,
   },
 
-  midwife_pregnancy_registration:{
-    path:"/midwife/pregnancyRegistration",
-    component:<PregnancyRegistration/>
+  midwife_pregnancy_registration: {
+    path: "/midwife/pregnancyRegistration",
+    component: <PregnancyRegistration />,
   },
 
   midwife_pregnancies: {
@@ -197,7 +197,7 @@ export const AppRoutes = {
   },
   vog_babyhealth: {
     path: "/vog/newbabyhealth",
-    component: <BabyRegistrationStepper />,
+    component: <BabyRegistrationForms />,
   },
   vog_personal: {
     path: "/vog/personal_Info",
@@ -214,6 +214,10 @@ export const AppRoutes = {
   vog_add_patients_details: {
     path: "/vog/add_patients_details",
     component: <AddPatientsDetails />,
+  },
+  vog_registerd_babies: {
+    path: "/vog/show_registerd_babies",
+    component: <VogRegisterdBabies />,
   },
 
   //Moh doctor

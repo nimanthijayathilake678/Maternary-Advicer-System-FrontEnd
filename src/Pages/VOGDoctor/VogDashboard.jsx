@@ -76,7 +76,16 @@ function VogDashboard() {
             </div>
           </div>
         </NavLink>
+        <NavLink to="/vog/show_registerd_babies" className="card">
+          <div className="card-inner">
+            <h3>Registerd Babies</h3>
+            <div>
+              <Lottie style={{ height: 80 }} animationData={midwifeReg} />
+            </div>
+          </div>
+        </NavLink>
       </div>
+
       <div className="dashbottom">
         <div className="calender">
           <Calendar />

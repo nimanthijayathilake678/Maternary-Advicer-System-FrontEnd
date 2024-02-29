@@ -12,8 +12,6 @@ import {
 import React, { useEffect, useState } from "react";
 import Theme from "../../Components/Theme"; //**** Special import*/
 import { ThemeProvider } from "@mui/material";
-import login from "../../Assest/login.jpg";
-import login2 from "../../Assest/login2.jpg";
 import { Padding, Visibility, VisibilityOff } from "@mui/icons-material";
 import PersonIcon from "@mui/icons-material/Person";
 import Recovery from "./Recovery";
@@ -21,7 +19,9 @@ import Reset from "./Reset";
 import SuccessAlert from "../../Components/SuccessAlert";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
-
+import logo from "../../Assest/logo.png";
+import babylogo from "../../Assest/babylogo.png";
+import login2 from "../../Assest/login2.jpg";
 const theme = Theme();
 const DemoPaper = styled(Paper)(({ theme }) => ({
   width: 900,
@@ -149,8 +149,8 @@ const Login = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        borderTopLeftRadius: theme.shape.borderRadius * 4, //6
-        borderBottomLeftRadius: theme.shape.borderRadius * 4, //6
+        borderTopLeftRadius: theme.shape.borderRadius * 5, //6
+        borderBottomLeftRadius: theme.shape.borderRadius * 5, //6
         [theme.breakpoints.down("sm")]: {
           height: 300,
         },
@@ -179,7 +179,7 @@ const Login = () => {
                 },
               }}
             >
-              <Box
+              <box
                 flex="45%"
                 sx={{
                   display: "flex",
@@ -187,8 +187,8 @@ const Login = () => {
                   alignItems: "center",
                   backgroundColor: theme.palette.primary.paper,
                   height: "80vh",
-                  borderTopLeftRadius: theme.shape.borderRadius * 4, //6
-                  borderBottomLeftRadius: theme.shape.borderRadius * 4, //6
+                  borderTopLeftRadius: theme.shape.borderRadius * 5, //6
+                  borderBottomLeftRadius: theme.shape.borderRadius * 5, //6
                   [theme.breakpoints.down("sm")]: {
                     height: 300,
                   },
@@ -206,7 +206,7 @@ const Login = () => {
                     },
                   }}
                 ></img>
-              </Box>
+              </box>
 
               <Box
                 flex="55%"
@@ -220,7 +220,7 @@ const Login = () => {
                 <Stack display="flex" direction="column" alignItems="center">
                   <Box>
                     <UserTitleBox>
-                      <Typography variant="h3" color="primary">
+                      <Typography variant="h4" color="primary">
                         Welcome!
                       </Typography>
                     </UserTitleBox>
