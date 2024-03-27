@@ -20,3 +20,14 @@ export const getRegisterBaby = async () => {
     throw err;
   }
 };
+
+export const getRegisterBabyByBabyNum = async () => {
+  try {
+    const response = await apiClient.get("/newbaby/getbabyInfo{babyNum}");
+    console.log(response);
+    return response;
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+};
