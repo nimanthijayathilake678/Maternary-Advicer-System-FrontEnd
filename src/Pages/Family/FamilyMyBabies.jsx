@@ -10,6 +10,7 @@ import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 import SideBar from "../../Components/SideBar";
 import Grid from "@mui/material/Grid";
+import DisplaySidebar from "../../Components/DisplaySidebar";
 
 const columns = [
   { id: "Baby", label: "Baby", minWidth: 40 },
@@ -75,7 +76,7 @@ const FamilyMyBabies = () => {
   return (
     <Grid container spacing={3}>
       <Grid item xs={3} display={"flex"}>
-        <SideBar />
+        <DisplaySidebar />
       </Grid>
       <Grid item xs={9} display={"flex"}>
         <div className="pt-10 px-10">

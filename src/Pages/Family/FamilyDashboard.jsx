@@ -25,7 +25,7 @@ const FamilyDashboard = () => {
   };
   return (
     <>
-      <Nav/>
+      <Nav />
       <Box ml="20px">
         {/* HEADER */}
         <Box display="flex" justifyContent="space-between" alignItems="center">
@@ -87,7 +87,7 @@ const FamilyDashboard = () => {
             </LocalizationProvider>
           </div>
           <div className="upcomingClinics">
-            <div sx={{ marginLeft:"20px"}}>
+            <div sx={{ marginLeft: "20px" }}>
               <h6> UPCOMING CLINICS</h6>
             </div>
 

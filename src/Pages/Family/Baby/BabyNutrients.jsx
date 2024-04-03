@@ -11,6 +11,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import { Link } from "react-router-dom";
 import SideBar from "../../../Components/SideBar";
+import DisplaySidebar from "../../../Components/DisplaySidebar";
 
 function BabyNutrients() {
   const [nutrientData, setNutrientData] = useState({
@@ -57,7 +58,7 @@ function BabyNutrients() {
         <Grid container spacing={3}>
           {/* Sidebar */}
           <Grid item xs={3} display={"flex"}>
-            <SideBar />
+            <DisplaySidebar />
           </Grid>
           {/* Nutrient Details Section */}
           <Grid

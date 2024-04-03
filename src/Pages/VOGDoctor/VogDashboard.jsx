@@ -8,7 +8,7 @@ import notification from "../../Assest/Lottie/notification.json";
 import reports from "../../Assest/Lottie/reports.json";
 import Lottie from "lottie-react";
 import Calendar from "../../Components/Calendar";
-
+import VogRegisterdBabies from "../VOGDoctor/VogRegisterdBabies";
 function VogDashboard() {
   return (
     <div>

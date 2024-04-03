@@ -31,3 +31,14 @@ export const getRegisterBabyByBabyNum = async () => {
     throw err;
   }
 };
+
+export const getRegisterBabyByCoupleNum = async () => {
+  try {
+    const response = await apiClient.get("/getbabyInfoByCoupleNum/{coupleNum}");
+    console.log(response);
+    return response;
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+};

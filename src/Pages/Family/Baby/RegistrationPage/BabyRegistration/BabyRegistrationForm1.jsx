@@ -9,6 +9,7 @@ import { babyRegistrationSchema } from "../../../../../Pages/Validations/validat
 import BabyRegistrationForm1Service, {
   registerbaby,
 } from "../../../../../Services/BabyRegistrationForm1Service";
+import DisplaySidebar from "../../../../../Components/DisplaySidebar";
 
 function BabyRegistrationForm1() {
   return (
@@ -49,7 +50,7 @@ function BabyRegistrationForm1() {
         <Form>
           <Box sx={{ display: "flex" }}>
             <Box sx={{ width: "25%", display: "flex", maxWidth: "200px" }}>
-              <SideBar />
+              <DisplaySidebar />
             </Box>
 
             {/* Form */}
