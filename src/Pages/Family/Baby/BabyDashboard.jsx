@@ -26,6 +26,9 @@ import UpcomingsBaby from "../../../Components/BabyProfileComponents/UpcommingsB
 import babyDash from "../../../Assest/Lottie/BabyDash.json";
 import babyprofile from "../../../Assest/Lottie/babyProfile.json";
 import medicare from "../../../Assest/Lottie/medicare.json";
+import Nav from "../../../Components/Nav";
+import SideBar from "../../../Components/SideBar";
+import DisplaySidebar from "../../../Components/DisplaySidebar";
 const BabyDashboard = () => {
   const navigate = useNavigate();
   const [value, setValue] = React.useState("one");
@@ -37,180 +40,180 @@ const BabyDashboard = () => {
   };
 
   return (
-    <Box>
-      {/* HEADER */}
+    <>
+      <Nav />
+      <Box>
+        {/* HEADER */}
+        <Box display="flex" justifyContent="space-between" alignItems="center">
+          <Header title="Hello" subtitle="Welcome to your dashboard" />
 
-      <Grid container justifyContent="space-between" alignItems="center">
-        <Grid item>
-          <Header
-            title="Hello - Baby"
-            subtitle="Welcome to your dashboard"
-            style={{ color: "[#2A777C]" }}
-          />
-        </Grid>
-
-        {/* SEARCH BOX */}
-        <Grid item>
-          <Box display="flex" bgcolor={"#e4e5e2"} borderRadius={"3px"}>
+          {/* SEARCH BOX */}
+          <Box
+            display="flex"
+            bgcolor={"#e4e5e2"}
+            borderRadius={"3px"}
+            marginRight={"20px"}
+          >
             <InputBase sx={{ ml: 1, flex: 1 }} placeholder="Search"></InputBase>
             <IconButton type="button" sx={{ p: 1 }}>
               <Search />
             </IconButton>
           </Box>
-        </Grid>
-      </Grid>
-      {/* Main content */}
-      <Grid container style={{ margin: "15px 0", justifyContent: "center" }}>
-        {/* Lottie Animation */}
-        <Grid item xs={12} sm={3}>
-          <Lottie style={{ height: 280 }} animationData={baby} />
-        </Grid>
+        </Box>
 
-        {/* Grid items */}
-        <Grid item xs={12} sm={9}>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={3}>
-              <div className="cards">
-                <div className="card-inner">
-                  <h8
-                    onClick={() =>
-                      handleNavigation("/family/babyDashboard/babyProfile")
-                    }
-                  >
-                    BASIC INFORMATION
-                  </h8>
-                  <Lottie
-                    style={{ height: 100 }}
-                    animationData={profile}
-                    onClick={() =>
-                      handleNavigation("/family/babyDashboard/babyProfile")
-                    }
-                  />
+        {/* Main content */}
+        <Grid container style={{ margin: "15px 0", justifyContent: "center" }}>
+          {/* Lottie Animation */}
+          <Grid item xs={12} sm={3}>
+            <Lottie style={{ height: 280 }} animationData={baby} />
+          </Grid>
+
+          {/* Grid items */}
+          <Grid item xs={12} sm={9}>
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={3}>
+                <div className="cards">
+                  <div className="card-inner">
+                    <h6
+                      onClick={() =>
+                        handleNavigation("/family/babyDashboard/babyProfile")
+                      }
+                    >
+                      BASIC INFORMATION
+                    </h6>
+                    <Lottie
+                      style={{ height: 60 }}
+                      animationData={profile}
+                      onClick={() =>
+                        handleNavigation("/family/babyDashboard/babyProfile")
+                      }
+                    />
+                  </div>
                 </div>
-              </div>
-            </Grid>
-            <Grid item xs={12} sm={3}>
-              <div className="cards">
-                <div className="card-inner">
-                  <h8
-                    onClick={() =>
-                      handleNavigation("/family/babyDashboard/immunization")
-                    }
-                  >
-                    BABY IMMUNIZATION
-                  </h8>
-                  <Lottie
-                    style={{ height: 100 }}
-                    animationData={reports}
-                    onClick={() =>
-                      handleNavigation("/family/babyDashboard/immunization")
-                    }
-                  />
+              </Grid>
+              <Grid item xs={12} sm={3}>
+                <div className="cards">
+                  <div className="card-inner">
+                    <h6
+                      onClick={() =>
+                        handleNavigation("/family/babyDashboard/immunization")
+                      }
+                    >
+                      BABY IMMUNIZATION
+                    </h6>
+                    <Lottie
+                      style={{ height: 60 }}
+                      animationData={reports}
+                      onClick={() =>
+                        handleNavigation("/family/babyDashboard/immunization")
+                      }
+                    />
+                  </div>
                 </div>
-              </div>
-            </Grid>
-            <Grid item xs={12} sm={3}>
-              <div className="cards">
-                <div className="card-inner">
-                  <h8
-                    onClick={() =>
-                      handleNavigation("/family/babyDashboard/nutrients")
-                    }
-                  >
-                    BABY NUTRIENTS
-                  </h8>
-                  <Lottie
-                    style={{ height: 150 }}
-                    animationData={baby2}
-                    onClick={() =>
-                      handleNavigation("/family/babyDashboard/nutrients")
-                    }
-                  />
+              </Grid>
+              <Grid item xs={12} sm={3}>
+                <div className="cards">
+                  <div className="card-inner">
+                    <h6
+                      onClick={() =>
+                        handleNavigation("/family/babyDashboard/nutrients")
+                      }
+                    >
+                      BABY NUTRIENTS
+                    </h6>
+                    <Lottie
+                      style={{ height: 90 }}
+                      animationData={baby2}
+                      onClick={() =>
+                        handleNavigation("/family/babyDashboard/nutrients")
+                      }
+                    />
+                  </div>
                 </div>
-              </div>
-            </Grid>
-            <Grid item xs={12} sm={3}>
-              <div className="cards">
-                <div className="card-inner">
-                  <h8 onClick={() => handleNavigation("")}>BABY CARE</h8>
-                  <Lottie
-                    style={{ height: 150 }}
-                    animationData={babyDash}
-                    onClick={() => handleNavigation("")}
-                  />
+              </Grid>
+              <Grid item xs={12} sm={3}>
+                <div className="cards">
+                  <div className="card-inner">
+                    <h8 onClick={() => handleNavigation("")}>BABY CARE</h8>
+                    <Lottie
+                      style={{ height: 150 }}
+                      animationData={babyDash}
+                      onClick={() => handleNavigation("")}
+                    />
+                  </div>
                 </div>
-              </div>
-            </Grid>
-            <Grid item xs={12} sm={3}>
-              <div className="cards">
-                <div className="card-inner">
-                  <h8
-                    onClick={() =>
-                      handleNavigation("/family/babyDashboard/weight")
-                    }
-                  >
-                    BABY GROWTH
-                  </h8>
-                  <Lottie
-                    style={{ height: 80 }}
-                    animationData={baby3}
-                    onClick={() =>
-                      handleNavigation("/family/babyDashboard/weight")
-                    }
-                  />
+              </Grid>
+              <Grid item xs={12} sm={3}>
+                <div className="cards">
+                  <div className="card-inner">
+                    <h8
+                      onClick={() =>
+                        handleNavigation("/family/babyDashboard/weight")
+                      }
+                    >
+                      BABY GROWTH
+                    </h8>
+                    <Lottie
+                      style={{ height: 80 }}
+                      animationData={baby3}
+                      onClick={() =>
+                        handleNavigation("/family/babyDashboard/weight")
+                      }
+                    />
+                  </div>
                 </div>
-              </div>
-            </Grid>
-            <Grid item xs={12} sm={3}>
-              <div className="cards">
-                <div className="card-inner">
-                  <h8
-                    onClick={() =>
-                      handleNavigation("/family/babyDashboard/babyhealth")
-                    }
-                  >
-                    Baby Helath
-                  </h8>
-                  <Lottie
-                    style={{ height: 80 }}
-                    animationData={BabyItem}
-                    onClick={() =>
-                      handleNavigation("/family/babyDashboard/babyhealth")
-                    }
-                  />
+              </Grid>
+              <Grid item xs={12} sm={3}>
+                <div className="cards">
+                  <div className="card-inner">
+                    <h8
+                      onClick={() =>
+                        handleNavigation("/family/babyDashboard/babyhealth")
+                      }
+                    >
+                      Baby Helath
+                    </h8>
+                    <Lottie
+                      style={{ height: 80 }}
+                      animationData={BabyItem}
+                      onClick={() =>
+                        handleNavigation("/family/babyDashboard/babyhealth")
+                      }
+                    />
+                  </div>
                 </div>
-              </div>
+              </Grid>
             </Grid>
           </Grid>
         </Grid>
-      </Grid>
-      {/* Second row */}
-      <Grid container spacing={2} style={{ justifyContent: "center" }}>
-        {/* Calendar */}
-        <Grid item xs={12} sm={3}>
-          <div className="calendar">
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <DateCalendar />
-            </LocalizationProvider>
-          </div>
-        </Grid>
+        {/* Second row */}
+        <Grid container spacing={2} style={{ justifyContent: "center" }}>
+          {/* Calendar */}
+          <Grid item xs={12} sm={3}>
+            <div className="calendar">
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DateCalendar />
+              </LocalizationProvider>
+            </div>
+          </Grid>
 
-        {/* Upcoming Clinics */}
-        <Grid item xs={12} sm={5}>
-          <div className="upcomingClinics">
-            <div style={{ marginLeft: "20px" }}>
-              <h3>Upcoming Clinics</h3>
+          {/* Upcoming Clinics */}
+          <Grid item xs={12} sm={5}>
+            <div className="upcomingClinics">
+              <div style={{ marginLeft: "20px" }}>
+                <h3>Upcoming Clinics</h3>
+              </div>
+              <div>
+                <UpcomingsBaby />
+              </div>
             </div>
-            <div>
-              <UpcomingsBaby />
-            </div>
-          </div>
+          </Grid>
+          <Grid item xs={12} sm={3}>
+            <Lottie style={{ height: 280 }} animationData={clinic} />
+          </Grid>
         </Grid>
-        <Grid item xs={12} sm={3}>
-          <Lottie style={{ height: 280 }} animationData={clinic} />
-        </Grid>
-      </Grid>
-    </Box>
+      </Box>
+    </>
   );
 };
 

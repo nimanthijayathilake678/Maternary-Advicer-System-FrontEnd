@@ -58,7 +58,7 @@ const Nav = () => {
       sx: {
         bgcolor: "#00A9BB",
       },
-      children: `${name.split("")[0][0]}`,
+      //children: `${name.split("")[0][0]}`,
     };
   }
 
@@ -67,12 +67,14 @@ const Nav = () => {
   return (
     <Disclosure
       as="header"
-      className="sticky top-0 z-10 bg-[#E4FEFF] border-b border-[#00A9BB]  "
+      className="sticky top-0 z-10 bg-[#00A9BB] border-b border-[#00A9BB]  "
     >
       {({ open }) => (
         <>
           <div className="w-full px-2 mx-auto sm:px-6 lg:px-8">
-            <div className="relative flex items-center justify-between h-20"> {/* Change h-16 to h-20 or desired height */}
+            <div className="relative flex items-center justify-between h-20">
+              {" "}
+              {/* Change h-16 to h-20 or desired height */}
               <div className="absolute inset-y-0 right-0 flex items-center sm:hidden">
                 <Disclosure.Button className="relative inline-flex items-center justify-center p-2 text-gray-400 rounded-md hover:bg-gray-700 hover:text-white">
                   <span className="absolute-inset-0.5" />
@@ -114,14 +116,13 @@ const Nav = () => {
                   )}
                 </Disclosure.Button>
               </div>
-
               <div className="flex items-center justify-between w-full ">
                 <div className="flex items-center">
                   <div className="flex items-center-shrink-0">
                     <a href="/">
                       <img
                         className="w-36 h-auto"
-                        src= {Logo}
+                        src={Logo}
                         alt="Maternity Adviser Logo"
                       />
                     </a>
@@ -148,7 +149,12 @@ const Nav = () => {
                   </div>
                 </div>
                 {!user ? (
-                  <Button to="./login" component={Link} variant="contained" sx={{backgroundColor:'#00A9BB'}}>
+                  <Button
+                    to="./login"
+                    component={Link}
+                    variant="contained"
+                    sx={{ backgroundColor: "#00A9BB" }}
+                  >
                     Login
                   </Button>
                 ) : (

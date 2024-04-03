@@ -13,6 +13,7 @@ import {
   Legend,
 } from "recharts";
 import SideBar from "../../../Components/SideBar";
+import DisplaySidebar from "../../../Components/DisplaySidebar";
 
 function BabyWeight() {
   const [babyData, setBabyData] = useState({
@@ -89,7 +90,7 @@ function BabyWeight() {
         <Grid container spacing={3}>
           {/* Sidebar */}
           <Grid item xs={3} display={"flex"}>
-            <SideBar />
+            <DisplaySidebar />
           </Grid>
           {/* Baby Weight Section */}
           <Grid

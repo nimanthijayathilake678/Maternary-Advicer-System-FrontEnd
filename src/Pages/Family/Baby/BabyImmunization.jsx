@@ -11,6 +11,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import { Link } from "react-router-dom";
 import SideBar from "../../../Components/SideBar";
+import DisplaySidebar from "../../../Components/DisplaySidebar";
 
 function BabyImmunization() {
   const [vaccineData, setVaccineData] = useState({
@@ -117,7 +118,7 @@ function BabyImmunization() {
         <Grid container spacing={3}>
           {/* Sidebar */}
           <Grid item xs={3} display={"flex"}>
-            <SideBar />
+            <DisplaySidebar />
           </Grid>
           {/* Vaccine Details Section */}
           <Grid

@@ -9,6 +9,7 @@ import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import SideBar from "../../../Components/SideBar";
 import { Typography } from "@mui/material";
+import DisplaySidebar from "../../../Components/DisplaySidebar";
 
 export default function BabyDetails() {
   const [babyDetails, setBabyDetails] = useState({
@@ -114,7 +115,7 @@ export default function BabyDetails() {
     <Grid container spacing={3}>
       {/* Sidebar */}
       <Grid item xs={3} display={"flex"}>
-        <SideBar />
+        <DisplaySidebar />
       </Grid>
 
       {/* Main content */}

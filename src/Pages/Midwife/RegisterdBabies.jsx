@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"; // Import Link from React Router
 import SideBar from "../../Components/SideBar";
 import { Typography } from "@mui/material";
 import Box from "@mui/material/Box";
-
+import DisplaySidebar from "../../Components/DisplaySidebar";
 const VISIBLE_FIELDS = [
   "Baby Id",
   "Place",
@@ -73,7 +73,7 @@ export default function BasicExampleDataGrid() {
   return (
     <Box sx={{ display: "flex" }}>
       <div style={{ display: "flex", height: "100vh", overflowX: "hidden" }}>
-        <SideBar />
+        <DisplaySidebar />
         <div style={{ flex: 1, overflowX: "hidden" }}>
           <div style={{ height: "100vh", width: "100%" }}>
             <Typography
