@@ -18,6 +18,7 @@ import {
 } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import DisplaySidebar from "../../Components/DisplaySidebar";
 
 const occupations = ["VOG Doctor", "MOH Doctor", "Dentist", "MidWife"];
 const areas = [
@@ -90,6 +91,7 @@ function Register() {
 
   return (
     <div className="form">
+      <DisplaySidebar />
       <Container maxWidth="sm">
         <div className="font">
           <Typography variant="h4" align="center" gutterBottom>

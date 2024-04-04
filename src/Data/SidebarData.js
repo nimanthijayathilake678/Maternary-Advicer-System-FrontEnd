@@ -102,3 +102,26 @@ export const midwife = [
     icon: <MdPregnantWoman />,
   },
 ];
+
+export const moh = [
+  {
+    name: "Home",
+    icon: <HomeRoundedIcon />,
+    path: "/admin",
+  },
+  {
+    name: "Dashboard",
+    path: "/moh",
+    icon: <RxDashboard />,
+  },
+  {
+    name: "Messeges",
+    path: "/midwife/eligibleFamilies",
+    icon: <MdOutlineFamilyRestroom />,
+  },
+  {
+    name: "Summery",
+    path: "/midwife/pregnancies",
+    icon: <MdPregnantWoman />,
+  },
+];

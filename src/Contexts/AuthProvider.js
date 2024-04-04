@@ -12,7 +12,6 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(null);
   const [position, setPosition] = useState(null);
 
-
   const role = null;
 
   useEffect(() => {
@@ -22,7 +21,6 @@ export const AuthProvider = ({ children }) => {
   }, [user, isAuthenticate, position]);
 
   async function login(username, password) {
-
     try {
       const response = await executeJwtAuthenticationService(
         username,
@@ -33,14 +31,13 @@ export const AuthProvider = ({ children }) => {
         console.log("Success!");
         console.log("Success!");
         const jwtToken = "Bearer " + response.data.jwtToken;
-        console.log("JwtToken : "+ jwtToken);
+        console.log("JwtToken : " + jwtToken);
         const responseData = response.data;
         const { user: userData } = responseData;
         const { position: positionData } = userData;
         setIsAuthenticate(true);
         setUser(userData);
         setToken(jwtToken);
-        setPosition(positionData);
 
         apiClient.interceptors.request.use((config) => {
           console.log("intercepting and adding a token");
@@ -77,7 +74,7 @@ export const AuthProvider = ({ children }) => {
         logout,
         token,
         position,
-        getPosition,
+        setPosition,
       }}
     >
       {children}
