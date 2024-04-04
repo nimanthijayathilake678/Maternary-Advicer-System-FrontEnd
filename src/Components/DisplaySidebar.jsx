@@ -10,7 +10,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import mainlogo from "../Assest/logo.png";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
-import { vog, family, midwife } from "../Data/SidebarData";
+import { vog, family, midwife, moh } from "../Data/SidebarData";
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import { auto } from "@popperjs/core";
 import { useNavigate } from "react-router-dom";
@@ -34,16 +34,18 @@ const DisplaySidebar = () => {
     naviagate(path);
   };
 
-  const sideBarHander = authContext.position == "Admin" ? midwife : family;
+  // const sideBarHander = authContext.position == "Admin" ? midwife : family;
 
-  // const sideBarHander = "NULL";
-  // if (authContext.position == "midwife") {
-  //   sideBarHander = midwife;
-  // } else if (authContext.position == "family") {
-  //   sideBarHander = family;
-  // } else if (authContext.position == "vog") {
-  //   sideBarHander = vog;
-  // }
+  var sideBarHander = [];
+  if (authContext.position == "Midwife") {
+    sideBarHander = midwife;
+  } else if (authContext.position == "Family") {
+    sideBarHander = family;
+  } else if (authContext.position == "Vog") {
+    sideBarHander = vog;
+  } else if (authContext.position == "MOH") {
+    sideBarHander = moh;
+  }
   return (
     <Drawer
       sx={{

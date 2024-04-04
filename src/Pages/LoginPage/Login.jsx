@@ -112,6 +112,7 @@ const Login = () => {
     const response = await authContext.login(username, password);
     console.log(response?.data.user);
     const position = response?.data.user.position;
+    authContext.setPosition(position);
     if (response.status === 200) {
       if (position == "MOH") {
         navigate("/moh");
