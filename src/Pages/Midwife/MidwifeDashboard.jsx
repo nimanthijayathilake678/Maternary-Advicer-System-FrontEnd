@@ -54,14 +54,14 @@ const MidwifeDashboard = () => {
         <div className="cards">
           <div className="card-inner">
             <h8>MARRIED COUPLE REGISTRATION</h8>
-            <Lottie style={{ height: 110 }} animationData={marriedCouple} />
+            <Lottie style={{ height: 70 }} animationData={marriedCouple} />
           </div>
         </div>
 
         <div className="cards">
           <div className="card-inner">
             <h8>PREGNANCY REGISTRATION</h8>
-            <Lottie style={{ height: 100 }} 
+            <Lottie style={{ height: 70 }} 
             animationData={pregnant}
             onClick={() => handleNavigation("/midwife/pregnancyRegistration")} />
           </div>
@@ -70,13 +70,13 @@ const MidwifeDashboard = () => {
         <div className="cards">
           <div className="card-inner">
             <h8>ELIGIBLE FAMILIES</h8>
-            <Lottie style={{ height: 110 }} animationData={HappyFamily} />
+            <Lottie style={{ height: 70 }} animationData={HappyFamily} />
           </div>
         </div>
         <div className="cards">
           <div className="card-inner">
             <h8>REGISTERED PREGNANT MOTHERS</h8>
-            <Lottie style={{ height: 120 }} animationData={pregnant} />
+            <Lottie style={{ height: 70 }} animationData={pregnant} />
           </div>
         </div>
 
@@ -84,7 +84,7 @@ const MidwifeDashboard = () => {
           <div className="card-inner">
             <h8>REGISTERD BABIES</h8>
             <Lottie
-              style={{ height: 120 }}
+              style={{ height: 70 }}
               animationData={pregnant}
               onClick={() => handleNavigation("/midwife/registerdbabies")}
             />

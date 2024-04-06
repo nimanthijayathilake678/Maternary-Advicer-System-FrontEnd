@@ -47,20 +47,20 @@ const FamilyDashboard = () => {
 
         {/* Main boxes */}
         <div className="main-cards">
-          <div>
+          {/* <div>
             <Lottie animationData={HappyFamily} />
-          </div>
+          </div> */}
           <div className="cards">
             <div className="card-inner">
-              <h6>MY PREGNANCIES</h6>
-              <Lottie style={{ height: 100 }} animationData={pregnant} />
+              <h3>MY PREGNANCIES</h3>
+              <Lottie style={{ height: 70 }} animationData={pregnant} />
             </div>
           </div>
           <div className="cards">
             <div className="card-inner">
-              <h6>MY BABIES</h6>
+              <h3>MY BABIES</h3>
               <Lottie
-                style={{ height: 90 }}
+                style={{ height: 70 }}
                 animationData={baby}
                 onClick={() => handleNavigation("/family/mybabies")}
               />
@@ -68,14 +68,14 @@ const FamilyDashboard = () => {
           </div>
           <div className="cards">
             <div className="card-inner">
-              <h6>MY PROFILE</h6>
-              <Lottie style={{ height: 70 }} animationData={profile} />
+              <h3>MY PROFILE</h3>
+              <Lottie style={{ height: 60 }} animationData={profile} />
             </div>
           </div>
           <div className="cards">
             <div className="card-inner">
-              <h6>SUMMARY REPORTS</h6>
-              <Lottie style={{ height: 100 }} animationData={reports} />
+              <h3>SUMMARY REPORTS</h3>
+              <Lottie style={{ height: 60 }} animationData={reports} />
             </div>
           </div>
         </div>
@@ -88,7 +88,7 @@ const FamilyDashboard = () => {
           </div>
           <div className="upcomingClinics">
             <div sx={{ marginLeft:"20px"}}>
-              <h6> UPCOMING CLINICS</h6>
+              <h3> UPCOMING CLINICS</h3>
             </div>
 
             <div>
@@ -96,7 +96,7 @@ const FamilyDashboard = () => {
             </div>
           </div>
           <div>
-            <h6>Grab Your Favourite Articles From Here!</h6>
+            <h3>Grab Your Favourite Articles From Here!</h3>
             <Lottie animationData={clinic} />
           </div>
         </div>
