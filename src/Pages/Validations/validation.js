@@ -19,6 +19,7 @@ export const babyRegistrationSchema = Yup.object({
 });
 
 
+
 export const userRegistrationSchema = Yup.object({
   fullName: Yup.string().required('Full Name is required'),
   nicNo: Yup.string().matches(/^(?:\d{9}[xXvV]|\d{12})$/,'Nic must be valid Type').required('NIC No. is required'),
@@ -41,4 +42,13 @@ export const hospitalCareSchema = Yup.object({
   doctorId: Yup.string().required('Doctor ID is required'),
   designation: Yup.string().required('Designation is required'),
   
-}) 	
+}); 	
+
+export const babyRegistrationSchema2 = Yup.object({
+  birthGivenHospital: Yup.string().required("Birth given hospital required"),
+  weightAtBirth: Yup.string().required("Birth weight required"),
+  wayOfBirth: Yup.string().required("Birth way is required"),
+  headSizeAtBirth: Yup.string().required("Birth head size required"),
+  lengthAtBirth: Yup.string().required("Birth length required"),
+});
+

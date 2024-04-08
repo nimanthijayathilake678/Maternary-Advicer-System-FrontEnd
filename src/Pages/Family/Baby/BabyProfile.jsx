@@ -13,6 +13,8 @@ import SideBar from "../../../Components/SideBar";
 import { Margin } from "@mui/icons-material";
 import BabyGirl from "../../../Assest/Lottie/BabyGirl.json";
 import BabyItem from "../../../Assest/Lottie/BabyItem.json";
+import DisplaySidebar from "../../../Components/DisplaySidebar";
+
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -70,9 +72,8 @@ export default function BasicTabs() {
       >
         <Grid container spacing={3}>
           <Grid item xs={3} display={"flex"}>
-            <SideBar />
+            <DisplaySidebar />
           </Grid>
-
           <Grid
             item
             xs={9}

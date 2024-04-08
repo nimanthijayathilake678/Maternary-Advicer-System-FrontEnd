@@ -31,16 +31,13 @@ export const AuthProvider = ({ children }) => {
         console.log("Success!");
         console.log("Success!");
         const jwtToken = "Bearer " + response.data.jwtToken;
+        console.log("JwtToken : " + jwtToken);
         const responseData = response.data;
         const { user: userData } = responseData;
         const { position: positionData } = userData;
-
         setIsAuthenticate(true);
         setUser(userData);
-        setUser(userData);
         setToken(jwtToken);
-        setPosition(positionData);
-        setPosition(positionData);
 
         apiClient.interceptors.request.use((config) => {
           console.log("intercepting and adding a token");
@@ -77,7 +74,7 @@ export const AuthProvider = ({ children }) => {
         logout,
         token,
         position,
-        getPosition,
+        setPosition,
       }}
     >
       {children}

@@ -8,7 +8,7 @@ import notification from "../../Assest/Lottie/notification.json";
 import reports from "../../Assest/Lottie/reports.json";
 import Lottie from "lottie-react";
 import Calendar from "../../Components/Calendar";
-
+import VogRegisterdBabies from "../VOGDoctor/VogRegisterdBabies";
 function VogDashboard() {
   return (
     <div>
@@ -66,12 +66,9 @@ function VogDashboard() {
             </div>
           </div>
         </NavLink>
-
-
-
       </div>
       <div className="main-cards">
-        <NavLink to="/vog/newbornhealth" className="card">
+        <NavLink to="/vog/newbabyhealth" className="card">
           <div className="card-inner">
             <h3>New Born Helath records</h3>
             <div>
@@ -79,14 +76,21 @@ function VogDashboard() {
             </div>
           </div>
         </NavLink>
+        <NavLink to="/vog/show_registerd_babies" className="card">
+          <div className="card-inner">
+            <h3>Registerd Babies</h3>
+            <div>
+              <Lottie style={{ height: 80 }} animationData={midwifeReg} />
+            </div>
+          </div>
+        </NavLink>
       </div>
+
       <div className="dashbottom">
         <div className="calender">
           <Calendar />
         </div>
-        <div>
-          
-        </div>
+        <div></div>
       </div>
     </div>
   );

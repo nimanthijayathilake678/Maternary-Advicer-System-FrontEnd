@@ -39,10 +39,6 @@ function CustomStepIcon(props) {
 const theme = Theme();
 
 const steps = [
-  // {
-  //   label: "Basic Information",
-  //   description: <BabyRegistrationForm1 />,
-  // },
   {
     label: "Baby Information",
     description: <BabyRegistrationForm2 />,

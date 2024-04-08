@@ -16,6 +16,7 @@ import reports from "../../Assest/Lottie/reports.json";
 import Lottie from "lottie-react";
 import "../../css/Family/FamilyDash.css";
 import { useNavigate } from "react-router-dom";
+import Nav from "../../Components/Nav";
 
 const FamilyDashboard = () => {
   const navigate = useNavigate();
@@ -23,81 +24,84 @@ const FamilyDashboard = () => {
     navigate(url);
   };
   return (
-    <Box ml="20px">
-      {/* HEADER */}
-      <Box display="flex" justifyContent="space-between" alignItems="center">
-        <Header title="Hello" subtitle="Welcome to your dashboard" />
+    <>
+      <Nav />
+      <Box ml="20px">
+        {/* HEADER */}
+        <Box display="flex" justifyContent="space-between" alignItems="center">
+          <Header title="Hello" subtitle="Welcome to your dashboard" />
 
-        {/* SEARCH BOX */}
-        <Box
-          display="flex"
-          bgcolor={"#e4e5e2"}
-          borderRadius={"3px"}
-          marginRight={"20px"}
-        >
-          <InputBase sx={{ ml: 1, flex: 1 }} placeholder="Search"></InputBase>
-          <IconButton type="button" sx={{ p: 1 }}>
-            <Search />
-          </IconButton>
+          {/* SEARCH BOX */}
+          <Box
+            display="flex"
+            bgcolor={"#e4e5e2"}
+            borderRadius={"3px"}
+            marginRight={"20px"}
+          >
+            <InputBase sx={{ ml: 1, flex: 1 }} placeholder="Search"></InputBase>
+            <IconButton type="button" sx={{ p: 1 }}>
+              <Search />
+            </IconButton>
+          </Box>
         </Box>
-      </Box>
 
-      {/* Main boxes */}
-      <div className="main-cards">
-        <div>
-          <Lottie animationData={HappyFamily} />
-        </div>
-        <div className="cards">
-          <div className="card-inner">
-            <h8>MY PREGNANCIES</h8>
-            <Lottie style={{ height: 100 }} animationData={pregnant} />
-          </div>
-        </div>
-        <div className="cards">
-          <div className="card-inner">
-            <h8>MY BABIES</h8>
-            <Lottie
-              style={{ height: 90 }}
-              animationData={baby}
-              onClick={() => handleNavigation("/family/mybabies")}
-            />
-          </div>
-        </div>
-        <div className="cards">
-          <div className="card-inner">
-            <h8>MY PROFILE</h8>
-            <Lottie style={{ height: 70 }} animationData={profile} />
-          </div>
-        </div>
-        <div className="cards">
-          <div className="card-inner">
-            <h8>SUMMARY REPORTS</h8>
-            <Lottie style={{ height: 100 }} animationData={reports} />
-          </div>
-        </div>
-      </div>
-
-      <div className="second">
-        <div className="calendar">
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DateCalendar />
-          </LocalizationProvider>
-        </div>
-        <div className="upcomingClinics">
-          <div marginLeft="20px">
-            <h8> UPCOMING CLINICS</h8>
-          </div>
-
+        {/* Main boxes */}
+        <div className="main-cards">
           <div>
-            <Upcomings />
+            <Lottie animationData={HappyFamily} />
+          </div>
+          <div className="cards">
+            <div className="card-inner">
+              <h6>MY PREGNANCIES</h6>
+              <Lottie style={{ height: 100 }} animationData={pregnant} />
+            </div>
+          </div>
+          <div className="cards">
+            <div className="card-inner">
+              <h6>MY BABIES</h6>
+              <Lottie
+                style={{ height: 90 }}
+                animationData={baby}
+                onClick={() => handleNavigation("/family/mybabies")}
+              />
+            </div>
+          </div>
+          <div className="cards">
+            <div className="card-inner">
+              <h6>MY PROFILE</h6>
+              <Lottie style={{ height: 70 }} animationData={profile} />
+            </div>
+          </div>
+          <div className="cards">
+            <div className="card-inner">
+              <h6>SUMMARY REPORTS</h6>
+              <Lottie style={{ height: 100 }} animationData={reports} />
+            </div>
           </div>
         </div>
-        <div>
-          <h8>Grab Your Favourite Articles From Here!</h8>
-          <Lottie animationData={clinic} />
+
+        <div className="second">
+          <div className="calendar">
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DateCalendar />
+            </LocalizationProvider>
+          </div>
+          <div className="upcomingClinics">
+            <div sx={{ marginLeft: "20px" }}>
+              <h6> UPCOMING CLINICS</h6>
+            </div>
+
+            <div>
+              <Upcomings />
+            </div>
+          </div>
+          <div>
+            <h6>Grab Your Favourite Articles From Here!</h6>
+            <Lottie animationData={clinic} />
+          </div>
         </div>
-      </div>
-    </Box>
+      </Box>
+    </>
   );
 };
 export default FamilyDashboard;

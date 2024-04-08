@@ -6,6 +6,10 @@ import Box from "@mui/material/Box";
 import DefaultButton from "../../../../../Components/Button/DefaultButton";
 import SideBar from "../../../../../Components/SideBar";
 import { babyRegistrationSchema } from "../../../../../Pages/Validations/validation";
+import BabyRegistrationForm1Service, {
+  registerbaby,
+} from "../../../../../Services/BabyRegistrationForm1Service";
+import DisplaySidebar from "../../../../../Components/DisplaySidebar";
 
 function BabyRegistrationForm1() {
   return (
@@ -15,20 +19,23 @@ function BabyRegistrationForm1() {
         pregnancy_id: "",
         b_Name: "",
         b_Reg_Num: "",
-        b_Reg_Date: "",
         b_MOH_Division: "",
-        b_FSHO_Division: "",
         b_Mother_Age: "",
+        b_Reg_Date: "",
+        b_FSHO_Division: "",
       }}
       enableReinitialize={true}
       validationSchema={babyRegistrationSchema}
       validateOnChange={false}
       onSubmit={async (values, { setSubmitting }) => {
         try {
+          const response = await registerbaby(values);
+          if (response.status === 200) {
+            console.log("success");
+          }
+          console.log(response);
         } catch (error) {
           console.error("Error submitting form:", error.message);
-        } finally {
-          setSubmitting(false);
         }
       }}
     >
@@ -43,7 +50,7 @@ function BabyRegistrationForm1() {
         <Form>
           <Box sx={{ display: "flex" }}>
             <Box sx={{ width: "25%", display: "flex", maxWidth: "200px" }}>
-              <SideBar />
+              <DisplaySidebar />
             </Box>
 
             {/* Form */}
