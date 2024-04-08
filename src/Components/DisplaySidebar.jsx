@@ -41,7 +41,7 @@ const DisplaySidebar = () => {
     sideBarHander = midwife;
   } else if (authContext.position == "Family") {
     sideBarHander = family;
-  } else if (authContext.position == "Vog") {
+  } else if (authContext.position == "VogDoctor") {
     sideBarHander = vog;
   } else if (authContext.position == "MOH") {
     sideBarHander = moh;
