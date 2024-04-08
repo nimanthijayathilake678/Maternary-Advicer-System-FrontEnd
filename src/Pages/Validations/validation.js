@@ -17,6 +17,33 @@ export const babyRegistrationSchema = Yup.object({
     .min(0, "Mother's age must be greater than or equal to 0")
     .max(150, "Mother's age must be less than or equal to 150"),
 });
+
+
+
+export const userRegistrationSchema = Yup.object({
+  fullName: Yup.string().required('Full Name is required'),
+  nicNo: Yup.string().matches(/^(?:\d{9}[xXvV]|\d{12})$/,'Nic must be valid Type').required('NIC No. is required'),
+  birthday: Yup.string().required('Birthday is required'),
+  contactNo: Yup.string().matches(/^\d{10}$/, 'Contact No. must be 10 digits').required('Contact No. is required'),
+  email: Yup.string().email('Invalid email').required('Email is required'),
+  occupation: Yup.string().required('Occupation is required'),
+  area: Yup.string().required('Area is required'),
+  username: Yup.string().min(8, 'Username must be at least 8 characters').required('Username is required'),
+  password: Yup.string().matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/, 'Password must contain at least one uppercase letter, one lowercase letter, and one number. Minimum 8 characters.').required('Password is required'),
+  confirmPassword: Yup.string().oneOf([Yup.ref('password'), null], 'Passwords must match').required('Confirm Password is required')
+});
+
+
+export const hospitalCareSchema = Yup.object({
+  pregnancyRegNo: Yup.string().required('Pregnancy Registration Number is required'),
+  eligibilityRegNo: Yup.string().required('Eligibility Registration Number is required'),
+  clinicId: Yup.string().required('Clinic ID is required'),
+  nextVisitDate: Yup.string().required('Date is required'),
+  doctorId: Yup.string().required('Doctor ID is required'),
+  designation: Yup.string().required('Designation is required'),
+  
+}); 	
+
 export const babyRegistrationSchema2 = Yup.object({
   birthGivenHospital: Yup.string().required("Birth given hospital required"),
   weightAtBirth: Yup.string().required("Birth weight required"),
@@ -24,3 +51,4 @@ export const babyRegistrationSchema2 = Yup.object({
   headSizeAtBirth: Yup.string().required("Birth head size required"),
   lengthAtBirth: Yup.string().required("Birth length required"),
 });
+
