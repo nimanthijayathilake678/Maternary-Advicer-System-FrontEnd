@@ -6,7 +6,7 @@ import Box from "@mui/material/Box";
 import BabyRegistrationForm1Service, {
   getRegisterBaby,
 } from "../../Services/BabyRegistrationForm1Service";
-
+import DisplaySidebar from "../../Components/DisplaySidebar";
 const VISIBLE_FIELDS = [
   "id",
   "couple_id",
@@ -42,7 +42,7 @@ export default function VogRegisterdBabies() {
   return (
     <Box sx={{ display: "flex" }}>
       <div style={{ display: "flex", height: "100vh", overflowX: "hidden" }}>
-        <SideBar />
+        <DisplaySidebar />
         <div style={{ flex: 1, overflowX: "hidden" }}>
           <div style={{ height: "100vh", width: "100%" }}>
             <Typography
