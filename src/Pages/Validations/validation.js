@@ -45,10 +45,19 @@ export const hospitalCareSchema = Yup.object({
 }); 	
 
 export const babyRegistrationSchema2 = Yup.object({
-  birthGivenHospital: Yup.string().required("Birth given hospital required"),
-  weightAtBirth: Yup.string().required("Birth weight required"),
+  birthGivenHospital: Yup.string().required("Birth given hospital is required"),
+  weightAtBirth: Yup.string().required("Birth weight is required"),
   wayOfBirth: Yup.string().required("Birth way is required"),
-  headSizeAtBirth: Yup.string().required("Birth head size required"),
-  lengthAtBirth: Yup.string().required("Birth length required"),
+  headSizeAtBirth: Yup.string().required("Birth head size is required"),
+  lengthAtBirth: Yup.string().required("Birth length is required"),
 });
 
+export const addRefferalSchema = Yup.object({
+  pregnancyRegNo: Yup.string().required("Pregnancy Registration Number is required"),
+  eligibilityRegNo: Yup.string().required("Eligibility Registration Number is required"),
+  refId: Yup.string().required("Refference Id is required"),
+  refererId: Yup.string().required("Referer Id is required"),
+  refererRole: Yup.string().required("Referer Role is required"),
+  description: Yup.string().required("Description is required"),
+
+});

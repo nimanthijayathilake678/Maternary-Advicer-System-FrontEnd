@@ -4,6 +4,7 @@ import Grid from "@mui/material/Grid";
 import SideBar from "../../Components/SideBar";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { hospitalCareSchema } from "../Validations/validation";
+import { Link } from "react-router-dom";
 
 function MyForm() {
   return (
@@ -396,11 +397,9 @@ function MyForm() {
                       helperText={touched.designation && errors.designation}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={12}>
-                    <Button
+                  <Grid item xs={12} sm={6}>
+                    <Button variant="contained" 
                       type="submit"
-                      height="40px"
-                      width="150px"
                       title="Register"
                       disabled={isSubmitting}
                       style={{ marginTop: "20px" }}
@@ -414,6 +413,13 @@ function MyForm() {
                     >
                       Submit
                     </Button>
+                  </Grid>
+                  
+                  <Grid item xs={12} sm={6}>
+                    <Link to="/vog/add_patients_details/refferal">
+                      <Button variant="contained" color="primary">Add Refferal
+                      </Button>
+                    </Link>
                   </Grid>
                 </Grid>
               </Box>
