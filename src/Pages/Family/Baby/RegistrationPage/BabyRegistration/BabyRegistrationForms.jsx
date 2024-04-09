@@ -7,11 +7,14 @@ import DefaultButton from "../../../../../Components/Button/DefaultButton";
 import SideBar from "../../../../../Components/SideBar";
 import { babyRegistrationSchema } from "../../../../../Pages/Validations/validation";
 import BabyRegistrationForm2 from "./BabyRegistrationForm2";
+import BabyRegistrationForm3 from "./BabyRegistrationForm3";
+import BabyRegistrationForm4 from "./BabyRegistrationForm4";
+import DisplaySidebar from "../../../../../Components/DisplaySidebar";
 function BabyRegistrationForm1() {
   return (
     <Box sx={{ display: "flex" }}>
       <Box sx={{ width: "25%", display: "flex", maxWidth: "200px" }}>
-        <SideBar />
+        <DisplaySidebar />
       </Box>
 
       {/* Form */}

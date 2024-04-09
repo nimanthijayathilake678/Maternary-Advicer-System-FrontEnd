@@ -197,7 +197,7 @@ export const AppRoutes = {
   },
   vog_babyhealth: {
     path: "/vog/newbabyhealth",
-    component: <BabyRegistrationForms />,
+    component: <BabyRegistrationStepper />,
   },
   vog_personal: {
     path: "/vog/personal_Info",
