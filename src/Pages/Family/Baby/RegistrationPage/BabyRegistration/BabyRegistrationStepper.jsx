@@ -16,7 +16,7 @@ import AlertTitle from "@mui/material/AlertTitle";
 import ChildFriendlyIcon from "@mui/icons-material/ChildFriendly";
 import Theme from "../../../../../Components/Theme";
 import SideBar from "../../../../../Components/SideBar";
-
+import DisplaySidebar from "../../../../../Components/DisplaySidebar";
 function CustomStepIcon(props) {
   const { active, completed, icon } = props;
 
@@ -94,7 +94,7 @@ export default function BabyRegistrationStepper() {
               height: "100%",
             }}
           >
-            <SideBar />
+            <DisplaySidebar />
           </Box>
         </Grid>
         {/* Main Content */}
