@@ -54,6 +54,7 @@ import PregnancyRegistration from "../Pages/Midwife/PregnancyRegistration";
 import BabyRegistrationForm2 from "../Pages/Family/Baby/RegistrationPage/BabyRegistration/BabyRegistrationForm2";
 import BabyRegistrationForms from "../Pages/Family/Baby/RegistrationPage/BabyRegistration/BabyRegistrationForms";
 import VogRegisterdBabies from "../Pages/VOGDoctor/VogRegisterdBabies";
+import AddRefferal from "../Pages/VOGDoctor/AddRefferal";
 export const AppRoutes = {
   login: { path: "/login", component: <Login /> },
 
@@ -215,6 +216,11 @@ export const AppRoutes = {
     path: "/vog/add_patients_details",
     component: <AddPatientsDetails />,
   },
+  vog_add_patients_details_refferals: {
+    path: "/vog/add_patients_details/refferal",
+    component: <AddRefferal />,
+  },
+
   vog_registerd_babies: {
     path: "/vog/show_registerd_babies",
     component: <VogRegisterdBabies />,
