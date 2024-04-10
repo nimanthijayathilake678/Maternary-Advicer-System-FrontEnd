@@ -37,7 +37,6 @@ export const userRegistrationSchema = Yup.object({
 export const hospitalCareSchema = Yup.object({
   pregnancyRegNo: Yup.string().required('Pregnancy Registration Number is required'),
   eligibilityRegNo: Yup.string().required('Eligibility Registration Number is required'),
-  clinicId: Yup.string().required('Clinic ID is required'),
   nextVisitDate: Yup.string().required('Date is required'),
   doctorId: Yup.string().required('Doctor ID is required'),
   designation: Yup.string().required('Designation is required'),

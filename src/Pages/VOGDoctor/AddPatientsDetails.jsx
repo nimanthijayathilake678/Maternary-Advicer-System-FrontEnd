@@ -12,7 +12,6 @@ function MyForm() {
       initialValues={{
         pregnancyRegNo: "",
         eligibilityRegNo: "",
-        clinicId: "",
         poa: "",
         urine: "",
         oedema: "",
@@ -75,7 +74,7 @@ function MyForm() {
               >
                 <div>
                   <span className="text-xl text-[#2A777C] text-center font-bold">
-                    Register New Born
+                    Hospital Clinic Care
                   </span>
                 </div>
               </Box>
@@ -122,17 +121,7 @@ function MyForm() {
                       }
                     />
                   </Grid>
-                  <Grid item xs={12} sm={4}>
-                    <TextField
-                      fullWidth
-                      label="Clinic ID"
-                      name="clinicId"
-                      value={values.ClinicId}
-                      onChange={handleChange}
-                      error={touched.clinicId && Boolean(errors.clinicId)}
-                      helperText={touched.clinicId && errors.clinicId}
-                    />
-                  </Grid>
+                 
                   <Grid item xs={12} sm={4}>
                     <TextField
                       fullWidth
