@@ -18,6 +18,7 @@ import TableRow from "@mui/material/TableRow";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 import Grid from "@mui/material/Grid";
+import useAuth from "../../Hooks/useAuth";
 
 const VISIBLE_FIELDS = [
   "id",
@@ -33,11 +34,14 @@ const VISIBLE_FIELDS = [
 
 export default function FamilyMyBabies() {
   const [customDataset, setCustomDataset] = useState([]);
+  const authContext = useAuth();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await getRegisterBabyByCoupleNum();
+        var registrationNum = authContext.user.regNum;
+        //console.log(registrationNum);
+        const response = await getRegisterBabyByCoupleNum(registrationNum);
         const data = response.data.map((row, index) => ({
           id: index + 1, // Generate unique id for each row
           ...row,
