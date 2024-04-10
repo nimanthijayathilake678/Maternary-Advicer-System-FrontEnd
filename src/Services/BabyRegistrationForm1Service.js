@@ -32,9 +32,11 @@ export const getRegisterBabyByBabyNum = async () => {
   }
 };
 
-export const getRegisterBabyByCoupleNum = async () => {
+export const getRegisterBabyByCoupleNum = async (coupleNum) => {
   try {
-    const response = await apiClient.get("/getbabyInfoByCoupleNum/{coupleNum}");
+    const response = await apiClient.get(
+      `/newbaby/getbabyInfoByCoupleNum/${coupleNum}`
+    );
     console.log(response);
     return response;
   } catch (err) {
