@@ -113,25 +113,25 @@ export const AppRoutes = {
     component: <FamilyMyBabies />,
   },
   family_baby_immunization: {
-    path: "/family/babyDashboard/immunization",
+    path: `/family/babyDashboard/immunization/:id`,
     component: <BabyImmunization />,
   },
 
   family_baby_referels: {
-    path: "/family/babyDashboard/immunization/referels",
+    path: `/family/babyDashboard/immunization/referels/:id`,
     component: <BabyReferels />,
   },
 
   family_baby_nutrients: {
-    path: "/family/babyDashboard/nutrients",
+    path: `/family/babyDashboard/nutrients/:id`,
     component: <BabyNutrients />,
   },
   family_baby_weight: {
-    path: "/family/babyDashboard/weight",
+    path: `/family/babyDashboard/weight/:id`,
     component: <BabyWeight />,
   },
   family_baby_newborn_health: {
-    path: "/family/babyDashboard/babyhealth",
+    path: `/family/babyDashboard/babyhealth/:id`,
     component: <BabyNewBornHelath />,
   },
   //Midwife Page ROutes
