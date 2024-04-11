@@ -29,16 +29,22 @@ import medicare from "../../../Assest/Lottie/medicare.json";
 import Nav from "../../../Components/Nav";
 import SideBar from "../../../Components/SideBar";
 import DisplaySidebar from "../../../Components/DisplaySidebar";
+import { useParams } from "react-router-dom";
 const BabyDashboard = () => {
   const navigate = useNavigate();
   const [value, setValue] = React.useState("one");
+  const { id } = useParams();
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
   const handleNavigation = (url) => {
     navigate(url);
   };
-
+  const handleNavigationClick = (id) => {
+    // Handle the click event for the ViewProfile button
+    console.log(`ViewProfile button clicked for row with id ${id}`);
+    navigate(`/family/babyDashboard/babyProfile/${id}`);
+  };
   return (
     <>
       <Nav />
@@ -74,19 +80,13 @@ const BabyDashboard = () => {
               <Grid item xs={12} sm={3}>
                 <div className="cards">
                   <div className="card-inner">
-                    <h6
-                      onClick={() =>
-                        handleNavigation("/family/babyDashboard/babyProfile")
-                      }
-                    >
+                    <h6 onClick={() => handleNavigationClick(id)}>
                       BASIC INFORMATION
                     </h6>
                     <Lottie
                       style={{ height: 60 }}
                       animationData={profile}
-                      onClick={() =>
-                        handleNavigation("/family/babyDashboard/babyProfile")
-                      }
+                      onClick={() => handleNavigationClick(id)}
                     />
                   </div>
                 </div>
