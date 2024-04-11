@@ -13,7 +13,7 @@ export const babyimmunization = async (values) => {
 export const getbabyImmunization = async () => {
   try {
     const response = await apiClient.get(
-      "/newbabyimmune/getbabyImmune/{babyNum}"
+      `/newbabyimmune/getbabyImmune/${babyNum}`
     );
     console.log(response);
     return response;
