@@ -21,9 +21,9 @@ export const getRegisterBaby = async () => {
   }
 };
 
-export const getRegisterBabyByBabyNum = async () => {
+export const getRegisterBabyByBabyNum = async (babyNum) => {
   try {
-    const response = await apiClient.get("/newbaby/getbabyInfo{babyNum}");
+    const response = await apiClient.get(`/newbaby/getbabyInfo/${babyNum}`);
     console.log(response);
     return response;
   } catch (err) {
