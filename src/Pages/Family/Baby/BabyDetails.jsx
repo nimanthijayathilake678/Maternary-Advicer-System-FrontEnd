@@ -7,7 +7,6 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
-import SideBar from "../../../Components/SideBar";
 import { Typography } from "@mui/material";
 import DisplaySidebar from "../../../Components/DisplaySidebar";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
@@ -16,6 +15,7 @@ import BabyRegistrationForm1Service, {
   getRegisterBabyByBabyNum,
 } from "../../../Services/BabyRegistrationForm1Service";
 import useAuth from "../../../Hooks/useAuth";
+import { useParams } from "react-router-dom";
 
 const VISIBLE_FIELDS_ONE = [
   "pregnancy_id",
@@ -29,11 +29,12 @@ const VISIBLE_FIELDS_ONE = [
 export default function BabyDetails() {
   const [customDataset, setCustomDataset] = useState([]);
   const authContext = useAuth();
-
+  const { id } = useParams();
   useEffect(() => {
+    console.log("Fetching data for baby with ID:", id);
     const fetchData = async () => {
       try {
-        const response = await getRegisterBabyByBabyNum();
+        const response = await getRegisterBabyByBabyNum(id);
         const data = response.data.map((row, index) => ({
           id: index + 1, // Generate unique id for each row
           ...row,
@@ -63,7 +64,7 @@ export default function BabyDetails() {
                 paddingTop: "40px",
               }}
             >
-              My Babies
+              My Profile
             </Typography>
 
             <DataGrid

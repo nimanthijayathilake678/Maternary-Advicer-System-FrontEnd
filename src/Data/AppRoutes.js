@@ -99,7 +99,7 @@ export const AppRoutes = {
   // },
 
   family_baby_profile: {
-    path: "/family/babyDashboard/babyProfile",
+    path: `/family/babyDashboard/babyProfile/:id`,
     component: <BabyDetails />,
   },
 
