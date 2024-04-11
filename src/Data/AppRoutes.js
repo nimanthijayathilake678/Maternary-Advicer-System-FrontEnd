@@ -104,7 +104,7 @@ export const AppRoutes = {
   },
 
   family_baby_dashboard: {
-    path: "/family/babyDashboard",
+    path: `/family/babyDashboard/:id`,
     component: <BabyDashboard />,
   },
 

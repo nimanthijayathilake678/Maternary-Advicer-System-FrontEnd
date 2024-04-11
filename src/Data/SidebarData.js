@@ -35,7 +35,7 @@ export const family = [
     subMenu: [
       {
         name: "Baby Profile",
-        path: "/family/babyDashboard/babyProfile",
+        path: `/family/babyDashboard/babyProfile/:id`,
       },
       {
         name: "Baby Immunization",
