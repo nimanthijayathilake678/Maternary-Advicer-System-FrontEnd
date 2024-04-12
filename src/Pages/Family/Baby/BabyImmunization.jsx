@@ -19,8 +19,8 @@ import BabyImmunizationService, {
   babyimmunization,
 } from "../../../Services/BabyImmunizationService.js";
 import { useParams } from "react-router-dom";
+
 function BabyImmunization() {
-  const { id } = useParams();
   return (
     <Formik
       initialValues={{
