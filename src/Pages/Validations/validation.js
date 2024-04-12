@@ -78,11 +78,12 @@ export const addRefferalSchema = Yup.object({
 });
 
 export const babyImmunizationSchema = Yup.object({
+  babyNum: Yup.string().required("Baby Number is required"),
   vaccineName: Yup.string().required("Vaccine Name is required"),
   ageForVaccine: Yup.number()
     .required("Age of Baby is required")
     .min(0, "Baby's age must be greater than 0")
-    .max(150, "Mother's age must be less than or equal to 150"),
+    .max(150, "baby's age must be less than or equal to 18"),
   vaccineDate: Yup.date().required("Date of Vaccination is required"),
   batchNo: Yup.string().required("Vaccicine BatchNo is required"),
   adverseEffects: Yup.string().required(
