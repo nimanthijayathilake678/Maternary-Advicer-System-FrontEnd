@@ -90,3 +90,14 @@ export const babyImmunizationSchema = Yup.object({
     "Notes for any Condition of Adverse or if not any comment of it is required"
   ),
 });
+
+export const babyNutrientsSchema = Yup.object({
+  babyNum: Yup.string().required("Baby Number is required"),
+  nutrientName: Yup.string().required("Nutrient Name is required"),
+  ageForNutrientDate: Yup.number()
+    .required("Age of Baby is required")
+    .min(0, "Baby's age must be greater than 0")
+    .max(150, "baby's age must be less than or equal to 18"),
+  nutrientDate: Yup.date().required("Date of Nutrients given is required"),
+  nutrientBatchNo: Yup.string().required("Nutrient BatchNo is required"),
+});
