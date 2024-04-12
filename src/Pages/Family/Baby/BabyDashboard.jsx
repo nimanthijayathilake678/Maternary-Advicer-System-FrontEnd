@@ -45,6 +45,10 @@ const BabyDashboard = () => {
     console.log(`ViewProfile button clicked for row with id ${id}`);
     navigate(`/family/babyDashboard/babyProfile/${id}`);
   };
+  const handleNavigationClickImmune = (id) => {
+    // Handle the click event for the ViewProfile button
+    navigate(`/family/babyDashboard/immunization/${id}`);
+  };
   return (
     <>
       <Nav />
@@ -94,19 +98,13 @@ const BabyDashboard = () => {
               <Grid item xs={12} sm={3}>
                 <div className="cards">
                   <div className="card-inner">
-                    <h6
-                      onClick={() =>
-                        handleNavigation("/family/babyDashboard/immunization")
-                      }
-                    >
+                    <h6 onClick={() => handleNavigationClickImmune(id)}>
                       BABY IMMUNIZATION
                     </h6>
                     <Lottie
                       style={{ height: 60 }}
                       animationData={reports}
-                      onClick={() =>
-                        handleNavigation("/family/babyDashboard/immunization")
-                      }
+                      onClick={() => handleNavigationClickImmune(id)}
                     />
                   </div>
                 </div>

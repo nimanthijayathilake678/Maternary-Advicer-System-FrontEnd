@@ -10,7 +10,7 @@ export const babyimmunization = async (values) => {
   }
 };
 
-export const getbabyImmunization = async () => {
+export const getbabyImmunization = async (babyNum) => {
   try {
     const response = await apiClient.get(
       `/newbabyimmune/getbabyImmune/${babyNum}`
