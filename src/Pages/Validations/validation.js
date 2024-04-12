@@ -92,7 +92,7 @@ export const babyImmunizationSchema = Yup.object({
 });
 
 export const babyNutrientsSchema = Yup.object({
-  babyNum: Yup.string().required("Baby Number is required"),
+  babynum: Yup.string().required("Baby Number is required"),
   nutrientName: Yup.string().required("Nutrient Name is required"),
   ageForNutrientDate: Yup.number()
     .required("Age of Baby is required")

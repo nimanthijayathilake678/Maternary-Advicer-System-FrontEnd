@@ -13,10 +13,10 @@ export const babynutrients = async (values) => {
   }
 };
 
-export const getbabynutrients = async () => {
+export const getbabynutrients = async (babyNum) => {
   try {
     const response = await apiClient.get(
-      "/babyNutrients/getbabyNutrients/{babyNum}"
+      `/babyNutrients/getbabyNutrients/${babyNum}`
     );
     console.log(response);
     return response;

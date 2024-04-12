@@ -41,13 +41,14 @@ const BabyDashboard = () => {
     navigate(url);
   };
   const handleNavigationClick = (id) => {
-    // Handle the click event for the ViewProfile button
     console.log(`ViewProfile button clicked for row with id ${id}`);
     navigate(`/family/babyDashboard/babyProfile/${id}`);
   };
   const handleNavigationClickImmune = (id) => {
-    // Handle the click event for the ViewProfile button
     navigate(`/family/babyDashboard/immunization/${id}`);
+  };
+  const handleNavigationClickNutrients = (id) => {
+    navigate(`/family/babyDashboard/nutrients/${id}`);
   };
   return (
     <>
@@ -112,35 +113,18 @@ const BabyDashboard = () => {
               <Grid item xs={12} sm={3}>
                 <div className="cards">
                   <div className="card-inner">
-                    <h6
-                      onClick={() =>
-                        handleNavigation("/family/babyDashboard/nutrients")
-                      }
-                    >
+                    <h6 onClick={() => handleNavigationClickNutrients(id)}>
                       BABY NUTRIENTS
                     </h6>
                     <Lottie
                       style={{ height: 90 }}
                       animationData={baby2}
-                      onClick={() =>
-                        handleNavigation("/family/babyDashboard/nutrients")
-                      }
+                      onClick={() => handleNavigationClickNutrients(id)}
                     />
                   </div>
                 </div>
               </Grid>
-              <Grid item xs={12} sm={3}>
-                <div className="cards">
-                  <div className="card-inner">
-                    <h8 onClick={() => handleNavigation("")}>BABY CARE</h8>
-                    <Lottie
-                      style={{ height: 150 }}
-                      animationData={babyDash}
-                      onClick={() => handleNavigation("")}
-                    />
-                  </div>
-                </div>
-              </Grid>
+
               <Grid item xs={12} sm={3}>
                 <div className="cards">
                   <div className="card-inner">

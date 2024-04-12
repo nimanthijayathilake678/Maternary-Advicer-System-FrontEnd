@@ -206,7 +206,7 @@ function BabyImmunization() {
     </Formik>
   );
 }
-
+export default BabyImmunization;
 // function BabyImmunization() {
 //   return (
 //     <div>
@@ -385,5 +385,3 @@ function BabyImmunization() {
 //     </div>
 //   );
 // }
-
-export default BabyImmunization;
