@@ -93,11 +93,6 @@ export const AppRoutes = {
     component: <FamilyProfile />,
   },
 
-  // family_baby_profile: {
-  //   path: "/family/babyDashboard/babyProfile",
-  //   component: <BabyProfile />,
-  // },
-
   family_baby_profile: {
     path: `/family/babyDashboard/babyProfile/:id`,
     component: <BabyDetails />,
