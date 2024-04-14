@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { Box, Grid } from "@mui/material";
@@ -17,10 +17,53 @@ import DefaultButton from "../../../Components/Button/DefaultButton.jsx";
 import { babyImmunizationSchema } from "../../../Pages/Validations/validation.js";
 import BabyImmunizationService, {
   babyimmunization,
+  getbabyImmunization,
 } from "../../../Services/BabyImmunizationService.js";
 import { useParams } from "react-router-dom";
+import useAuth from "../../../Hooks/useAuth";
+import { useNavigate } from "react-router-dom";
+import { Typography } from "@mui/material";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
+
+const VISIBLE_FIELDS_ONE = [
+  "babyNum",
+  "vaccineName",
+  "ageForVaccine",
+  "vaccineDate",
+  "batchNo",
+  "adverseEffects",
+];
 
 function BabyImmunization() {
+  const [customDataset, setCustomDataset] = useState([]);
+  const navigate = useNavigate();
+  const authContext = useAuth();
+  const { id } = useParams();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await getbabyImmunization(id);
+        const data = response.data.map((row, index) => ({
+          id: index + 1, // Generate unique id for each row
+          ...row,
+        }));
+        setCustomDataset(data);
+      } catch (error) {
+        console.log("Error getting data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const handleViewProfileClick = (id) => {
+    // Handle the click event for the ViewProfile button
+    console.log(`ViewProfile button clicked for row with id ${id}`);
+    navigate(`/family/babyDashboard/${id}`);
+    // navigate(`/family/babyDashboard/babyProfile/${id}`);
+  };
+
   return (
     <Formik
       initialValues={{
@@ -200,6 +243,62 @@ function BabyImmunization() {
                 </Grid>
               </Box>
             </Box>
+          </Box>
+          <Box sx={{ display: "flex" }}>
+            <div
+              style={{ display: "flex", height: "100vh", overflowX: "hidden" }}
+            >
+              <DisplaySidebar />
+              <div
+                style={{ flex: 1, overflowX: "hidden", paddingLeft: "20px" }}
+              >
+                <div style={{ height: "100vh", width: "100%" }}>
+                  <div>
+                    <span className="text-xl text-[#2A777C] text-center font-bold">
+                      Baby Immunization History
+                    </span>
+                  </div>
+                  <DataGrid
+                    autoHeight
+                    rows={customDataset}
+                    columns={VISIBLE_FIELDS_ONE.map((field) => {
+                      if (field === "ViewProfile") {
+                        return {
+                          field: "ViewProfile",
+                          headerName: "View Profile",
+                          width: 150,
+                          renderCell: (params) => (
+                            <button
+                              onClick={() =>
+                                handleViewProfileClick(params.row.b_Reg_Num)
+                              }
+                              style={{
+                                padding: "6px 12px",
+                                borderRadius: "4px",
+                                backgroundColor: "#007bff",
+                                color: "#ffffff",
+                                border: "none",
+                                cursor: "pointer",
+                              }}
+                            >
+                              View
+                              {params.value}
+                            </button>
+                          ),
+                        };
+                      } else {
+                        return {
+                          field,
+                          headerName: field,
+                          width: 150, // Adjust width as needed
+                        };
+                      }
+                    })}
+                    components={{ Toolbar: GridToolbar }}
+                  />
+                </div>
+              </div>
+            </div>
           </Box>
         </Form>
       )}
