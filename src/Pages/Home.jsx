@@ -10,7 +10,7 @@ export default function Home() {
         <div
           xs={12}
           className="bg-[url-of-your-image] bg-cover bg-center w-full"
-          style={{ backgroundImage: `url(${babylogo})`, height: "500px" }}
+          style={{ backgroundImage: `url(${babylogo})`, height: "600px" }}
         >
           <div className="relative isolate px-6 pt-14 lg:px-8">
             <div
