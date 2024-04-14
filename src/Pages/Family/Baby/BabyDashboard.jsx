@@ -50,6 +50,9 @@ const BabyDashboard = () => {
   const handleNavigationClickNutrients = (id) => {
     navigate(`/family/babyDashboard/nutrients/${id}`);
   };
+  const handleNavigationClickNewBornHealth = (id) => {
+    navigate(`/family/babyDashboard/babyhealth/${id}`);
+  };
   return (
     <>
       <Nav />
@@ -148,19 +151,13 @@ const BabyDashboard = () => {
               <Grid item xs={12} sm={3}>
                 <div className="cards">
                   <div className="card-inner">
-                    <h8
-                      onClick={() =>
-                        handleNavigation("/family/babyDashboard/babyhealth")
-                      }
-                    >
+                    <h8 onClick={() => handleNavigationClickNewBornHealth(id)}>
                       Baby Helath
                     </h8>
                     <Lottie
                       style={{ height: 80 }}
                       animationData={BabyItem}
-                      onClick={() =>
-                        handleNavigation("/family/babyDashboard/babyhealth")
-                      }
+                      onClick={() => handleNavigationClickNewBornHealth(id)}
                     />
                   </div>
                 </div>

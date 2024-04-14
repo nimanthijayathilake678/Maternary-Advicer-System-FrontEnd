@@ -101,3 +101,18 @@ export const babyNutrientsSchema = Yup.object({
   nutrientDate: Yup.date().required("Date of Nutrients given is required"),
   nutrientBatchNo: Yup.string().required("Nutrient BatchNo is required"),
 });
+
+export const babyNewBornSchema = Yup.object({
+  babynum: Yup.string().required("Baby Number is required"),
+  skinColor: Yup.string().required("Skin color is required"),
+  temperature: Yup.number()
+    .required("Temperature of Baby is required")
+    .min(0, "Baby's temperature must be greater than 32C")
+    .max(150, "baby's age must be less than or equal to 42C"),
+  naturePecan: Yup.string().required("Baby Pecan Nature is required"),
+  breastFeeding: Yup.string().required(
+    "Baby breastfeeding  Nature is required"
+  ),
+  fecesColor: Yup.string().required("Baby feces color Nature is required"),
+  examineDate: Yup.date().required("Date of examin date given is required"),
+});
