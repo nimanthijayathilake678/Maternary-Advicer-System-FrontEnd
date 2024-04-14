@@ -116,3 +116,11 @@ export const babyNewBornSchema = Yup.object({
   fecesColor: Yup.string().required("Baby feces color Nature is required"),
   examineDate: Yup.date().required("Date of examin date given is required"),
 });
+
+export const babyReferelsSchema = Yup.object({
+  babynum: Yup.string().required("Baby Number is required"),
+  B_Immunization_Name: Yup.string().required("Immmune Name is required"),
+
+  B_Referel_Reason: Yup.string().required("Referel Reason is required"),
+  B_Referel_Place: Yup.string().required("Referel Place is required"),
+});
