@@ -45,7 +45,7 @@ function BabyImmunization() {
       try {
         const response = await getbabyImmunization(id);
         const data = response.data.map((row, index) => ({
-          id: index + 1, // Generate unique id for each row
+          id: index + 1,
           ...row,
         }));
         setCustomDataset(data);
