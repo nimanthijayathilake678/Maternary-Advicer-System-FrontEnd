@@ -26,12 +26,12 @@ import { Typography } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 
 const VISIBLE_FIELDS_ONE = [
-  "babyNum",
   "vaccineName",
   "ageForVaccine",
   "vaccineDate",
   "batchNo",
   "adverseEffects",
+  "addReferels",
 ];
 
 function BabyImmunization() {
@@ -60,7 +60,7 @@ function BabyImmunization() {
   const handleViewProfileClick = (id) => {
     // Handle the click event for the ViewProfile button
     console.log(`ViewProfile button clicked for row with id ${id}`);
-    navigate(`/family/babyDashboard/${id}`);
+    navigate(`/family/babyDashboard/immunization/referels/${id}`);
     // navigate(`/family/babyDashboard/babyProfile/${id}`);
   };
 
@@ -250,7 +250,7 @@ function BabyImmunization() {
             >
               <DisplaySidebar />
               <div
-                style={{ flex: 1, overflowX: "hidden", paddingLeft: "20px" }}
+                style={{ flex: 1, overflowX: "hidden", paddingLeft: "40px" }}
               >
                 <div style={{ height: "100vh", width: "100%" }}>
                   <div>
@@ -262,16 +262,14 @@ function BabyImmunization() {
                     autoHeight
                     rows={customDataset}
                     columns={VISIBLE_FIELDS_ONE.map((field) => {
-                      if (field === "ViewProfile") {
+                      if (field === "addReferels") {
                         return {
-                          field: "ViewProfile",
-                          headerName: "View Profile",
+                          field: "addReferels",
+                          headerName: "addReferels",
                           width: 150,
                           renderCell: (params) => (
                             <button
-                              onClick={() =>
-                                handleViewProfileClick(params.row.b_Reg_Num)
-                              }
+                              onClick={() => handleViewProfileClick(id)}
                               style={{
                                 padding: "6px 12px",
                                 borderRadius: "4px",
