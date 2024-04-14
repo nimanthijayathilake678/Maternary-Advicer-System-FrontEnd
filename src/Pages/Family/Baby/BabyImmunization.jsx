@@ -250,7 +250,7 @@ function BabyImmunization() {
             >
               <DisplaySidebar />
               <div
-                style={{ flex: 1, overflowX: "hidden", paddingLeft: "40px" }}
+                style={{ flex: 1, overflowX: "hidden", paddingLeft: "20px" }}
               >
                 <div style={{ height: "100vh", width: "100%" }}>
                   <div>
