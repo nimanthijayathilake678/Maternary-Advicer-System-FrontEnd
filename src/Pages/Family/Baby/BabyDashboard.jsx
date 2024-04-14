@@ -120,7 +120,7 @@ const BabyDashboard = () => {
                       BABY NUTRIENTS
                     </h6>
                     <Lottie
-                      style={{ height: 90 }}
+                      style={{ height: 60 }}
                       animationData={baby2}
                       onClick={() => handleNavigationClickNutrients(id)}
                     />
@@ -131,15 +131,15 @@ const BabyDashboard = () => {
               <Grid item xs={12} sm={3}>
                 <div className="cards">
                   <div className="card-inner">
-                    <h8
+                    <h6
                       onClick={() =>
                         handleNavigation("/family/babyDashboard/weight")
                       }
                     >
                       BABY GROWTH
-                    </h8>
+                    </h6>
                     <Lottie
-                      style={{ height: 80 }}
+                      style={{ height: 60 }}
                       animationData={baby3}
                       onClick={() =>
                         handleNavigation("/family/babyDashboard/weight")
@@ -151,11 +151,11 @@ const BabyDashboard = () => {
               <Grid item xs={12} sm={3}>
                 <div className="cards">
                   <div className="card-inner">
-                    <h8 onClick={() => handleNavigationClickNewBornHealth(id)}>
-                      Baby Helath
-                    </h8>
+                    <h6 onClick={() => handleNavigationClickNewBornHealth(id)}>
+                      BABY HEALTH
+                    </h6>
                     <Lottie
-                      style={{ height: 80 }}
+                      style={{ height: 60 }}
                       animationData={BabyItem}
                       onClick={() => handleNavigationClickNewBornHealth(id)}
                     />
