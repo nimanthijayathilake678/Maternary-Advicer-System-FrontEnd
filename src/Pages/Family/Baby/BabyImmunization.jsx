@@ -45,7 +45,7 @@ function BabyImmunization() {
       try {
         const response = await getbabyImmunization(id);
         const data = response.data.map((row, index) => ({
-          id: index + 1, // Generate unique id for each row
+          id: index + 1,
           ...row,
         }));
         setCustomDataset(data);
@@ -59,7 +59,7 @@ function BabyImmunization() {
 
   const handleViewProfileClick = (id) => {
     // Handle the click event for the ViewProfile button
-    console.log(`ViewProfile button clicked for row with id ${id}`);
+
     navigate(`/family/babyDashboard/immunization/referels/${id}`);
     // navigate(`/family/babyDashboard/babyProfile/${id}`);
   };
