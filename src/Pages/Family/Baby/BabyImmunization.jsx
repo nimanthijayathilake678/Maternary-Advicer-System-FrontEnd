@@ -59,7 +59,7 @@ function BabyImmunization() {
 
   const handleViewProfileClick = (id) => {
     // Handle the click event for the ViewProfile button
-    console.log(`ViewProfile button clicked for row with id ${id}`);
+
     navigate(`/family/babyDashboard/immunization/referels/${id}`);
     // navigate(`/family/babyDashboard/babyProfile/${id}`);
   };
