@@ -132,11 +132,11 @@ export const AppRoutes = {
   //Midwife Page ROutes
   midwife_home: { path: "/midwife", component: <MidwifeDashboard /> },
   midwife_eligible_couple_register: {
-    path: "/midwife/eligibleCoupleRegister",
+    path: "/midwife/eligibleFamilies/createAccountForNewCouple",
     component: <MidwifeEligibleCoupleRegistrationForm />,
   },
   midwife_eligible_families_register: {
-    path: "/midwife/eligibleFamilyRegister",
+    path: "/midwife/eligibleFamilies",
     component: <MidwifeEligibleFamilies />,
   },
 

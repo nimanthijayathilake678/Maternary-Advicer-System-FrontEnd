@@ -18,6 +18,7 @@ import useAuth from "../../Hooks/useAuth";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import DisplaySidebar from "../../Components/DisplaySidebar";
 
 const MidwifeDashboard = () => {
   const authContext = useAuth();
@@ -26,7 +27,12 @@ const MidwifeDashboard = () => {
     navigate(url);
   };
   return (
-    <Box m="20px">
+    <div style={{display:"flex"}}>
+      <div>
+        <DisplaySidebar/>
+      </div>
+      <div>
+      <Box m="20px">
       {/* HEADER */}
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <Header title="Hello - midwife" subtitle="Welcome to your dashboard" />
@@ -53,14 +59,15 @@ const MidwifeDashboard = () => {
 
         <div className="cards">
           <div className="card-inner">
-            <h8>MARRIED COUPLE REGISTRATION</h8>
-            <Lottie style={{ height: 110 }} animationData={marriedCouple} />
+            <h6 onClick={()=>handleNavigation("/midwife/eligibleFamilies/createAccountForNewCouple")}>MARRIED COUPLE REGISTRATION</h6>
+            <Lottie style={{ height: 110 }} animationData={marriedCouple}
+            onClick={()=>handleNavigation("/midwife/eligibleFamilies/createAccountForNewCouple")} />
           </div>
         </div>
 
         <div className="cards">
           <div className="card-inner">
-            <h8>PREGNANCY REGISTRATION</h8>
+            <h6 onClick={() => handleNavigation("/midwife/pregnancyRegistration")} >PREGNANCY REGISTRATION</h6>
             <Lottie style={{ height: 100 }} 
             animationData={pregnant}
             onClick={() => handleNavigation("/midwife/pregnancyRegistration")} />
@@ -69,8 +76,8 @@ const MidwifeDashboard = () => {
         
         <div className="cards">
           <div className="card-inner">
-            <h8>ELIGIBLE FAMILIES</h8>
-            <Lottie style={{ height: 110 }} animationData={HappyFamily} />
+            <h6 onClick={() => handleNavigation("/midwife/eligibleFamilies")}>ELIGIBLE FAMILIES</h6>
+            <Lottie style={{ height: 110 }} animationData={HappyFamily} onClick={() => handleNavigation("/midwife/eligibleFamilies")} />
           </div>
         </div>
         <div className="cards">
@@ -121,6 +128,10 @@ const MidwifeDashboard = () => {
         </div>
       </div>
     </Box>
+      </div>
+
+    </div>
+    
   );
 };
 export default MidwifeDashboard;
