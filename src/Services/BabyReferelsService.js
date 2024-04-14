@@ -13,10 +13,10 @@ export const babyreferels = async (values) => {
   }
 };
 
-export const getbabyreferels = async () => {
+export const getbabyreferels = async (babyNum) => {
   try {
     const response = await apiClient.get(
-      "/newbabyimmunereferels/getbabyImmuneReferel/{babyNum}"
+      `/newbabyimmunereferels/getbabyImmuneReferel/${babyNum}`
     );
     console.log(response);
     return response;
