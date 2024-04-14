@@ -118,9 +118,9 @@ export const babyNewBornSchema = Yup.object({
 });
 
 export const babyReferelsSchema = Yup.object({
-  babynum: Yup.string().required("Baby Number is required"),
-  B_Immunization_Name: Yup.string().required("Immmune Name is required"),
+  babyNum: Yup.string().required("Baby Number is required"),
+  b_Immunization_Name: Yup.string().required("Immmune Name is required"),
 
-  B_Referel_Reason: Yup.string().required("Referel Reason is required"),
-  B_Referel_Place: Yup.string().required("Referel Place is required"),
+  b_Referel_Reason: Yup.string().required("Referel Reason is required"),
+  b_Referel_Place: Yup.string().required("Referel Place is required"),
 });

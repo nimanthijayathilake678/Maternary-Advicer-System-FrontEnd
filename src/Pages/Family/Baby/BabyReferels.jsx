@@ -66,9 +66,9 @@ function BabyReferels() {
     <Formik
       initialValues={{
         babyNum: "",
-        B_Immunization_Name: "",
-        B_Referel_Reason: "",
-        B_Referel_Place: "",
+        b_Immunization_Name: "",
+        b_Referel_Reason: "",
+        b_Referel_Place: "",
       }}
       enableReinitialize={true}
       validationSchema={babyReferelsSchema}
@@ -147,17 +147,17 @@ function BabyReferels() {
                       required
                       fullWidth
                       placeholder="Vaccine Name"
-                      name="B_Immunization_Name"
+                      name="b_Immunization_Name"
                       label="Vaccine Name"
                       onChange={handleChange}
-                      value={values.B_Immunization_Name}
+                      value={values.b_Immunization_Name}
                       error={
-                        touched.B_Immunization_Name &&
-                        Boolean(errors.B_Immunization_Name)
+                        touched.b_Immunization_Name &&
+                        Boolean(errors.b_Immunization_Name)
                       }
                       helperText={
-                        touched.B_Immunization_Name &&
-                        errors.B_Immunization_Name
+                        touched.b_Immunization_Name &&
+                        errors.b_Immunization_Name
                       }
                     />
                   </Grid>
@@ -167,16 +167,16 @@ function BabyReferels() {
                       required
                       fullWidth
                       placeholder="Referel Reason"
-                      name="B_Referel_Reason"
+                      name="b_Referel_Reason"
                       label="Referel Reason"
                       onChange={handleChange}
-                      value={values.B_Referel_Reason}
+                      value={values.b_Referel_Reason}
                       error={
-                        touched.B_Referel_Reason &&
-                        Boolean(errors.B_Referel_Reason)
+                        touched.b_Referel_Reason &&
+                        Boolean(errors.b_Referel_Reason)
                       }
                       helperText={
-                        touched.B_Referel_Reason && errors.B_Referel_Reason
+                        touched.b_Referel_Reason && errors.b_Referel_Reason
                       }
                     />
                   </Grid>
@@ -187,16 +187,16 @@ function BabyReferels() {
                       required
                       fullWidth
                       placeholder="Referel Place"
-                      name="B_Referel_Place"
+                      name="b_Referel_Place"
                       label="Referel Place"
                       onChange={handleChange}
-                      value={values.B_Referel_Place}
+                      value={values.b_Referel_Place}
                       error={
-                        touched.B_Referel_Place &&
-                        Boolean(errors.B_Referel_Place)
+                        touched.b_Referel_Place &&
+                        Boolean(errors.b_Referel_Place)
                       }
                       helperText={
-                        touched.B_Referel_Place && errors.B_Referel_Place
+                        touched.b_Referel_Place && errors.b_Referel_Place
                       }
                     />
                   </Grid>
