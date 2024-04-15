@@ -58,7 +58,9 @@ const FamilyDashboard = () => {
           </div>
           <div className="cards">
             <div className="card-inner">
-              <h6>MY BABIES</h6>
+              <h6 onClick={() => handleNavigation("/family/mybabies")}>
+                MY BABIES
+              </h6>
               <Lottie
                 style={{ height: 90 }}
                 animationData={baby}

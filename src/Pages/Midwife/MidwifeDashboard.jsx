@@ -1,3 +1,4 @@
+import React from "react";
 import { Box, IconButton } from "@mui/material";
 import Header from "../../Components/Header";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -18,13 +19,25 @@ import useAuth from "../../Hooks/useAuth";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import Nav from "../../Components/Nav";
+import DisplaySidebar from "../../Components/DisplaySidebar";
+import { useParams } from "react-router-dom";
 
 const MidwifeDashboard = () => {
-  const authContext = useAuth();
   const navigate = useNavigate();
+  const [value, setValue] = React.useState("one");
+  const { id } = useParams();
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
   const handleNavigation = (url) => {
     navigate(url);
   };
+
+  const handleNavigationClickBaby = (id) => {
+    navigate(`/midwife/registerdbabies`);
+  };
+
   return (
     <Box m="20px">
       {/* HEADER */}
@@ -61,12 +74,14 @@ const MidwifeDashboard = () => {
         <div className="cards">
           <div className="card-inner">
             <h8>PREGNANCY REGISTRATION</h8>
-            <Lottie style={{ height: 100 }} 
-            animationData={pregnant}
-            onClick={() => handleNavigation("/midwife/pregnancyRegistration")} />
+            <Lottie
+              style={{ height: 100 }}
+              animationData={pregnant}
+              onClick={() => handleNavigation("/midwife/pregnancyRegistration")}
+            />
           </div>
         </div>
-        
+
         <div className="cards">
           <div className="card-inner">
             <h8>ELIGIBLE FAMILIES</h8>
@@ -82,11 +97,13 @@ const MidwifeDashboard = () => {
 
         <div className="cards">
           <div className="card-inner">
-            <h8>REGISTERD BABIES</h8>
+            <h8 onClick={() => handleNavigationClickBaby(id)}>
+              REGISTERD BABIES
+            </h8>
             <Lottie
               style={{ height: 120 }}
               animationData={pregnant}
-              onClick={() => handleNavigation("/midwife/registerdbabies")}
+              onClick={() => handleNavigationClickBaby(id)}
             />
           </div>
         </div>

@@ -151,7 +151,7 @@ export const AppRoutes = {
   },
 
   midwife_registerdbabies: {
-    path: "/midwife/registerdbabies",
+    path: `/midwife/registerdbabies/:id`,
     component: <RegisterdBabies />,
   },
 
