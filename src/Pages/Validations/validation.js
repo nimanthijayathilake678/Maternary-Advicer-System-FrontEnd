@@ -83,7 +83,7 @@ export const babyImmunizationSchema = Yup.object({
   ageForVaccine: Yup.number()
     .required("Age of Baby is required")
     .min(0, "Baby's age must be greater than 0")
-    .max(150, "baby's age must be less than or equal to 18"),
+    .max(18, "baby's age must be less than or equal to 18"),
   vaccineDate: Yup.date().required("Date of Vaccination is required"),
   batchNo: Yup.string().required("Vaccicine BatchNo is required"),
   adverseEffects: Yup.string().required(
@@ -97,13 +97,13 @@ export const babyNutrientsSchema = Yup.object({
   ageForNutrientDate: Yup.number()
     .required("Age of Baby is required")
     .min(0, "Baby's age must be greater than 0")
-    .max(150, "baby's age must be less than or equal to 18"),
+    .max(18, "baby's age must be less than or equal to 18"),
   nutrientDate: Yup.date().required("Date of Nutrients given is required"),
   nutrientBatchNo: Yup.string().required("Nutrient BatchNo is required"),
 });
 
 export const babyNewBornSchema = Yup.object({
-  babynum: Yup.string().required("Baby Number is required"),
+  babyNum: Yup.string().required("Baby Number is required"),
   skinColor: Yup.string().required("Skin color is required"),
   temperature: Yup.number()
     .required("Temperature of Baby is required")

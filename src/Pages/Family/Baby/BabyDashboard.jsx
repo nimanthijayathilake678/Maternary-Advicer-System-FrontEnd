@@ -30,6 +30,7 @@ import Nav from "../../../Components/Nav";
 import SideBar from "../../../Components/SideBar";
 import DisplaySidebar from "../../../Components/DisplaySidebar";
 import { useParams } from "react-router-dom";
+import SpecialMsg from "../../../Components/SpecialMsg";
 const BabyDashboard = () => {
   const navigate = useNavigate();
   const [value, setValue] = React.useState("one");
@@ -178,14 +179,7 @@ const BabyDashboard = () => {
 
           {/* Upcoming Clinics */}
           <Grid item xs={12} sm={5}>
-            <div className="upcomingClinics">
-              <div style={{ marginLeft: "20px" }}>
-                <h3>Upcoming Clinics</h3>
-              </div>
-              <div>
-                <UpcomingsBaby />
-              </div>
-            </div>
+            <SpecialMsg />
           </Grid>
           <Grid item xs={12} sm={3}>
             <Lottie style={{ height: 280 }} animationData={clinic} />
