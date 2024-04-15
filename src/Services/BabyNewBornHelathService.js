@@ -13,10 +13,10 @@ export const babynewbornhealth = async (values) => {
   }
 };
 
-export const getbabynewbornhealth = async () => {
+export const getbabynewbornhealth = async (babyNum) => {
   try {
     const response = await apiClient.get(
-      "/newbornhealth/getbabyHealth/{babyNum}"
+      `/newbornhealth/getbabyHealth/${babyNum}`
     );
     console.log(response);
     return response;
