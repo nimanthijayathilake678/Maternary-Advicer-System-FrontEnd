@@ -10,7 +10,7 @@ import BabyRegistrationForm1Service, {
   registerbaby,
 } from "../../../../../Services/BabyRegistrationForm1Service";
 import DisplaySidebar from "../../../../../Components/DisplaySidebar";
-import SuccessAlert from "../../../../../Components/SuccessAlert";
+import SuccessAlert from "../../../../../Components/SuccessMsg";
 
 function BabyRegistrationForm1() {
   const [showSuccessAlert, setShowSuccessAlert] = useState(false);

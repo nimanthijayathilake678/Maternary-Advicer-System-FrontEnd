@@ -4,7 +4,7 @@ import Theme from "./Theme";
 import styled from "@emotion/styled";
 import ReactDOM from "react-dom";
 import CheckIcon from "@mui/icons-material/Check";
-
+import CheckCircle from "@mui/icons-material/CheckCircleOutlineTwoTone";
 const theme = Theme();
 
 const Overly = styled(Stack)(({}) => ({
@@ -27,7 +27,7 @@ export default function SuccessAlert({ setAlert }) {
       <Stack justifyContent="center" alignItems="center" sx={{}}>
         <ModelStack
           sx={{
-            marginTop: 45,
+            marginTop: 30,
             marginBottom: 45,
             backgroundColor: theme.palette.background.paper,
             width: 390,
@@ -45,10 +45,11 @@ export default function SuccessAlert({ setAlert }) {
             <Typography variant="h6" sx={{ color: theme.palette.primary.main }}>
               Successfully Updated !
             </Typography>
-            <CheckIcon
+            <CheckCircle
               fontSize="large"
               sx={{ color: theme.palette.primary.main }}
             />
+
             <Button
               variant="contained"
               color="primary"
