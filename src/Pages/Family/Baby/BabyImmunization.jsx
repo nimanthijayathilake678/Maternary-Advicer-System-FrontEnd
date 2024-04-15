@@ -41,6 +41,8 @@ function BabyImmunization() {
   const authContext = useAuth();
   const { id } = useParams();
   const [showSuccessAlert, setShowSuccessAlert] = useState(false);
+  const role = authContext.position;
+  console.log(role);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -238,7 +240,11 @@ function BabyImmunization() {
                         height="40px"
                         width="150px"
                         title="Register"
-                        disabled={isSubmitting}
+                        //disabled={isSubmitting}
+                        //disabled={role === "Family" || isSubmitting}
+                        disabled={
+                          authContext.position !== "Midwife" || isSubmitting
+                        }
                         style={{ marginTop: "20px" }}
                         onClick={() => {
                           handleSubmit();
@@ -318,181 +324,3 @@ function BabyImmunization() {
   );
 }
 export default BabyImmunization;
-// function BabyImmunization() {
-//   return (
-//     <div>
-//       <Box
-//         component="form"
-//         sx={{
-//           "& .MuiTextField-root": { m: 1 },
-//         }}
-//         noValidate
-//         autoComplete="off"
-//         display="flex"
-//         justifyContent="center"
-//         alignItems="center"
-//         height="100%"
-//         flexDirection="column"
-//       >
-//         <Grid container spacing={3}>
-//           {/* Sidebar */}
-//           <Grid item xs={3} display={"flex"}>
-//             <DisplaySidebar />
-//           </Grid>
-//           {/* Vaccine Details Section */}
-//           <Grid
-//             item
-//             xs={9}
-//             style={{ paddingTop: "100px", paddingRight: "200px" }}
-//           >
-//             {/* Header */}
-//             <div>
-//               <span className="text-xl text-[#2A777C] text-center font-bold">
-//                 Add Baby Vaccination
-//               </span>
-//             </div>
-//             <Box
-//               sx={{
-//                 width: "100%",
-//                 border: "1px solid #ccc",
-//                 padding: "1em",
-//                 paddingRight: "80px",
-//                 display: "flex",
-//               }}
-//             >
-//               {/* Rest of the vaccine details section */}
-//               <Grid container spacing={3}>
-//                 <Grid item xs={6}>
-//                   <TextField
-//                     required
-//                     placeholder="Vaccine Name"
-//                     name="vaccineName"
-//                     label="Vaccine Name"
-//                     value={vaccineData.vaccineName}
-//                     onChange={handleChange}
-//                     error={!!errors.vaccineName}
-//                     helperText={errors.vaccineName}
-//                     fullWidth
-//                   />
-//                 </Grid>
-//                 <Grid item xs={6}>
-//                   <TextField
-//                     required
-//                     placeholder="Age for Vaccine"
-//                     name="ageForVaccine"
-//                     label="Age for Vaccine"
-//                     value={vaccineData.ageForVaccine}
-//                     onChange={handleChange}
-//                     error={!!errors.ageForVaccine}
-//                     helperText={errors.ageForVaccine}
-//                     fullWidth
-//                   />
-//                 </Grid>
-//                 <Grid item xs={6}>
-//                   <TextField
-//                     required
-//                     type="date"
-//                     placeholder="Vaccine Date"
-//                     name="vaccineDate"
-//                     //label="Vaccine Date"
-//                     value={vaccineData.vaccineDate}
-//                     onChange={handleChange}
-//                     error={!!errors.vaccineDate}
-//                     helperText={errors.vaccineDate}
-//                     fullWidth
-//                   />
-//                 </Grid>
-//                 <Grid item xs={6}>
-//                   <TextField
-//                     required
-//                     placeholder="Batch No."
-//                     name="batchNo"
-//                     label="Batch No."
-//                     value={vaccineData.batchNo}
-//                     onChange={handleChange}
-//                     error={!!errors.batchNo}
-//                     helperText={errors.batchNo}
-//                     fullWidth
-//                   />
-//                 </Grid>
-//                 <Grid item xs={12}>
-//                   <TextField
-//                     required
-//                     placeholder="Adverse Effects"
-//                     name="adverseEffects"
-//                     label="Adverse Effects"
-//                     value={vaccineData.adverseEffects}
-//                     onChange={handleChange}
-//                     error={!!errors.adverseEffects}
-//                     helperText={errors.adverseEffects}
-//                     fullWidth
-//                   />
-//                 </Grid>
-//                 <Grid item xs={12}>
-//                   <Button
-//                     variant="contained"
-//                     onClick={handleVaccineAdd}
-//                     style={{ marginTop: "1em" }}
-//                   >
-//                     Add Vaccine
-//                   </Button>
-//                 </Grid>
-//               </Grid>
-//             </Box>
-//             {/* Display Vaccine Details */}
-//             <Box
-//               sx={{ width: "100%", marginTop: "2em", paddingBottom: "80px" }}
-//             >
-//               <div>
-//                 <span className="text-xl text-[#2A777C] text-center font-bold">
-//                   Baby Vaccination Details
-//                 </span>
-//               </div>
-//               <TableContainer component={Paper}>
-//                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
-//                   <TableHead
-//                     style={{
-//                       backgroundColor: "#00A9BB",
-//                       color: "white",
-//                     }}
-//                   >
-//                     <TableRow>
-//                       <TableCell>Vaccine Name</TableCell>
-//                       <TableCell>Age for Vaccine</TableCell>
-//                       <TableCell>Vaccine Date</TableCell>
-//                       <TableCell>Batch No.</TableCell>
-//                       <TableCell>Adverse Effects</TableCell>
-//                       <TableCell>Vaccine Referrals</TableCell>{" "}
-//                       {/* New Column */}
-//                     </TableRow>
-//                   </TableHead>
-//                   <TableBody>
-//                     {vaccineList.map((vaccine, index) => (
-//                       <TableRow key={index}>
-//                         <TableCell component="th" scope="row">
-//                           {vaccine.vaccineName}
-//                         </TableCell>
-//                         <TableCell>{vaccine.ageForVaccine}</TableCell>
-//                         <TableCell>{vaccine.vaccineDate}</TableCell>
-//                         <TableCell>{vaccine.batchNo}</TableCell>
-//                         <TableCell>{vaccine.adverseEffects}</TableCell>
-//                         <TableCell>
-//                           {/* Button for Vaccine Referrals */}
-//                           <Link to="/family/babyDashboard/immunization/referels">
-//                             <Button variant="contained" color="primary">
-//                               Add Referels
-//                             </Button>
-//                           </Link>
-//                         </TableCell>
-//                       </TableRow>
-//                     ))}
-//                   </TableBody>
-//                 </Table>
-//               </TableContainer>
-//             </Box>
-//           </Grid>
-//         </Grid>
-//       </Box>
-//     </div>
-//   );
-// }
