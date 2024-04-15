@@ -24,6 +24,7 @@ import useAuth from "../../../Hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import { Typography } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
+import SuccessAlert from "../../../Components/SuccessMsg.jsx";
 
 const VISIBLE_FIELDS_ONE = [
   "babyNum",
@@ -37,6 +38,7 @@ function BabyReferels() {
   const navigate = useNavigate();
   const authContext = useAuth();
   const { id } = useParams();
+  const [showSuccessAlert, setShowSuccessAlert] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -63,197 +65,205 @@ function BabyReferels() {
   };
 
   return (
-    <Formik
-      initialValues={{
-        babyNum: "",
-        b_Immunization_Name: "",
-        b_Referel_Reason: "",
-        b_Referel_Place: "",
-      }}
-      enableReinitialize={true}
-      validationSchema={babyReferelsSchema}
-      validateOnChange={false}
-      onSubmit={async (values, { setSubmitting }) => {
-        try {
-          const response = await babyreferels(values);
-          if (response.status === 200) {
-            console.log("success");
+    <>
+      <Formik
+        initialValues={{
+          babyNum: "",
+          b_Immunization_Name: "",
+          b_Referel_Reason: "",
+          b_Referel_Place: "",
+        }}
+        enableReinitialize={true}
+        validationSchema={babyReferelsSchema}
+        validateOnChange={false}
+        onSubmit={async (values, { setSubmitting }) => {
+          try {
+            const response = await babyreferels(values);
+            if (response.status === 200) {
+              console.log("success");
+              setShowSuccessAlert(true);
+            }
+            console.log(response);
+          } catch (error) {
+            console.error("Error submitting form:", error.message);
           }
-          console.log(response);
-        } catch (error) {
-          console.error("Error submitting form:", error.message);
-        }
-      }}
-    >
-      {({
-        handleChange,
-        values,
-        isSubmitting,
-        handleSubmit,
-        touched,
-        errors,
-      }) => (
-        <Form>
-          <Box sx={{ display: "flex" }}>
-            <Box sx={{ width: "25%", display: "flex", maxWidth: "200px" }}>
-              <DisplaySidebar />
-            </Box>
-
-            {/* Form */}
-            <Box sx={{ width: "100%", paddingBottom: "128px" }}>
-              <Box
-                sx={{
-                  paddingTop: "100px",
-                  maxWidth: "900px",
-                  margin: "auto",
-                  display: "flex",
-                }}
-              >
-                <div>
-                  <span className="text-xl text-[#2A777C] text-center font-bold">
-                    Baby Immunization Referels
-                  </span>
-                </div>
+        }}
+      >
+        {({
+          handleChange,
+          values,
+          isSubmitting,
+          handleSubmit,
+          touched,
+          errors,
+        }) => (
+          <Form>
+            <Box sx={{ display: "flex" }}>
+              <Box sx={{ width: "25%", display: "flex", maxWidth: "200px" }}>
+                <DisplaySidebar />
               </Box>
 
-              <Box
-                sx={{
-                  padding: "50px",
-                  maxWidth: "900px",
-                  border: "1px solid #ccc",
-                  margin: "auto",
-                  display: "flex",
-                  marginBottom: "20px",
-                }}
-              >
-                <Grid container spacing={2}>
-                  <Grid item xs={12} sm={6}>
-                    <Field
-                      as={TextField}
-                      required
-                      fullWidth
-                      placeholder="Baby Number"
-                      name="babyNum"
-                      label="Baby Number"
-                      onChange={handleChange}
-                      value={values.babyNum}
-                      error={touched.babyNum && Boolean(errors.babyNum)}
-                      helperText={touched.babyNum && errors.babyNum}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <Field
-                      as={TextField}
-                      required
-                      fullWidth
-                      placeholder="Vaccine Name"
-                      name="b_Immunization_Name"
-                      label="Vaccine Name"
-                      onChange={handleChange}
-                      value={values.b_Immunization_Name}
-                      error={
-                        touched.b_Immunization_Name &&
-                        Boolean(errors.b_Immunization_Name)
-                      }
-                      helperText={
-                        touched.b_Immunization_Name &&
-                        errors.b_Immunization_Name
-                      }
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <Field
-                      as={TextField}
-                      required
-                      fullWidth
-                      placeholder="Referel Reason"
-                      name="b_Referel_Reason"
-                      label="Referel Reason"
-                      onChange={handleChange}
-                      value={values.b_Referel_Reason}
-                      error={
-                        touched.b_Referel_Reason &&
-                        Boolean(errors.b_Referel_Reason)
-                      }
-                      helperText={
-                        touched.b_Referel_Reason && errors.b_Referel_Reason
-                      }
-                    />
-                  </Grid>
-
-                  <Grid item xs={12}>
-                    <Field
-                      as={TextField}
-                      required
-                      fullWidth
-                      placeholder="Referel Place"
-                      name="b_Referel_Place"
-                      label="Referel Place"
-                      onChange={handleChange}
-                      value={values.b_Referel_Place}
-                      error={
-                        touched.b_Referel_Place &&
-                        Boolean(errors.b_Referel_Place)
-                      }
-                      helperText={
-                        touched.b_Referel_Place && errors.b_Referel_Place
-                      }
-                    />
-                  </Grid>
-
-                  <Grid item xs={12}>
-                    <DefaultButton
-                      type="submit"
-                      height="40px"
-                      width="150px"
-                      title="Register"
-                      disabled={isSubmitting}
-                      style={{ marginTop: "20px" }}
-                      onClick={() => {
-                        handleSubmit();
-                        Object.keys(values).forEach((field) => {
-                          touched[field] = true;
-                        });
-                      }}
-                    />
-                  </Grid>
-                </Grid>
-              </Box>
-            </Box>
-          </Box>
-          <Box sx={{ display: "flex" }}>
-            <div
-              style={{ display: "flex", height: "100vh", overflowX: "hidden" }}
-            >
-              <DisplaySidebar />
-              <div
-                style={{ flex: 1, overflowX: "hidden", paddingLeft: "40px" }}
-              >
-                <div style={{ height: "100vh", width: "100%" }}>
+              {/* Form */}
+              <Box sx={{ width: "100%", paddingBottom: "128px" }}>
+                <Box
+                  sx={{
+                    paddingTop: "100px",
+                    maxWidth: "900px",
+                    margin: "auto",
+                    display: "flex",
+                  }}
+                >
                   <div>
                     <span className="text-xl text-[#2A777C] text-center font-bold">
-                      Baby Immunization Reference History
+                      Baby Immunization Referels
                     </span>
                   </div>
-                  <DataGrid
-                    autoHeight
-                    rows={customDataset}
-                    columns={VISIBLE_FIELDS_ONE.map((field) => {
-                      return {
-                        field,
-                        headerName: field,
-                        width: 150, // Adjust width as needed
-                      };
-                    })}
-                    components={{ Toolbar: GridToolbar }}
-                  />
+                </Box>
+
+                <Box
+                  sx={{
+                    padding: "50px",
+                    maxWidth: "900px",
+                    border: "1px solid #ccc",
+                    margin: "auto",
+                    display: "flex",
+                    marginBottom: "20px",
+                  }}
+                >
+                  <Grid container spacing={2}>
+                    <Grid item xs={12} sm={6}>
+                      <Field
+                        as={TextField}
+                        required
+                        fullWidth
+                        placeholder="Baby Number"
+                        name="babyNum"
+                        label="Baby Number"
+                        onChange={handleChange}
+                        value={values.babyNum}
+                        error={touched.babyNum && Boolean(errors.babyNum)}
+                        helperText={touched.babyNum && errors.babyNum}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <Field
+                        as={TextField}
+                        required
+                        fullWidth
+                        placeholder="Vaccine Name"
+                        name="b_Immunization_Name"
+                        label="Vaccine Name"
+                        onChange={handleChange}
+                        value={values.b_Immunization_Name}
+                        error={
+                          touched.b_Immunization_Name &&
+                          Boolean(errors.b_Immunization_Name)
+                        }
+                        helperText={
+                          touched.b_Immunization_Name &&
+                          errors.b_Immunization_Name
+                        }
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <Field
+                        as={TextField}
+                        required
+                        fullWidth
+                        placeholder="Referel Reason"
+                        name="b_Referel_Reason"
+                        label="Referel Reason"
+                        onChange={handleChange}
+                        value={values.b_Referel_Reason}
+                        error={
+                          touched.b_Referel_Reason &&
+                          Boolean(errors.b_Referel_Reason)
+                        }
+                        helperText={
+                          touched.b_Referel_Reason && errors.b_Referel_Reason
+                        }
+                      />
+                    </Grid>
+
+                    <Grid item xs={12}>
+                      <Field
+                        as={TextField}
+                        required
+                        fullWidth
+                        placeholder="Referel Place"
+                        name="b_Referel_Place"
+                        label="Referel Place"
+                        onChange={handleChange}
+                        value={values.b_Referel_Place}
+                        error={
+                          touched.b_Referel_Place &&
+                          Boolean(errors.b_Referel_Place)
+                        }
+                        helperText={
+                          touched.b_Referel_Place && errors.b_Referel_Place
+                        }
+                      />
+                    </Grid>
+
+                    <Grid item xs={12}>
+                      <DefaultButton
+                        type="submit"
+                        height="40px"
+                        width="150px"
+                        title="Register"
+                        disabled={isSubmitting}
+                        style={{ marginTop: "20px" }}
+                        onClick={() => {
+                          handleSubmit();
+                          Object.keys(values).forEach((field) => {
+                            touched[field] = true;
+                          });
+                        }}
+                      />
+                    </Grid>
+                  </Grid>
+                </Box>
+              </Box>
+            </Box>
+            <Box sx={{ display: "flex" }}>
+              <div
+                style={{
+                  display: "flex",
+                  height: "100vh",
+                  overflowX: "hidden",
+                }}
+              >
+                <DisplaySidebar />
+                <div
+                  style={{ flex: 1, overflowX: "hidden", paddingLeft: "40px" }}
+                >
+                  <div style={{ height: "100vh", width: "100%" }}>
+                    <div>
+                      <span className="text-xl text-[#2A777C] text-center font-bold">
+                        Baby Immunization Reference History
+                      </span>
+                    </div>
+                    <DataGrid
+                      autoHeight
+                      rows={customDataset}
+                      columns={VISIBLE_FIELDS_ONE.map((field) => {
+                        return {
+                          field,
+                          headerName: field,
+                          width: 150, // Adjust width as needed
+                        };
+                      })}
+                      components={{ Toolbar: GridToolbar }}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-          </Box>
-        </Form>
-      )}
-    </Formik>
+            </Box>
+          </Form>
+        )}
+      </Formik>
+      {showSuccessAlert && <SuccessAlert setAlert={setShowSuccessAlert} />}
+    </>
   );
 }
 export default BabyReferels;
