@@ -1,113 +1,194 @@
-import React from 'react'
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
+import React from "react";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import { useFormik } from "formik";
+import MOHArea from "../../Components/MOHArea";
+import PHMArea from "../../Components/PHMArea";
+import Paper from "@mui/material/Paper";
+import { styled } from "@mui/material/styles";
+import DisplaySidebar from "../../Components/DisplaySidebar";
 
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: "center",
+  color: theme.palette.text.secondary,
+}));
+
+function CreateAccountFormValidation() {
+  const formik = useFormik({
+    initialValues: {
+      wifeName: "",
+      husbandName: "",
+      telephone: "",
+      email: "",
+      address: "",
+    },
+    onSubmit: (values) => {
+      console.log(values); // You can handle form submission logic here
+    },
+  });
+
+  return (
+    <Box sx={{ display: "flex" }}  className="w-full bg-white">
+      <DisplaySidebar />
+      <div>
+        <Box sx={{ flexGrow: 1 }}>
+          <Grid
+            container
+            spacing={2}
+            sx={{
+              display: "flex",
+              paddingLeft: 10,
+              paddingTop: 5,
+              alignItems: "center",
+            }}
+          >
+            <Item sx={{ width: "65%" }}>
+              <Grid item xs={12}>
+                <Typography
+                  variant="h4"
+                  sx={{
+                    color: "#00A9BB",
+                    paddingBottom: 7,
+                    paddingTop: 6,
+                    alignItems: "center",
+                  }}
+                >
+                  Create a New Account for Eligible Family
+                </Typography>
+              </Grid>
+
+              <Grid container spacing={2}>
+                <Grid
+                  item
+                  xs={6}
+                  sx={{ padding: "1em 1em 1em 1em !important" }}
+                >
+                  <MOHArea />
+                </Grid>
+
+                <Grid
+                  item
+                  xs={6}
+                  sx={{ padding: "1em 1em 1em 1em !important" }}
+                >
+                  <PHMArea sx={{ padding: "1em 1em 1em 1em !important" }} />
+                </Grid>
+
+                <Grid
+                  item
+                  xs={6}
+                  sx={{ padding: "1em 1em 1em 1em !important" }}
+                >
+                  <TextField
+                    required
+                    placeholder="Wife's Name"
+                    name="wifeName"
+                    id="wifeName"
+                    label="Wife's Name"
+                    sx={{ width: "100%" }}
+                    value={formik.values.wifeName}
+                    onChange={formik.handleChange}
+                  />
+                </Grid>
+
+                <Grid
+                  item
+                  xs={6}
+                  sx={{ padding: "1em 1em 1em 1em !important" }}
+                >
+                  <TextField
+                    required
+                    placeholder="Husband's Name"
+                    name="husbandName"
+                    id="husbandName"
+                    label="Husband's Name"
+                    sx={{ width: "100%" }}
+                    value={formik.values.wifeName}
+                    onChange={formik.handleChange}
+                  />
+                </Grid>
+
+                <Grid
+                  item
+                  xs={6}
+                  sx={{ padding: "1em 1em 1em 1em !important" }}
+                >
+                  <TextField
+                    required
+                    placeholder="Email"
+                    name="Email"
+                    id="email"
+                    label="Email"
+                    sx={{ width: "100%" }}
+                    value={formik.values.wifeName}
+                    onChange={formik.handleChange}
+                  />
+                </Grid>
+
+                <Grid
+                  item
+                  xs={6}
+                  sx={{ padding: "1em 1em 1em 1em !important" }}
+                >
+                  <TextField
+                    required
+                    placeholder="Address"
+                    name="Address"
+                    id="Address"
+                    label="Address"
+                    sx={{ width: "100%" }}
+                    value={formik.values.wifeName}
+                    onChange={formik.handleChange}
+                  />
+                </Grid>
+
+                <Grid
+                  item
+                  xs={6}
+                  sx={{ padding: "1em 1em 1em 1em !important" }}
+                >
+                  <TextField
+                    required
+                    placeholder="Telephone No"
+                    name="Telephone No"
+                    id="telephoneNo"
+                    label="Telephone No"
+                    sx={{ width: "100%" }}
+                    value={formik.values.wifeName}
+                    onChange={formik.handleChange}
+                  />
+                </Grid>
+
+                {/* Repeat similar pattern for other form fields */}
+
+                <Button
+                  variant="contained"
+                  sx={{
+                    width: "95%",
+                    mt: 2,
+                    background: "#00A9BB",
+                    alignItems: "center",
+                    paddingLeft: "2",
+                  }}
+                  onClick={formik.handleSubmit}
+                >
+                  Submit
+                </Button>
+              </Grid>
+            </Item>
+          </Grid>
+        </Box>
+      </div>
+    </Box>
+  );
+}
 
 export default function MidwifeEligibleCoupleRegistrationForm() {
-  return (
-    <div className='flex w-2/3 px-5 pt-5' >
-        <div>
-          <span className=' text-xl  text-[#2A777C] text-center font-bold '>Create New Account For Married Couple</span>
-
-        <form>
-          <div className='flex w-full'>
-              <Box
-                      component="form"
-                      sx={{
-                        '& .MuiTextField-root': { m: 1, width: '25ch'  },
-                      }}
-                      noValidate
-                      autoComplete="off"
-                  >
-                  </Box>
-
-                  <div className='pt-3 w-full my-4 flex'>
-                      <div className='w-6/12 '>
-                      <TextField
-                        className='w-full'
-                        required
-                        id="outlined-required"
-                        label="Division of Reginal Ministry of Health Services"
-                        type="text"
-                        style={{marginBottom: '1rem'}}
-                        
-                      />
-                    
-                      <TextField
-                        className='w-full'
-                        required
-                        id="outlined-required"
-                        label="Reference No"
-                        type="text"
-                        style={{marginBottom: '1rem'}} 
-                      />
-
-                      <TextField
-                        className='w-full'
-                        required
-                        id="outlined-required"
-                        label="Reference No"
-                        type="text"
-                        style={{marginBottom: '1rem'}}
-                        
-                      />
-
-                      <TextField
-                        className='w-full'
-                        required
-                        id="outlined-required"
-                        label="Email"
-                        type="email"
-                        style={{marginBottom: '1rem'}}
-                        
-                      />
-                      </div>
-
-                      <div className='px-2 w-6/12'>
-                        <TextField
-                        className='w-full'
-                        required
-                        id="outlined-required"
-                        label="Division of Medical Officer"
-                        type="text"
-                        style={{marginBottom: '1rem'}}
-                        />
-
-                        <TextField
-                        className='w-full'
-                        required
-                        id="outlined-required"
-                        label="Wife's name"
-                        type="text"
-                        style={{marginBottom: '1rem'}}
-                        />
-
-                        <TextField
-                        className='w-full'
-                        required
-                        id="outlined-required"
-                        label="Telephone No"
-                        type="text"
-                        style={{marginBottom: '1rem'}}
-                        />
-
-                        <TextField
-                        className='w-full'
-                        required
-                        id="outlined-required"
-                        label="Address"
-                        style={{marginBottom: '1rem'}}
-                        />
-                      </div>
-                  </div>           
-          </div>
-          <Button className='w-full' variant="contained">Submit</Button>
-        </form>
-
-        </div>
-        <div></div>        
-    </div>
-  )
+  return <CreateAccountFormValidation />;
 }

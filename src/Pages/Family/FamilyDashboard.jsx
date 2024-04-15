@@ -17,6 +17,7 @@ import Lottie from "lottie-react";
 import "../../css/Family/FamilyDash.css";
 import { useNavigate } from "react-router-dom";
 import Nav from "../../Components/Nav";
+import DisplaySidebar from "../../Components/DisplaySidebar";
 
 const FamilyDashboard = () => {
   const navigate = useNavigate();
@@ -25,7 +26,8 @@ const FamilyDashboard = () => {
   };
   return (
     <>
-      <Nav />
+      <Box sx={{display:'flex'}}>
+        <DisplaySidebar/>
       <Box ml="20px">
         {/* HEADER */}
         <Box display="flex" justifyContent="space-between" alignItems="center">
@@ -102,6 +104,8 @@ const FamilyDashboard = () => {
             <Lottie animationData={clinic} />
           </div>
         </div>
+      </Box>
+
       </Box>
     </>
   );

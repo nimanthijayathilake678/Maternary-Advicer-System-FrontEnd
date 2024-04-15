@@ -9,6 +9,7 @@ import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
+import DisplaySidebar from "../../Components/DisplaySidebar";
 
 
 const columns = [
@@ -43,7 +44,9 @@ const MidwifeEligibleFamilies = () => {
   };
 
   return (
-    <div className="pt-10 px-10">
+    <div>
+      <DisplaySidebar/>
+      <div className="pt-10 px-10 c">
       <div className="flex relative items-center">
         <div>
           <span className=" text-xl  text-[#2A777C] text-center font-bold ">
@@ -52,7 +55,7 @@ const MidwifeEligibleFamilies = () => {
         </div>
 
         <div className=' absolute top-0 right-0'>
-          <Button to="./register" component={Link} variant="contained" >
+          <Button to="./createAccountForNewCouple" component={Link} variant="contained" >
             Create a New Account
           </Button>
         </div>
@@ -117,6 +120,8 @@ const MidwifeEligibleFamilies = () => {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </Paper>
+    </div>
+
     </div>
   );
 };

@@ -25,6 +25,7 @@ import LifeStyle from "../../Components/EligibleFamilyForms/LifeStyle";
 import HousingAndWorkspace from "../../Components/EligibleFamilyForms/HousingAndWorkspace";
 import Nav from "../../Components/Nav";
 import Footer from "../../Components/Footer";
+import DisplaySidebar from "../../Components/DisplaySidebar";
 
 function CustomStepIcon(props) {
   const { active, completed, icon } = props;
@@ -100,7 +101,9 @@ export default function FamilyEligibleFamilyForm() {
 
   return (
     <>
-      <Nav />
+    <div style={{ display: 'flex' }}>
+      <div><DisplaySidebar/></div>
+            
       <div className="bg-white ">
         <Box
           sx={{
@@ -213,6 +216,7 @@ export default function FamilyEligibleFamilyForm() {
             </Grid>
           </Grid>
         </Box>
+      </div>
       </div>
 
       <Footer />
