@@ -151,8 +151,12 @@ export const AppRoutes = {
   },
 
   midwife_registerdbabies: {
-    path: `/midwife/registerdbabies/:id`,
+    path: `/midwife/registerdbabies`,
     component: <RegisterdBabies />,
+  },
+  midwife_baby_dashboard: {
+    path: `/midwife/babyDashboard/:id`,
+    component: <BabyDashboard />,
   },
 
   //moh page routes
