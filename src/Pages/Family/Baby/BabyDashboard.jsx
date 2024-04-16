@@ -163,6 +163,20 @@ const BabyDashboard = () => {
                   </div>
                 </div>
               </Grid>
+              <Grid item xs={12} sm={3}>
+                <div className="cards">
+                  <div className="card-inner">
+                    <h6 onClick={() => handleNavigationClickNewBornHealth(id)}>
+                      SPECIAL NOTES
+                    </h6>
+                    <Lottie
+                      style={{ height: 60 }}
+                      animationData={notification}
+                      onClick={() => handleNavigationClickNewBornHealth(id)}
+                    />
+                  </div>
+                </div>
+              </Grid>
             </Grid>
           </Grid>
         </Grid>

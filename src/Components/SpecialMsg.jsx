@@ -4,11 +4,27 @@ import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import DefaultButton from "../Components/Button/DefaultButton";
+import MenuItem from "@mui/material/MenuItem";
 //import { babyRegistrationSchema } from "../../../../../Pages/Validations/validation";
 //import BabyRegistrationForm1Service, {
 // registerbaby,
 //} from "../../../../../Services/BabyRegistrationForm1Service";
 import SuccessAlert from "../Components/SuccessAlert";
+
+const priorities = [
+  {
+    value: "Ug",
+    label: "Urgent",
+  },
+  {
+    value: "Med",
+    label: "Medium",
+  },
+  {
+    value: "Nr",
+    label: "Normal",
+  },
+];
 
 function SpecialMsg() {
   const [showSuccessAlert, setShowSuccessAlert] = useState(false);
@@ -18,6 +34,7 @@ function SpecialMsg() {
         initialValues={{
           Reg_Num: "",
           Msg_Date: "",
+          Msg_Priority: "",
           Msg_Topic: "",
           Msg_Content: "",
         }}
@@ -59,7 +76,7 @@ function SpecialMsg() {
                 >
                   <div>
                     <span className="text-xl text-[#2A777C] text-center font-bold">
-                      Special Notice
+                      Special Notes
                     </span>
                   </div>
                 </Box>
@@ -123,6 +140,39 @@ function SpecialMsg() {
                         // error={touched.b_Reg_Date && Boolean(errors.b_Reg_Date)}
                         // helperText={touched.b_Reg_Date && errors.b_Reg_Date}
                       />
+                    </Grid>
+                    <Grid
+                      item
+                      xs={12}
+                      component="form"
+                      sx={{
+                        "& .MuiTextField-root": { m: 1, width: "25ch" },
+                      }}
+                      noValidate
+                      autoComplete="off"
+                    >
+                      <TextField
+                        required
+                        fullWidth
+                        placeholder="Add Priority Value To Your Note"
+                        name="Msg_Priority"
+                        variant="standard"
+                        select
+                        label="Select"
+                        defaultValue="Nr"
+                        helperText="Add Priority Value To Your Note"
+
+                        // onChange={handleChange}
+                        // value={values.b_Reg_Num}
+                        // error={touched.b_Reg_Num && Boolean(errors.b_Reg_Num)}
+                        // helperText={touched.b_Reg_Num && errors.b_Reg_Num}
+                      >
+                        {priorities.map((option) => (
+                          <MenuItem key={option.value} value={option.value}>
+                            {option.label}
+                          </MenuItem>
+                        ))}
+                      </TextField>
                     </Grid>
                     <Grid item xs={12}>
                       <TextField
