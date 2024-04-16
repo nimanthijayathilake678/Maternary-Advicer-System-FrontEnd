@@ -8,14 +8,8 @@ import SpecialMsgService, {
 import DisplaySidebar from "../Components/DisplaySidebar";
 import { useParams } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
-
-const VISIBLE_FIELDS = [
-  "babyNum",
-  "msg_Content",
-  "msg_Priority",
-  "msg_Date",
-  "msg_Topic",
-];
+import Grid from "@mui/material/Grid";
+const VISIBLE_FIELDS = ["msg_Content", "msg_Date", "msg_Topic"];
 
 export default function SpecialMsgDisplay() {
   const [customDataset, setCustomDataset] = useState([]);
@@ -72,10 +66,33 @@ export default function SpecialMsgDisplay() {
             >
               Special Notes
             </Typography>
+            <div>
+              <Grid container spacing={6} justifyContent="center">
+                <Grid item>
+                  <div className="legend">
+                    <span className="urgency-color"></span>{" "}
+                    <span className="legend-text">Urgent</span>
+                  </div>
+                </Grid>
+                <Grid item>
+                  <div className="legend">
+                    <span className="normal-color"></span>{" "}
+                    <span className="legend-text">Normal</span>
+                  </div>
+                </Grid>
+                <Grid item>
+                  <div className="legend">
+                    <span className="medium-color"></span>{" "}
+                    <span className="legend-text">Medium</span>
+                  </div>
+                </Grid>
+              </Grid>
+            </div>
+
             <style>
               {`
                 .urgency {
-                  background-color: #FF6347; /* Red */
+                  background-color:#FFA07A; /* Red */
                 }
 
                 .normal {
@@ -83,8 +100,37 @@ export default function SpecialMsgDisplay() {
                 }
 
                 .medium {
-                  background-color: #FFD700; /* Yellow */
+                  background-color:  #EFFD5F; /* Yellow */
                 }
+                .legend {
+                  margin-right: 10px;
+                  display: inline-flex;
+                  align-items: center;
+                }
+
+                .legend span {
+                  width: 20px;
+                  height: 20px;
+                  display: inline-block;
+                  margin-right: 5px;
+                  border-radius: 50%;
+                }
+
+                .urgency-color {
+                  background-color: #FFA07A;
+                }
+
+                .normal-color {
+                  background-color: #90EE90;
+                }
+
+                .medium-color {
+                  background-color:  #EFFD5F;
+                }
+                .legend-text {
+                  color: black;
+                }
+
               `}
             </style>
             <DataGrid
@@ -93,7 +139,7 @@ export default function SpecialMsgDisplay() {
               columns={VISIBLE_FIELDS.map((field) => ({
                 field,
                 headerName: field,
-                width: 150, // Adjust width as needed
+                width: 300, // Adjust width as needed
               }))}
               components={{ Toolbar: GridToolbar }}
               getRowClassName={getRowClassName}
