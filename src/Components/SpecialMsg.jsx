@@ -5,11 +5,11 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import DefaultButton from "../Components/Button/DefaultButton";
 import MenuItem from "@mui/material/MenuItem";
-//import { babyRegistrationSchema } from "../../../../../Pages/Validations/validation";
-//import BabyRegistrationForm1Service, {
-// registerbaby,
-//} from "../../../../../Services/BabyRegistrationForm1Service";
-import SuccessAlert from "../Components/SuccessAlert";
+import { specialMsgSchema } from "../Pages/Validations/validation";
+import SpecialMsgService, {
+  addSpecialMsg,
+} from "../Services/SpecialMsgService";
+import SuccessAlert from "../Components/SuccessMsg";
 
 const priorities = [
   {
@@ -32,28 +32,33 @@ function SpecialMsg() {
     <>
       <Formik
         initialValues={{
-          Reg_Num: "",
-          Msg_Date: "",
-          Msg_Priority: "",
-          Msg_Topic: "",
-          Msg_Content: "",
+          // babyNum: "",
+          // Msg_Date: "",
+          // Msg_Priority: "",
+          // Msg_Topic: "",
+          // Msg_Content: "",
+          babyNum: "",
+          msg_Content: "",
+          msg_Priority: "",
+          msg_Date: "",
+          msg_Topic: "",
         }}
         enableReinitialize={true}
-        // validationSchema={babyRegistrationSchema}
-        //validateOnChange={false}
-        // onSubmit={async (values, { setSubmitting }) => {
-        //   try {
-        //     const response = await registerbaby(values);
+        validationSchema={specialMsgSchema}
+        validateOnChange={false}
+        onSubmit={async (values, { setSubmitting }) => {
+          try {
+            const response = await addSpecialMsg(values);
 
-        //     if (response.status === 200) {
-        //       console.log("success");
-        //       setShowSuccessAlert(true);
-        //     }
-        //     console.log(response);
-        //   } catch (error) {
-        //     console.error("Error submitting form:", error.message);
-        //   }
-        // }}
+            if (response.status === 200) {
+              console.log("success");
+              setShowSuccessAlert(true);
+            }
+            console.log(response);
+          } catch (error) {
+            console.error("Error submitting form:", error.message);
+          }
+        }}
       >
         {({
           handleChange,
@@ -97,13 +102,13 @@ function SpecialMsg() {
                         required
                         fullWidth
                         placeholder="Registration Number"
-                        name="Reg_Num"
+                        name="babyNum"
                         label="Registration Number"
                         variant="standard"
-                        // onChange={handleChange}
-                        // value={values.b_Reg_Num}
-                        // error={touched.b_Reg_Num && Boolean(errors.b_Reg_Num)}
-                        // helperText={touched.b_Reg_Num && errors.b_Reg_Num}
+                        onChange={handleChange}
+                        value={values.Reg_Num}
+                        error={touched.Reg_Num && Boolean(errors.Reg_Num)}
+                        helperText={touched.Reg_Num && errors.Reg_Num}
                       />
                     </Grid>
 
@@ -112,18 +117,13 @@ function SpecialMsg() {
                         required
                         fullWidth
                         placeholder="Msg Topic"
-                        name="Msg_Topic"
+                        name="msg_Topic"
                         label="Msg Topic"
                         variant="standard"
-                        // onChange={handleChange}
-                        // value={values.b_MOH_Division}
-                        // error={
-                        //   touched.b_MOH_Division &&
-                        //   Boolean(errors.b_MOH_Division)
-                        // }
-                        // helperText={
-                        //   touched.b_MOH_Division && errors.b_MOH_Division
-                        // }
+                        onChange={handleChange}
+                        value={values.msg_Topic}
+                        error={touched.msg_Topic && Boolean(errors.msg_Topic)}
+                        helperText={touched.msg_Topic && errors.msg_Topic}
                       />
                     </Grid>
                     <Grid item xs={12} sm={6}>
@@ -132,13 +132,13 @@ function SpecialMsg() {
                         fullWidth
                         type="date"
                         placeholder="Date of Msg"
-                        name="Msg_Date"
+                        name="msg_Date"
                         variant="standard"
                         //label="Date of Msg"
-                        // onChange={handleChange}
-                        // value={values.b_Reg_Date}
-                        // error={touched.b_Reg_Date && Boolean(errors.b_Reg_Date)}
-                        // helperText={touched.b_Reg_Date && errors.b_Reg_Date}
+                        onChange={handleChange}
+                        value={values.msg_Date}
+                        error={touched.msg_Date && Boolean(errors.msg_Date)}
+                        helperText={touched.msg_Date && errors.msg_Date}
                       />
                     </Grid>
                     <Grid
@@ -155,17 +155,17 @@ function SpecialMsg() {
                         required
                         fullWidth
                         placeholder="Add Priority Value To Your Note"
-                        name="Msg_Priority"
+                        name="msg_Priority"
                         variant="standard"
                         select
                         label="Select"
                         defaultValue="Nr"
-                        helperText="Add Priority Value To Your Note"
-
-                        // onChange={handleChange}
-                        // value={values.b_Reg_Num}
-                        // error={touched.b_Reg_Num && Boolean(errors.b_Reg_Num)}
-                        // helperText={touched.b_Reg_Num && errors.b_Reg_Num}
+                        onChange={handleChange}
+                        value={values.msg_Priority}
+                        error={
+                          touched.msg_Priority && Boolean(errors.msg_Priority)
+                        }
+                        helperText={touched.msg_Priority && errors.msg_Priority}
                       >
                         {priorities.map((option) => (
                           <MenuItem key={option.value} value={option.value}>
@@ -180,20 +180,17 @@ function SpecialMsg() {
                         required
                         fullWidth
                         placeholder="Msg Content"
-                        name="Msg_Content"
+                        name="msg_Content"
                         label="Msg Content"
                         multiline
                         variant="standard"
                         rows={4}
-                        // onChange={handleChange}
-                        // value={values.b_FSHO_Division}
-                        // error={
-                        //   touched.b_FSHO_Division &&
-                        //   Boolean(errors.b_FSHO_Division)
-                        // }
-                        // helperText={
-                        //   touched.b_FSHO_Division && errors.b_FSHO_Division
-                        // }
+                        onChange={handleChange}
+                        value={values.msg_Content}
+                        error={
+                          touched.msg_Content && Boolean(errors.msg_Content)
+                        }
+                        helperText={touched.msg_Content && errors.msg_Content}
                       />
                     </Grid>
                     <Grid item xs={12}>
@@ -202,14 +199,14 @@ function SpecialMsg() {
                         height="40px"
                         width="150px"
                         title="Add Notice"
-                        //disabled={isSubmitting}
+                        disabled={isSubmitting}
                         style={{ marginTop: "20px" }}
-                        // onClick={() => {
-                        //   handleSubmit();
-                        //   Object.keys(values).forEach((field) => {
-                        //     touched[field] = true;
-                        //   });
-                        // }}
+                        onClick={() => {
+                          handleSubmit();
+                          Object.keys(values).forEach((field) => {
+                            touched[field] = true;
+                          });
+                        }}
                       />
                     </Grid>
                   </Grid>

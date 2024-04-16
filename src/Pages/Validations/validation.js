@@ -126,16 +126,10 @@ export const babyReferelsSchema = Yup.object({
 });
 
 export const specialMsgSchema = Yup.object({
-  Reg_Num: Yup.string().required("Registration Number is required"),
-  Msg_Date: Yup.date().required("Date of Note is required"),
-  Msg_Priority: Yup.string().required("Msg Prority is required"),
+  babyNum: Yup.string().required("Registration Number is required"),
+  msg_Date: Yup.date().required("Date of Note is required"),
+  msg_Priority: Yup.string().required("Note Prority is required"),
 
-  b_Referel_Reason: Yup.string().required("Referel Reason is required"),
-  b_Referel_Place: Yup.string().required("Referel Place is required"),
+  msg_Topic: Yup.string().required("Note Topic is required"),
+  msg_Content: Yup.string().required("Note Content is required"),
 });
-
-//  "",
-//   "Msg_Date",
-//   "",
-//   "Msg_Topic",
-//   "Msg_Content",

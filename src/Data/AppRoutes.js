@@ -55,6 +55,7 @@ import BabyRegistrationForm2 from "../Pages/Family/Baby/RegistrationPage/BabyReg
 import BabyRegistrationForms from "../Pages/Family/Baby/RegistrationPage/BabyRegistration/BabyRegistrationForms";
 import VogRegisterdBabies from "../Pages/VOGDoctor/VogRegisterdBabies";
 import AddRefferal from "../Pages/VOGDoctor/AddRefferal";
+import SpecialMsgDisplay from "../Pages/SpecialMsgDisplay";
 export const AppRoutes = {
   login: { path: "/login", component: <Login /> },
 
@@ -129,6 +130,11 @@ export const AppRoutes = {
     path: `/family/babyDashboard/babyhealth/:id`,
     component: <BabyNewBornHelath />,
   },
+  family_baby_special_notes: {
+    path: `/family/babyDashboard/babynote/:id`,
+    component: <SpecialMsgDisplay />,
+  },
+
   //Midwife Page ROutes
   midwife_home: { path: "/midwife", component: <MidwifeDashboard /> },
   midwife_eligible_couple_register: {
