@@ -32,11 +32,6 @@ function SpecialMsg() {
     <>
       <Formik
         initialValues={{
-          // babyNum: "",
-          // Msg_Date: "",
-          // Msg_Priority: "",
-          // Msg_Topic: "",
-          // Msg_Content: "",
           babyNum: "",
           msg_Content: "",
           msg_Priority: "",

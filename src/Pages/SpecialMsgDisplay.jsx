@@ -2,37 +2,57 @@ import React, { useState, useEffect } from "react";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { Typography } from "@mui/material";
 import Box from "@mui/material/Box";
-// import BabyRegistrationForm1Service, {
-//   getRegisterBaby,
-// } from "../../Services/BabyRegistrationForm1Service";
+import SpecialMsgService, {
+  getSpecialMsg,
+} from "../Services/SpecialMsgService";
 import DisplaySidebar from "../Components/DisplaySidebar";
+import { useParams } from "react-router-dom";
+import useAuth from "../Hooks/useAuth";
+
 const VISIBLE_FIELDS = [
-  "Reg_Num",
-  "Msg_Date",
-  "Msg_Priority",
-  "Msg_Topic",
-  "Msg_Content",
+  "babyNum",
+  "msg_Content",
+  "msg_Priority",
+  "msg_Date",
+  "msg_Topic",
 ];
 
-export default function VogRegisterdBabies() {
+export default function SpecialMsgDisplay() {
   const [customDataset, setCustomDataset] = useState([]);
+  const authContext = useAuth();
+  const { id } = useParams();
+  const [showSuccessAlert, setShowSuccessAlert] = useState(false);
 
-  //   useEffect(() => {
-  //     const fetchData = async () => {
-  //       try {
-  //         const response = await getRegisterBaby();
-  //         const data = response.data.map((row, index) => ({
-  //           id: index + 1, // Generate unique id for each row
-  //           ...row,
-  //         }));
-  //         setCustomDataset(data);
-  //       } catch (error) {
-  //         console.log("Error getting data:", error);
-  //       }
-  //     };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await getSpecialMsg(id);
+        const data = response.data.map((row, index) => ({
+          id: index + 1, // Generate unique id for each row
+          ...row,
+        }));
+        setCustomDataset(data);
+      } catch (error) {
+        console.log("Error getting data:", error);
+      }
+    };
 
-  //     fetchData();
-  //   }, []);
+    fetchData();
+  }, []);
+
+  const getRowClassName = (params) => {
+    const priority = params.row.msg_Priority;
+    switch (priority) {
+      case "Ug":
+        return "urgency";
+      case "Nr":
+        return "normal";
+      case "Med":
+        return "medium";
+      default:
+        return "";
+    }
+  };
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -52,7 +72,21 @@ export default function VogRegisterdBabies() {
             >
               Special Notes
             </Typography>
+            <style>
+              {`
+                .urgency {
+                  background-color: #FF6347; /* Red */
+                }
 
+                .normal {
+                  background-color: #90EE90; /* Green */
+                }
+
+                .medium {
+                  background-color: #FFD700; /* Yellow */
+                }
+              `}
+            </style>
             <DataGrid
               autoHeight
               rows={customDataset}
@@ -62,6 +96,7 @@ export default function VogRegisterdBabies() {
                 width: 150, // Adjust width as needed
               }))}
               components={{ Toolbar: GridToolbar }}
+              getRowClassName={getRowClassName}
             />
           </div>
         </div>
