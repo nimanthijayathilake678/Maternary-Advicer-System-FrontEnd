@@ -19,7 +19,10 @@ export const babyRegistrationSchema = Yup.object({
 });
 
 export const userRegistrationSchema = Yup.object({
+  regNum: Yup.string().required("Register Number is required"),
   fullName: Yup.string().required("Full Name is required"),
+  firstName: Yup.string().required("First Name is required"),
+  lastName: Yup.string().required("Last Name is required"),
   nicNo: Yup.string()
     .matches(/^(?:\d{9}[xXvV]|\d{12})$/, "Nic must be valid Type")
     .required("NIC No. is required"),
@@ -40,7 +43,7 @@ export const userRegistrationSchema = Yup.object({
     )
     .required("Password is required"),
   confirmPassword: Yup.string()
-    .oneOf([Yup.ref("password"), null], "Passwords must match")
+    .oneOf([Yup.ref("password"), null], "Passwords not match")
     .required("Confirm Password is required"),
 });
 

@@ -5,9 +5,15 @@ import SideBar from "../../Components/SideBar";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { hospitalCareSchema } from "../Validations/validation";
 import { Link } from "react-router-dom";
+import  {
+  addClinicDetails,
+} from "../../Services/addClinicDetails";
+import SuccessAlert from "../../Components/SuccessMsg";
 
 function MyForm() {
+  const [showSuccessAlert, setShowSuccessAlert] = useState(false);
   return (
+    <>
     <Formik
       initialValues={{
         pregnancyRegNo: "",
@@ -41,10 +47,15 @@ function MyForm() {
       validateOnChange={false}
       onSubmit={async (values, { setSubmitting }) => {
         try {
+          const response = await addClinicDetails(values);
+
+          if (response.status === 200) {
+            console.log("success");
+            setShowSuccessAlert(true);
+          }
+          console.log(response);
         } catch (error) {
           console.error("Error submitting form:", error.message);
-        } finally {
-          setSubmitting(false);
         }
       }}
     >
@@ -56,7 +67,7 @@ function MyForm() {
         touched,
         errors,
       }) => (
-        <Form>
+        <Form >
           <Box sx={{ display: "flex" }}>
             <Box sx={{ width: "25%", display: "flex", maxWidth: "200px" }}>
               <SideBar />
@@ -393,11 +404,11 @@ function MyForm() {
                       disabled={isSubmitting}
                       style={{ marginTop: "20px" }}
                       color="primary" // Add color here
-                      onClick={() => {
-                        handleSubmit();
+                     onClick={() => {
+                      handleSubmit();
                         Object.keys(values).forEach((field) => {
-                          touched[field] = true;
-                        });
+                         touched[field] = true;
+                       });
                       }}
                     >
                       Submit
@@ -417,6 +428,8 @@ function MyForm() {
         </Form>
       )}
     </Formik>
+    {showSuccessAlert && <SuccessAlert setAlert={setShowSuccessAlert} />}
+    </>
   );
 }
 
