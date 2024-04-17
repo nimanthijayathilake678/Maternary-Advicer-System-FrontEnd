@@ -9,6 +9,10 @@ import DisplaySidebar from "../Components/DisplaySidebar";
 import { useParams } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import Grid from "@mui/material/Grid";
+import { Link, IconButton } from "@mui/material";
+import PhoneIcon from "@mui/icons-material/Phone";
+import EmailIcon from "@mui/icons-material/Email";
+
 const VISIBLE_FIELDS = ["msg_Content", "msg_Date", "msg_Topic"];
 
 export default function SpecialMsgDisplay() {
@@ -146,6 +150,52 @@ export default function SpecialMsgDisplay() {
             />
           </div>
         </div>
+        <div style={{ marginTop: "20px", color: "black" }}>
+          {/* Add phone number and email here */}
+          <Typography variant="h8" style={{ color: "black" }}>
+            Emergency Contact - Midwife
+          </Typography>
+          <Grid container spacing={2} alignItems="center">
+            <Grid item>
+              <IconButton
+                component={Link}
+                href="tel:+94767087009"
+                style={{ color: "#2A777C" }}
+              >
+                <PhoneIcon />
+              </IconButton>
+            </Grid>
+            <Grid item>
+              <Typography variant="body1">
+                <Link href="tel:+94767087009" style={{ color: "#2A777C" }}>
+                  +94767087009
+                </Link>
+              </Typography>
+            </Grid>
+          </Grid>
+          <Grid container spacing={2} alignItems="center">
+            <Grid item>
+              <IconButton
+                component={Link}
+                href="mailto:nimanthijayathilaka99@gmail.com"
+                style={{ color: "#2A777C" }}
+              >
+                <EmailIcon />
+              </IconButton>
+            </Grid>
+            <Grid item>
+              <Typography variant="body1">
+                <Link
+                  href="mailto:nimanthijayathilaka99@gmail.com"
+                  style={{ color: "#2A777C" }}
+                >
+                  nimanthijayathilaka99@gmail.com
+                </Link>
+              </Typography>
+            </Grid>
+          </Grid>
+        </div>
+        ;
       </div>
     </Box>
   );
