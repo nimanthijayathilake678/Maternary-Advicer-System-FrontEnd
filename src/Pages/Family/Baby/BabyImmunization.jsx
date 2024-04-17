@@ -190,7 +190,7 @@ function BabyImmunization() {
                         type="date"
                         placeholder="Vaccine Date"
                         name="vaccineDate"
-                        label="Vaccine Date"
+                        //label="Vaccine Date"
                         onChange={handleChange}
                         value={values.vaccineDate}
                         error={
