@@ -259,38 +259,50 @@ function BabyNewBornHealth() {
               </Box>
             </Box>
             <Box sx={{ display: "flex" }}>
-              <div
-                style={{
-                  display: "flex",
-                  height: "100vh",
-                  overflowX: "hidden",
-                }}
-              >
+              <Box sx={{ width: "25%", display: "flex", maxWidth: "200px" }}>
                 <DisplaySidebar />
-                <div
-                  style={{ flex: 1, overflowX: "hidden", paddingLeft: "40px" }}
+              </Box>
+
+              {/* Form */}
+              <Box sx={{ width: "100%", paddingBottom: "128px" }}>
+                <Box
+                  sx={{
+                    maxWidth: "900px",
+                    margin: "auto",
+                    display: "flex",
+                  }}
                 >
-                  <div style={{ height: "100vh", width: "100%" }}>
-                    <div>
-                      <span className="text-xl text-[#2A777C] text-center font-bold">
-                        Baby Health History
-                      </span>
-                    </div>
-                    <DataGrid
-                      autoHeight
-                      rows={customDataset}
-                      columns={VISIBLE_FIELDS_ONE.map((field) => {
-                        return {
-                          field,
-                          headerName: field,
-                          width: 150, // Adjust width as needed
-                        };
-                      })}
-                      components={{ Toolbar: GridToolbar }}
-                    />
+                  <div>
+                    <span className="text-xl text-[#2A777C] text-center font-bold">
+                      Baby Health History
+                    </span>
                   </div>
-                </div>
-              </div>
+                </Box>
+
+                <Box
+                  sx={{
+                    padding: "50px",
+                    paddingLeft: "110px",
+                    maxWidth: "1230px",
+                    margin: "auto",
+                    display: "flex",
+                    marginBottom: "20px",
+                  }}
+                >
+                  <DataGrid
+                    autoHeight
+                    rows={customDataset}
+                    columns={VISIBLE_FIELDS_ONE.map((field) => {
+                      return {
+                        field,
+                        headerName: field,
+                        width: 150, // Adjust width as needed
+                      };
+                    })}
+                    components={{ Toolbar: GridToolbar }}
+                  />
+                </Box>
+              </Box>
             </Box>
           </Form>
         )}

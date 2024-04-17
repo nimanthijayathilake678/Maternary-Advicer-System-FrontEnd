@@ -100,11 +100,11 @@ export default function SpecialMsgDisplay() {
                 }
 
                 .normal {
-                  background-color: #90EE90; /* Green */
+                  background-color: #87E892; /* Green */
                 }
 
                 .medium {
-                  background-color:  #EFFD5F; /* Yellow */
+                  background-color:  #ece75f; /* Yellow */
                 }
                 .legend {
                   margin-right: 10px;
@@ -125,11 +125,11 @@ export default function SpecialMsgDisplay() {
                 }
 
                 .normal-color {
-                  background-color: #90EE90;
+                  background-color: #87E892;
                 }
 
                 .medium-color {
-                  background-color:  #EFFD5F;
+                  background-color:  #ece75f;
                 }
                 .legend-text {
                   color: black;
