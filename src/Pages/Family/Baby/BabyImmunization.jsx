@@ -259,62 +259,74 @@ function BabyImmunization() {
               </Box>
             </Box>
             <Box sx={{ display: "flex" }}>
-              <div
-                style={{
-                  display: "flex",
-                  height: "100vh",
-                  overflowX: "hidden",
-                }}
-              >
+              <Box sx={{ width: "25%", display: "flex", maxWidth: "200px" }}>
                 <DisplaySidebar />
-                <div
-                  style={{ flex: 1, overflowX: "hidden", paddingLeft: "40px" }}
+              </Box>
+
+              {/* Form */}
+              <Box sx={{ width: "100%", paddingBottom: "128px" }}>
+                <Box
+                  sx={{
+                    maxWidth: "900px",
+                    margin: "auto",
+                    display: "flex",
+                  }}
                 >
-                  <div style={{ height: "100vh", width: "100%" }}>
-                    <div>
-                      <span className="text-xl text-[#2A777C] text-center font-bold">
-                        Baby Immunization History
-                      </span>
-                    </div>
-                    <DataGrid
-                      autoHeight
-                      rows={customDataset}
-                      columns={VISIBLE_FIELDS_ONE.map((field) => {
-                        if (field === "addReferels") {
-                          return {
-                            field: "addReferels",
-                            headerName: "addReferels",
-                            width: 150,
-                            renderCell: (params) => (
-                              <button
-                                onClick={() => handleViewProfileClick(id)}
-                                style={{
-                                  padding: "6px 12px",
-                                  borderRadius: "4px",
-                                  backgroundColor: "#007bff",
-                                  color: "#ffffff",
-                                  border: "none",
-                                  cursor: "pointer",
-                                }}
-                              >
-                                View
-                                {params.value}
-                              </button>
-                            ),
-                          };
-                        } else {
-                          return {
-                            field,
-                            headerName: field,
-                            width: 150, // Adjust width as needed
-                          };
-                        }
-                      })}
-                      components={{ Toolbar: GridToolbar }}
-                    />
+                  <div>
+                    <span className="text-xl text-[#2A777C] text-center font-bold">
+                      Baby Immunization History
+                    </span>
                   </div>
-                </div>
-              </div>
+                </Box>
+
+                <Box
+                  sx={{
+                    padding: "50px",
+                    maxWidth: "1020px",
+
+                    margin: "auto",
+                    display: "flex",
+                    marginBottom: "20px",
+                  }}
+                >
+                  <DataGrid
+                    autoHeight
+                    rows={customDataset}
+                    columns={VISIBLE_FIELDS_ONE.map((field) => {
+                      if (field === "addReferels") {
+                        return {
+                          field: "addReferels",
+                          headerName: "addReferels",
+                          width: 150,
+                          renderCell: (params) => (
+                            <button
+                              onClick={() => handleViewProfileClick(id)}
+                              style={{
+                                padding: "6px 12px",
+                                borderRadius: "4px",
+                                backgroundColor: "#007bff",
+                                color: "#ffffff",
+                                border: "none",
+                                cursor: "pointer",
+                              }}
+                            >
+                              View
+                              {params.value}
+                            </button>
+                          ),
+                        };
+                      } else {
+                        return {
+                          field,
+                          headerName: field,
+                          width: 150, // Adjust width as needed
+                        };
+                      }
+                    })}
+                    components={{ Toolbar: GridToolbar }}
+                  />
+                </Box>
+              </Box>
             </Box>
           </Form>
         )}

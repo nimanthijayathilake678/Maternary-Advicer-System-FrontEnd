@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { Box, Grid } from "@mui/material";
-import Paper from "@mui/material/Paper";
+
 import {
   LineChart,
   Line,
@@ -12,7 +12,7 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
-import SideBar from "../../../Components/SideBar";
+
 import DisplaySidebar from "../../../Components/DisplaySidebar";
 
 function BabyWeight() {

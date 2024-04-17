@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Grid, IconButton } from "@mui/material";
 import Header from "../../../Components/Header";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -35,6 +35,11 @@ const BabyDashboard = () => {
   const navigate = useNavigate();
   const [value, setValue] = React.useState("one");
   const { id } = useParams();
+  const [searchQuery, setSearchQuery] = useState("");
+  const [data, setData] = useState([]);
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -66,7 +71,7 @@ const BabyDashboard = () => {
           <Header title="Hello" subtitle="Welcome to your dashboard" />
 
           {/* SEARCH BOX */}
-          <Box
+          {/* <Box
             display="flex"
             bgcolor={"#e4e5e2"}
             borderRadius={"3px"}
@@ -76,7 +81,7 @@ const BabyDashboard = () => {
             <IconButton type="button" sx={{ p: 1 }}>
               <Search />
             </IconButton>
-          </Box>
+          </Box> */}
         </Box>
 
         {/* Main content */}
