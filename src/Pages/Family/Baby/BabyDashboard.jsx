@@ -62,6 +62,9 @@ const BabyDashboard = () => {
   const handleNavigationClickSpecialNote = (id) => {
     navigate(`/family/babyDashboard/babynote/${id}`);
   };
+  const handleNavigationClickGrowth = (id) => {
+    navigate(`/family/babyDashboard/weight/${id}`);
+  };
   return (
     <>
       <Nav />
@@ -140,19 +143,13 @@ const BabyDashboard = () => {
               <Grid item xs={12} sm={3}>
                 <div className="cards">
                   <div className="card-inner">
-                    <h6
-                      onClick={() =>
-                        handleNavigation("/family/babyDashboard/weight")
-                      }
-                    >
+                    <h6 onClick={() => handleNavigationClickGrowth(id)}>
                       BABY GROWTH
                     </h6>
                     <Lottie
                       style={{ height: 60 }}
                       animationData={baby3}
-                      onClick={() =>
-                        handleNavigation("/family/babyDashboard/weight")
-                      }
+                      onClick={() => handleNavigationClickGrowth(id)}
                     />
                   </div>
                 </div>
