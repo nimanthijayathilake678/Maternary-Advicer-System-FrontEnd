@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-import { Typography } from "@mui/material";
+import { Typography, Button } from "@mui/material";
 import Box from "@mui/material/Box";
 import SpecialMsgService, {
   getSpecialMsg,
+  deleteSpecialMsg,
 } from "../Services/SpecialMsgService";
 import DisplaySidebar from "../Components/DisplaySidebar";
 import { useParams } from "react-router-dom";
@@ -13,7 +14,7 @@ import { Link, IconButton } from "@mui/material";
 import PhoneIcon from "@mui/icons-material/Phone";
 import EmailIcon from "@mui/icons-material/Email";
 
-const VISIBLE_FIELDS = ["msg_Content", "msg_Date", "msg_Topic"];
+const VISIBLE_FIELDS = ["id", "msg_Content", "msg_Date", "msg_Topic"];
 
 export default function SpecialMsgDisplay() {
   const [customDataset, setCustomDataset] = useState([]);
@@ -49,6 +50,17 @@ export default function SpecialMsgDisplay() {
         return "medium";
       default:
         return "";
+    }
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      await deleteSpecialMsg(id);
+      console.log(id);
+      const updatedDataset = customDataset.filter((row) => row.id !== id);
+      setCustomDataset(updatedDataset);
+    } catch (error) {
+      console.error("Error deleting message:", error);
     }
   };
 
@@ -140,11 +152,27 @@ export default function SpecialMsgDisplay() {
             <DataGrid
               autoHeight
               rows={customDataset}
-              columns={VISIBLE_FIELDS.map((field) => ({
-                field,
-                headerName: field,
-                width: 300, // Adjust width as needed
-              }))}
+              columns={[
+                ...VISIBLE_FIELDS.map((field) => ({
+                  field,
+                  headerName: field,
+                  width: 250, // Adjust width as needed
+                })),
+                {
+                  field: "delete",
+                  headerName: "Delete",
+                  width: 100,
+                  renderCell: (params) => (
+                    <Button
+                      variant="outlined"
+                      color="error"
+                      onClick={() => handleDelete(params.row.id)}
+                    >
+                      Delete
+                    </Button>
+                  ),
+                },
+              ]}
               components={{ Toolbar: GridToolbar }}
               getRowClassName={getRowClassName}
             />
