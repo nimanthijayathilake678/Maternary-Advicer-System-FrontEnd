@@ -9,8 +9,6 @@ import InputBase from "@mui/material/InputBase";
 import { Search } from "@mui/icons-material";
 import HappyFamily from "../../Assest/Lottie/HappyFamily.json";
 import marriedCouple from "../../Assest/Lottie/marriedCouple.json";
-import notification from "../../Assest/Lottie/notification.json";
-import medicare from "../../Assest/Lottie/medicare.json";
 import reports from "../../Assest/Lottie/reports.json";
 import pregnant from "../../Assest/Lottie/pregnant.json";
 import Lottie from "lottie-react";
@@ -75,10 +73,7 @@ const MidwifeDashboard = () => {
 
           {/* Main boxes */}
           <div className="main-cards">
-            <div>
-              <Lottie animationData={medicare} />
-            </div>
-
+            
             <div className="cards">
               <div className="card-inner">
                 <h6
@@ -91,7 +86,7 @@ const MidwifeDashboard = () => {
                   MARRIED COUPLE REGISTRATION
                 </h6>
                 <Lottie
-                  style={{ height: 110 }}
+                  style={{ height: 70 }}
                   animationData={marriedCouple}
                   onClick={() =>
                     handleNavigation(
@@ -104,9 +99,12 @@ const MidwifeDashboard = () => {
 
             <div className="cards">
               <div className="card-inner">
-                <h8>PREGNANCY REGISTRATION</h8>
+                <h6 onClick={() =>
+                    handleNavigation("/midwife/pregnancyRegistration")}
+                    >
+                      PREGNANCY REGISTRATION</h6>
                 <Lottie
-                  style={{ height: 100 }}
+                  style={{ height: 70 }}
                   animationData={pregnant}
                   onClick={() =>
                     handleNavigation("/midwife/pregnancyRegistration")
@@ -123,7 +121,7 @@ const MidwifeDashboard = () => {
                   ELIGIBLE FAMILIES
                 </h6>
                 <Lottie
-                  style={{ height: 110 }}
+                  style={{ height: 80 }}
                   animationData={HappyFamily}
                   onClick={() => handleNavigation("/midwife/eligibleFamilies")}
                 />
@@ -131,18 +129,18 @@ const MidwifeDashboard = () => {
             </div>
             <div className="cards">
               <div className="card-inner">
-                <h8>REGISTERED PREGNANT MOTHERS</h8>
-                <Lottie style={{ height: 120 }} animationData={pregnant} />
+                <h6>REGISTERED PREGNANT MOTHERS</h6>
+                <Lottie style={{ height:70 }} animationData={pregnant} />
               </div>
             </div>
 
             <div className="cards">
               <div className="card-inner">
-                <h8 onClick={() => handleNavigationClickBaby(id)}>
+                <h6 onClick={() => handleNavigationClickBaby(id)}>
                   REGISTERD BABIES
-                </h8>
+                </h6>
                 <Lottie
-                  style={{ height: 120 }}
+                  style={{ height: 70 }}
                   animationData={pregnant}
                   onClick={() => handleNavigationClickBaby(id)}
                 />
@@ -165,16 +163,11 @@ const MidwifeDashboard = () => {
               </div>
             </div>
 
+            
             <div className="cards">
               <div className="card-inner">
-                <h8>NOTIFICATION HANDLING</h8>
-                <Lottie style={{ height: 90 }} animationData={notification} />
-              </div>
-            </div>
-            <div className="cards">
-              <div className="card-inner">
-                <h8>SUMMARY REPORTS</h8>
-                <Lottie style={{ height: 100 }} animationData={reports} />
+                <h6>SUMMARY REPORTS</h6>
+                <Lottie style={{ height: 70 }} animationData={reports} />
               </div>
             </div>
           </div>
