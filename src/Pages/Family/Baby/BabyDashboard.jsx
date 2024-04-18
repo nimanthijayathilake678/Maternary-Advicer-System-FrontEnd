@@ -50,6 +50,10 @@ const BabyDashboard = () => {
     console.log(`ViewProfile button clicked for row with id ${id}`);
     navigate(`/family/babyDashboard/babyProfile/${id}`);
   };
+  const handleNavigationClickMD = (id) => {
+    console.log(`ViewProfile button clicked for row with id ${id}`);
+    navigate(`/midwife/babyDashboard/babyProfile/${id}`);
+  };
   const handleNavigationClickImmune = (id) => {
     navigate(`/family/babyDashboard/immunization/${id}`);
   };
@@ -64,6 +68,22 @@ const BabyDashboard = () => {
   };
   const handleNavigationClickGrowth = (id) => {
     navigate(`/family/babyDashboard/weight/${id}`);
+  };
+
+  const handleNavigationClickImmuneMD = (id) => {
+    navigate(`/midwife/babyDashboard/immunization/${id}`);
+  };
+  const handleNavigationClickNutrientsMD = (id) => {
+    navigate(`/midwife/babyDashboard/nutrients/${id}`);
+  };
+  const handleNavigationClickNewBornHealthMD = (id) => {
+    navigate(`/midwife/babyDashboard/babyhealth/${id}`);
+  };
+  const handleNavigationClickSpecialNoteMD = (id) => {
+    navigate(`/midwife/babyDashboard/babynote/${id}`);
+  };
+  const handleNavigationClickGrowthMD = (id) => {
+    navigate(`/midwife/babyDashboard/weight/${id}`);
   };
   return (
     <>
