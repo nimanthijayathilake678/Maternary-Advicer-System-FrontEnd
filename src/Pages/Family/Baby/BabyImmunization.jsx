@@ -270,9 +270,7 @@ function BabyImmunization() {
         </Box>
 
         {/* Form */}
-        <Box
-          sx={{ width: "100%", paddingBottom: "128px", paddingTop: "100px" }}
-        >
+        <Box sx={{ width: "100%", paddingBottom: "128px", paddingTop: "80px" }}>
           <Box
             sx={{
               maxWidth: "900px",
