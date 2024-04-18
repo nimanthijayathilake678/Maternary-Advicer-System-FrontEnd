@@ -129,8 +129,16 @@ const MidwifeDashboard = () => {
             </div>
             <div className="cards">
               <div className="card-inner">
-                <h6>REGISTERED PREGNANT MOTHERS</h6>
-                <Lottie style={{ height:70 }} animationData={pregnant} />
+                <h6 
+                onClick={() => handleNavigation("/midwife/registeredPregMothers")}
+                >
+                  REGISTERED PREGNANT MOTHERS</h6>
+                <Lottie 
+                  style={{ height:70 }} 
+                  animationData={pregnant} 
+                  onClick={() => handleNavigation("/midwife/registeredPregMothers")}
+  
+                />
               </div>
             </div>
 
