@@ -23,9 +23,6 @@ export const userRegistrationSchema = Yup.object({
   fullName: Yup.string().required("Full Name is required"),
   firstName: Yup.string().required("First Name is required"),
   lastName: Yup.string().required("Last Name is required"),
-  nicNo: Yup.string()
-    .matches(/^(?:\d{9}[xXvV]|\d{12})$/, "Nic must be valid Type")
-    .required("NIC No. is required"),
   birthday: Yup.string().required("Birthday is required"),
   contactNo: Yup.string()
     .matches(/^\d{10}$/, "Contact No. must be 10 digits")

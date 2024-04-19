@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
@@ -7,9 +7,15 @@ import Box from "@mui/material/Box";
 //import SideBar from "../../../../../Components/SideBar";
 import { addRefferalSchema } from "../Validations/validation";
 import DisplaySidebar from "../../Components/DisplaySidebar";
+import SuccessAlert from "../../Components/SuccessMsg";
+import  {
+  addRefferal,
+} from "../../Services/addRefferal";
 
 function AddRefferal() {
+  const [showSuccessAlert, setShowSuccessAlert] = useState(false);
   return (
+    <>
     <Formik
       initialValues={{
         pregnancyRegNo: "",
@@ -24,10 +30,15 @@ function AddRefferal() {
       validateOnChange={false}
       onSubmit={async (values, { setSubmitting }) => {
         try {
+          const response = await addRefferal(values);
+
+          if (response.status === 200) {
+            console.log("success");
+            setShowSuccessAlert(true);
+          }
+          console.log(response);
         } catch (error) {
           console.error("Error submitting form:", error.message);
-        } finally {
-          setSubmitting(false);
         }
       }}
     >
@@ -172,6 +183,8 @@ function AddRefferal() {
         </Form>
       )}
     </Formik>
+    {showSuccessAlert && <SuccessAlert setAlert={setShowSuccessAlert} />}
+    </>
   );
 }
 

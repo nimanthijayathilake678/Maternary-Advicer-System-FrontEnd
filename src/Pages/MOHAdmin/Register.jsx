@@ -60,7 +60,6 @@ function Register() {
         firstName: "",
         lastName: "",
         regNum:"",
-        nicNo: "",
         birthday: "",
         contactNo: "",
         email: "",
@@ -189,20 +188,7 @@ function Register() {
                       helperText={touched.regNum && errors.regNum}
                     />
                     </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <Field
-                      as={TextField}
-                      required
-                      fullWidth
-                      placeholder="NIC No."
-                      name="nicNo"
-                      label="NIC No"
-                      onChange={handleChange}
-                      value={values.nicNo}
-                      error={touched.nicNo && Boolean(errors.nicNo)}
-                      helperText={touched.nicNo && errors.nicNo}
-                    />
-                  </Grid>
+                  
                   <Grid item xs={12} sm={6}>
                     <Field
                       as={TextField}
