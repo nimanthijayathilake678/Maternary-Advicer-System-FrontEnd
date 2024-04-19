@@ -193,6 +193,37 @@ export const AppRoutes = {
     path: `/midwife/babyDashboard/:id`,
     component: <BabyDashboard />,
   },
+  midwife_baby_profile: {
+    path: `/midwife/babyDashboard/babyProfile/:id`,
+    component: <BabyDashboard />,
+  },
+
+  midwife_baby_immunization: {
+    path: `/midwife/babyDashboard/immunization/:id`,
+    component: <BabyImmunization />,
+  },
+
+  midwife_baby_referels: {
+    path: `/midwife/babyDashboard/immunization/referels/:id`,
+    component: <BabyReferels />,
+  },
+
+  midwife_baby_nutrients: {
+    path: `/midwife/babyDashboard/nutrients/:id`,
+    component: <BabyNutrients />,
+  },
+  midwife_baby_weight: {
+    path: `/midwife/babyDashboard/weight/:id`,
+    component: <BabyWeight />,
+  },
+  midwife_baby_newborn_health: {
+    path: `/midwife/babyDashboard/babyhealth/:id`,
+    component: <BabyNewBornHelath />,
+  },
+  midwife_baby_special_notes: {
+    path: `/midwife/babyDashboard/babynote/:id`,
+    component: <SpecialMsgDisplay />,
+  },
 
   midwife_field_clinic:{
     path:"/midwife/registeredPregMothers/profileView/fieldClinic",

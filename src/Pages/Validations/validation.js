@@ -136,3 +136,14 @@ export const specialMsgSchema = Yup.object({
   msg_Topic: Yup.string().required("Note Topic is required"),
   msg_Content: Yup.string().required("Note Content is required"),
 });
+
+export const babyWeightSchema = Yup.object({
+  babynum: Yup.string().required("Registration Number is required"),
+  b_Weight_Date: Yup.date().required("Date of Weght measured is required"),
+  b_Weight: Yup.number().required("Noted weight is required"),
+
+  b_Age_For_Weight_Date: Yup.number()
+    .required("Age for Weight measured date is required")
+    .min(0, "Baby's age must be greater than 0")
+    .max(216, "baby's age must be less than or equal to 18Yrs"),
+});

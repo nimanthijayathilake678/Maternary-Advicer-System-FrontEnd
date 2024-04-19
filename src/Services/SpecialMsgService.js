@@ -20,3 +20,14 @@ export const getSpecialMsg = async (regNum) => {
     throw err;
   }
 };
+
+export const deleteSpecialMsg = async (id) => {
+  try {
+    const response = await apiClient.delete(`/newmsg/deletemsg/${id}`);
+    console.log(response);
+    return response;
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+};
