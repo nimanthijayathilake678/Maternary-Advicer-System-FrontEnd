@@ -67,258 +67,274 @@ function BabyImmunization() {
 
   return (
     <>
-      <Formik
-        initialValues={{
-          babyNum: "",
-          vaccineName: "",
-          ageForVaccine: "",
-          vaccineDate: "",
-          batchNo: "",
-          adverseEffects: "",
-        }}
-        enableReinitialize={true}
-        validationSchema={babyImmunizationSchema}
-        validateOnChange={false}
-        onSubmit={async (values, { setSubmitting }) => {
-          try {
-            const response = await babyimmunization(values);
-            if (response.status === 200) {
-              console.log("success");
-              setShowSuccessAlert(true);
+      {authContext.position == "Midwife" && (
+        <Formik
+          initialValues={{
+            babyNum: "",
+            vaccineName: "",
+            ageForVaccine: "",
+            vaccineDate: "",
+            batchNo: "",
+            adverseEffects: "",
+          }}
+          enableReinitialize={true}
+          validationSchema={babyImmunizationSchema}
+          validateOnChange={false}
+          onSubmit={async (values, { setSubmitting }) => {
+            try {
+              const response = await babyimmunization(values);
+              if (response.status === 200) {
+                console.log("success");
+                setShowSuccessAlert(true);
+              }
+              console.log(response);
+            } catch (error) {
+              console.error("Error submitting form:", error.message);
             }
-            console.log(response);
-          } catch (error) {
-            console.error("Error submitting form:", error.message);
-          }
-        }}
-      >
-        {({
-          handleChange,
-          values,
-          isSubmitting,
-          handleSubmit,
-          touched,
-          errors,
-        }) => (
-          <Form>
-            <Box sx={{ display: "flex" }}>
-              <Box sx={{ width: "25%", display: "flex", maxWidth: "200px" }}>
-                <DisplaySidebar />
-              </Box>
-
-              {/* Form */}
-              <Box sx={{ width: "100%", paddingBottom: "128px" }}>
-                <Box
-                  sx={{
-                    paddingTop: "100px",
-                    maxWidth: "900px",
-                    margin: "auto",
-                    display: "flex",
-                  }}
-                >
-                  <div>
-                    <span className="text-xl text-[#2A777C] text-center font-bold">
-                      Baby Immunization
-                    </span>
-                  </div>
+          }}
+        >
+          {({
+            handleChange,
+            values,
+            isSubmitting,
+            handleSubmit,
+            touched,
+            errors,
+          }) => (
+            <Form>
+              <Box sx={{ display: "flex" }}>
+                <Box sx={{ width: "25%", display: "flex", maxWidth: "200px" }}>
+                  <DisplaySidebar />
                 </Box>
 
-                <Box
-                  sx={{
-                    padding: "50px",
-                    maxWidth: "900px",
-                    border: "1px solid #ccc",
-                    margin: "auto",
-                    display: "flex",
-                    marginBottom: "20px",
-                  }}
-                >
-                  <Grid container spacing={2}>
-                    <Grid item xs={12} sm={6}>
-                      <Field
-                        as={TextField}
-                        required
-                        fullWidth
-                        placeholder="Baby Number"
-                        name="babyNum"
-                        label="Baby Number"
-                        onChange={handleChange}
-                        value={values.babyNum}
-                        error={touched.babyNum && Boolean(errors.babyNum)}
-                        helperText={touched.babyNum && errors.babyNum}
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <Field
-                        as={TextField}
-                        required
-                        fullWidth
-                        placeholder="Vaccine Name"
-                        name="vaccineName"
-                        label="Vaccine Name"
-                        onChange={handleChange}
-                        value={values.vaccineName}
-                        error={
-                          touched.vaccineName && Boolean(errors.vaccineName)
-                        }
-                        helperText={touched.vaccineName && errors.vaccineName}
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <Field
-                        as={TextField}
-                        required
-                        fullWidth
-                        placeholder="Age for Vaccination"
-                        name="ageForVaccine"
-                        label="Age for Vaccination"
-                        onChange={handleChange}
-                        value={values.ageForVaccine}
-                        error={
-                          touched.ageForVaccine && Boolean(errors.ageForVaccine)
-                        }
-                        helperText={
-                          touched.ageForVaccine && errors.ageForVaccine
-                        }
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <Field
-                        as={TextField}
-                        required
-                        fullWidth
-                        type="date"
-                        placeholder="Vaccine Date"
-                        name="vaccineDate"
-                        label="Vaccine Date"
-                        onChange={handleChange}
-                        value={values.vaccineDate}
-                        error={
-                          touched.vaccineDate && Boolean(errors.vaccineDate)
-                        }
-                        helperText={touched.vaccineDate && errors.vaccineDate}
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <Field
-                        as={TextField}
-                        required
-                        fullWidth
-                        placeholder="Vaccine Batch No"
-                        name="batchNo"
-                        label="Vaccine Batch No"
-                        onChange={handleChange}
-                        value={values.batchNo}
-                        error={touched.batchNo && Boolean(errors.batchNo)}
-                        helperText={touched.batchNo && errors.batchNo}
-                      />
-                    </Grid>
-
-                    <Grid item xs={12}>
-                      <Field
-                        as={TextField}
-                        required
-                        fullWidth
-                        placeholder="Adverse Effects"
-                        name="adverseEffects"
-                        label="Adverse Effects"
-                        onChange={handleChange}
-                        value={values.adverseEffects}
-                        error={
-                          touched.adverseEffects &&
-                          Boolean(errors.adverseEffects)
-                        }
-                        helperText={
-                          touched.adverseEffects && errors.adverseEffects
-                        }
-                      />
-                    </Grid>
-
-                    <Grid item xs={12}>
-                      <DefaultButton
-                        type="submit"
-                        height="40px"
-                        width="150px"
-                        title="Register"
-                        //disabled={isSubmitting}
-                        //disabled={role === "Family" || isSubmitting}
-                        disabled={
-                          authContext.position !== "Midwife" || isSubmitting
-                        }
-                        style={{ marginTop: "20px" }}
-                        onClick={() => {
-                          handleSubmit();
-                          Object.keys(values).forEach((field) => {
-                            touched[field] = true;
-                          });
-                        }}
-                      />
-                    </Grid>
-                  </Grid>
-                </Box>
-              </Box>
-            </Box>
-            <Box sx={{ display: "flex" }}>
-              <div
-                style={{
-                  display: "flex",
-                  height: "100vh",
-                  overflowX: "hidden",
-                }}
-              >
-                <DisplaySidebar />
-                <div
-                  style={{ flex: 1, overflowX: "hidden", paddingLeft: "40px" }}
-                >
-                  <div style={{ height: "100vh", width: "100%" }}>
+                {/* Form */}
+                <Box sx={{ width: "100%", paddingBottom: "128px" }}>
+                  <Box
+                    sx={{
+                      paddingTop: "100px",
+                      maxWidth: "900px",
+                      margin: "auto",
+                      display: "flex",
+                    }}
+                  >
                     <div>
                       <span className="text-xl text-[#2A777C] text-center font-bold">
-                        Baby Immunization History
+                        Baby Immunization
                       </span>
                     </div>
-                    <DataGrid
-                      autoHeight
-                      rows={customDataset}
-                      columns={VISIBLE_FIELDS_ONE.map((field) => {
-                        if (field === "addReferels") {
-                          return {
-                            field: "addReferels",
-                            headerName: "addReferels",
-                            width: 150,
-                            renderCell: (params) => (
-                              <button
-                                onClick={() => handleViewProfileClick(id)}
-                                style={{
-                                  padding: "6px 12px",
-                                  borderRadius: "4px",
-                                  backgroundColor: "#007bff",
-                                  color: "#ffffff",
-                                  border: "none",
-                                  cursor: "pointer",
-                                }}
-                              >
-                                View
-                                {params.value}
-                              </button>
-                            ),
-                          };
-                        } else {
-                          return {
-                            field,
-                            headerName: field,
-                            width: 150, // Adjust width as needed
-                          };
-                        }
-                      })}
-                      components={{ Toolbar: GridToolbar }}
-                    />
-                  </div>
-                </div>
-              </div>
-            </Box>
-          </Form>
-        )}
-      </Formik>
+                  </Box>
+
+                  <Box
+                    sx={{
+                      padding: "50px",
+                      maxWidth: "900px",
+                      border: "1px solid #ccc",
+                      margin: "auto",
+                      display: "flex",
+                      marginBottom: "20px",
+                    }}
+                  >
+                    <Grid container spacing={2}>
+                      <Grid item xs={12} sm={6}>
+                        <Field
+                          as={TextField}
+                          required
+                          fullWidth
+                          placeholder="Baby Number"
+                          name="babyNum"
+                          label="Baby Number"
+                          onChange={handleChange}
+                          value={values.babyNum}
+                          error={touched.babyNum && Boolean(errors.babyNum)}
+                          helperText={touched.babyNum && errors.babyNum}
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={6}>
+                        <Field
+                          as={TextField}
+                          required
+                          fullWidth
+                          placeholder="Vaccine Name"
+                          name="vaccineName"
+                          label="Vaccine Name"
+                          onChange={handleChange}
+                          value={values.vaccineName}
+                          error={
+                            touched.vaccineName && Boolean(errors.vaccineName)
+                          }
+                          helperText={touched.vaccineName && errors.vaccineName}
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={6}>
+                        <Field
+                          as={TextField}
+                          required
+                          fullWidth
+                          placeholder="Age for Vaccination"
+                          name="ageForVaccine"
+                          label="Age for Vaccination"
+                          onChange={handleChange}
+                          value={values.ageForVaccine}
+                          error={
+                            touched.ageForVaccine &&
+                            Boolean(errors.ageForVaccine)
+                          }
+                          helperText={
+                            touched.ageForVaccine && errors.ageForVaccine
+                          }
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={6}>
+                        <Field
+                          as={TextField}
+                          required
+                          fullWidth
+                          type="date"
+                          placeholder="Vaccine Date"
+                          name="vaccineDate"
+                          //label="Vaccine Date"
+                          onChange={handleChange}
+                          value={values.vaccineDate}
+                          error={
+                            touched.vaccineDate && Boolean(errors.vaccineDate)
+                          }
+                          helperText={touched.vaccineDate && errors.vaccineDate}
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={6}>
+                        <Field
+                          as={TextField}
+                          required
+                          fullWidth
+                          placeholder="Vaccine Batch No"
+                          name="batchNo"
+                          label="Vaccine Batch No"
+                          onChange={handleChange}
+                          value={values.batchNo}
+                          error={touched.batchNo && Boolean(errors.batchNo)}
+                          helperText={touched.batchNo && errors.batchNo}
+                        />
+                      </Grid>
+
+                      <Grid item xs={12}>
+                        <Field
+                          as={TextField}
+                          required
+                          fullWidth
+                          placeholder="Adverse Effects"
+                          name="adverseEffects"
+                          label="Adverse Effects"
+                          onChange={handleChange}
+                          value={values.adverseEffects}
+                          error={
+                            touched.adverseEffects &&
+                            Boolean(errors.adverseEffects)
+                          }
+                          helperText={
+                            touched.adverseEffects && errors.adverseEffects
+                          }
+                        />
+                      </Grid>
+
+                      <Grid item xs={12}>
+                        <DefaultButton
+                          type="submit"
+                          height="40px"
+                          width="150px"
+                          title="Register"
+                          //disabled={isSubmitting}
+                          //disabled={role === "Family" || isSubmitting}
+                          disabled={
+                            authContext.position !== "Midwife" || isSubmitting
+                          }
+                          style={{ marginTop: "20px" }}
+                          onClick={() => {
+                            handleSubmit();
+                            Object.keys(values).forEach((field) => {
+                              touched[field] = true;
+                            });
+                          }}
+                        />
+                      </Grid>
+                    </Grid>
+                  </Box>
+                </Box>
+              </Box>
+            </Form>
+          )}
+        </Formik>
+      )}
+      <Box sx={{ display: "flex" }}>
+        <Box sx={{ width: "25%", display: "flex", maxWidth: "200px" }}>
+          <DisplaySidebar />
+        </Box>
+
+        {/* Form */}
+        <Box sx={{ width: "100%", paddingBottom: "128px", paddingTop: "80px" }}>
+          <Box
+            sx={{
+              maxWidth: "900px",
+              margin: "auto",
+              display: "flex",
+            }}
+          >
+            <div>
+              <span className="text-xl text-[#2A777C] text-center font-bold">
+                Baby Immunization History
+              </span>
+            </div>
+          </Box>
+
+          <Box
+            sx={{
+              padding: "50px",
+              maxWidth: "1020px",
+
+              margin: "auto",
+              display: "flex",
+              marginBottom: "20px",
+            }}
+          >
+            <DataGrid
+              autoHeight
+              rows={customDataset}
+              columns={VISIBLE_FIELDS_ONE.map((field) => {
+                if (field === "addReferels") {
+                  return {
+                    field: "addReferels",
+                    headerName: "addReferels",
+                    width: 150,
+                    renderCell: (params) => (
+                      <button
+                        onClick={() => handleViewProfileClick(id)}
+                        style={{
+                          padding: "6px 12px",
+                          borderRadius: "4px",
+                          backgroundColor: "#007bff",
+                          color: "#ffffff",
+                          border: "none",
+                          cursor: "pointer",
+                        }}
+                      >
+                        View
+                        {params.value}
+                      </button>
+                    ),
+                  };
+                } else {
+                  return {
+                    field,
+                    headerName: field,
+                    width: 150, // Adjust width as needed
+                  };
+                }
+              })}
+              components={{ Toolbar: GridToolbar }}
+            />
+          </Box>
+        </Box>
+      </Box>
+
       {showSuccessAlert && <SuccessAlert setAlert={setShowSuccessAlert} />}
     </>
   );

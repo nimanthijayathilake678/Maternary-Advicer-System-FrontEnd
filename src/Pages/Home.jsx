@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 import Nav from "../Components/Nav";
 import Footer from "../Components/Footer";
-import babylogo from "../Assest/babyim.jpg";
+import babylogo from "../Assest/imagebaby2.jpg";
+import { useNavigate } from "react-router-dom";
+
 export default function Home() {
+  const navigate = useNavigate();
+  const handleNavigation = (url) => {
+    navigate(url);
+  };
   return (
     <>
       <Nav />
@@ -18,7 +24,7 @@ export default function Home() {
               aria-hidden="true"
             ></div>
             <div>
-              <div className="mx-auto max-w-2xl py-10 sm:py-48 lg:py-10">
+              <div className="mx-auto max-w-2xl py-10 sm:py-48 lg:py-10 text-white ">
                 <div
                   className="text-center"
                   style={{
@@ -26,20 +32,66 @@ export default function Home() {
                   }}
                 >
                   <h1
-                    className="text-4xl  tracking-tight text-gray-900 sm:text-6xl"
-                    style={{ fontFamily: "Garamond" }}
+                    className="text-4xl  tracking-tight sm:text-6xl"
+                    style={{ fontFamily: "Garamond", color: "#2A777C" }}
                   >
                     Welcome to Maternity Adviser
                   </h1>
-                  <p className="mt-6 text-lg leading-8 text-gray-600">
+                  <p
+                    className="mt-6 text-lg leading-8"
+                    style={{ color: "#353839" }}
+                  >
                     Empowering expecting mothers with personalized advice and
                     support throughout their pregnancy journey.
                   </p>
+                  <div
+                    className="mt-8 flex items-center justify-end gap-2 cursor-pointer text-2xl"
+                    onClick={() => {
+                      handleNavigation("/login");
+                    }}
+                  >
+                    <svg
+                      className="w-10 h-10 text-[#00A9BB]"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                    <svg
+                      className="w-10 h-10 text-[#00A9BB]"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+
+                    <span
+                      className="font-semibold"
+                      style={{ color: "#2A777C" }}
+                    >
+                      Start Your Journey ....
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
         <div className="bg-[#00A9BB] py-10 sm:py-10">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mx-auto max-w-2xl lg:text-center">

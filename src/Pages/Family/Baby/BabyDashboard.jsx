@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Grid, IconButton } from "@mui/material";
 import Header from "../../../Components/Header";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -35,6 +35,11 @@ const BabyDashboard = () => {
   const navigate = useNavigate();
   const [value, setValue] = React.useState("one");
   const { id } = useParams();
+  const [searchQuery, setSearchQuery] = useState("");
+  const [data, setData] = useState([]);
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -44,6 +49,10 @@ const BabyDashboard = () => {
   const handleNavigationClick = (id) => {
     console.log(`ViewProfile button clicked for row with id ${id}`);
     navigate(`/family/babyDashboard/babyProfile/${id}`);
+  };
+  const handleNavigationClickMD = (id) => {
+    console.log(`ViewProfile button clicked for row with id ${id}`);
+    navigate(`/midwife/babyDashboard/babyProfile/${id}`);
   };
   const handleNavigationClickImmune = (id) => {
     navigate(`/family/babyDashboard/immunization/${id}`);
@@ -57,6 +66,25 @@ const BabyDashboard = () => {
   const handleNavigationClickSpecialNote = (id) => {
     navigate(`/family/babyDashboard/babynote/${id}`);
   };
+  const handleNavigationClickGrowth = (id) => {
+    navigate(`/family/babyDashboard/weight/${id}`);
+  };
+
+  const handleNavigationClickImmuneMD = (id) => {
+    navigate(`/midwife/babyDashboard/immunization/${id}`);
+  };
+  const handleNavigationClickNutrientsMD = (id) => {
+    navigate(`/midwife/babyDashboard/nutrients/${id}`);
+  };
+  const handleNavigationClickNewBornHealthMD = (id) => {
+    navigate(`/midwife/babyDashboard/babyhealth/${id}`);
+  };
+  const handleNavigationClickSpecialNoteMD = (id) => {
+    navigate(`/midwife/babyDashboard/babynote/${id}`);
+  };
+  const handleNavigationClickGrowthMD = (id) => {
+    navigate(`/midwife/babyDashboard/weight/${id}`);
+  };
   return (
     <>
       <Nav />
@@ -66,7 +94,7 @@ const BabyDashboard = () => {
           <Header title="Hello" subtitle="Welcome to your dashboard" />
 
           {/* SEARCH BOX */}
-          <Box
+          {/* <Box
             display="flex"
             bgcolor={"#e4e5e2"}
             borderRadius={"3px"}
@@ -76,7 +104,7 @@ const BabyDashboard = () => {
             <IconButton type="button" sx={{ p: 1 }}>
               <Search />
             </IconButton>
-          </Box>
+          </Box> */}
         </Box>
 
         {/* Main content */}
@@ -135,19 +163,13 @@ const BabyDashboard = () => {
               <Grid item xs={12} sm={3}>
                 <div className="cards">
                   <div className="card-inner">
-                    <h6
-                      onClick={() =>
-                        handleNavigation("/family/babyDashboard/weight")
-                      }
-                    >
+                    <h6 onClick={() => handleNavigationClickGrowth(id)}>
                       BABY GROWTH
                     </h6>
                     <Lottie
                       style={{ height: 60 }}
                       animationData={baby3}
-                      onClick={() =>
-                        handleNavigation("/family/babyDashboard/weight")
-                      }
+                      onClick={() => handleNavigationClickGrowth(id)}
                     />
                   </div>
                 </div>
