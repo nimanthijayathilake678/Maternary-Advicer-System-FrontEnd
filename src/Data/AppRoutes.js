@@ -56,6 +56,20 @@ import BabyRegistrationForms from "../Pages/Family/Baby/RegistrationPage/BabyReg
 import VogRegisterdBabies from "../Pages/VOGDoctor/VogRegisterdBabies";
 import AddRefferal from "../Pages/VOGDoctor/AddRefferal";
 import SpecialMsgDisplay from "../Pages/SpecialMsgDisplay";
+import RegisteredPregMothers from "../Pages/Midwife/RegisteredPregnancyMothers";
+import PregnantMotherProfileView from "../Pages/Midwife/PregnantMotherProfileView";
+import PregnancyRegView from "../Pages/Midwife/PregnancyRegView";
+import FieldClinicInformationForm from "../Pages/Midwife/MidwifePregnancyForms/FieldClinicInformationForm";
+import ClinicCareInformationForm from "../Pages/MohDoctor/MohDrPregnancyForms/ClinicCareInformationForm";
+import ChartView from "../Pages/Midwife/MidwifePregnancyForms/ChartView";
+import ScreeningForm from "../Pages/Midwife/MidwifePregnancyForms/ScreeningForm";
+import TetanusTexoidForm from "../Pages/Midwife/MidwifePregnancyForms/TetanusTexoidForm";
+import SessionAttendanceForm from "../Pages/Midwife/MidwifePregnancyForms/SessionAttendanceForm";
+import FamilyPlanningForm from "../Pages/Midwife/MidwifePregnancyForms/FamilyPlanningForm";
+import DeliveryCare from "../Pages/Midwife/MidwifePregnancyForms/DeliveryCare";
+import PostpartumFieldCare from "../Pages/Midwife/MidwifePregnancyForms/PostpartumFieldCare";
+import IECMaterial from "../Pages/Midwife/MidwifePregnancyForms/IECMaterial"
+
 export const AppRoutes = {
   login: { path: "/login", component: <Login /> },
 
@@ -151,6 +165,21 @@ export const AppRoutes = {
     component: <PregnancyRegistration />,
   },
 
+  midwife_registered_pregnant_mothers:{
+    path:"/midwife/registeredPregMothers",
+    component: <RegisteredPregMothers/>,
+  },
+
+  midwife_pregnant_mother_profile_view:{
+    path:"/midwife/registeredPregMothers/profileView",
+    component:<PregnantMotherProfileView/>,
+  },
+  midwife_pregnancy_info_view:{
+    path: "/midwife/registeredPregMothers/profileView/pregRegDetails",
+    component:<PregnancyRegView/>,
+  },
+
+  
   midwife_pregnancies: {
     path: "/midwife/pregancies",
     component: <MidwifePregnancies />,
@@ -194,6 +223,56 @@ export const AppRoutes = {
   midwife_baby_special_notes: {
     path: `/midwife/babyDashboard/babynote/:id`,
     component: <SpecialMsgDisplay />,
+  },
+
+  midwife_field_clinic:{
+    path:"/midwife/registeredPregMothers/profileView/fieldClinic",
+    component:<FieldClinicInformationForm/>
+  },
+
+  midwife_clinic_care:{
+    path:"/midwife/registeredPregMothers/profileView/clinicCare",
+    component:<ClinicCareInformationForm/>,
+  },
+
+  midwife_chart_view:{
+    path:"/midwife/registeredPregMothers/profileView/chartView",
+    component:<ChartView/>
+  },
+  
+  midwife_screening:{
+    path:"/midwife/registeredPregMothers/profileView/screening",
+    component:<ScreeningForm/>
+  },
+ 
+  midwife_teanus_texoid:{
+    path:"/midwife/registeredPregMothers/profileView/tetanusTexoidImmunization",
+    component:<TetanusTexoidForm/>
+  },
+
+  midwife_session_attendance:{
+    path:"/midwife/registeredPregMothers/profileView/sessionAttendance",
+    component:<SessionAttendanceForm/>
+  },
+
+  midwife_iec_material:{
+    path:"/midwife/registeredPregMothers/profileView/iecMaterial",
+    component:<IECMaterial/>
+  },
+
+  midwife_family_planning:{
+    path:"/midwife/registeredPregMothers/profileView/familyPlanning",
+    component:<FamilyPlanningForm/>
+  },
+
+  midwife_delivery_care:{
+    path:"/midwife/registeredPregMothers/profileView/deliveryCare",
+    component:<DeliveryCare/>
+  },
+
+  midwife_postpartum_care:{
+    path:"/midwife/registeredPregMothers/profileView/postpartumCare",
+    component:<PostpartumFieldCare/>
   },
 
   //moh page routes
