@@ -1,0 +1,38 @@
+.grid-container1 {
+  display: grid;
+  grid-template-columns: auto auto;
+  padding: 10px;
+  color: black;
+}
+.grid-item1 {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.mb-3{
+  width: 100%;
+  
+
+}
+
+/* .grid-janith {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 10px;
+  background-color: #2196F3;
+  padding: 10px;
+}
+
+.grid-janith > div {
+  background-color: rgba(255, 185, 255, 0.8);
+  border: 1px solid black;
+  text-align: center;
+  font-size: 30px;
+  height:80vh;
+} */
+
+
+
