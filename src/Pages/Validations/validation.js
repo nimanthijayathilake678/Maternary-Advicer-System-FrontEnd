@@ -143,3 +143,9 @@ export const babyWeightSchema = Yup.object({
     .min(0, "Baby's age must be greater than 0")
     .max(216, "baby's age must be less than or equal to 18Yrs"),
 });
+
+export const chatForumSchema = Yup.object({
+  regNum: Yup.string().required("Registration Number is required"),
+  msg_Date: Yup.date().required("Date of message is required"),
+  msg_Content: Yup.string().required("Messege Content is required"),
+});

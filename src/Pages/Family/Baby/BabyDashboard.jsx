@@ -69,6 +69,9 @@ const BabyDashboard = () => {
   const handleNavigationClickGrowth = (id) => {
     navigate(`/family/babyDashboard/weight/${id}`);
   };
+  const handleNavigationClickChatForum = (id) => {
+    navigate(`/family/babyDashboard/chatforum/${id}`);
+  };
 
   const handleNavigationClickImmuneMD = (id) => {
     navigate(`/midwife/babyDashboard/immunization/${id}`);
@@ -198,6 +201,20 @@ const BabyDashboard = () => {
                       style={{ height: 60 }}
                       animationData={notification}
                       onClick={() => handleNavigationClickSpecialNote(id)}
+                    />
+                  </div>
+                </div>
+              </Grid>
+              <Grid item xs={12} sm={3}>
+                <div className="cards">
+                  <div className="card-inner">
+                    <h6 onClick={() => handleNavigationClickChatForum(id)}>
+                      CHAT FORUM
+                    </h6>
+                    <Lottie
+                      style={{ height: 60 }}
+                      animationData={notification}
+                      onClick={() => handleNavigationClickChatForum(id)}
                     />
                   </div>
                 </div>
