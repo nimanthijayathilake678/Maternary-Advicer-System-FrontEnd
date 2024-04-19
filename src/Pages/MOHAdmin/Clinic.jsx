@@ -11,7 +11,7 @@ function Clinic() {
     description: "",
     clinicDate: "",
     starttime: "",
-    endtime: "",
+   
     
   });
 
@@ -52,9 +52,7 @@ function Clinic() {
     if (!data.starttime) {
       errors.starttime = "Time is required";
     }
-    if (!data.endtime) {
-      errors.endtime = "Time is required";
-    }
+    
 
     return errors;
   };
@@ -157,21 +155,7 @@ function Clinic() {
                     fullWidth
                   /> 
                 </Grid>
-                <Grid item xs={6}>
-               
-                <TextField
-                    required
-                    placeholder="End Time"
-                    name="endtime"
-                    label="End Time"
-                    type="time"
-                    value={clinicData.endtime}
-                    onChange={handleChange}
-                    error={!!errors.endtime}
-                    helperText={errors.endtime}
-                    fullWidth
-                  /> 
-                </Grid>
+                
                 
                 <Grid item xs={12}>
                   <Button

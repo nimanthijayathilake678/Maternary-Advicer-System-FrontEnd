@@ -74,10 +74,9 @@ export const addRefferalSchema = Yup.object({
   eligibilityRegNo: Yup.string().required(
     "Eligibility Registration Number is required"
   ),
-  refId: Yup.string().required("Refference Id is required"),
-  refererId: Yup.string().required("Referer Id is required"),
-  refererRole: Yup.string().required("Referer Role is required"),
-  description: Yup.string().required("Description is required"),
+  referredId: Yup.string().required("Referer Id is required"),
+  referredRole: Yup.string().required("Referer Role is required"),
+  reason: Yup.string().required("Description is required"),
 });
 
 export const babyImmunizationSchema = Yup.object({

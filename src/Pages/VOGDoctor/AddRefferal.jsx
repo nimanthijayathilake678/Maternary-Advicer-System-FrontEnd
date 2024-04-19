@@ -14,10 +14,9 @@ function AddRefferal() {
       initialValues={{
         pregnancyRegNo: "",
         eligibilityRegNo: "",
-        refId: "",
-        refererId: "",
-        refererRole: "",
-        description: "",
+        referredId: "",
+        referredRole: "",
+        reason: "",
         
       }}
       enableReinitialize={true}
@@ -104,74 +103,60 @@ function AddRefferal() {
                       helperText={touched.eligibilityRegNo && errors.eligibilityRegNo}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <Field
-                      as={TextField}
-                      required
-                      fullWidth
-                      placeholder="Reference Id"
-                      name="refId"
-                      label="Reference Id"
-                      onChange={handleChange}
-                      value={values.refId}
-                      error={touched.refId && Boolean(errors.refId)}
-                      helperText={touched.refId && errors.refId}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <Field
-                      as={TextField}
-                      required
-                      fullWidth
-                      placeholder="Referer Id"
-                      name="refererId"
-                      label="Referer Id"
-                      onChange={handleChange}
-                      value={values.refererId}
-                      error={touched.refererId && Boolean(errors.refererId)}
-                      helperText={touched.refererId && errors.refererId}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <Field
-                      as={TextField}
-                      required
-                      fullWidth
-                      placeholder="Referer Role"
-                      name="refererRole"
-                      label="Referer Role"
-                      onChange={handleChange}
-                      value={values.refererRole}
-                      error={touched.refererRole && Boolean(errors.refererRole)}
-                      helperText={touched.refererRole && errors.refererRole}
-                    />
-                  </Grid>
-                  
                   
                   <Grid item xs={12} sm={6}>
                     <Field
                       as={TextField}
                       required
                       fullWidth
-                      placeholder="Description"
-                      name="description"
-                      label="Description"
+                      placeholder="Referred Id"
+                      name="referredId"
+                      label="Referred Id"
                       onChange={handleChange}
-                      value={values.description}
+                      value={values.referredId}
+                      error={touched.referredId && Boolean(errors.referredId)}
+                      helperText={touched.referredId && errors.referredId}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <Field
+                      as={TextField}
+                      required
+                      fullWidth
+                      placeholder="Referred Role"
+                      name="referredRole"
+                      label="Referred Role"
+                      onChange={handleChange}
+                      value={values.referredRole}
+                      error={touched.referredRole && Boolean(errors.referredRole)}
+                      helperText={touched.referredRole && errors.referredRole}
+                    />
+                  </Grid>
+                  
+                  
+                  <Grid item xs={12} sm={12}>
+                    <Field
+                      as={TextField}
+                      required
+                      fullWidth
+                      placeholder="Reason For Refferal"
+                      name="reason"
+                      label="Reason"
+                      onChange={handleChange}
+                      value={values.reason}
                       error={
-                        touched.description && Boolean(errors.description)
+                        touched.reason && Boolean(errors.reason)
                       }
-                      helperText={touched.description && errors.description}
+                      helperText={touched.reason && errors.reason}
                     />
                     
                   </Grid>
                   <Grid item xs={12} sm={6}>
                     <button
-                      type="submit" variant="contained" 
-                      color="primary"
-                     // title="Register"
+                      type="submit"
+                      
                       disabled={isSubmitting}
-                      style={{ marginTop: "20px" }}
+                      style={{ marginTop: "20px",backgroundColor:"#2671E0",borderRadius:"5px",padding:"5px 15px 5px 15px"}}
                       onClick={() => {
                         handleSubmit();
                         Object.keys(values).forEach((field) => {
