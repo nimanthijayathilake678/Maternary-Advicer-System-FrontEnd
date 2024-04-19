@@ -397,11 +397,12 @@ function MyForm() {
                       helperText={touched.designation && errors.designation}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={6}>
+                  
+                  <Grid item xs={12} sm={12}>
                     <Button variant="contained" 
                       type="submit"
                       title="Register"
-                      disabled={isSubmitting}
+                      disabled={isSubmitting} 
                       style={{ marginTop: "20px" }}
                       color="primary" // Add color here
                      onClick={() => {
@@ -421,7 +422,9 @@ function MyForm() {
                       </Button>
                     </Link>
                   </Grid>
-                </Grid>
+                  
+                  </Grid>
+                 
               </Box>
             </Box>
           </Box>

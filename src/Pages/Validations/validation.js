@@ -31,12 +31,12 @@ export const userRegistrationSchema = Yup.object({
   occupation: Yup.string().required("Occupation is required"),
   area: Yup.string().required("Area is required"),
   username: Yup.string()
-    .min(8, "Username must be at least 8 characters")
+    .min(3, "Username must be at least 3 characters")
     .required("Username is required"),
   password: Yup.string()
     .matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
-      "Password must contain at least one uppercase letter, one lowercase letter, and one number. Minimum 8 characters."
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{5,}$/,
+      "Password must contain at least one uppercase letter, one lowercase letter, and one number. Minimum 5 characters."
     )
     .required("Password is required"),
   confirmPassword: Yup.string()
