@@ -8,10 +8,8 @@ import BabyRegistrationForm1Service, {
 } from "../../Services/BabyRegistrationForm1Service";
 import DisplaySidebar from "../../Components/DisplaySidebar";
 const VISIBLE_FIELDS = [
-  "id",
   "couple_id",
   "pregnancy_id",
-  "b_Name",
   "b_Reg_Num",
   "b_MOH_Division",
   "b_Mother_Age",

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Grid, IconButton } from "@mui/material";
 import Header from "../../../Components/Header";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -29,16 +29,62 @@ import medicare from "../../../Assest/Lottie/medicare.json";
 import Nav from "../../../Components/Nav";
 import SideBar from "../../../Components/SideBar";
 import DisplaySidebar from "../../../Components/DisplaySidebar";
+import { useParams } from "react-router-dom";
+import SpecialMsg from "../../../Components/SpecialMsg";
 const BabyDashboard = () => {
   const navigate = useNavigate();
   const [value, setValue] = React.useState("one");
+  const { id } = useParams();
+  const [searchQuery, setSearchQuery] = useState("");
+  const [data, setData] = useState([]);
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
   const handleNavigation = (url) => {
     navigate(url);
   };
+  const handleNavigationClick = (id) => {
+    console.log(`ViewProfile button clicked for row with id ${id}`);
+    navigate(`/family/babyDashboard/babyProfile/${id}`);
+  };
+  const handleNavigationClickMD = (id) => {
+    console.log(`ViewProfile button clicked for row with id ${id}`);
+    navigate(`/midwife/babyDashboard/babyProfile/${id}`);
+  };
+  const handleNavigationClickImmune = (id) => {
+    navigate(`/family/babyDashboard/immunization/${id}`);
+  };
+  const handleNavigationClickNutrients = (id) => {
+    navigate(`/family/babyDashboard/nutrients/${id}`);
+  };
+  const handleNavigationClickNewBornHealth = (id) => {
+    navigate(`/family/babyDashboard/babyhealth/${id}`);
+  };
+  const handleNavigationClickSpecialNote = (id) => {
+    navigate(`/family/babyDashboard/babynote/${id}`);
+  };
+  const handleNavigationClickGrowth = (id) => {
+    navigate(`/family/babyDashboard/weight/${id}`);
+  };
 
+  const handleNavigationClickImmuneMD = (id) => {
+    navigate(`/midwife/babyDashboard/immunization/${id}`);
+  };
+  const handleNavigationClickNutrientsMD = (id) => {
+    navigate(`/midwife/babyDashboard/nutrients/${id}`);
+  };
+  const handleNavigationClickNewBornHealthMD = (id) => {
+    navigate(`/midwife/babyDashboard/babyhealth/${id}`);
+  };
+  const handleNavigationClickSpecialNoteMD = (id) => {
+    navigate(`/midwife/babyDashboard/babynote/${id}`);
+  };
+  const handleNavigationClickGrowthMD = (id) => {
+    navigate(`/midwife/babyDashboard/weight/${id}`);
+  };
   return (
     <>
       <Nav />
@@ -48,7 +94,7 @@ const BabyDashboard = () => {
           <Header title="Hello" subtitle="Welcome to your dashboard" />
 
           {/* SEARCH BOX */}
-          <Box
+          {/* <Box
             display="flex"
             bgcolor={"#e4e5e2"}
             borderRadius={"3px"}
@@ -58,7 +104,7 @@ const BabyDashboard = () => {
             <IconButton type="button" sx={{ p: 1 }}>
               <Search />
             </IconButton>
-          </Box>
+          </Box> */}
         </Box>
 
         {/* Main content */}
@@ -74,19 +120,13 @@ const BabyDashboard = () => {
               <Grid item xs={12} sm={3}>
                 <div className="cards">
                   <div className="card-inner">
-                    <h6
-                      onClick={() =>
-                        handleNavigation("/family/babyDashboard/babyProfile")
-                      }
-                    >
+                    <h6 onClick={() => handleNavigationClick(id)}>
                       BASIC INFORMATION
                     </h6>
                     <Lottie
                       style={{ height: 60 }}
                       animationData={profile}
-                      onClick={() =>
-                        handleNavigation("/family/babyDashboard/babyProfile")
-                      }
+                      onClick={() => handleNavigationClick(id)}
                     />
                   </div>
                 </div>
@@ -94,19 +134,13 @@ const BabyDashboard = () => {
               <Grid item xs={12} sm={3}>
                 <div className="cards">
                   <div className="card-inner">
-                    <h6
-                      onClick={() =>
-                        handleNavigation("/family/babyDashboard/immunization")
-                      }
-                    >
+                    <h6 onClick={() => handleNavigationClickImmune(id)}>
                       BABY IMMUNIZATION
                     </h6>
                     <Lottie
                       style={{ height: 60 }}
                       animationData={reports}
-                      onClick={() =>
-                        handleNavigation("/family/babyDashboard/immunization")
-                      }
+                      onClick={() => handleNavigationClickImmune(id)}
                     />
                   </div>
                 </div>
@@ -114,51 +148,28 @@ const BabyDashboard = () => {
               <Grid item xs={12} sm={3}>
                 <div className="cards">
                   <div className="card-inner">
-                    <h6
-                      onClick={() =>
-                        handleNavigation("/family/babyDashboard/nutrients")
-                      }
-                    >
+                    <h6 onClick={() => handleNavigationClickNutrients(id)}>
                       BABY NUTRIENTS
                     </h6>
                     <Lottie
-                      style={{ height: 90 }}
+                      style={{ height: 60 }}
                       animationData={baby2}
-                      onClick={() =>
-                        handleNavigation("/family/babyDashboard/nutrients")
-                      }
+                      onClick={() => handleNavigationClickNutrients(id)}
                     />
                   </div>
                 </div>
               </Grid>
+
               <Grid item xs={12} sm={3}>
                 <div className="cards">
                   <div className="card-inner">
-                    <h8 onClick={() => handleNavigation("")}>BABY CARE</h8>
-                    <Lottie
-                      style={{ height: 150 }}
-                      animationData={babyDash}
-                      onClick={() => handleNavigation("")}
-                    />
-                  </div>
-                </div>
-              </Grid>
-              <Grid item xs={12} sm={3}>
-                <div className="cards">
-                  <div className="card-inner">
-                    <h8
-                      onClick={() =>
-                        handleNavigation("/family/babyDashboard/weight")
-                      }
-                    >
+                    <h6 onClick={() => handleNavigationClickGrowth(id)}>
                       BABY GROWTH
-                    </h8>
+                    </h6>
                     <Lottie
-                      style={{ height: 80 }}
+                      style={{ height: 60 }}
                       animationData={baby3}
-                      onClick={() =>
-                        handleNavigation("/family/babyDashboard/weight")
-                      }
+                      onClick={() => handleNavigationClickGrowth(id)}
                     />
                   </div>
                 </div>
@@ -166,19 +177,27 @@ const BabyDashboard = () => {
               <Grid item xs={12} sm={3}>
                 <div className="cards">
                   <div className="card-inner">
-                    <h8
-                      onClick={() =>
-                        handleNavigation("/family/babyDashboard/babyhealth")
-                      }
-                    >
-                      Baby Helath
-                    </h8>
+                    <h6 onClick={() => handleNavigationClickNewBornHealth(id)}>
+                      BABY HEALTH
+                    </h6>
                     <Lottie
-                      style={{ height: 80 }}
+                      style={{ height: 60 }}
                       animationData={BabyItem}
-                      onClick={() =>
-                        handleNavigation("/family/babyDashboard/babyhealth")
-                      }
+                      onClick={() => handleNavigationClickNewBornHealth(id)}
+                    />
+                  </div>
+                </div>
+              </Grid>
+              <Grid item xs={12} sm={3}>
+                <div className="cards">
+                  <div className="card-inner">
+                    <h6 onClick={() => handleNavigationClickSpecialNote(id)}>
+                      SPECIAL NOTES
+                    </h6>
+                    <Lottie
+                      style={{ height: 60 }}
+                      animationData={notification}
+                      onClick={() => handleNavigationClickSpecialNote(id)}
                     />
                   </div>
                 </div>
@@ -199,14 +218,7 @@ const BabyDashboard = () => {
 
           {/* Upcoming Clinics */}
           <Grid item xs={12} sm={5}>
-            <div className="upcomingClinics">
-              <div style={{ marginLeft: "20px" }}>
-                <h3>Upcoming Clinics</h3>
-              </div>
-              <div>
-                <UpcomingsBaby />
-              </div>
-            </div>
+            <SpecialMsg />
           </Grid>
           <Grid item xs={12} sm={3}>
             <Lottie style={{ height: 280 }} animationData={clinic} />

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { Box, Grid } from "@mui/material";
@@ -12,220 +12,303 @@ import TableHead from "@mui/material/TableHead";
 import { Link } from "react-router-dom";
 import SideBar from "../../../Components/SideBar";
 import DisplaySidebar from "../../../Components/DisplaySidebar";
-function BabyNewBornHelath() {
-  const [babyData, setBabyData] = useState({
-    babyNum: "",
-    skinColor: "",
-    temperature: 0,
-    naturePecan: "",
-    breastFeeding: "",
-    fecesColor: "",
-    examineDate: "",
-  });
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import DefaultButton from "../../../Components/Button/DefaultButton.jsx";
+import { babyNewBornSchema } from "../../../Pages/Validations/validation.js";
+import BabyNewBornHealthService, {
+  babynewbornhealth,
+  getbabynewbornhealth,
+} from "../../../Services/BabyNewBornHelathService.js";
+import { useParams } from "react-router-dom";
+import useAuth from "../../../Hooks/useAuth";
+import { useNavigate } from "react-router-dom";
+import { Typography } from "@mui/material";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
+import SuccessAlert from "../../../Components/SuccessMsg.jsx";
 
-  const [babyList, setBabyList] = useState([]);
+const VISIBLE_FIELDS_ONE = [
+  "babyNum",
+  "skinColor",
+  "temperature",
+  "naturePecan",
+  "breastFeeding",
+  "fecesColor",
+  "examineDate",
+];
 
-  const handleBabyAdd = () => {
-    setBabyList([...babyList, babyData]);
-    setBabyData({
-      babyNum: "",
-      skinColor: "",
-      temperature: 0,
-      naturePecan: "",
-      breastFeeding: "",
-      fecesColor: "",
-      examineDate: "",
-    });
-  };
+function BabyNewBornHealth() {
+  const [customDataset, setCustomDataset] = useState([]);
+  const navigate = useNavigate();
+  const authContext = useAuth();
+  const { id } = useParams();
+  const [showSuccessAlert, setShowSuccessAlert] = useState(false);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await getbabynewbornhealth(id);
+        const data = response.data.map((row, index) => ({
+          id: index + 1,
+          ...row,
+        }));
+        setCustomDataset(data);
+      } catch (error) {
+        console.log("Error getting data:", error);
+      }
+    };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setBabyData({ ...babyData, [name]: value });
-  };
+    fetchData();
+  }, []);
 
   return (
-    <div>
-      <Box
-        component="form"
-        sx={{
-          "& .MuiTextField-root": { m: 1 },
+    <>
+      <Formik
+        initialValues={{
+          babyNum: "",
+          skinColor: "",
+          temperature: "",
+          naturePecan: "",
+          breastFeeding: "",
+          fecesColor: "",
+          examineDate: "",
         }}
-        noValidate
-        autoComplete="off"
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        height="100%"
-        flexDirection="column"
+        enableReinitialize={true}
+        validationSchema={babyNewBornSchema}
+        validateOnChange={false}
+        onSubmit={async (values, { setSubmitting }) => {
+          try {
+            const response = await babynewbornhealth(values);
+            if (response.status === 200) {
+              console.log("success");
+              setShowSuccessAlert(true);
+            }
+            console.log(response);
+          } catch (error) {
+            console.error("Error submitting form:", error.message);
+          }
+        }}
       >
-        <Grid container spacing={3}>
-          {/* Sidebar */}
-          <Grid item xs={3} display={"flex"}>
-            <DisplaySidebar />
-          </Grid>
-          {/* Baby Details Section */}
-          <Grid
-            item
-            xs={9}
-            style={{ paddingTop: "100px", paddingRight: "200px" }}
-          >
-            {/* Header */}
-            <div>
-              <span className="text-xl text-[#2A777C] text-center font-bold">
-                New Born Helath
-              </span>
-            </div>
-            <Box
-              sx={{
-                width: "100%",
-                border: "1px solid #ccc",
-                padding: "1em",
-                paddingRight: "80px",
-                display: "flex",
-              }}
-            >
-              {/* Rest of the baby details section */}
-              <Grid container spacing={3}>
-                <Grid item xs={6}>
-                  <TextField
-                    required
-                    placeholder="Baby Number"
-                    name="babyNum"
-                    label="Baby Number"
-                    value={babyData.babyNum}
-                    onChange={handleChange}
-                    fullWidth
-                  />
-                </Grid>
-                <Grid item xs={6}>
-                  <TextField
-                    required
-                    placeholder="Skin Color"
-                    name="skinColor"
-                    label="Skin Color"
-                    value={babyData.skinColor}
-                    onChange={handleChange}
-                    fullWidth
-                  />
-                </Grid>
-                <Grid item xs={6}>
-                  <TextField
-                    required
-                    type="number"
-                    placeholder="Temperature"
-                    name="temperature"
-                    label="Temperature in Celcius"
-                    value={babyData.temperature}
-                    onChange={handleChange}
-                    fullWidth
-                  />
-                </Grid>
-                <Grid item xs={6}>
-                  <TextField
-                    required
-                    placeholder="Nature Pecan"
-                    name="naturePecan"
-                    label="Nature Pecan"
-                    value={babyData.naturePecan}
-                    onChange={handleChange}
-                    fullWidth
-                  />
-                </Grid>
-                <Grid item xs={6}>
-                  <TextField
-                    required
-                    placeholder="Breast Feeding"
-                    name="breastFeeding"
-                    label="Breast Feeding"
-                    value={babyData.breastFeeding}
-                    onChange={handleChange}
-                    fullWidth
-                  />
-                </Grid>
-                <Grid item xs={6}>
-                  <TextField
-                    required
-                    placeholder="Feces Color"
-                    name="fecesColor"
-                    label="Feces Color"
-                    value={babyData.fecesColor}
-                    onChange={handleChange}
-                    fullWidth
-                  />
-                </Grid>
-                <Grid item xs={6}>
-                  <TextField
-                    required
-                    type="date"
-                    name="examineDate"
-                    //label="Examine Date"
-                    value={babyData.examineDate}
-                    onChange={handleChange}
-                    fullWidth
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <Button
-                    variant="contained"
-                    onClick={handleBabyAdd}
-                    style={{ marginTop: "1em" }}
-                  >
-                    Add Examine record
-                  </Button>
-                </Grid>
-              </Grid>
+        {({
+          handleChange,
+          values,
+          isSubmitting,
+          handleSubmit,
+          touched,
+          errors,
+        }) => (
+          <Form>
+            <Box sx={{ display: "flex" }}>
+              <Box sx={{ width: "25%", display: "flex", maxWidth: "200px" }}>
+                <DisplaySidebar />
+              </Box>
+
+              {/* Form */}
+              <Box sx={{ width: "100%", paddingBottom: "128px" }}>
+                <Box
+                  sx={{
+                    paddingTop: "100px",
+                    maxWidth: "900px",
+                    margin: "auto",
+                    display: "flex",
+                  }}
+                >
+                  <div>
+                    <span className="text-xl text-[#2A777C] text-center font-bold">
+                      Baby New Born Health
+                    </span>
+                  </div>
+                </Box>
+
+                <Box
+                  sx={{
+                    padding: "50px",
+                    maxWidth: "900px",
+                    border: "1px solid #ccc",
+                    margin: "auto",
+                    display: "flex",
+                    marginBottom: "20px",
+                  }}
+                >
+                  <Grid container spacing={2}>
+                    <Grid item xs={12} sm={6}>
+                      <Field
+                        as={TextField}
+                        required
+                        fullWidth
+                        placeholder="Baby Number"
+                        name="babyNum"
+                        label="Baby Number"
+                        onChange={handleChange}
+                        value={values.babyNum}
+                        error={touched.babyNum && Boolean(errors.babyNum)}
+                        helperText={touched.babyNum && errors.babyNum}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <Field
+                        as={TextField}
+                        required
+                        fullWidth
+                        placeholder="Skin color"
+                        name="skinColor"
+                        label="Skin color"
+                        onChange={handleChange}
+                        value={values.skinColor}
+                        error={touched.skinColor && Boolean(errors.skinColor)}
+                        helperText={touched.skinColor && errors.skinColor}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <Field
+                        as={TextField}
+                        required
+                        fullWidth
+                        placeholder="Baby Temperature"
+                        name="temperature"
+                        label="Baby Temperature"
+                        onChange={handleChange}
+                        value={values.temperature}
+                        error={
+                          touched.temperature && Boolean(errors.temperature)
+                        }
+                        helperText={touched.temperature && errors.temperature}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <Field
+                        as={TextField}
+                        required
+                        fullWidth
+                        placeholder="Nature of Pecan"
+                        name="naturePecan"
+                        label="Nature of Pecan"
+                        onChange={handleChange}
+                        value={values.naturePecan}
+                        error={
+                          touched.naturePecan && Boolean(errors.naturePecan)
+                        }
+                        helperText={touched.naturePecan && errors.naturePecan}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <Field
+                        as={TextField}
+                        required
+                        fullWidth
+                        placeholder="Baby BreastFeeding"
+                        name="breastFeeding"
+                        label="Baby BreastFeeding"
+                        onChange={handleChange}
+                        value={values.breastFeeding}
+                        error={
+                          touched.breastFeeding && Boolean(errors.breastFeeding)
+                        }
+                        helperText={
+                          touched.breastFeeding && errors.breastFeeding
+                        }
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <Field
+                        as={TextField}
+                        required
+                        fullWidth
+                        placeholder="Baby Feaces Color"
+                        name="fecesColor"
+                        label="Baby Feaces Color"
+                        onChange={handleChange}
+                        value={values.fecesColor}
+                        error={touched.fecesColor && Boolean(errors.fecesColor)}
+                        helperText={touched.fecesColor && errors.fecesColor}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <Field
+                        as={TextField}
+                        required
+                        fullWidth
+                        type="date"
+                        placeholder="Examine Date"
+                        name="examineDate"
+                        label="Examine Date"
+                        onChange={handleChange}
+                        value={values.examineDate}
+                        error={
+                          touched.examineDate && Boolean(errors.examineDate)
+                        }
+                        helperText={touched.examineDate && errors.examineDate}
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <DefaultButton
+                        type="submit"
+                        height="40px"
+                        width="150px"
+                        title="Register"
+                        disabled={isSubmitting}
+                        style={{ marginTop: "20px" }}
+                        onClick={() => {
+                          handleSubmit();
+                          Object.keys(values).forEach((field) => {
+                            touched[field] = true;
+                          });
+                        }}
+                      />
+                    </Grid>
+                  </Grid>
+                </Box>
+              </Box>
             </Box>
-            {/* Display Baby Details */}
-            <Box
-              sx={{ width: "100%", marginTop: "2em", paddingBottom: "80px" }}
-            >
-              <div>
-                <span className="text-xl text-[#2A777C] text-center font-bold">
-                  New Born Helath Details
-                </span>
-              </div>
-              <TableContainer
-                component={Paper}
-                style={{ paddingBottom: "80px" }}
-              >
-                <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                  <TableHead
-                    style={{
-                      backgroundColor: "#00A9BB",
-                      color: "white",
-                    }}
-                  >
-                    <TableRow>
-                      <TableCell>Baby Number</TableCell>
-                      <TableCell>Skin Color</TableCell>
-                      <TableCell>Temperature</TableCell>
-                      <TableCell>Nature Pecan</TableCell>
-                      <TableCell>Breast Feeding</TableCell>
-                      <TableCell>Feces Color</TableCell>
-                      <TableCell>Examine Date</TableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {babyList.map((baby, index) => (
-                      <TableRow key={index}>
-                        <TableCell>{baby.babyNum}</TableCell>
-                        <TableCell>{baby.skinColor}</TableCell>
-                        <TableCell>{baby.temperature}</TableCell>
-                        <TableCell>{baby.naturePecan}</TableCell>
-                        <TableCell>{baby.breastFeeding}</TableCell>
-                        <TableCell>{baby.fecesColor}</TableCell>
-                        <TableCell>{baby.examineDate}</TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </TableContainer>
+            <Box sx={{ display: "flex" }}>
+              <Box sx={{ width: "25%", display: "flex", maxWidth: "200px" }}>
+                <DisplaySidebar />
+              </Box>
+
+              {/* Form */}
+              <Box sx={{ width: "100%", paddingBottom: "128px" }}>
+                <Box
+                  sx={{
+                    maxWidth: "900px",
+                    margin: "auto",
+                    display: "flex",
+                  }}
+                >
+                  <div>
+                    <span className="text-xl text-[#2A777C] text-center font-bold">
+                      Baby Health History
+                    </span>
+                  </div>
+                </Box>
+
+                <Box
+                  sx={{
+                    padding: "50px",
+                    paddingLeft: "110px",
+                    maxWidth: "1230px",
+                    margin: "auto",
+                    display: "flex",
+                    marginBottom: "20px",
+                  }}
+                >
+                  <DataGrid
+                    autoHeight
+                    rows={customDataset}
+                    columns={VISIBLE_FIELDS_ONE.map((field) => {
+                      return {
+                        field,
+                        headerName: field,
+                        width: 150, // Adjust width as needed
+                      };
+                    })}
+                    components={{ Toolbar: GridToolbar }}
+                  />
+                </Box>
+              </Box>
             </Box>
-          </Grid>
-        </Grid>
-      </Box>
-    </div>
+          </Form>
+        )}
+      </Formik>
+      {showSuccessAlert && <SuccessAlert setAlert={setShowSuccessAlert} />}
+    </>
   );
 }
-
-export default BabyNewBornHelath;
+export default BabyNewBornHealth;

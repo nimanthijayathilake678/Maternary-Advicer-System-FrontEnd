@@ -180,34 +180,35 @@ const Login = () => {
                 },
               }}
             >
-              <box
+              <Box
                 flex="45%"
                 sx={{
                   display: "flex",
+                  flexDirection: "column",
                   justifyContent: "center",
                   alignItems: "center",
-                  backgroundColor: theme.palette.primary.paper,
-                  height: "80vh",
+                  backgroundColor: "#2A777C",
                   borderTopLeftRadius: theme.shape.borderRadius * 5, //6
                   borderBottomLeftRadius: theme.shape.borderRadius * 5, //6
                   [theme.breakpoints.down("sm")]: {
-                    height: 300,
+                    height: 900,
                   },
                 }}
               >
                 <img
-                  src={login2}
+                  src={babylogo}
                   alt="Login_image"
-                  width="100%"
-                  height="100%"
                   sx={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
                     [theme.breakpoints.down("md")]: {
                       width: "200px",
                       height: "160px",
                     },
                   }}
                 ></img>
-              </box>
+              </Box>
 
               <Box
                 flex="55%"

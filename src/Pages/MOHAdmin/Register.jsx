@@ -1,10 +1,16 @@
-import React from "react";
+
+import React, { useState, useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import SideBar from "../../Components/SideBar";
 import { userRegistrationSchema } from "../Validations/validation";
 import DefaultButton from "../../Components/Button/DefaultButton";
+import  {
+  registerNewUser,
+} from "../../Services/registerUsers";
+import SuccessAlert from "../../Components/SuccessMsg";
+
 import {
   TextField,
   Button,
@@ -44,10 +50,16 @@ const areas = [
 ];
 
 function Register() {
+  const [showSuccessAlert, setShowSuccessAlert] = useState(false);
   return (
+    <>
     <Formik
       initialValues={{
+
         fullName: "",
+        firstName: "",
+        lastName: "",
+        regNum:"",
         nicNo: "",
         birthday: "",
         contactNo: "",
@@ -67,10 +79,15 @@ function Register() {
       validateOnChange={false}
       onSubmit={async (values, { setSubmitting }) => {
         try {
+          const response = await registerNewUser(values);
+
+          if (response.status === 200) {
+            console.log("success");
+            setShowSuccessAlert(true);
+          }
+          console.log(response);
         } catch (error) {
           console.error("Error submitting form:", error.message);
-        } finally {
-          setSubmitting(false);
         }
       }}
     >
@@ -135,6 +152,48 @@ function Register() {
                       as={TextField}
                       required
                       fullWidth
+                      placeholder="First Name"
+                      name="firstName"
+                      label="First Name"
+                      onChange={handleChange}
+                      value={values.firstName}
+                      error={touched.firstName && Boolean(errors.firstName)}
+                      helperText={touched.firstName && errors.firstName}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <Field
+                      as={TextField}
+                      required
+                      fullWidth
+                      placeholder="Last Name"
+                      name="lastName"
+                      label="Last Name"
+                      onChange={handleChange}
+                      value={values.lastName}
+                      error={touched.lastName && Boolean(errors.lastName)}
+                      helperText={touched.lastName && errors.lastName}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <Field
+                      as={TextField}
+                      required
+                      fullWidth
+                      placeholder="Register Number"
+                      name="regNum"
+                      label="Register Number"
+                      onChange={handleChange}
+                      value={values.regNum}
+                      error={touched.regNum && Boolean(errors.regNum)}
+                      helperText={touched.regNum && errors.regNum}
+                    />
+                    </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <Field
+                      as={TextField}
+                      required
+                      fullWidth
                       placeholder="NIC No."
                       name="nicNo"
                       label="NIC No"
@@ -173,7 +232,7 @@ function Register() {
                       helperText={touched.contactNo && errors.contactNo}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={6}>
+                  <Grid item xs={12} sm={12}>
                     <Field
                       as={TextField}
                       required
@@ -192,32 +251,34 @@ function Register() {
                   <Grid item xs={12} sm={6}>
                     <FormControl component="fieldset" margin="normal">
                       <FormLabel component="legend">Sex</FormLabel>
-                      <RadioGroup name="sex">
+                      <RadioGroup row name="sex">
                         <FormControlLabel
                           value="male"
                           control={<Radio />}
                           label="Male"
-                          labelPlacement="end"
+                          style={{ color: "black" }}
                         />
                         <FormControlLabel
                           value="female"
                           control={<Radio />}
                           label="Female"
-                          labelPlacement="end"
+                          style={{ color: "black" }}
                         />
                       </RadioGroup>
                     </FormControl>
                   </Grid>
-                  <Grid item xs={12} sm={12}>
+                  <Grid item xs={12} sm={6}>
                     <FormControl component="fieldset" margin="normal">
                       <FormLabel component="legend">Married Status</FormLabel>
-                      <RadioGroup name="marriedStatus">
+                      <RadioGroup row name="marriedStatus">
                         <FormControlLabel
                           value="single"
                           control={<Radio />}
                           label="Single"
+                          style={{ color: "black" }}
                         />
                         <FormControlLabel
+                         style={{ color: "black" }}
                           value="married"
                           control={<Radio />}
                           label="Married"
@@ -226,11 +287,13 @@ function Register() {
                           value="divorced"
                           control={<Radio />}
                           label="Divorced"
+                          style={{ color: "black" }}
                         />
                       </RadioGroup>
                     </FormControl>
+                    
                   </Grid>
-
+                  
                   <Grid item xs={12} sm={6}>
                     <Field as={FormControl} fullWidth margin="normal">
                       <InputLabel htmlFor="occupation">Occupation</InputLabel>
@@ -321,6 +384,8 @@ function Register() {
         </Form>
       )}
     </Formik>
+    {showSuccessAlert && <SuccessAlert setAlert={setShowSuccessAlert} />}
+    </>
   );
 }
 
