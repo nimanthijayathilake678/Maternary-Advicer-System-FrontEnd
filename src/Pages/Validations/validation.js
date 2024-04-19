@@ -23,9 +23,6 @@ export const userRegistrationSchema = Yup.object({
   fullName: Yup.string().required("Full Name is required"),
   firstName: Yup.string().required("First Name is required"),
   lastName: Yup.string().required("Last Name is required"),
-  nicNo: Yup.string()
-    .matches(/^(?:\d{9}[xXvV]|\d{12})$/, "Nic must be valid Type")
-    .required("NIC No. is required"),
   birthday: Yup.string().required("Birthday is required"),
   contactNo: Yup.string()
     .matches(/^\d{10}$/, "Contact No. must be 10 digits")
@@ -34,12 +31,12 @@ export const userRegistrationSchema = Yup.object({
   occupation: Yup.string().required("Occupation is required"),
   area: Yup.string().required("Area is required"),
   username: Yup.string()
-    .min(8, "Username must be at least 8 characters")
+    .min(3, "Username must be at least 3 characters")
     .required("Username is required"),
   password: Yup.string()
     .matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
-      "Password must contain at least one uppercase letter, one lowercase letter, and one number. Minimum 8 characters."
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{5,}$/,
+      "Password must contain at least one uppercase letter, one lowercase letter, and one number. Minimum 5 characters."
     )
     .required("Password is required"),
   confirmPassword: Yup.string()
@@ -74,10 +71,9 @@ export const addRefferalSchema = Yup.object({
   eligibilityRegNo: Yup.string().required(
     "Eligibility Registration Number is required"
   ),
-  refId: Yup.string().required("Refference Id is required"),
-  refererId: Yup.string().required("Referer Id is required"),
-  refererRole: Yup.string().required("Referer Role is required"),
-  description: Yup.string().required("Description is required"),
+  referredId: Yup.string().required("Referer Id is required"),
+  referredRole: Yup.string().required("Referer Role is required"),
+  reason: Yup.string().required("Description is required"),
 });
 
 export const babyImmunizationSchema = Yup.object({

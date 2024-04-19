@@ -3,35 +3,45 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { Box, Grid } from "@mui/material";
 import SideBar from "../../Components/SideBar";
+import axios from "axios";
+import SuccessAlert from "../../Components/SuccessMsg";
 
 
 function Clinic() {
+  const [showSuccessAlert, setShowSuccessAlert] = useState(false);
   const [clinicData, setClinicData] = useState({
     area: "",
     description: "",
     clinicDate: "",
     starttime: "",
-    endtime: "",
+   
     
   });
+
+
 
   const [errors, setErrors] = useState({});
  
 
-  const handleClinicAdd = () => {
+  const handleClinicAdd = async (e) => {
     // Validate clinic data
     const clinicErrors = validateClinicForm(clinicData);
     if (Object.keys(clinicErrors).length > 0) {
       setErrors(clinicErrors);
       return;
     }
-
-    
+  
+    try {
+      await axios.post("http://localhost:8080/clinicDate", clinicData);
+      console.log("Clinic data added successfully!");
+      setShowSuccessAlert(true);
+    } catch (error) {
+      console.error("Error adding clinic data:", error);
+    }
   };
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setClinicData({ ...clinicData, [name]: value });
+    setClinicData({ ...clinicData, [e.target.name]: e.target.value });
   };
 
   const validateClinicForm = (data) => {
@@ -52,9 +62,7 @@ function Clinic() {
     if (!data.starttime) {
       errors.starttime = "Time is required";
     }
-    if (!data.endtime) {
-      errors.endtime = "Time is required";
-    }
+    
 
     return errors;
   };
@@ -157,21 +165,7 @@ function Clinic() {
                     fullWidth
                   /> 
                 </Grid>
-                <Grid item xs={6}>
-               
-                <TextField
-                    required
-                    placeholder="End Time"
-                    name="endtime"
-                    label="End Time"
-                    type="time"
-                    value={clinicData.endtime}
-                    onChange={handleChange}
-                    error={!!errors.endtime}
-                    helperText={errors.endtime}
-                    fullWidth
-                  /> 
-                </Grid>
+                
                 
                 <Grid item xs={12}>
                   <Button
@@ -189,6 +183,7 @@ function Clinic() {
           </Grid>
         </Grid>
       </Box>
+      {showSuccessAlert && <SuccessAlert setAlert={setShowSuccessAlert} />}
     </div>
   );
 }

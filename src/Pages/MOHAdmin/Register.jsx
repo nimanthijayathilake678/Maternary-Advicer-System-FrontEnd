@@ -1,10 +1,16 @@
-import React from "react";
+
+import React, { useState, useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import SideBar from "../../Components/SideBar";
 import { userRegistrationSchema } from "../Validations/validation";
 import DefaultButton from "../../Components/Button/DefaultButton";
+import  {
+  registerNewUser,
+} from "../../Services/registerUsers";
+import SuccessAlert from "../../Components/SuccessMsg";
+
 import {
   TextField,
   Button,
@@ -44,7 +50,9 @@ const areas = [
 ];
 
 function Register() {
+  const [showSuccessAlert, setShowSuccessAlert] = useState(false);
   return (
+    <>
     <Formik
       initialValues={{
 
@@ -52,7 +60,6 @@ function Register() {
         firstName: "",
         lastName: "",
         regNum:"",
-        nicNo: "",
         birthday: "",
         contactNo: "",
         email: "",
@@ -71,10 +78,15 @@ function Register() {
       validateOnChange={false}
       onSubmit={async (values, { setSubmitting }) => {
         try {
+          const response = await registerNewUser(values);
+
+          if (response.status === 200) {
+            console.log("success");
+            setShowSuccessAlert(true);
+          }
+          console.log(response);
         } catch (error) {
           console.error("Error submitting form:", error.message);
-        } finally {
-          setSubmitting(false);
         }
       }}
     >
@@ -176,20 +188,7 @@ function Register() {
                       helperText={touched.regNum && errors.regNum}
                     />
                     </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <Field
-                      as={TextField}
-                      required
-                      fullWidth
-                      placeholder="NIC No."
-                      name="nicNo"
-                      label="NIC No"
-                      onChange={handleChange}
-                      value={values.nicNo}
-                      error={touched.nicNo && Boolean(errors.nicNo)}
-                      helperText={touched.nicNo && errors.nicNo}
-                    />
-                  </Grid>
+                  
                   <Grid item xs={12} sm={6}>
                     <Field
                       as={TextField}
@@ -219,7 +218,7 @@ function Register() {
                       helperText={touched.contactNo && errors.contactNo}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={6}>
+                  <Grid item xs={12} sm={12}>
                     <Field
                       as={TextField}
                       required
@@ -371,6 +370,8 @@ function Register() {
         </Form>
       )}
     </Formik>
+    {showSuccessAlert && <SuccessAlert setAlert={setShowSuccessAlert} />}
+    </>
   );
 }
 
