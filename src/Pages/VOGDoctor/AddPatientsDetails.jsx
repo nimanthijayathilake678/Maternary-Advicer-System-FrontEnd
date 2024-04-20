@@ -6,7 +6,7 @@ import { Formik, Form, } from "formik";
 import { hospitalCareSchema } from "../Validations/validation";
 import { Link } from "react-router-dom";
 import  {
-  addClinicDetails,
+  addClinicDetails
 } from "../../Services/addClinicDetails";
 import SuccessAlert from "../../Components/SuccessMsg";
 
@@ -37,7 +37,7 @@ function AddPatientsDetails() {
         liqour: "",
         placenta: "",
         averagePOA: "",
-        anyOther: "",
+        anyother: "",
         nextVisitDate: "",
         doctorId: "",
         designation: "",
@@ -352,11 +352,11 @@ function AddPatientsDetails() {
                     <TextField
                       fullWidth
                       label="AnyOther "
-                      name="anyOther"
+                      name="anyother"
                       value={values.anyOther}
                       onChange={handleChange}
-                      error={touched.anyOther && Boolean(errors.anyOther)}
-                      helperText={touched.anyOther && errors.anyOther}
+                      error={touched.anyother && Boolean(errors.anyother)}
+                      helperText={touched.anyother && errors.anyother}
                     />
                   </Grid>
 
