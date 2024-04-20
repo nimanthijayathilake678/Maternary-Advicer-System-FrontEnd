@@ -51,7 +51,7 @@ export const hospitalCareSchema = Yup.object({
   eligibilityRegNo: Yup.string().required(
     "Eligibility Registration Number is required"
   ),
-  nextVisitDate: Yup.string().required("Date is required"),
+ // nextVisitDate: Yup.string().required("Date is required"),
   doctorId: Yup.string().required("Doctor ID is required"),
   designation: Yup.string().required("Designation is required"),
 });
@@ -73,7 +73,7 @@ export const addRefferalSchema = Yup.object({
   ),
   referredId: Yup.string().required("Referer Id is required"),
   referredRole: Yup.string().required("Referer Role is required"),
-  reason: Yup.string().required("Description is required"),
+  reason: Yup.string().required("Reason is required"),
 });
 
 export const babyImmunizationSchema = Yup.object({

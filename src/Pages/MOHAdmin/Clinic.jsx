@@ -31,14 +31,39 @@ function Clinic() {
       return;
     }
   
+ 
+    const formattedClinicDate = formatDateString(clinicData.clinicDate);
+    const formattedStartTime = convertTimeFormat(clinicData.starttime);
+  
     try {
-      await axios.post("http://localhost:8080/clinicDate", clinicData);
+      await axios.post("http://localhost:8080/clinicDate", {
+        ...clinicData,
+        clinicDate: formattedClinicDate, // Replace the original clinicDate with the formatted one
+        starttime: formattedStartTime,
+      });
       console.log("Clinic data added successfully!");
       setShowSuccessAlert(true);
     } catch (error) {
       console.error("Error adding clinic data:", error);
     }
   };
+  
+  const formatDateString = (dateString) => {
+    // Split the dateString by "/" and reorder it as "YYYY-MM-DD"
+    const [month, day, year] = dateString.split("/");
+    return `${year}-${month}-${day}`;
+  };
+
+  const convertTimeFormat = (timeString) => {
+    const [time, period] = timeString.split(" ");
+    const [hours, minutes] = time.split(":");
+    const formattedHours = period === "PM" ? parseInt(hours, 10) + 12 : hours;
+    const formattedTime = `${formattedHours}:${minutes}:00`;
+  
+    return formattedTime;
+  };
+
+
 
   const handleChange = (e) => {
     setClinicData({ ...clinicData, [e.target.name]: e.target.value });
@@ -128,7 +153,7 @@ function Clinic() {
                     required
                     type="date"
                     placeholder="Clinic Date"
-                    name="cliniceDate"
+                    name="clinicDate"
                     value={clinicData.clinicDate}
                     onChange={handleChange}
                     error={!!errors.clinicDate}
