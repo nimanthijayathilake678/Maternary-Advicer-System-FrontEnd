@@ -11,6 +11,8 @@ import DisplaySidebar from "../Components/DisplaySidebar";
 import SuccessAlert from "../Components/SuccessMsg.jsx";
 import { Picker } from "emoji-mart";
 import { Prev } from "react-bootstrap/esm/PageItem.js";
+import useAuth from "../Hooks/useAuth.js";
+
 const VISIBLE_FIELDS_ONE = ["regNum", "msg_Date", "msg_Content"];
 
 function getRandomColor() {
@@ -29,6 +31,7 @@ function ChatForum() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+  const authContext = useAuth();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -75,6 +78,7 @@ function ChatForum() {
             overflowY: "auto",
             maxHeight: "calc(80vh - 40px - 80px)", // Height minus header and form height
             bgcolor: "#f5f5f5",
+            maxWidth: "800px",
           }}
         >
           {customDataset.map((msg, index) => (
@@ -133,8 +137,8 @@ function ChatForum() {
         >
           <Formik
             initialValues={{
-              regNum: "",
-              msg_Date: "",
+              regNum: id,
+              msg_Date: new Date().toISOString().slice(0, 10),
               msg_Content: "",
             }}
             enableReinitialize={true}
@@ -142,6 +146,8 @@ function ChatForum() {
             validateOnChange={false}
             onSubmit={async (values, { setSubmitting }) => {
               try {
+                values.msg_Date = new Date().toISOString().slice(0, 10);
+
                 const response = await addchatmsg(values);
                 if (response.status === 200) {
                   console.log("success");
@@ -177,7 +183,7 @@ function ChatForum() {
                       marginBottom: "20px",
                     }}
                   >
-                    <Grid item xs={12} sm={6}>
+                    {/* <Grid item xs={12} sm={6}>
                       <Field
                         as={TextField}
                         required
@@ -186,13 +192,13 @@ function ChatForum() {
                         name="regNum"
                         label="Registration Number"
                         onChange={handleChange}
-                        value={values.regNum}
+                        value={id}
                         error={touched.regNum && Boolean(errors.regNum)}
                         helperText={touched.regNum && errors.regNum}
                       />
-                    </Grid>
+                    </Grid> */}
 
-                    <Grid item xs={12} sm={6}>
+                    {/* <Grid item xs={12} sm={6}>
                       <Field
                         as={TextField}
                         required
@@ -206,15 +212,15 @@ function ChatForum() {
                         error={touched.msg_Date && Boolean(errors.msg_Date)}
                         helperText={touched.msg_Date && errors.msg_Date}
                       />
-                    </Grid>
+                    </Grid> */}
                     <Grid item xs={12}>
                       <Field
                         as={TextField}
                         required
                         fullWidth
-                        placeholder="Message Content"
+                        placeholder="Share Your Thoughts"
                         name="msg_Content"
-                        label="Message Content"
+                        label="Share Your Thoughts"
                         onChange={handleChange}
                         value={values.msg_Content}
                         error={
