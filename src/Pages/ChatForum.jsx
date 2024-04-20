@@ -24,7 +24,7 @@ function getRandomColor() {
 
 function ChatForum() {
   const [customDataset, setCustomDataset] = useState([]);
-  const [showSuccessAlert, setShowSuccessAlert] = useState(false);
+
   const [isSendMessage, setIsSendMessage] = useState(false);
   const { id } = useParams();
   const navigate = useNavigate();
@@ -145,7 +145,6 @@ function ChatForum() {
                 const response = await addchatmsg(values);
                 if (response.status === 200) {
                   console.log("success");
-                  setShowSuccessAlert(true);
                 }
                 setIsSendMessage((Prev) => !Prev);
                 console.log(response);
@@ -258,8 +257,6 @@ function ChatForum() {
           </Formik>
         </Box>
       </Box>
-
-      {showSuccessAlert && <SuccessAlert setAlert={setShowSuccessAlert} />}
     </Box>
   );
 }
