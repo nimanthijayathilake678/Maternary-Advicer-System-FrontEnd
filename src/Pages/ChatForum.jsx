@@ -12,6 +12,7 @@ import SuccessAlert from "../Components/SuccessMsg.jsx";
 import { Picker } from "emoji-mart";
 import { Prev } from "react-bootstrap/esm/PageItem.js";
 import useAuth from "../Hooks/useAuth.js";
+import babylogo from "../Assest/babylogo.png";
 
 const VISIBLE_FIELDS_ONE = ["regNum", "msg_Date", "msg_Content"];
 
@@ -70,6 +71,46 @@ function ChatForum() {
           width: "75%",
         }}
       >
+        <Box
+          sx={{
+            maxWidth: "900px",
+            display: "flex",
+            paddingTop: "10px",
+          }}
+        >
+          <div>
+            <span className="text-xl text-[#2A777C] text-center font-bold">
+              Chat Forum
+            </span>
+          </div>
+        </Box>
+
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            padding: "10px",
+            backgroundColor: "#2A777C",
+            marginTop: "10px",
+            borderRadius: "3px",
+            maxWidth: "800px",
+          }}
+        >
+          <img
+            src="https://img.freepik.com/free-photo/mom-holds-legs-newborn-baby-her-hands_169016-37036.jpg?w=1060&t=st=1713614392~exp=1713614992~hmac=edf6b39c998e60c1df03dac795c576500fa44ea99aca22ae9242f3aa0f72e858" // Cute and baby-like image URL
+            alt="Group Icon"
+            style={{
+              width: "60px",
+              height: "50px",
+              borderRadius: "50%",
+              marginRight: "10px",
+            }}
+          />
+          <Typography variant="h8" style={{ color: "#FFFFFF" }}>
+            Mother & Midwife
+          </Typography>
+        </Box>
+
         {/* Chat Box */}
         <Box
           sx={{
