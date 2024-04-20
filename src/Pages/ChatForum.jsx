@@ -87,14 +87,14 @@ function ChatForum() {
               sx={{
                 display: "flex",
                 flexDirection: "column",
-                alignItems: msg.sender === "user" ? "flex-end" : "flex-start",
+
+                alignItems: msg.regNum === id ? "flex-end" : "flex-start",
                 marginTop: "10px",
               }}
             >
               <Box
                 sx={{
-                  backgroundColor:
-                    msg.sender === "user" ? "#dcf8c6" : "#ffffff",
+                  backgroundColor: msg.regNum === id ? "#dcf8c6" : "#ffffff",
                   padding: "10px",
                   borderRadius: "10px",
                   boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
