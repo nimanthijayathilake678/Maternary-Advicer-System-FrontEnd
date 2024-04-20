@@ -10,6 +10,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import DisplaySidebar from "../Components/DisplaySidebar";
 import SuccessAlert from "../Components/SuccessMsg.jsx";
 import { Picker } from "emoji-mart";
+import { Prev } from "react-bootstrap/esm/PageItem.js";
 const VISIBLE_FIELDS_ONE = ["regNum", "msg_Date", "msg_Content"];
 
 function getRandomColor() {
@@ -24,6 +25,7 @@ function getRandomColor() {
 function ChatForum() {
   const [customDataset, setCustomDataset] = useState([]);
   const [showSuccessAlert, setShowSuccessAlert] = useState(false);
+  const [isSendMessage, setIsSendMessage] = useState(false);
   const { id } = useParams();
   const navigate = useNavigate();
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
@@ -44,7 +46,7 @@ function ChatForum() {
     };
 
     fetchData();
-  }, []);
+  }, [isSendMessage]);
 
   return (
     <Box
@@ -145,6 +147,7 @@ function ChatForum() {
                   console.log("success");
                   setShowSuccessAlert(true);
                 }
+                setIsSendMessage((Prev) => !Prev);
                 console.log(response);
               } catch (error) {
                 console.error("Error submitting form:", error.message);
