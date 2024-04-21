@@ -31,7 +31,7 @@ export const userRegistrationSchema = Yup.object({
   occupation: Yup.string().required("Occupation is required"),
   area: Yup.string().required("Area is required"),
   username: Yup.string()
-    .min(8, "Username must be at least 8 characters")
+    .min(5, "Username must be at least 3 characters")
     .required("Username is required"),
   password: Yup.string()
     .matches(
@@ -52,8 +52,9 @@ export const hospitalCareSchema = Yup.object({
     "Eligibility Registration Number is required"
   ),
   nextVisitDate: Yup.string().required("Date is required"),
-  doctorId: Yup.string().required("Doctor ID is required"),
-  designation: Yup.string().required("Designation is required"),
+
+ doctorId: Yup.string().required("Doctor ID is required"),
+ designation: Yup.string().required("Designation is required"),
 });
 
 export const babyRegistrationSchema2 = Yup.object({
@@ -73,7 +74,7 @@ export const addRefferalSchema = Yup.object({
   ),
   referredId: Yup.string().required("Referer Id is required"),
   referredRole: Yup.string().required("Referer Role is required"),
-  reason: Yup.string().required("Description is required"),
+  reason: Yup.string().required("Reason is required"),
 });
 
 export const babyImmunizationSchema = Yup.object({
@@ -142,4 +143,10 @@ export const babyWeightSchema = Yup.object({
     .required("Age for Weight measured date is required")
     .min(0, "Baby's age must be greater than 0")
     .max(216, "baby's age must be less than or equal to 18Yrs"),
+});
+
+export const chatForumSchema = Yup.object({
+  regNum: Yup.string().required("Registration Number is required"),
+  msg_Date: Yup.date().required("Date of message is required"),
+  msg_Content: Yup.string().required("Messege Content is required"),
 });
