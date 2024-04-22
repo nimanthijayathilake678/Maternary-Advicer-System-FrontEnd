@@ -198,7 +198,7 @@ export default function Home() {
                     />
                   </div>
                   <a
-                    href="#"
+                    href="/birthcontrol"
                     className="mt-10 block rounded-md bg-[#00A9BB] px-3 py-2 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   >
                     See More
@@ -217,7 +217,7 @@ export default function Home() {
                     />
                   </div>
                   <a
-                    href="#"
+                    href="/planingbaby"
                     className="mt-10 block rounded-md bg-[#00A9BB] px-3 py-2 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   >
                     See More
@@ -236,7 +236,7 @@ export default function Home() {
                     />
                   </div>
                   <a
-                    href="#"
+                    href="/pregnancy"
                     className="mt-10 block rounded-md bg-[#00A9BB] px-3 py-2 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   >
                     See More
