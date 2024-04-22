@@ -7,42 +7,43 @@ import DisplaySidebar from "../../Components/DisplaySidebar";
 import axios from "axios";
 
 const VISIBLE_FIELDS = [
-  "pregnancyRegNo",
-  "eligibilityRegNo",
-  "poa",
-  "urine",
-  "oedema",
-  "bloodPressure",
-  "fundalHeight",
-  "foetalLie",
-  "presentation",
-  "fm",
-  "fhs",
-  "ebw",
-  "crl",
-  "gestSac",
-  "bpd",
-  "hc",
-  "ac",
-  "fl",
-  "liqour",
-  "placenta",
-  "averagePOA",
-  "anyOther",
-  "nextVisitDate",
-  "doctorId",
-  "designation",
+       
+        "pregnancyRegNo",
+        "eligibilityRegNo",
+        "poa" ,
+        "urine",
+        "oedema",
+        "bloodPressure",
+        "fundalHeight",
+        "foetalLie",
+        "presentation",
+        "fm",
+        "fhs",
+        "ebw",
+        "crl",
+        "gestSac",
+        "bpd",
+        "hc",
+        "ac",
+        "fl",
+        "liqour",
+        "placenta",
+        "averagePOA",
+        "anyother",
+        "nextVisitDate",
+        "doctorId",
+        "designation",
 ];
 
 export default function PatientHistory() {
   const [customDataset, setCustomDataset] = useState([]);
   
-
+/*
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8080/hospital_clinic_care",
+          "http://localhost:8080/hospitalClinicCare",
           {
             validateStatus: () => {
               return true;
@@ -59,6 +60,30 @@ export default function PatientHistory() {
       }
     };
 
+    fetchData();
+  }, []);
+  */
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:8080/hospitalClinicCare"
+        );
+  
+        if (response.status === 302) {
+          const data = response.data.map((row, index) => ({
+            id: index + 1, // Generate unique id for each row
+            ...row,
+          }));
+          setCustomDataset(data);
+        } else {
+          console.error("Failed to fetch data. Status code:", response.status);
+        }
+      } catch (error) {
+        console.error("Error getting data:", error);
+      }
+    };
+  
     fetchData();
   }, []);
 
@@ -92,7 +117,7 @@ export default function PatientHistory() {
                 headerName: field,
                 width: 150, // Adjust width as needed
               }))}
-              components={{ Toolbar: GridToolbar }}
+             components={{ Toolbar: GridToolbar }}   
             />
           </div>
         </div>
