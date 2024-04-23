@@ -28,11 +28,11 @@ const DentistDashbord = () => {
             </Box>
             
             {/* Main boxes */}
-            <div className="main-cards">
+            <div className="main-cards-j">
             
                 <NavLink to="/DentalCare">
-                <div className="cards">
-                    <div className="card-inner">
+                <div className="cards-j">
+                    <div className="card-inner-j">
                         <h8>ADD DENTAL CARE DETAILS</h8>
                         {/* <Lottie style={{height:110}} animationData={HappyFamily}/> */}
                     </div>
@@ -40,16 +40,16 @@ const DentistDashbord = () => {
                 </NavLink>
 
                 <NavLink to="/DentalShow">
-                <div className="cards">
-                    <div className="card-inner">
+                <div className="cards-j">
+                    <div className="card-inner-j">
                         <h8>SHOW DENTAL CARE DETAILS</h8>
                         {/* <Lottie style={{height:120}} animationData={pregnant}/> */}
                     </div>
                 </div>
                 </NavLink>
                 
-                <div className="cards">
-                    <div className="card-inner">
+                <div className="cards-j">
+                    <div className="card-inner-j">
                         <h8>MORE</h8>
                         {/* <Lottie style={{height:90}} animationData={baby}/> */}
                     </div>
@@ -59,14 +59,14 @@ const DentistDashbord = () => {
                 
             </div>
 
-            <div className="second">
-            <div className="calendar">
+            <div className="second-j">
+            <div className="calendar-j">
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
                         <DateCalendar />
                     </LocalizationProvider>
                 </div>
                 
-                <div className="upcomingClinics">
+                <div className="upcomingClinics-j">
                     <div marginLeft= "20px">
                     <h3 > Upcoming Clinics</h3>
                     </div>
