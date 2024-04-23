@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Nav from "../Components/Nav";
 import Footer from "../Components/Footer";
-import babylogo from "../Assest/imagebaby2.jpg";
+import babylogo from "../Assest/homeimage.jpg";
 import { useNavigate } from "react-router-dom";
 
 export default function Home() {
@@ -41,8 +41,9 @@ export default function Home() {
                     className="mt-6 text-lg leading-8"
                     style={{ color: "#353839" }}
                   >
-                    Empowering expecting mothers with personalized advice and
-                    support throughout their pregnancy journey.
+                    We're here to walk alongside expecting mothers every step of
+                    the way, offering personalized support that spans from
+                    pregnancy to parenthood
                   </p>
                   <div
                     className="mt-8 flex items-center justify-end gap-2 cursor-pointer text-2xl"
@@ -50,41 +51,41 @@ export default function Home() {
                       handleNavigation("/login");
                     }}
                   >
-                    <svg
-                      className="w-10 h-10 text-[#00A9BB]"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                    <svg
-                      className="w-10 h-10 text-[#00A9BB]"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-
                     <span
                       className="font-semibold"
-                      style={{ color: "#2A777C" }}
+                      style={{ color: "#2A777C", fontFamily: "Courier New" }}
                     >
-                      Start Your Journey ....
+                      Start Your Journey
                     </span>
+
+                    <svg
+                      className="w-10 h-10 text-[#00A9BB]"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                    <svg
+                      className="w-10 h-10 text-[#00A9BB]"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
                   </div>
                 </div>
               </div>
@@ -197,7 +198,7 @@ export default function Home() {
                     />
                   </div>
                   <a
-                    href="#"
+                    href="/birthcontrol"
                     className="mt-10 block rounded-md bg-[#00A9BB] px-3 py-2 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   >
                     See More
@@ -216,7 +217,7 @@ export default function Home() {
                     />
                   </div>
                   <a
-                    href="#"
+                    href="/planingbaby"
                     className="mt-10 block rounded-md bg-[#00A9BB] px-3 py-2 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   >
                     See More
@@ -235,7 +236,7 @@ export default function Home() {
                     />
                   </div>
                   <a
-                    href="#"
+                    href="/pregnancy"
                     className="mt-10 block rounded-md bg-[#00A9BB] px-3 py-2 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   >
                     See More

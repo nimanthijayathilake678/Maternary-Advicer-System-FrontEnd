@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import * as Yup from "yup";
 
 export const Validation = (username, password) => {
   let error = { uname: "", password: "" };
@@ -15,34 +16,6 @@ export const Validation = (username, password) => {
     error.password = "Password must be at least 8 characters";
   }
   return error;
-};
-
-export const otpEmailValidate = (otpEmail) => {
-  const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-
-  if (otpEmail == "") {
-    return "Recovery Email is required*";
-  } else if (!emailPattern.test(otpEmail)) {
-    return "Email is in incorrect format";
-  }
-};
-
-export const otpMobilelValidate = (otpMobile) => {
-  const mobileNumberPattern = /^\d{10}$/;
-
-  if (otpMobile == "") {
-    return "Recovery Mobile no is required*";
-  } else if (!mobileNumberPattern.test(otpMobile)) {
-    return "Mobile number is in incorrect format";
-  }
-};
-
-export const validateOtp = (otp) => {
-  if (otp == "") {
-    return "OTP code is required*";
-  } else if (otp.length < 6) {
-    return "OTP at least 6 digits code";
-  }
 };
 
 export const validateNewPassword = (values) => {
@@ -64,3 +37,35 @@ export const validateNewPassword = (values) => {
 
   return errors;
 };
+
+//Recovery Password email/Mobile No field validation using Yup
+
+export const validationSchemaRecoveryEmail = Yup.object({
+  email: Yup.string()
+    .email("Invalid email address")
+    .required("Email is required"),
+  mobile: Yup.string()
+    .matches(/^[0-9]+$/, "Mobile number must only contain digits")
+    .min(10, "Mobile number must be at least 10 digits")
+    .max(10, "Mobile number must not exceed 10 digits"),
+});
+
+//Recover Password button control validation
+
+export const validationSchemaOtp = Yup.object({
+  otp: Yup.string()
+    .matches(/^\d{6}$/, "OTP must be a 6-digit number")
+    .required("OTP is required"),
+});
+
+//Reset Password validation
+
+export const validationSchemaResetPwd = Yup.object({
+  otp: Yup.string().required("OTP is required"),
+  newpassword: Yup.string()
+    .min(8, "Password must be at least 8 characters")
+    .required("Password is required"),
+  confirmpassword: Yup.string()
+    .oneOf([Yup.ref("newpassword"), null], "Passwords must match")
+    .required("Password confirmation is required"),
+});
