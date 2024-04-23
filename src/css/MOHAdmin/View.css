@@ -1,40 +1,31 @@
-.title{
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
 
-.text{
-    font-size: 30px;
-    color: black;
-    font-weight: bold;
-}
-
-.search-box{
+.search-box1{
     margin: 20px;
     margin-left: 20px;
 }
 
 
 /* Styles for the table */
-.table {
+.table1 {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
     color: black;
 }
 
-.table th,
-.table td {
+.th1{
+
     padding: 8px;
     border: 1px solid #ddd;
 }
-
+/*
 .table th {
     background-color: #f2f2f2;
     font-weight: bold;
     text-align: center;
 }
-
+*/
+/*
 .table tbody tr:nth-child(even) {
     background-color: #f2f2f2;
 }
@@ -46,14 +37,14 @@
 .text-center {
     text-align: center;
 }
-
-.mx-2 {
+*/
+.tdmx-2 {
     margin-left: 8px;
     margin-right: 8px;
 }
 
 /* Styles for buttons */
-.btn {
+.btn1 {
     display: inline-block;
     padding: 6px 12px;
     font-size: 14px;
@@ -68,32 +59,32 @@
     color: #fff;
 }
 
-.btn-info {
+.btn1-info {
     background-color: #5bc0de;
     border-color: #46b8da;
 }
 
-.btn-info:hover {
+.btn1-info:hover {
     background-color: #46b8da;
     border-color: #398abe;
 }
 
-.btn-warning {
+.btn1-warning {
     background-color: #f0ad4e;
     border-color: #eea236;
 }
 
-.btn-warning:hover {
+.btn1-warning:hover {
     background-color: #eea236;
     border-color: #d58512;
 }
 
-.btn-danger {
+.btn1-danger {
     background-color: #d9534f;
     border-color: #d43f3a;
 }
 
-.btn-danger:hover {
+.btn1-danger:hover {
     background-color: #d43f3a;
     border-color: #ac2925;
 }
