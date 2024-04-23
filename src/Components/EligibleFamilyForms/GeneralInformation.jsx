@@ -21,6 +21,7 @@ function GeneralInformation({handleNext}) {
   const inputRef = useRef(null);
   const [user,setUser] = useState("");
   const auth = useAuth();
+  const state = false;
 
   const [errors, setErrors] = useState({});
 
@@ -94,7 +95,7 @@ function GeneralInformation({handleNext}) {
   }, []);
 
   const handleClick = () =>{
-    handleNext(url,method,generalInformationData,user)
+    handleNext(url,method,generalInformationData,user,state)
   }
 
   useEffect(() => {
@@ -129,19 +130,6 @@ function GeneralInformation({handleNext}) {
                 label="MOH Area"
                 value={generalInformationData?.area}
                 sx={{ width: "100%" }}
-                ref={inputRef}
-                onChange={handleChange}
-              />
-            </Grid>
-
-            <Grid item xs={6} sx={{ padding: "1em 1em 0em 1em !important" }}>
-              <TextField
-                required
-                placeholder="NIC"
-                name="nic"
-                label="NIC"
-                sx={{ width: "100%" }}
-                value={generalInformationData?.nic}
                 ref={inputRef}
                 onChange={handleChange}
               />

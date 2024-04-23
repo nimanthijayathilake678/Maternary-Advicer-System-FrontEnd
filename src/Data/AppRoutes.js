@@ -70,6 +70,7 @@ import DeliveryCare from "../Pages/Midwife/MidwifePregnancyForms/DeliveryCare";
 import PostpartumFieldCare from "../Pages/Midwife/MidwifePregnancyForms/PostpartumFieldCare";
 import IECMaterial from "../Pages/Midwife/MidwifePregnancyForms/IECMaterial";
 import ChatForum from "../Pages/ChatForum";
+import MidwifeRemarkEligibleForm from "../Pages/Midwife/MidwifeRemarkEligibleForm";
 
 export const AppRoutes = {
   login: { path: "/login", component: <Login /> },
@@ -179,6 +180,11 @@ export const AppRoutes = {
   midwife_eligible_families_view_family_profile:{
     path:"/midwife/eligibleFamilies/familyProfile/:id",
     component:<FamilyProfile/>,
+  },
+
+  midwife_eligible_families_view_family_remark:{
+    path:"midwife/eligibleFamilies/remark",
+    component:<MidwifeRemarkEligibleForm/>,
   },
 
   midwife_pregnancy_registration: {

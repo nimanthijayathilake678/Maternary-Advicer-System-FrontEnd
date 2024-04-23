@@ -21,16 +21,30 @@ import useAuth from "../../Hooks/useAuth";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 import { apiClient } from "../../API/ApiServer";
+import {useNavigate} from "react-router-dom";
+
+
 
 export default function FamilyEligibleFamilyForm() {
   const [activeStep, setActiveStep] = useState(0);
   const theme = Theme();
   const auth = useAuth();
-  const handleNext = async(url,method,data,user) => {
+  const navigate = useNavigate();
+  const handleNext = async(url,method,data,user,state) => {
     
     try{
       const response = await apiClient[method](url+user,data)
       if(response.status===200 || response.status===201){
+        if(state){
+          const res = await apiClient.put(`/newuser/${user}`,{...auth?.user , "familyFlag":true})
+          if(response.status===200){
+            navigate("/family")
+          }
+          else{
+            setOpen(true);
+          }
+         
+        }
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
       }else{
         setOpen(true);
