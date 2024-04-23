@@ -58,7 +58,7 @@ export default function ContactUs() {
                     <Form.Control type="text" placeholder="" style={{width:'100%',border: '1px solid black',borderRadius:'5px'}}/>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                    <Form.Label>Example textarea</Form.Label><br></br>
+                    <Form.Label>Massage</Form.Label><br></br>
                     <Form.Control as="textarea" rows={3} style={{width:'100%',border: '1px solid black',borderRadius:'5px'}}/>
                 </Form.Group>
                 <div style={{display:'flex',justifyContent:'flex-end'}}>

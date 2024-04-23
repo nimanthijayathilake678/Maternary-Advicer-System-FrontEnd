@@ -1,4 +1,7 @@
-import React from "react";
+import React, {
+	useEffect,
+	useState,
+} from "react";
 import "../../css/MOHAdmin/MOHDashboard.css";
 import { Box, Grid, IconButton } from "@mui/material";
 import Header from "../../Components/Header";
@@ -13,8 +16,66 @@ import Lottie from "lottie-react";
 import Calendar from "../../Components/Calendar";
 import Nav from "../../Components/Nav";
 import InputBase from "@mui/material/InputBase";
+import clinicDateViewer from "../../Components/ClinicDateViewer"
+import axios from "axios";
+import {getClinicDates} from "../../Services/ClinicSchedule"
+import SuccessAlert from "../../Components/SuccessMsg";
+import {
+	FaTrashAlt,
+} from "react-icons/fa";
 
 function MOHDashboard() {
+  const [clinicDates, setclinicDates] = useState([]);
+  const [showSuccessAlert, setShowSuccessAlert] = useState(false);
+	//const [search, setSearch] = useState("");
+
+	useEffect(() => {
+		loadClinicDates();
+	}, []);
+
+	const loadClinicDates = async () => {
+
+    try {
+      
+      const response =  await getClinicDates();
+  
+      if (response.status === 302) {
+        console.log("success");
+        setShowSuccessAlert(true);
+      }
+      console.log(response);
+    } catch (error) {
+      console.error("Error submitting form:", error.message);
+      
+    }
+
+
+
+
+
+
+
+
+
+		const result = await axios.get(
+			"http://localhost:8080/clinicDate",
+			{
+				validateStatus: () => {
+					return true;
+				},
+			}
+		);
+		if (result.status === 302) {
+			setclinicDates(result.data);
+		}
+	};
+
+	const handleDelete = async (id) => {
+		await axios.delete(
+			`http://localhost:8080/clinicDate/delete/${id}`
+		);
+		loadClinicDates();
+	};
   return (
     <>
       <Nav />
@@ -87,7 +148,48 @@ function MOHDashboard() {
             <div className="calender">
               <Calendar />
             </div>
-            <div></div>
+           <div className="table-clinicDate">
+			
+			<table className="table table-bordered table-hover shadow">
+				<thead>
+					<tr className="text-center">
+						<th>ID</th>
+						<th>Area</th>
+						<th>Description</th>
+						<th>Date</th>
+						<th>Start Time</th>
+						<th colSpan="3">Actions</th>
+					</tr>
+				</thead>
+
+				<tbody className="text-center">
+					{clinicDates
+						
+						.map((clinicdate, index) => (
+							<tr key={clinicdate.id}>
+								<th scope="row" key={index}>
+									{index + 1}
+								</th>
+								<td>{clinicdate.area}</td>
+								<td>{clinicdate.description}</td>
+								<td>{clinicdate.date}</td>
+								<td>{clinicdate.starttime}</td>
+								
+								<td className="mx-2">
+									<button
+										className="btn btn-danger"
+										onClick={() =>
+											handleDelete(clinicdate.id)
+										}>
+										<FaTrashAlt />
+									</button>
+								</td>
+							</tr>
+						))}
+				</tbody>
+			</table>
+		
+    </div>
           </div>
         </div>
       </Box>
