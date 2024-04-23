@@ -65,6 +65,11 @@ export const babyRegistrationSchema2 = Yup.object({
   lengthAtBirth: Yup.string().required("Birth length is required"),
 });
 
+
+export const wifePersonalInfoSchema = Yup.object({
+  w_date_of_birth: Yup.date().required("Date of birth required"),
+  w_Occupation: Yup.string().required("Occupation is required"),
+
 export const addRefferalSchema = Yup.object({
   pregnancyRegNo: Yup.string().required(
     "Pregnancy Registration Number is required"

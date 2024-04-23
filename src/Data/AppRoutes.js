@@ -12,13 +12,11 @@ import FamilyPregnancies from "../Pages/Family/FamilyPregnancies";
 import Login from "../Pages/LoginPage/Login";
 import AuthContext, { AuthProvider } from "../Contexts/AuthProvider";
 import SideBarContent from "../Components/SideBarContent";
-import FamilyProfile from "../Pages/Family/FamilyProfile";
 import Unauthorized from "../Pages/Unauthorized";
 import MidwifeEligibleCoupleRegistrationForm from "../Pages/Midwife/MidwifeEligibleCoupleRegistrationForm";
 import FamilyEligibleFamilyForm from "../Pages/Family/FamilyEligibleFamilyForm";
 import BabyRegistrationStepper from "../Pages/Family/Baby/RegistrationPage/BabyRegistration/BabyRegistrationStepper";
 import BabyProfile from "../Pages/Family/Baby/BabyProfile";
-
 import VogMessages from "../Pages/VOGDoctor/Messages";
 import VogPatients from "../Pages/VOGDoctor/PatientHistory";
 import VogDashboard from "../Pages/VOGDoctor/VogDashboard";
@@ -49,11 +47,13 @@ import Home from "../Pages/Home";
 import BabyNewBornHelath from "../Pages/Family/Baby/BabyNewBornHelath";
 import BabyProfileForm1 from "../Components/BabyProfileComponents/BabyProfileForm1";
 import BabyDetails from "../Pages/Family/Baby/BabyDetails";
-
 import PregnancyRegistration from "../Pages/Midwife/PregnancyRegistration";
 import BabyRegistrationForm2 from "../Pages/Family/Baby/RegistrationPage/BabyRegistration/BabyRegistrationForm2";
 import BabyRegistrationForms from "../Pages/Family/Baby/RegistrationPage/BabyRegistration/BabyRegistrationForms";
 import VogRegisterdBabies from "../Pages/VOGDoctor/VogRegisterdBabies";
+import Profile from "../Pages/Family/Profile";
+import Print from "../Pages/Family/Print";
+import FamilyProfile from "../Pages/Midwife/FamilyProfile";
 import AddRefferal from "../Pages/VOGDoctor/AddRefferal";
 import SpecialMsgDisplay from "../Pages/SpecialMsgDisplay";
 import RegisteredPregMothers from "../Pages/Midwife/RegisteredPregnancyMothers";
@@ -73,6 +73,7 @@ import ChatForum from "../Pages/ChatForum";
 
 export const AppRoutes = {
   login: { path: "/login", component: <Login /> },
+  contactUsDetails:{path:"/contactUs", component:<ContactUs/>},
 
   // Home page routes
   home: { path: "/", component: <Home /> },
@@ -109,9 +110,15 @@ export const AppRoutes = {
     component: <FamilyPregnancies />,
   },
   family_Profile: {
-    path: "/family/familyProfile",
-    component: <FamilyProfile />,
+    path: "/family/profile",
+    component: <Profile/>,
   },
+
+  family_print:{
+    path: "/family/profile/print",
+    component: <Print/>,
+  },
+ 
 
   family_baby_profile: {
     path: `/family/babyDashboard/babyProfile/:id`,
@@ -167,6 +174,11 @@ export const AppRoutes = {
   midwife_eligible_families_register: {
     path: "/midwife/eligibleFamilies",
     component: <MidwifeEligibleFamilies />,
+  },
+
+  midwife_eligible_families_view_family_profile:{
+    path:"/midwife/eligibleFamilies/familyProfile/:id",
+    component:<FamilyProfile/>,
   },
 
   midwife_pregnancy_registration: {
