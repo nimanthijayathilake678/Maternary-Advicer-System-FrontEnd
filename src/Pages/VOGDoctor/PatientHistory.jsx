@@ -1,13 +1,17 @@
+
 import React, { useState, useEffect } from "react";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import SideBar from "../../Components/SideBar";
 import { Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import DisplaySidebar from "../../Components/DisplaySidebar";
-import axios from "axios";
+import {
+  getClinicDetails,
+} from "../../Services/addClinicDetails";
+
 
 const VISIBLE_FIELDS = [
-       
+    
         "pregnancyRegNo",
         "eligibilityRegNo",
         "poa" ,
@@ -33,23 +37,18 @@ const VISIBLE_FIELDS = [
         "nextVisitDate",
         "doctorId",
         "designation",
-];
+
+
+      ];
 
 export default function PatientHistory() {
   const [customDataset, setCustomDataset] = useState([]);
-  
-/*
+
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:8080/hospitalClinicCare",
-          {
-            validateStatus: () => {
-              return true;
-            },
-          }
-        );
+        const response = await getClinicDetails();
         const data = response.data.map((row, index) => ({
           id: index + 1, // Generate unique id for each row
           ...row,
@@ -62,33 +61,6 @@ export default function PatientHistory() {
 
     fetchData();
   }, []);
-  */
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          "http://localhost:8080/hospitalClinicCare"
-        );
-  
-        if (response.status === 302) {
-          const data = response.data.map((row, index) => ({
-            id: index + 1, // Generate unique id for each row
-            ...row,
-          }));
-          setCustomDataset(data);
-        } else {
-          console.error("Failed to fetch data. Status code:", response.status);
-        }
-      } catch (error) {
-        console.error("Error getting data:", error);
-      }
-    };
-  
-    fetchData();
-  }, []);
-
-  
-  
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -106,7 +78,7 @@ export default function PatientHistory() {
                 paddingTop: "40px",
               }}
             >
-              Patients History
+              Registered Babies
             </Typography>
 
             <DataGrid
@@ -117,7 +89,7 @@ export default function PatientHistory() {
                 headerName: field,
                 width: 150, // Adjust width as needed
               }))}
-             components={{ Toolbar: GridToolbar }}   
+              components={{ Toolbar: GridToolbar }}
             />
           </div>
         </div>
@@ -125,3 +97,5 @@ export default function PatientHistory() {
     </Box>
   );
 }
+
+

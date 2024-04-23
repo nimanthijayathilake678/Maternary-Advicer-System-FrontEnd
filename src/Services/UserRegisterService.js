@@ -1,7 +1,7 @@
 import { apiClient } from "../API/ApiServer";
-export const userregistration = async (values) => {
+export const userregistration = async (postData) => {
   try {
-    const response = await apiClient.post("/newuser/add", values);
+    const response = await apiClient.post("/newuser/add", postData);
     console.log(response);
     return response;
   } catch (err) {
