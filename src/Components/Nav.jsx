@@ -6,7 +6,7 @@ import { Fragment } from "react";
 import useAuth from "../Hooks/useAuth";
 import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
-import Logo from "../Assest/logo.png";
+import Logo from "../Assest/msteee.png";
 
 const Nav = () => {
   const { user } = useAuth();
