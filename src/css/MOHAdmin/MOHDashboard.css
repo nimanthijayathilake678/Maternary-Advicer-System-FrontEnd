@@ -90,7 +90,11 @@ body {
 }
 .dashbottom{
   display: flex;
-  
+}
+
+.animation-part{
+  margin-left: 20px;
+
 }
 .calender{
   
@@ -138,7 +142,9 @@ body {
   margin-top: 10px;
 }
 
-
+.animation-part{
+  size: 10%;
+}
 /*
   
 @media screen and (max-width: 900px) {
