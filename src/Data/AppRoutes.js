@@ -77,6 +77,10 @@ export const AppRoutes = {
   // Home page routes
   home: { path: "/", component: <Home /> },
 
+  //About Us routes
+  about: { path: "/aboutUs", component: <AboutUs /> },
+  //contact Us
+  contact: { path: "/contactUs", component: <ContactUs /> },
   resources_1: {
     path: "/birthcontrol",
     component: <BirthControl />,

@@ -1,78 +1,72 @@
-.grid-container-about{
-    display: grid;
-    gap: 1px;
-    padding: 1px;
-  }
-  
-  .grid-item {
-    background-color: rgba(255, 255, 255, 0.8);
-    text-align: center;
-    padding: 20px;
-    font-size: 30px;
-  }
-  
-  .item1 {
-    grid-row: 1;
-    height: 60vh;
-    background-image: url("./image/about\ us\ image.jpg");
-    background-size: cover;
-    background-position: center;
-  }
-  
-  .item2 {
-    grid-row: 2;
-    height: 10vh;
-  }
-  
-  .item3 {
-   grid-row: 3;     
-
-  }
-
-  img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-  }
-
-  .item4 {
-    grid-row: 3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-   .item5 {
-    color: black;
-    grid-row: 3;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding-top: 50px;
-    padding-bottom: 200px;
-    padding-left: 100px;
-    padding-right: 200p
-   
-   }
- 
-   .item6 {
-   grid-row: 3;
-   padding-top: 50px;
-   padding-left: 10vw;
-   padding-bottom: 10vw;
-   padding-right: 10vw;
-   }
- 
-
-.grid-aboutHeader{
-  color:black;
-  height: 15vh;
-  font-size: 2.5vw;
-
+.grid-container-about {
+  display: grid;
 }
 
-.text-about{
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 20px;
+  font-size: 30px;
+}
+
+.item1 {
+  grid-row: 1;
+  height: 60vh;
+  background-image: url("../About//image/AboutUsBaby.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.item2 {
+  grid-row: 2;
+  height: 10vh;
+}
+
+.item3 {
+  grid-row: 3;
+}
+
+img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.item4 {
+  grid-row: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.item5 {
+  color: black;
+  grid-row: 3;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding-top: 50px;
+  padding-bottom: 200px;
+  padding-left: 100px;
+  padding-right: 200p;
+}
+
+.item6 {
+  grid-row: 3;
+  padding-top: 50px;
+  padding-left: 10vw;
+  padding-bottom: 10vw;
+  padding-right: 10vw;
+}
+
+.grid-aboutHeader {
+  color: black;
+  height: 15vh;
+  font-size: 2.5vw;
+}
+
+.text-about {
   text-align: left;
   font-size: 1.2vw;
 }
@@ -89,9 +83,8 @@
   flex: 25%;
 }
 
-.list{
+.list {
   list-style-type: square;
-
 }
 
 /* .MuiBox-root{
@@ -104,4 +97,3 @@
     flex-direction: column;
   }
 }
-
