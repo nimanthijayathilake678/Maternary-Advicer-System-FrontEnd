@@ -1,5 +1,3 @@
-
-
 import * as React from 'react';
 import Container from '@mui/material/Container';
 import { blue } from '@mui/material/colors';
@@ -22,7 +20,6 @@ import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import { purple } from '@mui/material/colors';
-import { useState } from 'react';
 
 const ColorButton = styled(Button)(({ theme }) => ({
   color: theme.palette.getContrastText(purple[500]),
@@ -37,70 +34,15 @@ const ColorButton = styled(Button)(({ theme }) => ({
 
 export default function SimpleContainer() {
   const [value, setValue] = React.useState(dayjs('2022-04-17'));
-
-  const [state,setState] =useState({
-    Referred:"",
-    DataOfExamination:"",
-    Treatment:"",
-    ExaminationOfDentist:"",
-    DentistMore:""
-  });
-
-  const handleReferred = (event)=>{
-    const Referred1 = dayjs(event).format('YYYY-MM-DD');
-    setState({
-      ...state,
-      Referred : Referred1
-    })
-  }
-
-  const handleDataOfExamination = (event)=>{
-    const DataOfExamination1 = dayjs(event).format('YYYY-MM-DD');
-    setState({
-      ...state,
-      DataOfExamination: DataOfExamination1
-    })
-  }
-
-  const handleTreatment = (event)=>{
-    setState({
-      ...state,
-      Treatment : event.target.value
-    })
-    
-  }
-
-  const handleExaminationOfDentist = (event)=>{
-    const ExaminationOfDentist1 = dayjs(event).format('YYYY-MM-DD');
-    setState({
-      ...state,
-      ExaminationOfDentist : ExaminationOfDentist1
-    })
-  }
-
-  const handleDentistMore = (event)=>{
-    setState({
-      ...state,
-      DentistMore : event.target.value 
-    })
-  }
-
-  const submitFunc = (event) =>{
-    event.preventDefault();
-    console.log(state)
-  }
-
-
   return (
     
     <div style={{backgroundColor:'white'}}>
       <Container maxWidth="lg" >
         <Grid container spacing={2} columns={16}>
           <Grid item xs={8}>
-          <div className='header' style={{fontSize:'50px'}}>Dental Care</div>
+          <div className='header' style={{color:'black',fontSize:'50px'}}>Dental Care</div>
             <Box
                 component="form"
-                onSubmit={submitFunc}
                 sx={{
                   '& .MuiTextField-root': { m: 2, width: '80%' },
                   border: '2px solid #222121', // Box border style
@@ -118,7 +60,7 @@ export default function SimpleContainer() {
                       <DatePicker
                         label="Referred Date"
                         value={value}
-                        onChange={handleReferred}
+                        onChange={(newValue) => setValue(newValue)}
                       />
                     </DemoContainer>
                   </LocalizationProvider>
@@ -129,7 +71,7 @@ export default function SimpleContainer() {
                       <DatePicker
                         label="Data Of Examination"
                         value={value}
-                        onChange={handleDataOfExamination}
+                        onChange={(newValue) => setValue(newValue)}
                       />
                     </DemoContainer>
                   </LocalizationProvider>
@@ -141,7 +83,6 @@ export default function SimpleContainer() {
                     multiline
                     rows={4}
                     defaultValue=""
-                    onChange={handleTreatment}
                   />
                 </div>
                 <div className='element'>
@@ -150,7 +91,7 @@ export default function SimpleContainer() {
                       <DatePicker
                         label="Examination Of Dentist"
                         value={value}
-                        onChange={handleExaminationOfDentist}
+                        onChange={(newValue) => setValue(newValue)}
                       />
                     </DemoContainer>
                   </LocalizationProvider>
@@ -160,13 +101,12 @@ export default function SimpleContainer() {
                     id="outlined-multiline-static"
                     multiline
                     rows={4}
-                    onChange={handleDentistMore}
                   />
                 </div>
                 
                 <div className='button'>
                   <Stack spacing={2} direction="row">
-                    <ColorButton variant="contained" type="submit" >Submit</ColorButton>
+                    <ColorButton variant="contained">Show Details</ColorButton>
                   </Stack>
                 </div>
             </Box>
@@ -184,4 +124,3 @@ export default function SimpleContainer() {
     </div>
   );
 }
-
