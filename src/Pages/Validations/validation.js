@@ -147,6 +147,7 @@ export const babyWeightSchema = Yup.object({
 
 
 
+
 export const clinicdate = Yup.object({
   area: Yup.string().required("Area is required"),
   date: Yup.string().required("Date is required"),
@@ -154,3 +155,10 @@ export const clinicdate = Yup.object({
   starttime: Yup.string().required("Start Time is required"),
   
 });
+
+export const chatForumSchema = Yup.object({
+  regNum: Yup.string().required("Registration Number is required"),
+  msg_Date: Yup.date().required("Date of message is required"),
+  msg_Content: Yup.string().required("Messege Content is required"),
+});
+
