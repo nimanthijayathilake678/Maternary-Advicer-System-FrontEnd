@@ -62,8 +62,8 @@ export default function ContactUs() {
               </svg>
               <h3 className="text-lg font-semibold text-gray-800">Contact Information</h3>
             </div>
-            <p className="text-gray-600 mb-2">+1 (123) 456-7890</p>
-            <p className="text-gray-600 mb-2">mohmatara@gmail.com</p>
+            <p className="text-gray-600 mb-2">041-2222154</p>
+            <p className="text-gray-600 mb-2">matarardhs@yahoo.com</p>
             <div className="flex items-center mt-6">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -91,8 +91,8 @@ export default function ContactUs() {
         {/* Address and Map */}
         <div className="container mx-auto px-4 py-8">
           <h3 id="address" className="text-center text-2xl font-semibold mb-4 text-black">
-            Medical Officer of Office <br />
-            Main Street, Matara
+          Reginal Director of Health Services Office<br/> 
+          Paramulla, Matara
           </h3>
           <div className="h-screen">
         <div className="responsive-map">
@@ -109,137 +109,6 @@ export default function ContactUs() {
         </div>
       </div>
       <Footer />
-      <div style={{ padding: "50px" }}>
-        <div>
-          <h1
-            style={{
-              fontFamily: "Garamond",
-              color: "#2A777C",
-              fontSize: "30px",
-            }}
-          >
-            Contact Us
-          </h1>
-        </div>
-
-        <div class="grid-container1">
-          <div
-            class="grid-item1"
-            style={{ textAlign: "left", fontSize: "20px" }}
-          >
-            <Form>
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlInput1"
-              >
-                <Form.Label>Name</Form.Label>
-                <br></br>
-                <Form.Control
-                  type="text"
-                  style={{
-                    width: "100%",
-                    border: "1px solid black",
-                    borderRadius: "5px",
-                  }}
-                />
-              </Form.Group>
-
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlInput1"
-              >
-                <Form.Label>Email address</Form.Label>
-                <br></br>
-                <Form.Control
-                  type="email"
-                  placeholder="name@example.com"
-                  style={{
-                    width: "100%",
-                    border: "1px solid black",
-                    borderRadius: "5px",
-                  }}
-                />
-              </Form.Group>
-
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlInput1"
-              >
-                <Form.Label>Subject</Form.Label>
-                <br></br>
-                <Form.Control
-                  type="text"
-                  placeholder=""
-                  style={{
-                    width: "100%",
-                    border: "1px solid black",
-                    borderRadius: "5px",
-                  }}
-                />
-              </Form.Group>
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlTextarea1"
-              >
-                <Form.Label>Massage</Form.Label>
-                <br></br>
-                <Form.Control
-                  as="textarea"
-                  rows={3}
-                  style={{
-                    width: "100%",
-                    border: "1px solid black",
-                    borderRadius: "5px",
-                  }}
-                />
-              </Form.Group>
-              <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                <Form.Group style={{}}>
-                  <Button variant="contained" endIcon={<SendIcon />}>
-                    Send
-                  </Button>
-                </Form.Group>
-              </div>
-            </Form>
-          </div>
-          <div class="grid-item1" style={{ fontSize: "20px" }}>
-            <h2>Our Office</h2>
-            <Box
-              sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
-            >
-              <nav aria-label="main mailbox folders">
-                <List>
-                  <ListItem disablePadding>
-                    <ListItemButton>
-                      <ListItemIcon>
-                        <AddLocationIcon></AddLocationIcon>
-                      </ListItemIcon>
-                      <ListItemText primary="Reginal Director of Health Services Office, Paramulla, Matara" />
-                    </ListItemButton>
-                  </ListItem>
-                  <ListItem disablePadding>
-                    <ListItemButton>
-                      <ListItemIcon>
-                        <DraftsIcon />
-                      </ListItemIcon>
-                      <ListItemText primary="matarardhs@yahoo.com" />
-                    </ListItemButton>
-                  </ListItem>
-                  <ListItem disablePadding>
-                    <ListItemButton>
-                      <ListItemIcon>
-                        <LocalPhoneIcon></LocalPhoneIcon>
-                      </ListItemIcon>
-                      <ListItemText primary=" 041-2222154" />
-                    </ListItemButton>
-                  </ListItem>
-                </List>
-              </nav>
-              <Divider />
-            </Box>
-          </div>
-        </div>
-      </div>
     </>
   );
 }
