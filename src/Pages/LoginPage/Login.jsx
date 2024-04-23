@@ -20,8 +20,9 @@ import SuccessAlert from "../../Components/SuccessAlert";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import logo from "../../Assest/logo.png";
-import babylogo from "../../Assest/babylogo.png";
+import babylogo from "../../Assest/msteee.png";
 import login2 from "../../Assest/login2.jpg";
+
 const theme = Theme();
 const DemoPaper = styled(Paper)(({ theme }) => ({
   width: 900,
@@ -100,7 +101,12 @@ const Login = () => {
     setResponseAlert(true);
     setCustom(false);
   };
-
+  //validations
+  // const formik = useFormik({
+  //   initialValues,
+  //   onSubmit,
+  //   validationSchema,
+  // });
   //validations
 
   const [username, setUsername] = useState("");
@@ -202,12 +208,8 @@ const Login = () => {
                     width: "100%",
                     height: "100%",
                     objectFit: "cover",
-                    [theme.breakpoints.down("md")]: {
-                      width: "200px",
-                      height: "160px",
-                    },
                   }}
-                ></img>
+                />
               </Box>
 
               <Box

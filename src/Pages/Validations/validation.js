@@ -23,18 +23,15 @@ export const userRegistrationSchema = Yup.object({
   fullName: Yup.string().required("Full Name is required"),
   firstName: Yup.string().required("First Name is required"),
   lastName: Yup.string().required("Last Name is required"),
-  nicNo: Yup.string()
-    .matches(/^(?:\d{9}[xXvV]|\d{12})$/, "Nic must be valid Type")
-    .required("NIC No. is required"),
-  birthday: Yup.string().required("Birthday is required"),
+  
   contactNo: Yup.string()
     .matches(/^\d{10}$/, "Contact No. must be 10 digits")
     .required("Contact No. is required"),
   email: Yup.string().email("Invalid email").required("Email is required"),
-  occupation: Yup.string().required("Occupation is required"),
+  position: Yup.string().required("Position is required"),
   area: Yup.string().required("Area is required"),
   username: Yup.string()
-    .min(8, "Username must be at least 8 characters")
+    .min(5, "Username must be at least 3 characters")
     .required("Username is required"),
   password: Yup.string()
     .matches(
@@ -55,8 +52,9 @@ export const hospitalCareSchema = Yup.object({
     "Eligibility Registration Number is required"
   ),
   nextVisitDate: Yup.string().required("Date is required"),
-  doctorId: Yup.string().required("Doctor ID is required"),
-  designation: Yup.string().required("Designation is required"),
+
+ doctorId: Yup.string().required("Doctor ID is required"),
+ designation: Yup.string().required("Designation is required"),
 });
 
 export const babyRegistrationSchema2 = Yup.object({
@@ -76,7 +74,7 @@ export const addRefferalSchema = Yup.object({
   ),
   referredId: Yup.string().required("Referer Id is required"),
   referredRole: Yup.string().required("Referer Role is required"),
-  reason: Yup.string().required("Description is required"),
+  reason: Yup.string().required("Reason is required"),
 });
 
 export const babyImmunizationSchema = Yup.object({
@@ -146,3 +144,21 @@ export const babyWeightSchema = Yup.object({
     .min(0, "Baby's age must be greater than 0")
     .max(216, "baby's age must be less than or equal to 18Yrs"),
 });
+
+
+
+
+export const clinicdate = Yup.object({
+  area: Yup.string().required("Area is required"),
+  date: Yup.string().required("Date is required"),
+  description: Yup.string().required("Description is required"),
+  starttime: Yup.string().required("Start Time is required"),
+  
+});
+
+export const chatForumSchema = Yup.object({
+  regNum: Yup.string().required("Registration Number is required"),
+  msg_Date: Yup.date().required("Date of message is required"),
+  msg_Content: Yup.string().required("Messege Content is required"),
+});
+

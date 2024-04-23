@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import { TextField, Button, Box } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import SideBar from "../../Components/SideBar";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, } from "formik";
 import { hospitalCareSchema } from "../Validations/validation";
 import { Link } from "react-router-dom";
 import  {
-  addClinicDetails,
+  addClinicDetails
 } from "../../Services/addClinicDetails";
 import SuccessAlert from "../../Components/SuccessMsg";
 
-function MyForm() {
+function AddPatientsDetails() {
   const [showSuccessAlert, setShowSuccessAlert] = useState(false);
   return (
     <>
@@ -37,7 +37,7 @@ function MyForm() {
         liqour: "",
         placenta: "",
         averagePOA: "",
-        anyOther: "",
+        anyother: "",
         nextVisitDate: "",
         doctorId: "",
         designation: "",
@@ -106,7 +106,7 @@ function MyForm() {
                       fullWidth
                       label="Pregnancy Registration Number"
                       name="pregnancyRegNo"
-                      value={values.PregnancyRegNo}
+                      value={values.pregnancyRegNo}
                       onChange={handleChange}
                       error={
                         touched.pregnancyRegNo && Boolean(errors.pregnancyRegNo)
@@ -121,7 +121,7 @@ function MyForm() {
                       fullWidth
                       label="Eligibility Registration Number"
                       name="eligibilityRegNo"
-                      value={values.EligibilityRegNo}
+                      value={values.eligibilityRegNo}
                       onChange={handleChange}
                       error={
                         touched.eligibilityRegNo &&
@@ -138,7 +138,7 @@ function MyForm() {
                       fullWidth
                       label="POA (Pelvic Outlet Assessment)"
                       name="poa"
-                      value={values.POA}
+                      value={values.poa}
                       onChange={handleChange}
                       error={touched.poa && Boolean(errors.poa)}
                       helperText={touched.poa && errors.poa}
@@ -149,7 +149,7 @@ function MyForm() {
                       fullWidth
                       label="Urine Test Result"
                       name="urine"
-                      value={values.Urine}
+                      value={values.urine}
                       onChange={handleChange}
                       error={touched.urine && Boolean(errors.urine)}
                       helperText={touched.urine && errors.urine}
@@ -160,7 +160,7 @@ function MyForm() {
                       fullWidth
                       label="Oedema (Swelling)"
                       name="oedema"
-                      value={values.Oedema}
+                      value={values.oedema}
                       onChange={handleChange}
                       error={touched.oedema && Boolean(errors.oedema)}
                       helperText={touched.oedema && errors.oedema}
@@ -171,7 +171,7 @@ function MyForm() {
                       fullWidth
                       label="Blood Pressure"
                       name="bloodPressure"
-                      value={values.BloodPressure}
+                      value={values.bloodPressure}
                       onChange={handleChange}
                       error={
                         touched.bloodPressure && Boolean(errors.bloodPressure)
@@ -184,7 +184,7 @@ function MyForm() {
                       fullWidth
                       label="Fundal Height"
                       name="fundalHeight"
-                      value={values.FundalHeight}
+                      value={values.fundalHeight}
                       onChange={handleChange}
                       error={
                         touched.fundalHeight && Boolean(errors.fundalHeight)
@@ -197,7 +197,7 @@ function MyForm() {
                       fullWidth
                       label="Foetal Lie"
                       name="foetalLie"
-                      value={values.FoetalLie}
+                      value={values.foetalLie}
                       onChange={handleChange}
                       error={touched.foetalLie && Boolean(errors.foetalLie)}
                       helperText={touched.foetalLie && errors.foetalLie}
@@ -208,7 +208,7 @@ function MyForm() {
                       fullWidth
                       label="Presentation"
                       name="presentation"
-                      value={values.Presentation}
+                      value={values.presentation}
                       onChange={handleChange}
                       error={
                         touched.presentation && Boolean(errors.presentation)
@@ -221,7 +221,7 @@ function MyForm() {
                       fullWidth
                       label="FM (Fetal Movement)"
                       name="fm"
-                      value={values.FM}
+                      value={values.fm}
                       onChange={handleChange}
                       error={touched.fm && Boolean(errors.fm)}
                       helperText={touched.fm && errors.fm}
@@ -232,7 +232,7 @@ function MyForm() {
                       fullWidth
                       label="FHS (Fetal Heart Sounds)"
                       name="fhs"
-                      value={values.FHS}
+                      value={values.fhs}
                       onChange={handleChange}
                       error={touched.fhs && Boolean(errors.fhs)}
                       helperText={touched.fhs && errors.fhs}
@@ -243,7 +243,7 @@ function MyForm() {
                       fullWidth
                       label="EBW (Estimated Birth Weight)"
                       name="ebw"
-                      value={values.EBW}
+                      value={values.ebw}
                       onChange={handleChange}
                       error={touched.ebw && Boolean(errors.ebw)}
                       helperText={touched.ebw && errors.ebw}
@@ -254,7 +254,7 @@ function MyForm() {
                       fullWidth
                       label="CRL (Crown-Rump Length)"
                       name="crl"
-                      value={values.CRL}
+                      value={values.crl}
                       onChange={handleChange}
                       error={touched.crl && Boolean(errors.crl)}
                       helperText={touched.crl && errors.crl}
@@ -265,7 +265,7 @@ function MyForm() {
                       fullWidth
                       label="GestSac (Gestational Sac)"
                       name="gestSac"
-                      value={values.GestSac}
+                      value={values.gestSac}
                       onChange={handleChange}
                       error={touched.gestSac && Boolean(errors.gestSac)}
                       helperText={touched.gestSac && errors.gestSac}
@@ -276,7 +276,7 @@ function MyForm() {
                       fullWidth
                       label="BPD (Biparietal Diameter)"
                       name="bpd"
-                      value={values.BPD}
+                      value={values.bpd}
                       onChange={handleChange}
                       error={touched.bpd && Boolean(errors.bpd)}
                       helperText={touched.bpd && errors.bpd}
@@ -287,7 +287,7 @@ function MyForm() {
                       fullWidth
                       label="HC (Head Circumference)"
                       name="hc"
-                      value={values.HC}
+                      value={values.hc}
                       onChange={handleChange}
                       error={touched.hc && Boolean(errors.hc)}
                       helperText={touched.hc && errors.hc}
@@ -298,7 +298,7 @@ function MyForm() {
                       fullWidth
                       label="AC (Abdominal Circumference)"
                       name="ac"
-                      value={values.AC}
+                      value={values.ac}
                       onChange={handleChange}
                       error={touched.ac && Boolean(errors.ac)}
                       helperText={touched.ac && errors.ac}
@@ -309,7 +309,7 @@ function MyForm() {
                       fullWidth
                       label="FL (Femur Length)"
                       name="fl"
-                      value={values.FL}
+                      value={values.fl}
                       onChange={handleChange}
                       error={touched.fl && Boolean(errors.fl)}
                       helperText={touched.fl && errors.fl}
@@ -320,7 +320,7 @@ function MyForm() {
                       fullWidth
                       label="Liquor (Amniotic fluid)"
                       name="liquor"
-                      value={values.Liquor}
+                      value={values.liquor}
                       onChange={handleChange}
                       error={touched.liquor && Boolean(errors.liquor)}
                       helperText={touched.liquor && errors.liquor}
@@ -331,7 +331,7 @@ function MyForm() {
                       fullWidth
                       label="Placenta"
                       name="placenta"
-                      value={values.Placenta}
+                      value={values.placenta}
                       onChange={handleChange}
                       error={touched.placenta && Boolean(errors.placenta)}
                       helperText={touched.placenta && errors.placenta}
@@ -342,7 +342,7 @@ function MyForm() {
                       fullWidth
                       label="AveragePOA"
                       name="averagePOA"
-                      value={values.AveragePOA}
+                      value={values.averagePOA}
                       onChange={handleChange}
                       error={touched.averagePOA && Boolean(errors.averagePOA)}
                       helperText={touched.averagePOA && errors.averagePOA}
@@ -352,11 +352,11 @@ function MyForm() {
                     <TextField
                       fullWidth
                       label="AnyOther "
-                      name="anyOther"
-                      value={values.AnyOther}
+                      name="anyother"
+                      value={values.anyOther}
                       onChange={handleChange}
-                      error={touched.anyOther && Boolean(errors.anyOther)}
-                      helperText={touched.anyOther && errors.anyOther}
+                      error={touched.anyother && Boolean(errors.anyother)}
+                      helperText={touched.anyother && errors.anyother}
                     />
                   </Grid>
 
@@ -366,7 +366,7 @@ function MyForm() {
                       label="NextVisitDate "
                       name="nextVisitDate"
                       type="date"
-                      value={values.NextVisitDate}
+                      value={values.nextVisitDate}
                       onChange={handleChange}
                       error={
                         touched.nextVisitDate && Boolean(errors.nextVisitDate)
@@ -379,7 +379,7 @@ function MyForm() {
                       fullWidth
                       label="DoctorId"
                       name="doctorId"
-                      value={values.DoctorId}
+                      value={values.doctorId}
                       onChange={handleChange}
                       error={touched.doctorId && Boolean(errors.doctorId)}
                       helperText={touched.doctorId && errors.doctorId}
@@ -391,17 +391,18 @@ function MyForm() {
                       fullWidth
                       label="Designation"
                       name="designation"
-                      value={values.Designation}
+                      value={values.designation}
                       onChange={handleChange}
                       error={touched.designation && Boolean(errors.designation)}
                       helperText={touched.designation && errors.designation}
                     />
                   </Grid>
-                  <Grid item xs={12} sm={6}>
+                  
+                  <Grid item xs={12} sm={12}>
                     <Button variant="contained" 
                       type="submit"
                       title="Register"
-                      disabled={isSubmitting}
+                      disabled={isSubmitting} 
                       style={{ marginTop: "20px" }}
                       color="primary" // Add color here
                      onClick={() => {
@@ -421,7 +422,9 @@ function MyForm() {
                       </Button>
                     </Link>
                   </Grid>
-                </Grid>
+                  
+                  </Grid>
+                 
               </Box>
             </Box>
           </Box>
@@ -433,4 +436,4 @@ function MyForm() {
   );
 }
 
-export default MyForm;
+export default AddPatientsDetails;

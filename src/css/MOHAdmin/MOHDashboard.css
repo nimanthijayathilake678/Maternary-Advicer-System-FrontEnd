@@ -102,7 +102,17 @@ body {
   border: 5px solid #00a9bb;
 }
 
-
+.table-clinicDate{
+  margin-left: 100px;
+  margin-top: 60px;
+  color: black;
+  background-color: aquamarine;
+  background-origin: padding-box;
+  padding-left: 20px;
+  padding-top: 20px;
+  padding-right: 20px;
+  
+}
 
 
 

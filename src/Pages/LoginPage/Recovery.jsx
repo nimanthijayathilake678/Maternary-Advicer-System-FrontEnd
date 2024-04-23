@@ -9,9 +9,10 @@ import {
 import React, { useState } from "react";
 import Theme from "../../Components/Theme";
 import ReactDOM from "react-dom";
-import { otpEmailValidate } from "./Validation";
-import { otpMobilelValidate } from "./Validation";
-import { validateOtp } from "./Validation";
+import { useFormik } from "formik";
+import { validationSchemaRecoveryEmail } from "../../Pages/LoginPage/Validation";
+import { validationSchemaOtp } from "../../Pages/LoginPage/Validation";
+import { sendMail } from "../../Services/SendEmail";
 
 const theme = Theme();
 
@@ -23,6 +24,12 @@ const Overly = styled(Stack)(({}) => ({
   bottom: 0,
   backgroundColor: "rgba(0,0,0, 0.7)",
   zIndex: 1000,
+}));
+export const BtnTypography = styled(Typography)(({ theme }) => ({
+  fontSize: "18px",
+  [theme.breakpoints.down("md")]: {
+    fontSize: "14px",
+  },
 }));
 
 const ModelStack = styled(Stack)(({}) => ({
@@ -68,33 +75,33 @@ export default function Recovery({
     setMobile(true);
   };
 
-  //validation for email/mobile
-
-  const [otpEmail, setOtpEmail] = useState("");
-  const [emailError, setEmailError] = useState("");
-
-  //Mobile
-  const [otpMobile, setOtpMobile] = useState("");
-  const [mobileError, setMobileError] = useState("");
-
-  const sendOTPHandle = () => {
-    setEmailError(otpEmailValidate(otpEmail));
-    setMobileError(otpMobilelValidate(otpMobile));
+  //define initial values
+  const initialValuesEmail = {
+    email: "",
+    mobileNo: "",
   };
 
-  //Otp field
-  const [otp, setOtp] = useState("");
-  const [otpError, setOtpError] = useState("");
-  const [go, setGo] = useState(false);
-
-  const recoveryHandle = () => {
-    setOtpError(validateOtp(otp));
-
-    if (otp == "" || otp.length < 6) {
-    } else {
-      resetPasswordModelOn();
-    }
+  //define onsubmit on send Otp
+  const onSubmitEmail = (values) => {
+    console.log(values);
+    sendMail(values)
+      .then((response) => {
+        console.log(response);
+        if (response.status == 200) {
+          resetPasswordModelOn();
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
+
+  //formik define send OTP
+  const formik = useFormik({
+    initialValues: initialValuesEmail,
+    onSubmit: onSubmitEmail,
+    validationSchema: validationSchemaRecoveryEmail,
+  });
 
   return ReactDOM.createPortal(
     <Overly>
@@ -170,7 +177,106 @@ export default function Recovery({
               )}
             </Styledstack>
 
-            <Styledstack>
+            <form onSubmit={formik.handleSubmit}>
+              <Stack
+                spacing={1.5}
+                sx={{
+                  width: 500,
+                  alignItems: "center",
+                }}
+              >
+                <Stack
+                  sx={{
+                    width: "80%",
+                    [theme.breakpoints.down("md")]: {
+                      width: "50%",
+                    },
+                  }}
+                >
+                  {email && (
+                    <TextField
+                      id="email"
+                      name="email"
+                      variant="outlined"
+                      size="small"
+                      placeholder="Enter your email"
+                      helperText={formik.errors.email}
+                      FormHelperTextProps={{
+                        style: { color: theme.palette.error.main },
+                      }}
+                      value={formik.values.email}
+                      onChange={formik.handleChange}
+                      type="text"
+                      sx={{
+                        size: "small",
+                        width: "100%",
+                        borderRadius: theme.shape.borderRadius,
+                        "&:hover": {
+                          borderBlockColor: theme.palette.success.main,
+                        },
+                      }}
+                    />
+                  )}
+
+                  {mobile && (
+                    <TextField
+                      id="mobile-no"
+                      name="mobileNo"
+                      variant="outlined"
+                      size="small"
+                      placeholder="Enter your mobile number"
+                      helperText={formik.errors.mobileNo}
+                      FormHelperTextProps={{
+                        style: { color: theme.palette.error.main },
+                      }}
+                      value={formik.values.mobileNo}
+                      onChange={formik.handleChange}
+                      type="text"
+                      sx={{
+                        size: "small",
+                        width: "100%",
+                        borderRadius: theme.shape.borderRadius,
+                        "&:hover": {
+                          borderBlockColor: theme.palette.success.main,
+                        },
+                      }}
+                    />
+                  )}
+                </Stack>
+
+                <Stack
+                  sx={{
+                    width: "80%",
+                    [theme.breakpoints.down("md")]: {
+                      width: "50%",
+                    },
+                  }}
+                >
+                  <Button
+                    variant="contained"
+                    type="submit"
+                    sx={{
+                      width: "100%",
+                      "&:hover": {
+                        backgroundColor: theme.palette.secondary.main,
+                      },
+                    }}
+                  >
+                    <BtnTypography>Send OTP</BtnTypography>
+                  </Button>
+                </Stack>
+              </Stack>
+            </form>
+          </Stack>
+        </ModelStack>
+      </Stack>
+    </Overly>,
+    document.getElementById("portal-recovery")
+  );
+}
+
+{
+  /* <Styledstack>
               {email && (
                 <TextField
                   id="email"
@@ -297,4 +403,5 @@ export default function Recovery({
     </Overly>,
     document.getElementById("portal-recovery")
   );
+} */
 }
