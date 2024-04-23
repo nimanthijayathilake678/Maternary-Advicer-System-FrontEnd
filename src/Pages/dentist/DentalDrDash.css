@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
 html,
 body,
@@ -17,21 +17,21 @@ body,
 
 ::-webkit-scrollbar{
   width: 10px;
-}
+} */
 
 /*track*/
-::-webkit-scrollbar-track{
+/* ::-webkit-scrollbar-track{
   background-color: #e0e0e0;
-}
+} */
 
 /*handle*/
-::-webkit-scrollbar-thumb{
+/* ::-webkit-scrollbar-thumb{
   background-color: #888;
 
-}
+} */
 
 /*handle on hover*/
-::-webkit-scrollbar-track:hover{
+/* ::-webkit-scrollbar-track:hover{
   background-color: #555;
 }
 
@@ -93,5 +93,5 @@ body,
   display: flex;
   justify-content: space-around;
   background-color: #2a777c;
-}
+} */
 
