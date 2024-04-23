@@ -49,29 +49,48 @@ function Register() {
         enableReinitialize={true}
         validationSchema={userRegistrationSchema}
         validateOnChange={false}
-        
-        onSubmit={async (values, { setSubmitting }) => {
+        onSubmit={async (values, { setSubmitting, resetForm }) => {
           try {
             // Omitting the confirmPassword field from the values object
-            
-            const { confirmPassword, showPassword, showConfirmPassword, ...postData } = values;
+
+            const {
+              confirmPassword,
+              showPassword,
+              showConfirmPassword,
+              ...postData
+            } = values;
             // Logging postData without confirmPassword
             console.log(postData);
             console.log(values);
-           
-            const response =  await registerNewUser(postData);
-        
+
+            const response = await registerNewUser(postData);
+
             if (response.status === 200) {
               console.log("success");
               setShowSuccessAlert(true);
+              resetForm({
+                fullName: "",
+                firstName: "",
+                lastName: "",
+                regNum: "",
+                contactNo: "",
+                email: "",
+                gender: "male",
+                marriedStatus: "single",
+                position: "",
+                area: "",
+                username: "",
+                password: "",
+                confirmPassword: "",
+              });
             }
             console.log(response);
           } catch (error) {
             console.error("Error submitting form:", error.message);
-            
+          } finally {
+            setSubmitting(false);
           }
         }}
-        
       >
         {({
           handleChange,

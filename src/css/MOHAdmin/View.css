@@ -11,6 +11,7 @@
     border-collapse: collapse;
     margin-bottom: 20px;
     color: black;
+    margin-left: 20px;
 }
 
 .th1{
@@ -18,11 +19,13 @@
     padding: 8px;
     border: 1px solid #ddd;
 }
-/*
-.table th {
+
+*
+.table1 th {
     background-color: #f2f2f2;
     font-weight: bold;
     text-align: center;
+    margin-top: 10px;
 }
 */
 /*
@@ -87,4 +90,13 @@
 .btn1-danger:hover {
     background-color: #d43f3a;
     border-color: #ac2925;
+}
+
+.view-content{
+    display: flex;
+}
+
+.view-contnt{
+    display: flex;
+    flex-direction: column;
 }

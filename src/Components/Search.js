@@ -4,7 +4,7 @@ const Search = ({ search, setSearch }) => {
 	return (
 		<div className="col-sm-6 mb-4">
 			<form onSubmit={(e) => e.preventDefault()}>
-				<input
+				<input style={{color:"black", paddingLeft:"5px",paddingTop:"5px",paddingBottom:"5px"}}
 					className="form-control"
 					type="search"
 					role="searchbox"
