@@ -41,23 +41,23 @@ export const family = [
     subMenu: [
       {
         name: "Baby Profile",
-        path: "/family/babyDashboard/babyProfile",
+        path: `/family/babyDashboard/babyProfile/:id`,
       },
       {
         name: "Baby Immunization",
-        path: "/family/babyDashboard/immunization",
+        path: `/family/babyDashboard/immunization/:id`,
       },
       {
         name: "Baby Nutrients",
-        path: "/family/babyDashboard/nutrients",
+        path: `/family/babyDashboard/nutrients/:id`,
       },
       {
         name: "Baby Growth",
-        path: "/family/babyDashboard/weight",
+        path: `/family/babyDashboard/weight/id`,
       },
       {
         name: "Baby Health",
-        path: "/family/babyDashboard/babyhealth",
+        path: `/family/babyDashboard/babyhealth/id`,
       },
     ],
   },

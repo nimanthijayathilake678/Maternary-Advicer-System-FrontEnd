@@ -1,195 +1,187 @@
-import React, { useState } from "react";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import { Box, Grid } from "@mui/material";
-import SideBar from "../../Components/SideBar";
 
+
+import React, { useState, useEffect } from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import { TextField, Button, Box } from "@mui/material";
+import Grid from "@mui/material/Grid";
+
+
+
+import { clinicdate } from "../../Pages/Validations/validation";
+import {
+  addClinicDate,
+} from "../../Services/ClinicSchedule";
+import DisplaySidebar from "../../Components/DisplaySidebar";
+import SuccessAlert from "../../Components/SuccessMsg";
 
 function Clinic() {
-  const [clinicData, setClinicData] = useState({
-    area: "",
-    description: "",
-    clinicDate: "",
-    starttime: "",
-    endtime: "",
-    
-  });
-
-  const [errors, setErrors] = useState({});
- 
-
-  const handleClinicAdd = () => {
-    // Validate clinic data
-    const clinicErrors = validateClinicForm(clinicData);
-    if (Object.keys(clinicErrors).length > 0) {
-      setErrors(clinicErrors);
-      return;
-    }
-
-    
-  };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setClinicData({ ...clinicData, [name]: value });
-  };
-
-  const validateClinicForm = (data) => {
-    let errors = {};
-
-    if (!data.area) {
-      errors.area = "Clinic area is required";
-    }
-
-    if (!data.description) {
-      errors.description = "Description is required";
-    }
-
-    if (!data.clinicDate) {
-      errors.clinicDate = "Clinic Date is required";
-    }
-
-    if (!data.starttime) {
-      errors.starttime = "Time is required";
-    }
-    if (!data.endtime) {
-      errors.endtime = "Time is required";
-    }
-
-    return errors;
-  };
-
+  const [showSuccessAlert, setShowSuccessAlert] = useState(false);
   return (
-    <div>
-      <Box
-        component="form"
-        sx={{
-          "& .MuiTextField-root": { m: 1 },
+    <>
+      <Formik
+        initialValues={{
+          area: "",
+          description: "",
+          date: "",
+          starttime: "",
+          
         }}
-        noValidate
-        autoComplete="off"
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        height="100%"
-        flexDirection="column"
+        enableReinitialize={true}
+        validationSchema={clinicdate}
+        validateOnChange={false}
+        onSubmit={async (values, { setSubmitting, resetForm }) => {
+          try {
+            const response = await addClinicDate(values);
+            console.log(values);
+            if (response.status === 200) {
+              console.log("success");
+              setShowSuccessAlert(true);
+              resetForm({  
+                area: "",
+                description: "",
+                date: "",
+                starttime: "",
+              });
+            }
+            console.log(response);
+          } catch (error) {
+            console.error("Error submitting form:", error.message);
+          } finally {
+            setSubmitting(false);
+          }
+        }}
       >
-        <Grid container spacing={3}>
-          {/* Sidebar */}
-          <Grid item xs={3} display={"flex"}>
-            <SideBar />
-          </Grid>
-          {/* Clinic Details Section */}
-          <Grid
-            item
-            xs={9}
-            style={{ paddingTop: "100px", paddingRight: "200px" }}
-          >
-            {/* Header */}
-            <div>
-              <span className="text-xl text-[#2A777C] text-center font-bold">
-                Clinic Date Schedule
-              </span>
-            </div>
-            <Box
-              sx={{
-                width: "100%",
-                border: "1px solid #ccc",
-                padding: "1em",
-                paddingRight: "80px",
-                display: "flex",
-              }}
-            >
-              {/* Rest of the clinic details section */}
-              <Grid container spacing={3}>
-                <Grid item xs={6}>
-                  <TextField
-                    required
-                    placeholder="Clinic Area"
-                    name="area"
-                    label="Clinic Area"
-                    value={clinicData.area}
-                    onChange={handleChange}
-                    error={!!errors.area}
-                    helperText={errors.area}
-                    fullWidth
-                  />
-                </Grid>
-                <Grid item xs={6}>
-                  <TextField
-                    required
-                    type="date"
-                    placeholder="Clinic Date"
-                    name="cliniceDate"
-                    value={clinicData.clinicDate}
-                    onChange={handleChange}
-                    error={!!errors.clinicDate}
-                    helperText={errors.clinicDate}
-                    fullWidth
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    required
-                    placeholder="Description of Cinic"
-                    name="description"
-                    label="Description of Cinic"
-                    value={clinicData.description}
-                    onChange={handleChange}
-                    error={!!errors.description}
-                    helperText={errors.description}
-                    fullWidth
-                  />
-                </Grid>
-                
-                <Grid item xs={6}>
-               
-                <TextField
-                    required
-                    placeholder="Start Time"
-                    name="starttime"
-                    label="Start Time"
-                    type="time"
-                    value={clinicData.starttime}
-                    onChange={handleChange}
-                    error={!!errors.starttime}
-                    helperText={errors.starttime}
-                    fullWidth
-                  /> 
-                </Grid>
-                <Grid item xs={6}>
-               
-                <TextField
-                    required
-                    placeholder="End Time"
-                    name="endtime"
-                    label="End Time"
-                    type="time"
-                    value={clinicData.endtime}
-                    onChange={handleChange}
-                    error={!!errors.endtime}
-                    helperText={errors.endtime}
-                    fullWidth
-                  /> 
-                </Grid>
-                
-                <Grid item xs={12}>
-                  <Button
-                    variant="contained"
-                    onClick={handleClinicAdd}
-                    style={{ marginTop: "1em" }}
-                  >
-                    Confirm Clinic 
-                  </Button>
-                </Grid>
-              </Grid>
+        {({
+          handleChange,
+          values,
+          isSubmitting,
+          handleSubmit,
+          touched,
+          errors,
+        }) => (
+          <Form>
+            <Box sx={{ display: "flex" }}>
+              <Box sx={{ width: "25%", display: "flex", maxWidth: "200px" }}>
+                <DisplaySidebar />
+              </Box>
+
+              {/* Form */}
+              <Box sx={{ width: "100%", paddingBottom: "128px" }}>
+                <Box
+                  sx={{
+                    paddingTop: "100px",
+                    maxWidth: "900px",
+                    margin: "auto",
+                    display: "flex",
+                  }}
+                >
+                  <div>
+                    <span className="text-xl text-[#2A777C] text-center font-bold">
+                    Clinic Date Schedule
+                    </span>
+                  </div>
+                </Box>
+
+                <Box
+                  sx={{
+                    padding: "50px",
+                    maxWidth: "900px",
+                    border: "1px solid #ccc",
+                    margin: "auto",
+                    display: "flex",
+                    marginBottom: "20px",
+                  }}
+                >
+                  <Grid container spacing={2}>
+                    <Grid item xs={12} sm={6}>
+                      <Field
+                        as={TextField}
+                        required
+                        fullWidth
+                        placeholder="Area"
+                        name="area"
+                        label="Area"
+                        onChange={handleChange}
+                        value={values.area}
+                        error={touched.area && Boolean(errors.area)}
+                        helperText={touched.area && errors.area}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <Field
+                        as={TextField}
+                        required
+                        fullWidth
+                        type="date"
+                        placeholder="Date"
+                        name="date"
+                        label="Date"
+                        onChange={handleChange}
+                        value={values.date}
+                        error={touched.date && Boolean(errors.date)}
+                        helperText={touched.date && errors.date}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12}>
+                      <Field
+                        as={TextField}
+                        required
+                        fullWidth
+                        placeholder="Description"
+                        name="description"
+                        label="Description"
+                        onChange={handleChange}
+                        value={values.pregnancy_id}
+                        error={
+                          touched.description && Boolean(errors.description)
+                        }
+                        helperText={touched.description && errors.description}
+                      />
+                    </Grid>
+                    
+                    <Grid item xs={12} sm={6}>
+                      <Field
+                        as={TextField}
+                        required
+                        fullWidth
+                        type="time"
+                        placeholder="Start Time"
+                        name="starttime"
+                        label="Start Time"
+                        onChange={handleChange}
+                        value={values.starttime}
+                        error={touched.starttime && Boolean(errors.starttime)}
+                        helperText={touched.starttime && errors.starttime}
+                      />
+                    </Grid>
+                    
+                    <Grid item xs={12}>
+                      <button
+                        type="submit"
+                        height="40px"
+                        width="150px"
+                        title="Confirm Clinic"
+                        disabled={isSubmitting}
+                        style={{ marginTop: "20px",backgroundColor:"#2671E0",borderRadius:"5px",padding:"5px 15px 5px 15px"}}
+                        onClick={() => {
+                          handleSubmit();
+                          Object.keys(values).forEach((field) => {
+                            touched[field] = true;
+                          });
+                        }}
+                      >
+                        Confirm Clinic
+                      </button>
+                    </Grid>
+                  </Grid>
+                </Box>
+              </Box>
             </Box>
-            {/* Display Clinic Details */}
-            
-          </Grid>
-        </Grid>
-      </Box>
-    </div>
+          </Form>
+        )}
+      </Formik>
+      {showSuccessAlert && <SuccessAlert setAlert={setShowSuccessAlert} />}
+    </>
   );
 }
 

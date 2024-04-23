@@ -1,74 +1,101 @@
 
-import "../../css/VOGDoctor/PatientHistory.css";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
+import SideBar from "../../Components/SideBar";
+import { Typography } from "@mui/material";
+import Box from "@mui/material/Box";
+import DisplaySidebar from "../../Components/DisplaySidebar";
+import {
+  getClinicDetails,
+} from "../../Services/addClinicDetails";
 
-const PatientHistory = () => {
-  const [searchId, setSearchId] = useState('');
-  const [patientDetails, setPatientDetails] = useState(null);
-  const [errorMessage, setErrorMessage] = useState('');
 
-  // Function to handle input change
-  const handleSearchIdChange = (event) => {
-    setSearchId(event.target.value);
-  };
+const VISIBLE_FIELDS = [
+    
+        "pregnancyRegNo",
+        "eligibilityRegNo",
+        "poa" ,
+        "urine",
+        "oedema",
+        "bloodPressure",
+        "fundalHeight",
+        "foetalLie",
+        "presentation",
+        "fm",
+        "fhs",
+        "ebw",
+        "crl",
+        "gestSac",
+        "bpd",
+        "hc",
+        "ac",
+        "fl",
+        "liqour",
+        "placenta",
+        "averagePOA",
+        "anyother",
+        "nextVisitDate",
+        "doctorId",
+        "designation",
 
-  // Function to handle search button click
-  const handleSearchClick = async () => {
-    try {
-      // Perform the API call or database query to get patient details based on searchId
-      // Replace the following with your actual API call or database query
-      const response = await fetch(`your-api-endpoint/${searchId}`);
-      const data = await response.json();
 
-      if (data) {
-        // If patient details are found, set them in the state
-        setPatientDetails(data);
-        setErrorMessage('');
-      } else {
-        // If no data is found, display an error message
-        setErrorMessage('No patient registered with this ID.');
-        setPatientDetails(null);
+      ];
+
+export default function PatientHistory() {
+  const [customDataset, setCustomDataset] = useState([]);
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await getClinicDetails();
+        const data = response.data.map((row, index) => ({
+          id: index + 1, // Generate unique id for each row
+          ...row,
+        }));
+        setCustomDataset(data);
+      } catch (error) {
+        console.log("Error getting data:", error);
       }
-    } catch (error) {
-      console.error('Error fetching patient details:', error);
-      setErrorMessage('Error fetching patient details. Please try again.');
-      setPatientDetails(null);
-    }
-  };
+    };
+
+    fetchData();
+  }, []);
 
   return (
-    <div className="user-details">
-    <label>
-      Enter Patient ID:
-      <input type="text" value={searchId} onChange={handleSearchIdChange} />
-    </label>
-    <button onClick={handleSearchClick}>Search</button>
+    <Box sx={{ display: "flex" }}>
+      <div style={{ display: "flex", height: "100vh", overflowX: "hidden" }}>
+        <DisplaySidebar />
+        <div style={{ flex: 1, overflowX: "hidden" }}>
+          <div style={{ height: "100vh", width: "100%" }}>
+            <Typography
+              variant="h5"
+              style={{
+                marginBottom: "10px",
+                color: "#2A777C",
+                paddingBottom: "60px",
+                paddingLeft: "10px",
+                paddingTop: "40px",
+              }}
+            >
+              Registered Babies
+            </Typography>
 
-    {errorMessage && <div className="error-message">{errorMessage}</div>}
-
-    {patientDetails && (
-      <div className="patient-details">
-        <h2>Patient Details:</h2>
-                                                     
-        <p>Name: {patientDetails.fullName}</p>
-        <p>NIC No.: {patientDetails.nicNo}</p>
-        
+            <DataGrid
+              autoHeight
+              rows={customDataset}
+              columns={VISIBLE_FIELDS.map((field) => ({
+                field,
+                headerName: field,
+                width: 150, // Adjust width as needed
+              }))}
+              components={{ Toolbar: GridToolbar }}
+            />
+          </div>
+        </div>
       </div>
-    )}
-  </div>
+    </Box>
   );
-};
-
-export default PatientHistory;
-
-/*
-import React from 'react'
-
-function PatientHistory() {
-  return (
-    <div style={{color:'#000', fontSize:'20px'}}>PatientHistory</div>
-  )
 }
 
-export default PatientHistory
-*/
+

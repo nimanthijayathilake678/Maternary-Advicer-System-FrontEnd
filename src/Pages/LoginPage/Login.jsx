@@ -20,8 +20,9 @@ import SuccessAlert from "../../Components/SuccessAlert";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import logo from "../../Assest/logo.png";
-import babylogo from "../../Assest/babylogo.png";
+import babylogo from "../../Assest/msteee.png";
 import login2 from "../../Assest/login2.jpg";
+
 const theme = Theme();
 const DemoPaper = styled(Paper)(({ theme }) => ({
   width: 900,
@@ -100,7 +101,12 @@ const Login = () => {
     setResponseAlert(true);
     setCustom(false);
   };
-
+  //validations
+  // const formik = useFormik({
+  //   initialValues,
+  //   onSubmit,
+  //   validationSchema,
+  // });
   //validations
 
   const [username, setUsername] = useState("");
@@ -189,29 +195,26 @@ const Login = () => {
                 flex="45%"
                 sx={{
                   display: "flex",
+                  flexDirection: "column",
                   justifyContent: "center",
                   alignItems: "center",
-                  backgroundColor: theme.palette.primary.paper,
-                  height: "80vh",
+                  backgroundColor: "#2A777C",
                   borderTopLeftRadius: theme.shape.borderRadius * 5, //6
                   borderBottomLeftRadius: theme.shape.borderRadius * 5, //6
                   [theme.breakpoints.down("sm")]: {
-                    height: 300,
+                    height: 900,
                   },
                 }}
               >
                 <img
-                  src={login2}
+                  src={babylogo}
                   alt="Login_image"
-                  width="100%"
-                  height="100%"
                   sx={{
-                    [theme.breakpoints.down("md")]: {
-                      width: "200px",
-                      height: "160px",
-                    },
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
                   }}
-                ></img>
+                />
               </Box>
 
               <Box

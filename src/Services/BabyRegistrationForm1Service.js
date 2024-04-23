@@ -21,9 +21,9 @@ export const getRegisterBaby = async () => {
   }
 };
 
-export const getRegisterBabyByBabyNum = async () => {
+export const getRegisterBabyByBabyNum = async (babyNum) => {
   try {
-    const response = await apiClient.get("/newbaby/getbabyInfo{babyNum}");
+    const response = await apiClient.get(`/newbaby/getbabyInfo/${babyNum}`);
     console.log(response);
     return response;
   } catch (err) {
@@ -32,9 +32,11 @@ export const getRegisterBabyByBabyNum = async () => {
   }
 };
 
-export const getRegisterBabyByCoupleNum = async () => {
+export const getRegisterBabyByCoupleNum = async (coupleNum) => {
   try {
-    const response = await apiClient.get("/getbabyInfoByCoupleNum/{coupleNum}");
+    const response = await apiClient.get(
+      `/newbaby/getbabyInfoByCoupleNum/${coupleNum}`
+    );
     console.log(response);
     return response;
   } catch (err) {

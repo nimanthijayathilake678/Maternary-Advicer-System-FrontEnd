@@ -1,5 +1,14 @@
-import "../../css/MOHAdmin/Register.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import DisplaySidebar from "../../Components/DisplaySidebar";
+import { userRegistrationSchema } from "../Validations/validation";
+import DefaultButton from "../../Components/Button/DefaultButton";
+import { registerNewUser } from "../../Services/registerUsers";
+import SuccessAlert from "../../Components/SuccessMsg";
+import axios from "axios";
+
 import {
   TextField,
   Button,
@@ -13,294 +22,324 @@ import {
   FormControlLabel,
   Radio,
   FormLabel,
-  IconButton,
-  InputAdornment,
 } from "@mui/material";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import DisplaySidebar from "../../Components/DisplaySidebar";
-
-const occupations = ["VOG Doctor", "MOH Doctor", "Dentist", "MidWife"];
-const areas = [
-  "Hittatiya Central",
-  "Hittatiya East",
-  "Kadeweediya",
-  "Kotuwegoda",
-  "Meddawatta",
-  "Pamburana",
-  "Polhena",
-  "Thotamuna",
-  "Thudawa",
-  "Uyanwatta",
-  "Walgama Meda",
-  "Walgama North",
-  "Walgama South",
-  "Walpola 1",
-  "Walpola 2",
-  "Welegoda",
-  "Welegoda East",
-  "Weliweriya",
-  "Weragampita",
-];
 
 function Register() {
-  const [formData, setFormData] = useState({
-    fullName: "",
-    nicNo: "",
-    birthday: "",
-    contactNo: "",
-    email: "",
-    sex: "male",
-    marriedStatus: "single",
-    occupation: "",
-    area: "",
-    username: "",
-    password: "",
-    confirmPassword: "",
-    showPassword: false,
-    showConfirmPassword: false,
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-
-  const handleTogglePasswordVisibility = () => {
-    setFormData({
-      ...formData,
-      showPassword: !formData.showPassword,
-    });
-  };
-
-  const handleToggleConfirmPasswordVisibility = () => {
-    setFormData({
-      ...formData,
-      showConfirmPassword: !formData.showConfirmPassword,
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Add your logic for form submission/validation here
-    console.log(formData);
-  };
-
+  const [showSuccessAlert, setShowSuccessAlert] = useState(false);
   return (
-    <div className="form">
-      <DisplaySidebar />
-      <Container maxWidth="sm">
-        <div className="font">
-          <Typography variant="h4" align="center" gutterBottom>
-            Registration Form
-          </Typography>
-        </div>
-        <form onSubmit={handleSubmit}>
-          <TextField
-            label="Full Name"
-            name="fullName"
-            value={formData.fullName}
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            required
-          />
+    <>
+      <Formik
+        initialValues={{
+          fullName: "",
+          firstName: "",
+          lastName: "",
+          regNum: "",
+          contactNo: "",
+          email: "",
+          gender: "male",
+          marriedStatus: "single",
+          position: "",
+          area: "",
+          username: "",
+          password: "",
+          confirmPassword: "",
+          showPassword: false,
+          showConfirmPassword: false,
+        }}
+        enableReinitialize={true}
+        validationSchema={userRegistrationSchema}
+        validateOnChange={false}
+        
+        onSubmit={async (values, { setSubmitting }) => {
+          try {
+            // Omitting the confirmPassword field from the values object
+            
+            const { confirmPassword, showPassword, showConfirmPassword, ...postData } = values;
+            // Logging postData without confirmPassword
+            console.log(postData);
+            console.log(values);
+           
+            const response =  await registerNewUser(postData);
+        
+            if (response.status === 200) {
+              console.log("success");
+              setShowSuccessAlert(true);
+            }
+            console.log(response);
+          } catch (error) {
+            console.error("Error submitting form:", error.message);
+            
+          }
+        }}
+        
+      >
+        {({
+          handleChange,
+          values,
+          isSubmitting,
+          handleSubmit,
+          touched,
+          errors,
+        }) => (
+          <Form>
+            <Box sx={{ display: "flex" }}>
+              <Box sx={{ width: "25%", display: "flex", maxWidth: "200px" }}>
+                <DisplaySidebar />
+              </Box>
 
-          <TextField
-            label="NIC No."
-            name="nicNo"
-            value={formData.nicNo}
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            required
-          />
+              {/* Form */}
+              <Box sx={{ width: "100%", paddingBottom: "128px" }}>
+                <Box
+                  sx={{
+                    paddingTop: "100px",
+                    maxWidth: "900px",
+                    margin: "auto",
+                    display: "flex",
+                  }}
+                >
+                  <div>
+                    <span className="text-xl text-[#2A777C] text-center font-bold">
+                      User Register
+                    </span>
+                  </div>
+                </Box>
 
-          <TextField
-            label="Birthday"
-            name="birthday"
-            type="date"
-            value={formData.birthday}
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            required
-          />
+                <Box
+                  sx={{
+                    padding: "50px",
+                    maxWidth: "900px",
+                    border: "1px solid #ccc",
+                    margin: "auto",
+                    display: "flex",
+                    marginBottom: "20px",
+                  }}
+                >
+                  <Grid container spacing={2}>
+                    <Grid item xs={12} sm={12}>
+                      <Field
+                        as={TextField}
+                        required
+                        fullWidth
+                        placeholder="Full Name"
+                        name="fullName"
+                        label="Full Name"
+                        onChange={handleChange}
+                        value={values.fullName}
+                        error={touched.fullName && Boolean(errors.fullName)}
+                        helperText={touched.fullName && errors.fullName}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <Field
+                        as={TextField}
+                        required
+                        fullWidth
+                        placeholder="First Name"
+                        name="firstName"
+                        label="First Name"
+                        onChange={handleChange}
+                        value={values.firstName}
+                        error={touched.firstName && Boolean(errors.firstName)}
+                        helperText={touched.firstName && errors.firstName}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <Field
+                        as={TextField}
+                        required
+                        fullWidth
+                        placeholder="Last Name"
+                        name="lastName"
+                        label="Last Name"
+                        onChange={handleChange}
+                        value={values.lastName}
+                        error={touched.lastName && Boolean(errors.lastName)}
+                        helperText={touched.lastName && errors.lastName}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <Field
+                        as={TextField}
+                        required
+                        fullWidth
+                        placeholder="Register Number"
+                        name="regNum"
+                        label="Register Number"
+                        onChange={handleChange}
+                        value={values.regNum}
+                        error={touched.regNum && Boolean(errors.regNum)}
+                        helperText={touched.regNum && errors.regNum}
+                      />
+                    </Grid>
 
-          <TextField
-            label="Contact No."
-            name="contactNo"
-            value={formData.contactNo}
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            inputProps={{
-              pattern: "\\d{10}",
-              title: "Please enter 10 digits",
-            }}
-            required
-          />
+                    <Grid item xs={12} sm={6}>
+                      <Field
+                        as={TextField}
+                        required
+                        fullWidth
+                        placeholder="Contact No"
+                        name="contactNo"
+                        label="Contact No"
+                        onChange={handleChange}
+                        value={values.contactNo}
+                        error={touched.contactNo && Boolean(errors.contactNo)}
+                        helperText={touched.contactNo && errors.contactNo}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12}>
+                      <Field
+                        as={TextField}
+                        required
+                        fullWidth
+                        type="email"
+                        placeholder="Email"
+                        name="email"
+                        label="Email"
+                        onChange={handleChange}
+                        value={values.email}
+                        error={touched.email && Boolean(errors.email)}
+                        helperText={touched.email && errors.email}
+                      />
+                    </Grid>
 
-          <TextField
-            label="Email"
-            name="email"
-            type="email"
-            value={formData.email}
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            required
-          />
+                    <Grid item xs={12} sm={6}>
+                      <FormControl component="fieldset" margin="normal">
+                        <FormLabel component="legend">Gender</FormLabel>
+                        <RadioGroup row name="gender" id="gender">
+                          <FormControlLabel
+                            value="male"
+                            control={<Radio />}
+                            label="Male"
+                            style={{ color: "black" }}
+                          />
+                          <FormControlLabel
+                            value="female"
+                            control={<Radio />}
+                            label="Female"
+                            style={{ color: "black" }}
+                          />
+                        </RadioGroup>
+                      </FormControl>
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <FormControl component="fieldset" margin="normal">
+                        <FormLabel component="legend">Married Status</FormLabel>
+                        <RadioGroup row name="marriedStatus" id="marriedStatus">
+                          <FormControlLabel
+                            value="single"
+                            control={<Radio />}
+                            label="Single"
+                            style={{ color: "black" }}
+                          />
+                          <FormControlLabel
+                            value="married"
+                            control={<Radio />}
+                            label="Married"
+                            style={{ color: "black" }}
+                          />
+                          <FormControlLabel
+                            value="divorced"
+                            control={<Radio />}
+                            label="Divorced"
+                            style={{ color: "black" }}
+                          />
+                        </RadioGroup>
+                      </FormControl>
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <Field
+                        as={TextField}
+                        label="Position"
+                        name="position"
+                        fullWidth
+                        value={values.position}
+                        margin="normal"
+                        error={touched.position && !!errors.position}
+                        helperText={touched.position && errors.position}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <Field
+                        as={TextField}
+                        label="Area"
+                        name="area"
+                        fullWidth
+                        value={values.area}
+                        margin="normal"
+                        error={touched.area && !!errors.area}
+                        helperText={touched.area && errors.area}
+                      />
+                    </Grid>
 
-          <FormControl component="fieldset" margin="normal">
-            <FormLabel component="legend">Sex</FormLabel>
-            <RadioGroup
-              name="sex"
-              value={formData.sex}
-              onChange={handleChange}
-              row
-            >
-              <FormControlLabel value="male" control={<Radio />} label="Male" />
-              <FormControlLabel
-                value="female"
-                control={<Radio />}
-                label="Female"
-              />
-            </RadioGroup>
-          </FormControl>
-          <div>
-            <FormControl component="fieldset" margin="normal">
-              <FormLabel component="legend">Married Status</FormLabel>
-              <RadioGroup
-                name="marriedStatus"
-                value={formData.marriedStatus}
-                onChange={handleChange}
-                row
-              >
-                <FormControlLabel
-                  value="single"
-                  control={<Radio />}
-                  label="Single"
-                />
-                <FormControlLabel
-                  value="married"
-                  control={<Radio />}
-                  label="Married"
-                />
-                <FormControlLabel
-                  value="divorced"
-                  control={<Radio />}
-                  label="Divorced"
-                />
-              </RadioGroup>
-            </FormControl>
-          </div>
+                    <Grid item xs={12} sm={6}>
+                      <Field
+                        as={TextField}
+                        label="Username"
+                        name="username"
+                        fullWidth
+                        margin="normal"
+                        value={values.username}
+                        error={touched.username && !!errors.username}
+                        helperText={touched.username && errors.username}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <Field
+                        as={TextField}
+                        label="Password"
+                        name="password"
+                        type="password"
+                        fullWidth
+                        margin="normal"
+                        value={values.password}
+                        error={touched.password && !!errors.password}
+                        helperText={touched.password && errors.password}
+                      />
+                    </Grid>
 
-          <FormControl fullWidth margin="normal">
-            <InputLabel htmlFor="occupation">Occupation</InputLabel>
-            <Select
-              label="Occupation"
-              name="occupation"
-              value={formData.occupation}
-              onChange={handleChange}
-              required
-            >
-              <MenuItem value="">Select Occupation</MenuItem>
-              {occupations.map((occupation) => (
-                <MenuItem key={occupation} value={occupation}>
-                  {occupation}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
+                    <Grid item xs={12} sm={6}>
+                      <Field
+                        as={TextField}
+                        label="Confirm Password"
+                        name="confirmPassword"
+                        type="password"
+                        fullWidth
+                        margin="normal"
+                        value={values.confirmPassword}
+                        error={
+                          touched.confirmPassword && !!errors.confirmPassword
+                        }
+                        helperText={
+                          touched.confirmPassword && errors.confirmPassword
+                        }
+                      />
+                    </Grid>
 
-          <FormControl fullWidth margin="normal">
-            <InputLabel htmlFor="area">Area</InputLabel>
-            <Select
-              label="Area"
-              name="area"
-              value={formData.area}
-              onChange={handleChange}
-              required
-            >
-              <MenuItem value="">Select Area</MenuItem>
-              {areas.map((area) => (
-                <MenuItem key={area} value={area}>
-                  {area}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-
-          <TextField
-            label="Username"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            minLength="8"
-            required
-          />
-
-          <TextField
-            label="Password"
-            name="password"
-            type={formData.showPassword ? "text" : "password"}
-            value={formData.password}
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
-            title="Must contain at least one uppercase letter, one lowercase letter, and one number. Minimum 8 characters."
-            required
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton onClick={handleTogglePasswordVisibility}>
-                    {formData.showPassword ? <Visibility /> : <VisibilityOff />}
-                  </IconButton>
-                </InputAdornment>
-              ),
-            }}
-          />
-
-          <TextField
-            label="Confirm Password"
-            name="confirmPassword"
-            type={formData.showConfirmPassword ? "text" : "password"}
-            value={formData.confirmPassword}
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
-            title="Must contain at least one uppercase letter, one lowercase letter, and one number. Minimum 8 characters."
-            required
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton onClick={handleToggleConfirmPasswordVisibility}>
-                    {formData.showConfirmPassword ? (
-                      <Visibility />
-                    ) : (
-                      <VisibilityOff />
-                    )}
-                  </IconButton>
-                </InputAdornment>
-              ),
-            }}
-          />
-          <div className="button">
-            <Button type="submit" variant="contained" color="primary">
-              Submit
-            </Button>
-          </div>
-        </form>
-      </Container>
-    </div>
+                    <Grid item xs={12} sm={12}>
+                      <DefaultButton
+                        type="submit"
+                        height="40px"
+                        width="150px"
+                        title="Register"
+                        disabled={isSubmitting}
+                        style={{ marginTop: "20px" }}
+                        onClick={() => {
+                          handleSubmit();
+                          Object.keys(values).forEach((field) => {
+                            touched[field] = true;
+                          });
+                        }}
+                      />
+                    </Grid>
+                  </Grid>
+                </Box>
+              </Box>
+            </Box>
+          </Form>
+        )}
+      </Formik>
+      {showSuccessAlert && <SuccessAlert setAlert={setShowSuccessAlert} />}
+    </>
   );
 }
 
