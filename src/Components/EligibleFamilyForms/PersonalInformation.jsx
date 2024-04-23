@@ -24,6 +24,7 @@ export default function PersonalInformation({handleNext,handleBack}) {
   
   const [method,setMethod] = useState("post");
   const url = "/personalInfo/";
+  const state = true;
   const inputRef = useRef(null);
   const [user,setUser] = useState(auth.user.id)
   useEffect(() => {
@@ -65,7 +66,7 @@ export default function PersonalInformation({handleNext,handleBack}) {
   ];
 
   const handleClick = () => {
-    handleNext(url,method,personalInfo,user)
+    handleNext(url,method,personalInfo,user,state)
   }
 
 
