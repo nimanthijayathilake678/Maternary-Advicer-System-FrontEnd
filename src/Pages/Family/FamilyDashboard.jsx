@@ -62,7 +62,7 @@ const FamilyDashboard = () => {
             <div className="cards">
               <div className="card-inner">
                 <h6>MY PREGNANCIES</h6>
-                <Lottie style={{ height: 100 }} animationData={pregnant} />
+                <Lottie style={{ height: 60 }} animationData={pregnant} />
               </div>
             </div>
             <div className="cards">
@@ -71,7 +71,7 @@ const FamilyDashboard = () => {
                   MY BABIES
                 </h6>
                 <Lottie
-                  style={{ height: 90 }}
+                  style={{ height: 60 }}
                   animationData={baby}
                   onClick={() => handleNavigation("/family/mybabies")}
                 />
@@ -80,13 +80,13 @@ const FamilyDashboard = () => {
             <div className="cards">
               <div className="card-inner">
                 <h6>MY PROFILE</h6>
-                <Lottie style={{ height: 70 }} animationData={profile} />
+                <Lottie style={{ height: 60 }} animationData={profile} />
               </div>
             </div>
             <div className="cards">
               <div className="card-inner">
                 <h6>SUMMARY REPORTS</h6>
-                <Lottie style={{ height: 100 }} animationData={reports} />
+                <Lottie style={{ height: 60 }} animationData={reports} />
               </div>
             </div>
           </div>
