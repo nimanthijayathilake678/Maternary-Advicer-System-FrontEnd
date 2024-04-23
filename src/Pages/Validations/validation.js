@@ -14,13 +14,19 @@ export const babyRegistrationSchema = Yup.object({
   ),
   b_Mother_Age: Yup.number()
     .required("Age of Mother is required")
-    .min(0, "Mother's age must be greater than or equal to 0")
+    .min(0, "Mother's age must be greater than  13")
     .max(150, "Mother's age must be less than or equal to 150"),
 });
 export const babyRegistrationSchema2 = Yup.object({
-  birthGivenHospital: Yup.string().required("Birth given hospital required"),
-  weightAtBirth: Yup.string().required("Birth weight required"),
+  birthGivenHospital: Yup.string().required("Birth given hospital is required"),
+  weightAtBirth: Yup.string().required("Birth weight is required"),
   wayOfBirth: Yup.string().required("Birth way is required"),
   headSizeAtBirth: Yup.string().required("Birth head size required"),
   lengthAtBirth: Yup.string().required("Birth length required"),
 });
+
+export const wifePersonalInfoSchema = Yup.object({
+  w_date_of_birth: Yup.date().required("Date of birth required"),
+  w_Occupation: Yup.string().required("Occupation is required"),
+});
+

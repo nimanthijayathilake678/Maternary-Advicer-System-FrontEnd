@@ -119,7 +119,12 @@ const Login = () => {
       } else if (position == "Midwife") {
         navigate("/midwife");
       } else if (position == "Family") {
-        navigate("/family");
+          if(response?.data.user.familyFlag){
+            navigate("/family");
+          }else{
+            navigate("/family/eligibleFamilyForm");
+          }
+        
       } else if (position == "VogDoctor") {
         navigate("/vog");
       } else {
@@ -180,7 +185,7 @@ const Login = () => {
                 },
               }}
             >
-              <box
+              <Box
                 flex="45%"
                 sx={{
                   display: "flex",
@@ -207,7 +212,7 @@ const Login = () => {
                     },
                   }}
                 ></img>
-              </box>
+              </Box>
 
               <Box
                 flex="55%"

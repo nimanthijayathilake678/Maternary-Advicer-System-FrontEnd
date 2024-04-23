@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { MdOutlineFamilyRestroom } from "react-icons/md";
 import { MdPregnantWoman } from "react-icons/md";
 import { useLocation } from "react-router-dom";
+import { CgProfile } from "react-icons/cg";
 
 export const family = [
   {
@@ -18,6 +19,11 @@ export const family = [
     name: "Dashboard",
     path: "/family",
     icon: <RxDashboard />,
+  },
+  {
+    name: "My Profile",
+    path: "/family/profile",
+    icon: <CgProfile />,
   },
   {
     name: "Eligible Families",

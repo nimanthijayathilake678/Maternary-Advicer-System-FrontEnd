@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import Nav from "../Components/Nav";
 import Footer from "../Components/Footer";
+import TranslateComponent from "../Components/TranslateComponent";
 
 export default function Home() {
   
   return (
     <>
+    {/* <TranslateComponent/> */}
     <Nav/>
     <div className="bg-white w-full">
       <div xs={12} >
@@ -75,7 +77,7 @@ export default function Home() {
                   <p className="mt-6">
                     <a
                       href="#"
-                      classname="text-sm font-semibold leading-6 text-white"
+                      className="text-sm font-semibold leading-6 text-white"
                     >
                       Learn more <span aria-hidden="true">→</span>
                     </a>
