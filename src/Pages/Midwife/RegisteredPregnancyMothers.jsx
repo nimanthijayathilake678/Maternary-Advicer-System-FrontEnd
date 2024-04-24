@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import Nav from "../../Components/Nav";
 import DisplaySidebar from "../../Components/DisplaySidebar";
 import { useParams } from "react-router-dom";
+import Header from "../../Components/Header";
 
 const columns = [
   { id: "pId", label: "Pregnancy Id", minWidth: 170 },
@@ -64,12 +65,16 @@ const RegisteredPregMothers = () => {
   return (
     <div>
       {/* <DisplaySidebar/> */}
+      
       <div className="pt-10 px-10 c">
       <DisplaySidebar />
         <div className="flex relative items-center">
-          <div>
+        {/* <div>
+        <Header title="Registered Pregnant Mothers"/>
+        </div> */}
+          <div ml={20}>
             <span className=" text-xl  text-[#2A777C] text-center font-bold ">
-              Eligible Families
+            Registered Pregnant 
             </span>
           </div>
         </div>
