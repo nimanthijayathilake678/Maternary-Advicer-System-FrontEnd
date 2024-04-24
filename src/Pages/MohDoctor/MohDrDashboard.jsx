@@ -93,20 +93,7 @@ const MohDrDashboard = () => {
                         <DateCalendar />
                     </LocalizationProvider>
                 </div>
-                {/* <div className="upcomingClinics">
-                    <div marginLeft= "20px">
-                    <h3 > Upcoming Clinics</h3>
-                    </div>
-                    <div><Upcomings/></div>
-                  
-                </div> */}
-                
-                {/* <div className="cards">
-                    <div className="card-inner">
-                        <h6>SUMMARY REPORTS</h6>
-                        <Lottie style={{height:80}} animationData={reports}/>
-                    </div>
-            </div> */}
+             
 
             </div>
 
