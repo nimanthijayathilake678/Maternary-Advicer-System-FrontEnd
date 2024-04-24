@@ -13,15 +13,15 @@ export default function BirthControl() {
   return (
     <div>
 
-        <div className={birthControl.title}>
-            <span className={birthControl.title1}>Birth Control</span>
+        <div className={birthControl.title} >
+            <span className={birthControl.title1} style={{color: "#2A777C",}}>Birth Control</span>
         </div>
 
         <div className={birthControl.title2}>
             <span className={birthControl.title3    }>        </span>
         </div>
 
-         <div className={birthControl.container}>
+         <div className={birthControl.container}style={{color: "#2A777C",}}>
         
         <div className={birthControl.section}>
             <div className={birthControl.header}>
@@ -114,7 +114,7 @@ export default function BirthControl() {
 
      </div>
 
-     <div className={birthControl.container}>
+     <div className={birthControl.container} style={{color: "#2A777C",}}>
         
         <div className={birthControl.section}>
             <div className={birthControl.header}>
@@ -205,7 +205,7 @@ export default function BirthControl() {
 
      </div>
 
-     <div className={birthControl.container}>
+     <div className={birthControl.container } style={{color: "#2A777C",}}>
         
         <div className={birthControl.section}>
             <div className={birthControl.header}>
