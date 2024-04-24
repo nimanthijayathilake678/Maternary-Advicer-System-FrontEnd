@@ -229,9 +229,8 @@ import SideBar from "../../Components/SideBar";
 import { Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import DisplaySidebar from "../../Components/DisplaySidebar";
-import {
-  getClinicDates,
-} from "../../Services/ClinicSchedule";
+
+import { registerUsersView } from "../../Services/registerUsers";
 
 
 const VISIBLE_FIELDS = [
@@ -246,8 +245,8 @@ const VISIBLE_FIELDS = [
         "marriedStatus",
         "area",
         "username",
-        "password",
-        "familyFlag",
+       // "password",
+       // "familyFlag",
         "position",
 
       ];
@@ -259,7 +258,7 @@ export default function View() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await getClinicDates();
+        const response = await registerUsersView();
         const data = response.data.map((row, index) => ({
           id: index + 1, // Generate unique id for each row
           ...row,
