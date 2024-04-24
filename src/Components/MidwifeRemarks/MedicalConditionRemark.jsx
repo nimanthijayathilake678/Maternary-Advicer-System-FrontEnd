@@ -12,25 +12,25 @@ import useAuth from "../../Hooks/useAuth";
 import RemarkModal from "./RemarkModal";
 
 const rows = [
-  { name: "Blood Deficiency", wife: "w_anemia", husband: "h_anemia" },
-  { name: "Heart Diseases - Congenital", wife: "w_congenital", husband: "h_congenital" },
-  { name: "Heart Diseases - Rheumatic Heart Diseases", wife: "w_rheumaticHeartDisease", husband: "h_rheumaticHeartDisease" },
-  { name: "Diabetes Mellitus", wife: "w_diabetesMellitus", husband: "h_diabetesMellitus" },
-  { name: "Hypercholesterolemia", wife: "w_hypercholesterolemia", husband: "h_hypercholesterolemia" },
-  { name: "Asthma", wife: "w_asthma", husband: "h_asthma" },
-  { name: "Thyroid diseases (Goiter)", wife: "w_thyroid", husband: "h_thyroid" },
-  { name: "Untreated decayed teeth", wife: "w_untratedDecayedTeeth", husband: "h_untratedDecayedTeeth" },
-  { name: "Conditions such as tooth decay and bleeding from the gums", wife: "w_toothDecayBleedingGums", husband: "h_toothDecayBleedingGums" },
-  { name: "Mental Illnesses", wife: "w_mentalIllnesses", husband: "h_mentalIllnesses" },
-  { name: "Rheumatic Fever", wife: "w_rheumaticFever", husband: "h_rheumaticFever" },
-  { name: "Epilepsy", wife: "w_epilepsy", husband: "h_epilepsy" },
-  { name: "Allergies - Food", wife: "w_foodAllergies", husband: "h_foodAllergies" },
-  { name: "Allergies - Drugs", wife: "w_drugsAllergies", husband: "h_drugsAllergies" },
-  { name: "Long term medications", wife: "w_longTermMedicine", husband: "h_longTermMedicine" },
-  { name: "Other Surgeries", wife: "w_otherSurgeries", husband: "h_otherSurgeries" },
+  { name: "Blood Deficiency", wife: "w_anemia", husband: "h_anemia", column:"anemiaRemarkByMidwife"},
+  { name: "Heart Diseases - Congenital", wife: "w_congenital", husband: "h_congenital" , column:"congenitalRemarkByMidwife" },
+  { name: "Heart Diseases - Rheumatic Heart Diseases", wife: "w_rheumaticHeartDisease", husband: "h_rheumaticHeartDisease" , column:"rheumaticHeartDiseaseRemarkByMidwife" },
+  { name: "Diabetes Mellitus", wife: "w_diabetesMellitus", husband: "h_diabetesMellitus", column:"diabetesMellitusRemarkByMidwif"  },
+  { name: "Hypercholesterolemia", wife: "w_hypercholesterolemia", husband: "h_hypercholesterolemia", column:"hypercholesterolemiaRemarkByMidwife"  },
+  { name: "Asthma", wife: "w_asthma", husband: "h_asthma" , column:"asthmaRemarkByMidwife" },
+  { name: "Thyroid diseases (Goiter)", wife: "w_thyroid", husband: "h_thyroid" , column:"thyroidRemarkByMidwife" },
+  { name: "Untreated decayed teeth", wife: "w_untratedDecayedTeeth", husband: "h_untratedDecayedTeeth" , column:"untratedDecayedTeethRemarkByMidwife" },
+  { name: "Conditions such as tooth decay and bleeding from the gums", wife: "w_toothDecayBleedingGums", husband: "h_toothDecayBleedingGums", column:"toothDecayBleedingGumsRemarkByMidwife"  },
+  { name: "Mental Illnesses", wife: "w_mentalIllnesses", husband: "h_mentalIllnesses" , column:"mentalIllnessesRemarkByMidwife" },
+  { name: "Rheumatic Fever", wife: "w_rheumaticFever", husband: "h_rheumaticFever", column:"rheumaticFeverRemarkByMidwife"  },
+  { name: "Epilepsy", wife: "w_epilepsy", husband: "h_epilepsy" , column:"epilepsyRemarkByMidwife" },
+  { name: "Allergies - Food", wife: "w_foodAllergies", husband: "h_foodAllergies" , column:"foodAllergiesRemarkByMidwife " },
+  { name: "Allergies - Drugs", wife: "w_drugsAllergies", husband: "h_drugsAllergies" , column:"drugsAllergiesRemarkByMidwife" },
+  // { name: "Long term medications", wife: "w_longTermMedicine", husband: "h_longTermMedicine", column:""  },
+  // { name: "Other Surgeries", wife: "w_otherSurgeries", husband: "h_otherSurgeries", column:""  },
 ];
 
-export default function MedicalConditionRemark(prop) {
+export default function MedicalConditionRemark({size,id}) {
   const [hoveredRow, setHoveredRow] = useState(null);
   const [medicalConditionsData, setMedicalConditionsData] = useState({});
   const auth = useAuth();
@@ -46,7 +46,7 @@ export default function MedicalConditionRemark(prop) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await apiClient.get("/CoupleMedicalConditions/" + auth.user.id);
+        const response = await apiClient.get("/CoupleMedicalConditions/" + id);
         const userData = response?.data;
         setMedicalConditionsData(userData);
         console.log("Personal Info Information ", userData);
@@ -55,7 +55,7 @@ export default function MedicalConditionRemark(prop) {
       }
     };
     fetchData();
-  }, [auth.user.id]);
+  }, [id]);
 
   return (
     <TableContainer component={Paper}>
@@ -91,8 +91,11 @@ export default function MedicalConditionRemark(prop) {
                 {hoveredRow === index && (
                   <RemarkModal
                     name={row.name}
-                    detail={medicalConditionsData[row.key]}
-                    size={prop.size}
+                    detail = {medicalConditionsData[row.wife].toString()+"     " + (medicalConditionsData[row.husband]?medicalConditionsData[row.husband].toString():"")}
+                    size={size}
+                    url="/midwifeRemark/"
+                    id={id}
+                    column={row.column}
                   />
                 )}
               </TableCell>

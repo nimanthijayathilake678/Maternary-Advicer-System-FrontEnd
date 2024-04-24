@@ -19,10 +19,8 @@ import Remark from "../../Assest/Lottie/Remark.json";
 import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
-import { Link,useParams } from "react-router-dom";
-import {Box} from "@mui/material";
-import DisplaySidebar from "../../Components/DisplaySidebar";
-
+import { Link } from "react-router-dom";
+import FilledByMidwifeRemark from "../../Pages/Midwife/FilledByMidwifeRemark";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -33,19 +31,14 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const MidwifeRemarkEligibleForm = () => {
-  const {id} = useParams();
   const [expanded, setExpanded] = useState(false);
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
 
-
-
   return (
-    <Box sx={{ display: "flex" , minHeight:"100vh" , backgroundColor:"white" }}>
-      <DisplaySidebar/>
-      <Box className="text-black bg-white">
+    <div className="text-black bg-white">
       <Grid container spacing={2} sx={{ marginTop: 5 }}>
         <Grid
           container
@@ -55,7 +48,6 @@ const MidwifeRemarkEligibleForm = () => {
             paddingLeft: 10,
             paddingTop: 0,
             alignItems: "center",
-            flexGrow: 1,
           }}
         >
           <Grid item xs={6}>
@@ -86,7 +78,7 @@ const MidwifeRemarkEligibleForm = () => {
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography>
-                    <GeneralInformationRemark size={600} id={id}/>
+                    <GeneralInformationRemark size={600} />
                   </Typography>
                 </AccordionDetails>
               </Accordion>
@@ -112,7 +104,7 @@ const MidwifeRemarkEligibleForm = () => {
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography>
-                    <PersonalInformationRemark size={600} id={id}/>
+                    <PersonalInformationRemark size={600} />
                   </Typography>
                 </AccordionDetails>
               </Accordion>
@@ -138,7 +130,7 @@ const MidwifeRemarkEligibleForm = () => {
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography>
-                    <MedicalConditionRemark size={700} id={id} />
+                    <MedicalConditionRemark size={700} />
                   </Typography>
                 </AccordionDetails>
               </Accordion>
@@ -164,7 +156,7 @@ const MidwifeRemarkEligibleForm = () => {
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography>
-                    <SexualAndReproductiveHealthRemark size={650} id={id} />
+                    <SexualAndReproductiveHealthRemark size={650} />
                   </Typography>
                 </AccordionDetails>
               </Accordion>
@@ -190,7 +182,7 @@ const MidwifeRemarkEligibleForm = () => {
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography>
-                    <FamilyHealthInformationRemark size={500} id={id}/>
+                    <FamilyHealthInformationRemark size={500} />
                   </Typography>
                 </AccordionDetails>
               </Accordion>
@@ -216,11 +208,11 @@ const MidwifeRemarkEligibleForm = () => {
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography>
-                    <FamilyNutrition size={500} id={id}/>
+                    <FamilyNutrition size={500} />
                   </Typography>
                 </AccordionDetails>
               </Accordion>
-              {/* <Accordion
+              <Accordion
                 expanded={expanded === "panel7"}
                 onChange={handleChange("panel7")}
               >
@@ -242,7 +234,7 @@ const MidwifeRemarkEligibleForm = () => {
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography>
-                    <LifeStyleRemark size={850} id={id} />
+                    <LifeStyleRemark size={850} />
                   </Typography>
                 </AccordionDetails>
               </Accordion>
@@ -251,7 +243,7 @@ const MidwifeRemarkEligibleForm = () => {
                 onChange={handleChange("panel8")}
               >
                 <AccordionSummary
-                  expandIcon={<ExpandMoreIcon  />}
+                  expandIcon={<ExpandMoreIcon />}
                   aria-controls="panel3bh-content"
                   id="panel3bh-header"
                 >
@@ -268,17 +260,17 @@ const MidwifeRemarkEligibleForm = () => {
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography>
-                    <HousingAndWorkspaceRemark size={950} id={id}/>
+                    <HousingAndWorkspaceRemark size={950} />
                   </Typography>
                 </AccordionDetails>
-              </Accordion> */}
+              </Accordion>
               <Button
                 variant="contained"
                 sx={{ width: "100%",mt: 2, background: "#00A9BB" , alignItems:'center' }}
                 onClick={() => {
                   console.log("Finish Reviewing button clicked");
                 }}
-                to={`/midwife/eligibleFamilies/remark/fill/${id}`}
+                to="./filledByMidwife"
                 component={Link}
               >
                 Finish Reviewing
@@ -291,9 +283,7 @@ const MidwifeRemarkEligibleForm = () => {
           </Grid>
         </Grid>
       </Grid>
-    </Box>
-    </Box>
-    
+    </div>
   );
 };
 

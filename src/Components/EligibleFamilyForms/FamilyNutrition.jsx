@@ -36,17 +36,17 @@ export default function FamilyNutrition({handleNext,handleBack}) {
   "user_id":auth.user.id
   });
   const [method,setMethod] = useState("post");
-  const url = "/familyNutrition";
+  const url = "/familyNutrition/";
+  const state = true;
   const inputRef = useRef(null);
-  const [user,setUser] = useState("")
+  const [user,setUser] = useState(auth.user.id)
   useEffect(() => {
     const getFormData = async () => {
       try {
         const response = await apiClient.get("/familyNutrition/" + auth.user.id);
         setFamilyNutritionInfo(response?.data);
-        if(response.data.h_name){
+        if(response.data.user_id){
           setMethod("put")
-          setUser("/"+response.data.user.id)
         }
         console.log("familyNutrition Information " + response.data);
       } catch (err) {
@@ -71,7 +71,7 @@ export default function FamilyNutrition({handleNext,handleBack}) {
   };
   
   const handleClick = () => {
-    handleNext(url,method,familyNutritionInfo,user)
+    handleNext(url,method,familyNutritionInfo,user,state)
   }
 
   const theme = Theme();

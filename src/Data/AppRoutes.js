@@ -71,6 +71,8 @@ import PostpartumFieldCare from "../Pages/Midwife/MidwifePregnancyForms/Postpart
 import IECMaterial from "../Pages/Midwife/MidwifePregnancyForms/IECMaterial";
 import ChatForum from "../Pages/ChatForum";
 import MidwifeRemarkEligibleForm from "../Pages/Midwife/MidwifeRemarkEligibleForm";
+import MOHRemarkEligibleForm from "../Pages/MohDoctor/MOHDoctorRemarkEligibleForm";
+import FilledByMidwife from "../Pages/Midwife/FilledByMidwifeRemark";
 
 export const AppRoutes = {
   login: { path: "/login", component: <Login /> },
@@ -111,7 +113,7 @@ export const AppRoutes = {
     component: <FamilyPregnancies />,
   },
   family_Profile: {
-    path: "/family/profile",
+    path: "/family/profile/:id",
     component: <Profile/>,
   },
 
@@ -183,8 +185,13 @@ export const AppRoutes = {
   },
 
   midwife_eligible_families_view_family_remark:{
-    path:"midwife/eligibleFamilies/remark",
+    path:"midwife/eligibleFamilies/remark/:id",
     component:<MidwifeRemarkEligibleForm/>,
+  },
+
+  midwife_eligible_families_view_family_filled_by:{
+    path:"midwife/eligibleFamilies/remark/fill/:id",
+    component:<FilledByMidwife/>,
   },
 
   midwife_pregnancy_registration: {
@@ -194,7 +201,7 @@ export const AppRoutes = {
 
   midwife_registered_pregnant_mothers: {
     path: "/midwife/registeredPregMothers",
-    component: <RegisteredPregMothers />,
+    component: <MidwifePregnancies />,
   },
 
   midwife_pregnant_mother_profile_view: {
@@ -304,7 +311,7 @@ export const AppRoutes = {
   //moh page routes
   moh: {
     path: "/moh",
-    component: <MOHDashboard />,
+    component: <MOHRemarkEligibleForm/>,
   },
   moh_register: {
     path: "/moh/register",

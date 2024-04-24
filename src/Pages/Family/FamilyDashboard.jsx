@@ -15,15 +15,17 @@ import baby from "../../Assest/Lottie/baby.json";
 import reports from "../../Assest/Lottie/reports.json";
 import Lottie from "lottie-react";
 import "../../css/Family/FamilyDash.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 import Nav from "../../Components/Nav";
 import DisplaySidebar from "../../Components/DisplaySidebar";
+import useAuth from  "../../Hooks/useAuth";
 
 const FamilyDashboard = () => {
   const navigate = useNavigate();
   const handleNavigation = (url) => {
     navigate(url);
   };
+  const auth = useAuth();
   return (
     <>
       <Nav />
@@ -80,7 +82,9 @@ const FamilyDashboard = () => {
             <div className="cards">
               <div className="card-inner">
                 <h6>MY PROFILE</h6>
-                <Lottie style={{ height: 60 }} animationData={profile} />
+               <Link to={`/family/profile/${auth?.user.id}`}>
+               <Lottie style={{ height: 60 }} animationData={profile}/>
+               </Link>
               </div>
             </div>
             <div className="cards">

@@ -60,8 +60,8 @@ export default function ProfilePersonalInformation({id,data}) {
               </TableCell>
               <TableCell align="left" sx={{ fontWeight: hoveredRow === 0 ? 'bold' : 'normal'  }}>{data}</TableCell>
               <TableCell align="left" sx={{ fontWeight: hoveredRow === 0 ? 'bold' : 'normal' }}>{personalInfo?.h_name}</TableCell>
-              <TableCell align="left" sx={{ fontWeight: hoveredRow === 0 ? 'bold' : 'normal' }}>{"/"}</TableCell>
-              <TableCell align="left" sx={{ fontWeight: hoveredRow === 0 ? 'bold' : 'normal' }}>{"/"}</TableCell>
+              <TableCell align="left" sx={{ fontWeight: hoveredRow === 0 ? 'bold' : 'normal' }}>{""}</TableCell>
+              <TableCell align="left" sx={{ fontWeight: hoveredRow === 0 ? 'bold' : 'normal' }}>{""}</TableCell>
             </TableRow>
 
             <TableRow
@@ -77,8 +77,8 @@ export default function ProfilePersonalInformation({id,data}) {
               </TableCell>
               <TableCell align="left" sx={{ fontWeight: hoveredRow === 1 ? 'bold' : 'normal'  }}>{personalInfo?.w_dob}</TableCell>
               <TableCell align="left" sx={{ fontWeight: hoveredRow === 1 ? 'bold' : 'normal' }}>{personalInfo?.h_dob}</TableCell>
-              <TableCell align="left" sx={{ fontWeight: hoveredRow === 1 ? 'bold' : 'normal' }}>{"/"}</TableCell>
-              <TableCell align="left" sx={{ fontWeight: hoveredRow === 1 ? 'bold' : 'normal' }}>{"/"}</TableCell>
+              <TableCell align="left" sx={{ fontWeight: hoveredRow === 1 ? 'bold' : 'normal' }}>{""}</TableCell>
+              <TableCell align="left" sx={{ fontWeight: hoveredRow === 1 ? 'bold' : 'normal' }}>{""}</TableCell>
             </TableRow>
 
             <TableRow
@@ -94,8 +94,8 @@ export default function ProfilePersonalInformation({id,data}) {
               </TableCell>
               <TableCell align="left" sx={{ fontWeight: hoveredRow === 2 ? 'bold' : 'normal'  }}>{personalInfo?.w_educationalLevel}</TableCell>
               <TableCell align="left" sx={{ fontWeight: hoveredRow === 2 ? 'bold' : 'normal' }}>{personalInfo?.h_educationalLevel}</TableCell>
-              <TableCell align="left" sx={{ fontWeight: hoveredRow === 2 ? 'bold' : 'normal' }}>{"/"}</TableCell>
-              <TableCell align="left" sx={{ fontWeight: hoveredRow === 2 ? 'bold' : 'normal' }}>{"/"}</TableCell>
+              <TableCell align="left" sx={{ fontWeight: hoveredRow === 2 ? 'bold' : 'normal' }}>{""}</TableCell>
+              <TableCell align="left" sx={{ fontWeight: hoveredRow === 2 ? 'bold' : 'normal' }}>{""}</TableCell>
             </TableRow>
 
             <TableRow
@@ -111,8 +111,8 @@ export default function ProfilePersonalInformation({id,data}) {
               </TableCell>
               <TableCell align="left" sx={{ fontWeight: hoveredRow === 3 ? 'bold' : 'normal'  }}>{personalInfo?.w_occupation}</TableCell>
               <TableCell align="left" sx={{ fontWeight: hoveredRow === 3 ? 'bold' : 'normal' }}>{personalInfo?.h_occupation}</TableCell>
-              <TableCell align="left" sx={{ fontWeight: hoveredRow === 3 ? 'bold' : 'normal' }}>{"/"}</TableCell>
-              <TableCell align="left" sx={{ fontWeight: hoveredRow === 3 ? 'bold' : 'normal' }}>{"/"}</TableCell>
+              <TableCell align="left" sx={{ fontWeight: hoveredRow === 3 ? 'bold' : 'normal' }}>{""}</TableCell>
+              <TableCell align="left" sx={{ fontWeight: hoveredRow === 3 ? 'bold' : 'normal' }}>{""}</TableCell>
             </TableRow>
 
             
@@ -128,8 +128,8 @@ export default function ProfilePersonalInformation({id,data}) {
                 Married Date
               </TableCell>
               <TableCell align="left" colSpan={2} sx={{ fontWeight: hoveredRow === 4 ? 'bold' : 'normal'  }}>{personalInfo?.marriedDate}</TableCell>
-              <TableCell align="left" sx={{ fontWeight: hoveredRow === 4 ? 'bold' : 'normal' }}>{"/"}</TableCell>
-              <TableCell align="left" sx={{ fontWeight: hoveredRow === 4 ? 'bold' : 'normal' }}>{"/"}</TableCell>
+              <TableCell align="left" sx={{ fontWeight: hoveredRow === 4 ? 'bold' : 'normal' }}>{""}</TableCell>
+              <TableCell align="left" sx={{ fontWeight: hoveredRow === 4 ? 'bold' : 'normal' }}>{""}</TableCell>
             </TableRow>
 
 

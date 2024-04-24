@@ -36,20 +36,21 @@ export default function FamilyHealthInformation({
     user_id:auth.user.id
   });
   const [method, setMethod] = useState("post");
-  const url = "/familyHealth";
+  const url = "/familyHealth/";
   const inputRef = useRef(null);
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState(auth.user.id);
+  const state = false;
 
   useEffect(() => {
     const getFormData = async () => {
       try {
         const response = await apiClient.get("/familyHealth/" + auth.user.id);
         setFamilyHealthInfo(response?.data);
-        if (response.data.h_name) {
+        if (response?.data.user_id) {
           setMethod("put");
-          setUser("/" + response.data.user.id);
+          
         }
-        console.log("Medical Information " + response.data);
+        console.log("Family Health " + response.data);
       } catch (err) {
         console.error(err);
       }
@@ -58,6 +59,7 @@ export default function FamilyHealthInformation({
   }, [auth.user.id]);
 
   useEffect(() => {
+
     if (inputRef.current && inputRef.current.value !== "") {
       inputRef.current.focus();
     }
@@ -71,8 +73,9 @@ export default function FamilyHealthInformation({
     });
   };
 
+  console.log("Method " +method);
   const handleClick = () => {
-    handleNext(url, method, familyHealthInfo, user);
+    handleNext(url, method, familyHealthInfo, user,state);
   };
 
   const theme = Theme();
@@ -138,9 +141,9 @@ export default function FamilyHealthInformation({
             <Grid item xs={6} sx={{ padding: "1em 1em 0em 1em !important" }}>
               <FormControlLabel
                 control={<Checkbox size="small" />}
-                label="w_hypertension"
+                label="Hypertension"
                 onChange={handleChange}
-                name="w_anemia"
+                name="w_hypertension"
               />
             </Grid>
 
@@ -234,7 +237,7 @@ export default function FamilyHealthInformation({
                 control={<Checkbox size="small" />}
                 label="Hypertension"
                 onChange={handleChange}
-                name="hh_hypertension"
+                name="h_hypertension"
               />
             </Grid>
 
@@ -325,7 +328,6 @@ export default function FamilyHealthInformation({
             Continue
           </Button>
           <Button
-            disabled
             onClick={handleBack}
             sx={{
               mt: 1,

@@ -43,25 +43,25 @@ export default function SexualAndReproductiveHealth({handleNext,handleBack}) {
   "user_id":auth.user.id
   });
   const [method,setMethod] = useState("post");
-  const url = "/sexualAndReproductiveHealthInfo";
+  const url = "/sexualAndReproductiveHealthInfo/";
   const inputRef = useRef(null);
-  const [user,setUser] = useState("")
+  const [user,setUser] = useState(auth.user.id);
+  const state = false;
   useEffect(() => {
     const getFormData = async () => {
       try {
         const response = await apiClient.get("/sexualAndReproductiveHealthInfo/" + auth.user.id);
         setSexualInfo(response?.data);
-        if(response.data.h_name){
+        if(response?.data.user_id){
           setMethod("put")
-          setUser("/"+response.data.user.id)
         }
-        console.log("Sexual Information " + response.data);
+        console.log("Sexual Information " + response?.data);
       } catch (err) {
         console.error(err);
       }
     };
     getFormData();
-  }, [auth.user.id]);
+  }, []);
 
   useEffect(() => {
     if (inputRef.current && inputRef.current.value !== "") {
@@ -88,7 +88,7 @@ export default function SexualAndReproductiveHealth({handleNext,handleBack}) {
 
 
   const handleClick = () => {
-    handleNext(url,method,sexualInfo,user)
+    handleNext(url,method,sexualInfo,user,state)
   }
 
 
@@ -150,6 +150,7 @@ export default function SexualAndReproductiveHealth({handleNext,handleBack}) {
             </Grid>
 
             <Grid
+              item
               xs={12}
               sx={{ display: "flex", padding: "1em 1em 0em 1em !important" }}
             >
@@ -870,7 +871,6 @@ export default function SexualAndReproductiveHealth({handleNext,handleBack}) {
                               Continue
                             </Button>
                             <Button
-                              disabled
                               onClick={handleBack}
                               sx={{
                                 mt: 1,

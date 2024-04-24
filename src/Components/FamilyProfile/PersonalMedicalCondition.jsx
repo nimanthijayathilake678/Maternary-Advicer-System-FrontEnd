@@ -78,8 +78,8 @@ export default function PersonalMedicalCondition({id}) {
               </TableCell>
               <TableCell align="left" sx={{ fontWeight: hoveredRow === 0 ? 'bold' : 'normal'  }}>{check(medicalInfo?.w_anemia)}</TableCell>
               <TableCell align="left" sx={{ fontWeight: hoveredRow === 0 ? 'bold' : 'normal'  }}>{check(medicalInfo?.h_anemia)}</TableCell>
-              <TableCell align="left"sx={{ fontWeight: hoveredRow === 0 ? 'bold' : 'normal'  }}>{"/"}</TableCell>
-              <TableCell align="left" sx={{ fontWeight: hoveredRow === 0 ? 'bold' : 'normal'  }}>{"/"}</TableCell>
+              <TableCell align="left"sx={{ fontWeight: hoveredRow === 0 ? 'bold' : 'normal'  }}>{""}</TableCell>
+              <TableCell align="left" sx={{ fontWeight: hoveredRow === 0 ? 'bold' : 'normal'  }}>{""}</TableCell>
             </TableRow>
 
             <TableRow
@@ -95,8 +95,8 @@ export default function PersonalMedicalCondition({id}) {
               </TableCell>
               <TableCell align="left" sx={{ fontWeight: hoveredRow === 1 ? 'bold' : 'normal'  }}>{check(medicalInfo?.w_congenital)}</TableCell>
               <TableCell align="left" sx={{ fontWeight: hoveredRow === 1 ? 'bold' : 'normal'  }}>{check(medicalInfo?.h_congenital)}</TableCell>
-              <TableCell align="left"sx={{ fontWeight: hoveredRow === 1 ? 'bold' : 'normal'  }}>{"/"}</TableCell>
-              <TableCell align="left" sx={{ fontWeight: hoveredRow === 1 ? 'bold' : 'normal'  }}>{"/"}</TableCell>
+              <TableCell align="left"sx={{ fontWeight: hoveredRow === 1 ? 'bold' : 'normal'  }}>{""}</TableCell>
+              <TableCell align="left" sx={{ fontWeight: hoveredRow === 1 ? 'bold' : 'normal'  }}>{""}</TableCell>
             </TableRow>
 
             <TableRow
@@ -113,8 +113,8 @@ export default function PersonalMedicalCondition({id}) {
               </TableCell>
               <TableCell align="left" sx={{ fontWeight: hoveredRow === 2 ? 'bold' : 'normal'  }}>{check(medicalInfo?.w_rheumaticHeartDisease)}</TableCell>
               <TableCell align="left" sx={{ fontWeight: hoveredRow === 2 ? 'bold' : 'normal'  }}>{check(medicalInfo?.h_rheumaticHeartDisease)}</TableCell>
-              <TableCell align="left"sx={{ fontWeight: hoveredRow === 2 ? 'bold' : 'normal'  }}>{"/"}</TableCell>
-              <TableCell align="left" sx={{ fontWeight: hoveredRow === 2 ? 'bold' : 'normal'  }}>{"/"}</TableCell>
+              <TableCell align="left"sx={{ fontWeight: hoveredRow === 2 ? 'bold' : 'normal'  }}>{""}</TableCell>
+              <TableCell align="left" sx={{ fontWeight: hoveredRow === 2 ? 'bold' : 'normal'  }}>{""}</TableCell>
             </TableRow>
 
 
@@ -132,8 +132,8 @@ export default function PersonalMedicalCondition({id}) {
               </TableCell>
               <TableCell align="left" sx={{ fontWeight: hoveredRow === 3 ? 'bold' : 'normal'  }}>{check(medicalInfo?.w_diabetesMellitus)}</TableCell>
               <TableCell align="left" sx={{ fontWeight: hoveredRow === 3 ? 'bold' : 'normal'  }}>{check(medicalInfo?.h_diabetesMellitus)}</TableCell>
-              <TableCell align="left"sx={{ fontWeight: hoveredRow === 3 ? 'bold' : 'normal'  }}>{"/"}</TableCell>
-              <TableCell align="left" sx={{ fontWeight: hoveredRow === 3 ? 'bold' : 'normal'  }}>{"/"}</TableCell>
+              <TableCell align="left"sx={{ fontWeight: hoveredRow === 3 ? 'bold' : 'normal'  }}>{""}</TableCell>
+              <TableCell align="left" sx={{ fontWeight: hoveredRow === 3 ? 'bold' : 'normal'  }}>{""}</TableCell>
             </TableRow>
 
             <TableRow
@@ -150,8 +150,8 @@ export default function PersonalMedicalCondition({id}) {
               </TableCell>
               <TableCell align="left" sx={{ fontWeight: hoveredRow === 4 ? 'bold' : 'normal'  }}>{check(medicalInfo?.w_hypertension)}</TableCell>
               <TableCell align="left" sx={{ fontWeight: hoveredRow === 4 ? 'bold' : 'normal'  }}>{check(medicalInfo?.h_hypertension)}</TableCell>
-              <TableCell align="left"sx={{ fontWeight: hoveredRow === 4 ? 'bold' : 'normal'  }}>{"/"}</TableCell>
-              <TableCell align="left" sx={{ fontWeight: hoveredRow === 4 ? 'bold' : 'normal'  }}>{"/"}</TableCell>
+              <TableCell align="left"sx={{ fontWeight: hoveredRow === 4 ? 'bold' : 'normal'  }}>{""}</TableCell>
+              <TableCell align="left" sx={{ fontWeight: hoveredRow === 4 ? 'bold' : 'normal'  }}>{""}</TableCell>
             </TableRow>
 
             <TableRow
@@ -168,8 +168,8 @@ export default function PersonalMedicalCondition({id}) {
               </TableCell>
               <TableCell align="left" sx={{ fontWeight: hoveredRow === 5 ? 'bold' : 'normal'  }}>{check(medicalInfo?.w_hypercholesterolemia)}</TableCell>
               <TableCell align="left" sx={{ fontWeight: hoveredRow === 5 ? 'bold' : 'normal'  }}>{check(medicalInfo?.h_hypercholesterolemia)}</TableCell>
-              <TableCell align="left"sx={{ fontWeight: hoveredRow === 5 ? 'bold' : 'normal'  }}>{"/"}</TableCell>
-              <TableCell align="left" sx={{ fontWeight: hoveredRow === 5 ? 'bold' : 'normal'  }}>{"/"}</TableCell>
+              <TableCell align="left"sx={{ fontWeight: hoveredRow === 5 ? 'bold' : 'normal'  }}>{""}</TableCell>
+              <TableCell align="left" sx={{ fontWeight: hoveredRow === 5 ? 'bold' : 'normal'  }}>{""}</TableCell>
             </TableRow>
 
 
@@ -187,8 +187,8 @@ export default function PersonalMedicalCondition({id}) {
               </TableCell>
               <TableCell align="left" sx={{ fontWeight: hoveredRow === 6 ? 'bold' : 'normal'  }}>{check(medicalInfo?.w_asthma)}</TableCell>
               <TableCell align="left" sx={{ fontWeight: hoveredRow === 6 ? 'bold' : 'normal'  }}>{check(medicalInfo?.h_asthma)}</TableCell>
-              <TableCell align="left"sx={{ fontWeight: hoveredRow === 6 ? 'bold' : 'normal'  }}>{"/"}</TableCell>
-              <TableCell align="left" sx={{ fontWeight: hoveredRow === 6 ? 'bold' : 'normal'  }}>{"/"}</TableCell>
+              <TableCell align="left"sx={{ fontWeight: hoveredRow === 6 ? 'bold' : 'normal'  }}>{""}</TableCell>
+              <TableCell align="left" sx={{ fontWeight: hoveredRow === 6 ? 'bold' : 'normal'  }}>{""}</TableCell>
             </TableRow>
 
             <TableRow
@@ -205,8 +205,8 @@ export default function PersonalMedicalCondition({id}) {
               </TableCell>
               <TableCell align="left" sx={{ fontWeight: hoveredRow === 7 ? 'bold' : 'normal'  }}>{check(medicalInfo?.w_thyroid )}</TableCell>
               <TableCell align="left" sx={{ fontWeight: hoveredRow === 7 ? 'bold' : 'normal'  }}>{check(medicalInfo?.h_thyroid)}</TableCell>
-              <TableCell align="left"sx={{ fontWeight: hoveredRow === 7 ? 'bold' : 'normal'  }}>{"/"}</TableCell>
-              <TableCell align="left" sx={{ fontWeight: hoveredRow === 7 ? 'bold' : 'normal'  }}>{"/"}</TableCell>
+              <TableCell align="left"sx={{ fontWeight: hoveredRow === 7 ? 'bold' : 'normal'  }}>{""}</TableCell>
+              <TableCell align="left" sx={{ fontWeight: hoveredRow === 7 ? 'bold' : 'normal'  }}>{""}</TableCell>
             </TableRow>
 
             <TableRow
@@ -223,8 +223,8 @@ export default function PersonalMedicalCondition({id}) {
               </TableCell>
               <TableCell align="left" sx={{ fontWeight: hoveredRow === 8 ? 'bold' : 'normal'  }}>{check(medicalInfo?.w_untratedDecayedTeeth)}</TableCell>
               <TableCell align="left" sx={{ fontWeight: hoveredRow === 8 ? 'bold' : 'normal'  }}>{check(medicalInfo?.h_untratedDecayedTeeth)}</TableCell>
-              <TableCell align="left"sx={{ fontWeight: hoveredRow === 8 ? 'bold' : 'normal'  }}>{"/"}</TableCell>
-              <TableCell align="left" sx={{ fontWeight: hoveredRow === 8 ? 'bold' : 'normal'  }}>{"/"}</TableCell>
+              <TableCell align="left"sx={{ fontWeight: hoveredRow === 8 ? 'bold' : 'normal'  }}>{""}</TableCell>
+              <TableCell align="left" sx={{ fontWeight: hoveredRow === 8 ? 'bold' : 'normal'  }}>{""}</TableCell>
             </TableRow>
 
             <TableRow
@@ -241,8 +241,8 @@ export default function PersonalMedicalCondition({id}) {
               </TableCell>
               <TableCell align="left" sx={{ fontWeight: hoveredRow === 9 ? 'bold' : 'normal'  }}>{check(medicalInfo?.w_toothDecayBleedingGums)}</TableCell>
               <TableCell align="left" sx={{ fontWeight: hoveredRow === 9 ? 'bold' : 'normal'  }}>{check(medicalInfo?.h_toothDecayBleedingGums)}</TableCell>
-              <TableCell align="left"sx={{ fontWeight: hoveredRow === 9 ? 'bold' : 'normal'  }}>{"/"}</TableCell>
-              <TableCell align="left" sx={{ fontWeight: hoveredRow === 9 ? 'bold' : 'normal'  }}>{"/"}</TableCell>
+              <TableCell align="left"sx={{ fontWeight: hoveredRow === 9 ? 'bold' : 'normal'  }}>{""}</TableCell>
+              <TableCell align="left" sx={{ fontWeight: hoveredRow === 9 ? 'bold' : 'normal'  }}>{""}</TableCell>
             </TableRow>
 
             <TableRow
@@ -259,8 +259,8 @@ export default function PersonalMedicalCondition({id}) {
               </TableCell>
               <TableCell align="left" sx={{ fontWeight: hoveredRow === 10 ? 'bold' : 'normal'  }}>{check(medicalInfo?.w_mentalIllnesses)}</TableCell>
               <TableCell align="left" sx={{ fontWeight: hoveredRow === 10 ? 'bold' : 'normal'  }}>{check(medicalInfo?.h_mentalIllnesses)}</TableCell>
-              <TableCell align="left"sx={{ fontWeight: hoveredRow === 10 ? 'bold' : 'normal'  }}>{"/"}</TableCell>
-              <TableCell align="left" sx={{ fontWeight: hoveredRow === 10 ? 'bold' : 'normal'  }}>{"/"}</TableCell>
+              <TableCell align="left"sx={{ fontWeight: hoveredRow === 10 ? 'bold' : 'normal'  }}>{""}</TableCell>
+              <TableCell align="left" sx={{ fontWeight: hoveredRow === 10 ? 'bold' : 'normal'  }}>{""}</TableCell>
             </TableRow>
 
 
@@ -278,8 +278,8 @@ export default function PersonalMedicalCondition({id}) {
               </TableCell>
               <TableCell align="left" sx={{ fontWeight: hoveredRow === 11 ? 'bold' : 'normal'  }}>{check(medicalInfo?.w_rheumaticFever)}</TableCell>
               <TableCell align="left" sx={{ fontWeight: hoveredRow === 11 ? 'bold' : 'normal'  }}>{check(medicalInfo?.h_rheumaticFever)}</TableCell>
-              <TableCell align="left"sx={{ fontWeight: hoveredRow === 11 ? 'bold' : 'normal'  }}>{"/"}</TableCell>
-              <TableCell align="left" sx={{ fontWeight: hoveredRow === 11 ? 'bold' : 'normal'  }}>{"/"}</TableCell>
+              <TableCell align="left"sx={{ fontWeight: hoveredRow === 11 ? 'bold' : 'normal'  }}>{""}</TableCell>
+              <TableCell align="left" sx={{ fontWeight: hoveredRow === 11 ? 'bold' : 'normal'  }}>{""}</TableCell>
             </TableRow>
 
             <TableRow
@@ -296,8 +296,8 @@ export default function PersonalMedicalCondition({id}) {
               </TableCell>
               <TableCell align="left" sx={{ fontWeight: hoveredRow === 12 ? 'bold' : 'normal'  }}>{check(medicalInfo?.w_epilepsy)}</TableCell>
               <TableCell align="left" sx={{ fontWeight: hoveredRow === 12 ? 'bold' : 'normal'  }}>{check(medicalInfo?.h_epilepsy)}</TableCell>
-              <TableCell align="left"sx={{ fontWeight: hoveredRow === 12 ? 'bold' : 'normal'  }}>{"/"}</TableCell>
-              <TableCell align="left" sx={{ fontWeight: hoveredRow === 12 ? 'bold' : 'normal'  }}>{"/"}</TableCell>
+              <TableCell align="left"sx={{ fontWeight: hoveredRow === 12 ? 'bold' : 'normal'  }}>{""}</TableCell>
+              <TableCell align="left" sx={{ fontWeight: hoveredRow === 12 ? 'bold' : 'normal'  }}>{""}</TableCell>
             </TableRow>
 
             <TableRow
@@ -314,8 +314,8 @@ export default function PersonalMedicalCondition({id}) {
               </TableCell>
               <TableCell align="left" sx={{ fontWeight: hoveredRow === 13 ? 'bold' : 'normal'  }}>{check(medicalInfo?.w_foodAllergies)}</TableCell>
               <TableCell align="left" sx={{ fontWeight: hoveredRow === 13 ? 'bold' : 'normal'  }}>{check(medicalInfo?.h_foodAllergies)}</TableCell>
-              <TableCell align="left"sx={{ fontWeight: hoveredRow === 13 ? 'bold' : 'normal'  }}>{"/"}</TableCell>
-              <TableCell align="left" sx={{ fontWeight: hoveredRow === 13 ? 'bold' : 'normal'  }}>{"/"}</TableCell>
+              <TableCell align="left"sx={{ fontWeight: hoveredRow === 13 ? 'bold' : 'normal'  }}>{""}</TableCell>
+              <TableCell align="left" sx={{ fontWeight: hoveredRow === 13 ? 'bold' : 'normal'  }}>{""}</TableCell>
             </TableRow>
 
             <TableRow
@@ -332,8 +332,8 @@ export default function PersonalMedicalCondition({id}) {
               </TableCell>
               <TableCell align="left" sx={{ fontWeight: hoveredRow === 14 ? 'bold' : 'normal'  }}>{check(medicalInfo?.w_drugsAllergies)}</TableCell>
               <TableCell align="left" sx={{ fontWeight: hoveredRow === 14 ? 'bold' : 'normal'  }}>{check(medicalInfo?.h_drugsAllergies)}</TableCell>
-              <TableCell align="left"sx={{ fontWeight: hoveredRow === 14 ? 'bold' : 'normal'  }}>{"/"}</TableCell>
-              <TableCell align="left" sx={{ fontWeight: hoveredRow === 14 ? 'bold' : 'normal'  }}>{"/"}</TableCell>
+              <TableCell align="left"sx={{ fontWeight: hoveredRow === 14 ? 'bold' : 'normal'  }}>{""}</TableCell>
+              <TableCell align="left" sx={{ fontWeight: hoveredRow === 14 ? 'bold' : 'normal'  }}>{""}</TableCell>
             </TableRow>
         </TableBody>
       </Table>

@@ -24,7 +24,7 @@ export default function PersonalInformation({handleNext,handleBack}) {
   
   const [method,setMethod] = useState("post");
   const url = "/personalInfo/";
-  const state = true;
+  const state = false;
   const inputRef = useRef(null);
   const [user,setUser] = useState(auth.user.id)
   useEffect(() => {
@@ -32,7 +32,7 @@ export default function PersonalInformation({handleNext,handleBack}) {
       try {
         const response = await apiClient.get("/personalInfo/" + auth.user.id);
         setPersonalInfo(response?.data);
-        if(response.data.h_name){
+        if(response?.data.user_id){
           setMethod("put")
         }
         console.log("Personal Information " + response.data);

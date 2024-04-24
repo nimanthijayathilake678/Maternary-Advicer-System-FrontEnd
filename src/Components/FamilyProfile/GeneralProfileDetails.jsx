@@ -12,7 +12,7 @@ export default function GeneralProfileDetails({data}) {
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await apiClient.get("/personalInfo/" + data.id);
+            const response = await apiClient.get("/personalInfo/" + data?.id);
             setPersonalInfo(response?.data);
             console.log("Personal Information " + response.data);
           } catch (err) {

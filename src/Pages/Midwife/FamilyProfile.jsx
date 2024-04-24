@@ -26,10 +26,7 @@ export default function FamilyProfile() {
       }
     };
     fetchData();
-  }, []);
-
-  
-
+  }, [id]);
 
   return (
     <div className="text-black bg-white w-full ">
