@@ -34,8 +34,8 @@ const PregnantMotherProfileView = () => {
   // Use state to track whether forms have been filled
   const [formsFilled, setFormsFilled] = React.useState({
  
-    screeningForm: true, // Example: Syphilis Screening form is not filled
-    tetanusForm:true,
+    screeningForm: false, // Example: Syphilis Screening form is not filled
+    tetanusForm:false,
 
   });
   return (
@@ -107,17 +107,7 @@ const PregnantMotherProfileView = () => {
                                         />
                                     </ListItemButton>
                                 <Divider/>
-                                <ListItemButton
-                                    selected={selectedIndex === 0}
-                                    onClick={(event) => handleListItemClick(event, 0)}
-                                >
-                                    <ListItemText 
-                                        primary="Clinic Care Information" 
-                                        onClick={() => handleNavigation("/midwife/registeredPregMothers/profileView/clinicCare"                                        )}
-                                        style={{ color: "black" }}
-                                    />
-                                </ListItemButton>
-                                <Divider/>
+                                
                                 <ListItemButton
                                         selected={selectedIndex === 0}
                                         onClick={(event) => handleListItemClick(event, 0)}
@@ -138,7 +128,7 @@ const PregnantMotherProfileView = () => {
 
                             <ListItemText 
                                 primary="Syphilis & HIV Screening Tests" 
-                                onClick={() => handleNavigation("//midwife/registeredPregMothers/profileView/screening"                                        )}
+                                onClick={() => handleNavigation("/midwife/registeredPregMothers/profileView/screening"                                        )}
                                 style={{ color: "black" }}
                             />
 
@@ -229,18 +219,7 @@ const PregnantMotherProfileView = () => {
                             <List component="nav" aria-label="secondary mailbox folder">
                             <Typography variant='h6' color="#2a777c">Post Pregnancy Details</Typography>
                             
-                                <ListItemButton
-                                    selected={selectedIndex === 0}
-                                    onClick={(event) => handleListItemClick(event, 0)}
-                                >
-                                    <ListItemText 
-                                        primary="Delivery & Postnatal Care" 
-                                        onClick={() => handleNavigation("/midwife/registeredPregMothers/profileView/deliveryCare"                                        )}
-                                        style={{ color: "black" }}
-                                    />
-                                    
-                                </ListItemButton>
-                                <Divider/>
+                                
 
                                 <ListItemButton
                                     selected={selectedIndex === 0}

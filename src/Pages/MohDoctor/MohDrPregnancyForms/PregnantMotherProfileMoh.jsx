@@ -1,17 +1,28 @@
 import React from "react";
-import Header from "../../Components/Header";
 import Box from "@mui/material/Box";
-import { InputBase,IconButton, Typography, Divider, Grid } from "@mui/material";
-import { Search } from "@mui/icons-material";
+import { Typography, Divider, Grid } from "@mui/material";
+
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { Link } from 'react-router-dom';
+import Checkbox from '@mui/material/Checkbox';
+import { useNavigate } from "react-router-dom";
+import DisplaySidebar from "../../../Components/DisplaySidebar";
+import { useParams } from "react-router-dom";
+import Header from "../../../Components/Header";
 
-
-
-const PregnantMotherProfileMoh = (PregnantMotherProfileMoh) => {
+const PregnantMotherProfileMoh = () => {
+    const navigate = useNavigate();
+    const [value, setValue] = React.useState("one");
+    const { id } = useParams();
+    const handleChange = (event, newValue) => {
+      setValue(newValue);
+    };
+    const handleNavigation = (url) => {
+      navigate(url);
+    };
 
     const [selectedIndex, setSelectedIndex] = React.useState(1);
 
@@ -39,6 +50,8 @@ const PregnantMotherProfileMoh = (PregnantMotherProfileMoh) => {
 {/* Main content */}
 <Box sx={{ display: "flex", flexDirection: "column",  bgcolor:"#e4feff"}} ml={5} mr={5}>
       <Grid container item spacing={2}  sx={{ flex: "20%"}} width={"100%"} >
+     
+
         <Grid item xs={4}>
         <Typography color="#00a9bb" textAlign="left" fontWeight={"bold"}>Eligible Registration No - 121</Typography>
 
@@ -58,24 +71,47 @@ const PregnantMotherProfileMoh = (PregnantMotherProfileMoh) => {
                 </Grid>
 
                 <Grid container  spacing={2} item xs={6} border={1}  borderRadius={2} mt={0} m={5}  bgcolor={'white'}>
-                        <Grid item xs={6} width={'100%'}>
+
+                     {/* Pre pregnancy Details */}   
+                    <Grid item xs={4} width={'100%'}>
+                                <List component="nav" aria-label="secondary mailbox folder">
+                                    <Typography variant='h6' color="#2a777c">View Pregnancy Details</Typography>
+                                
+                                    <ListItemButton
+                                        selected={selectedIndex === 0}
+                                        onClick={(event) => handleListItemClick(event, 0)}
+                                    >
+                                        <ListItemText 
+                                            primary="Pregnancy Registration Details" 
+                                            onClick={() => handleNavigation("/midwife/registeredPregMothers/profileView/pregRegDetails")}
+                                            style={{ color: "black" }}
+/>                             
+                                    </ListItemButton>
+                                    
+                                </List>
+                            
+                            </Grid>
+                        <Grid item xs={4} width={'100%'}>
                             <List component="nav" aria-label="secondary mailbox folder">
                             <Typography variant='h6' color="#2a777c">On pregnancy Details</Typography>
+
                             
                                 <ListItemButton
                                     selected={selectedIndex === 0}
                                     onClick={(event) => handleListItemClick(event, 0)}
                                 >
-                                    <Link to="/ClinicCareForm" style={{ textDecoration: 'none' , color: 'black'}}>
-                                    <ListItemText primary="Clinic Care Information" />
-                                    </Link>
+                                    <ListItemText 
+                                        primary="Clinic Care Information" 
+                                        onClick={() => handleNavigation("/mohdrdash/pregnat_moms/profileView/clinicCare"                                        )}
+                                        style={{ color: "black" }}
+                                    />
                                 </ListItemButton>
-                            
+                               
                         </List>
-                        
+                
                 </Grid>
                 
-                <Grid item xs={6} width={'100%'}>
+                <Grid item xs={4} width={'100%'}>
                             <List component="nav" aria-label="secondary mailbox folder">
                             <Typography variant='h6' color="#2a777c">Post Pregnancy Details</Typography>
                             
@@ -83,20 +119,14 @@ const PregnantMotherProfileMoh = (PregnantMotherProfileMoh) => {
                                     selected={selectedIndex === 0}
                                     onClick={(event) => handleListItemClick(event, 0)}
                                 >
-                                    <Link to="/deliveryCare" style={{ textDecoration: 'none' , color: 'black'}}>
-                                    <ListItemText primary="Delivery & Postnatal Care" />
-                                    </Link>
+                                    <ListItemText 
+                                        primary="Delivery & Postnatal Care" 
+                                        onClick={() => handleNavigation("/mohdrdash/pregnat_moms/profileView/deliveryCare"                                        )}
+                                        style={{ color: "black" }}
+                                    />
+                                    
                                 </ListItemButton>
-                                <Divider/>
-
-                                <ListItemButton
-                                    selected={selectedIndex === 0}
-                                    onClick={(event) => handleListItemClick(event, 0)}
-                                >
-                                    <Link to="/postpartumFieldCare" style={{ textDecoration: 'none' , color: 'black'}}>
-                                    <ListItemText primary="Post Partum Field Care" />
-                                    </Link>
-                                </ListItemButton>
+                                
                             
                         </List>
 

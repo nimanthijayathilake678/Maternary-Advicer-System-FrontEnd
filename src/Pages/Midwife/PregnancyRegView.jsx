@@ -30,7 +30,18 @@ export default function PregnancyRegView() {
     P_Address: "No.12, Flower Rd, Colombo",
   })
 
-  const[pPersonalInfo, setpPersonalInfo]=useState({
+  const[pPersonalInfoF, setpPersonalInfoF]=useState({
+    pregnancy_id:"",
+    couple_id:"",
+    Gender:"",
+    P_Age:"",
+    P_Marriage_Age:"",
+    P_Occupation:"",
+    P_Distance_To_Workspace:"",
+}
+  )
+
+  const[pPersonalInfoM, setpPersonalInfoM]=useState({
     pregnancy_id:"",
     couple_id:"",
     Gender:"",
@@ -52,27 +63,34 @@ export default function PregnancyRegView() {
     const mockResponse = {
       pBasicInfo:{
         P_Reg_Num: "12345",
-        P_Reg_Location: "MOH X",
+        P_Reg_Location: "Matara",
         P_Reg_Date: "2023-10-02",
-        couple_id: "67890",
+        couple_id: "27203",
         C_Reg_Date: "2022-12-08",
-        P_Grama_Division: "Division Z",
-        P_MOH_Division: "Division X",
-        P_PHM_Division: "Division Y",
-        P_Hospital_Clinic_Name: "ABC Hospital",
+        P_Grama_Division: "Wellamadama",
+        P_MOH_Division: "Matara",
+        P_PHM_Division: "Kotuwegoda",
+        P_Hospital_Clinic_Name: "Pregnancy Health Clinic",
         P_Consultant_Name: "A.H. Silva",
-        P_Field_Clinic_Name: "Pregnancy Clinic ",
-        P_Mother_Name: "K. Perera",
-        P_Father_Name: "V. Perera",
+        P_Field_Clinic_Name: "Pregnancy Field Clinic ",
+        P_Mother_Name: "Asani Fernando",
+        P_Father_Name: "Kamal Fernando",
         P_Telephone: "011-1245637",
-        P_Address: "No.12, Flower Rd, Colombo",
+        P_Address: "67/1,Wallamadama,Matara",
       },
-      pPersonalInfo:{
+      pPersonalInfoF:{
         Gender:"Female",
         P_Age:"28",
-        P_Marriage_Age:"27",
+        P_Marriage_Age:"26",
         P_Occupation:"Teacher",
         P_Distance_To_Workspace:"2km",
+      },
+      pPersonalInfoM:{
+        Gender:"Male",
+        P_Age:"30",
+        P_Marriage_Age:"28",
+        P_Occupation:"Civil Engineer",
+        P_Distance_To_Workspace:"5km",
       },
       
 
@@ -81,7 +99,9 @@ export default function PregnancyRegView() {
     // Update state with the retrieved data
     setpBasicInfo(mockResponse.pBasicInfo);
     
-    setpPersonalInfo(mockResponse.pPersonalInfo);
+    setpPersonalInfoF(mockResponse.pPersonalInfoF);
+    setpPersonalInfoM(mockResponse.pPersonalInfoM);
+
   };
 
   // Define getFieldName function
@@ -181,14 +201,18 @@ export default function PregnancyRegView() {
               <TableHead>
                 <TableRow>
                   <TableCell>Field</TableCell>
-                  <TableCell>Details</TableCell>
+                  <TableCell>Wife</TableCell>
+                  <TableCell>Husband</TableCell>
+
                 </TableRow>
               </TableHead>
               <TableBody>
-                {Object.keys(pPersonalInfo).map((key) => (
+                {Object.keys(pPersonalInfoF,pPersonalInfoM).map((key) => (
                   <TableRow key={key}>
                     <TableCell>{getFieldName(key)}</TableCell>
-                    <TableCell>{pPersonalInfo[key]}</TableCell>
+                    <TableCell>{pPersonalInfoF[key]}</TableCell>
+                    <TableCell>{pPersonalInfoM[key]}</TableCell>
+
                   </TableRow>
                 ))}
               </TableBody>
