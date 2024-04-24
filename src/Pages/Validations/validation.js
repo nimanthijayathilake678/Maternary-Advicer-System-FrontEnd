@@ -45,15 +45,15 @@ export const userRegistrationSchema = Yup.object({
 });
 
 export const hospitalCareSchema = Yup.object({
-  pregnancyRegNo: Yup.string().required(
+  pregnancyId: Yup.string().required(
     "Pregnancy Registration Number is required"
   ),
-  eligibilityRegNo: Yup.string().required(
+  eligibleId: Yup.string().required(
     "Eligibility Registration Number is required"
   ),
-  nextVisitDate: Yup.string().required("Date is required"),
+  nextvisitdate: Yup.string().required("Date is required"),
 
- doctorId: Yup.string().required("Doctor ID is required"),
+ doctorid: Yup.string().required("Doctor ID is required"),
  designation: Yup.string().required("Designation is required"),
 });
 

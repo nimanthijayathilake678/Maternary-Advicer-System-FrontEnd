@@ -12,31 +12,31 @@ import {
 
 const VISIBLE_FIELDS = [
     
-        "pregnancyRegNo",
-        "eligibilityRegNo",
-        "poa" ,
-        "urine",
-        "oedema",
-        "bloodPressure",
-        "fundalHeight",
-        "foetalLie",
-        "presentation",
-        "fm",
-        "fhs",
-        "ebw",
-        "crl",
-        "gestSac",
-        "bpd",
-        "hc",
-        "ac",
-        "fl",
-        "liqour",
-        "placenta",
-        "averagePOA",
-        "anyother",
-        "nextVisitDate",
-        "doctorId",
-        "designation",
+  "pregnancyId",
+  "eligibleId",
+  "poa",
+  "urine",
+  "oedema",
+  "bloodpressure",
+  "fundalheight",
+  "foetalLie",
+  "presentation",
+  "fhs",
+  "ebw",
+  "crl",
+  "gestsac",
+  "bpd",
+  "hc",
+  "ac",
+  "fl",
+  "liqour",
+  "placenta",
+  "averagepoa",
+  "anyother",
+  "nextvisitdate",
+  "doctorid",
+  "designation",
+  "fm"
 
 
       ];
@@ -78,7 +78,7 @@ export default function PatientHistory() {
                 paddingTop: "40px",
               }}
             >
-              Registered Babies
+              Pregnancy Mothers Clinic Care
             </Typography>
 
             <DataGrid
