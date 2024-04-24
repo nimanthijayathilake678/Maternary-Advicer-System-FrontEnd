@@ -7,7 +7,7 @@ function RadioInputGroup({ label, options, disabled }) {
       <Grid item xs={6} sx={{ padding: "1em 1em 0em 1em !important" }}>
         <FormControl>
           <FormLabel id={`radio-group-label-${label}`}>{label}</FormLabel>
-          <RadioGroup row aria-labelledby={`radio-group-label-${label}`} name={`row-radio-buttons-group-${label}`} 
+          <RadioGroup row aria-labelledby={`radio-group-label-${label}`} style={{color:"black"}} name={`row-radio-buttons-group-${label}`} 
            disabled={disabled}>
             {options.map((option, index) => (
               <FormControlLabel key={index} value={option.value} control={<Radio />} label={option.label} disabled={disabled}/>
@@ -75,59 +75,59 @@ const PregMedicalConditionForm = () => {
         <Grid container spacing={2} sx={{ width: "90%" }} border={1} borderColor="primary.main" borderRadius={3} m={2}> 
             <Grid item xs={6} sx={{ padding: "1em 1em 0em 1em !important" }}>
               
-                <FormControlLabel control={<Checkbox />} label="Diabetes" />
+                <FormControlLabel control={<Checkbox />} label="Diabetes" style={{color:"black"}} />
                 </Grid>
 
             <Grid item xs={6} sx={{ padding: "1em 1em 0em 1em !important" }}>
-                <FormControlLabel control={<Checkbox />} label="Malaria" />
+                <FormControlLabel control={<Checkbox />} label="Malaria"  style={{color:"black"}}/>
                 </Grid>
 
             <Grid item xs={6} sx={{ padding: "1em 1em 0em 1em !important" }}>
-                <FormControlLabel control={<Checkbox />} label="Cardiac disease" />
+                <FormControlLabel control={<Checkbox />} label="Cardiac disease" style={{color:"black"}} />
                 </Grid>
 
             <Grid item xs={6} sx={{ padding: "1em 1em 0em 1em !important" }}>
-                <FormControlLabel control={<Checkbox />} label="Renal disease" />
+                <FormControlLabel control={<Checkbox />} label="Renal disease" style={{color:"black"}}/>
                 </Grid>
 
             <Grid item xs={6} sx={{ padding: "1em 1em 0em 1em !important" }}>
-                <FormControlLabel control={<Checkbox />} label="Hypertension" />
+                <FormControlLabel control={<Checkbox />} label="Hypertension" style={{color:"black"}} />
                 </Grid>
 
             <Grid item xs={6} sx={{ padding: "1em 1em 0em 1em !important" }}>
-                <FormControlLabel control={<Checkbox />} label="Hepatic disease" />
+                <FormControlLabel control={<Checkbox />} label="Hepatic disease" style={{color:"black"}}/>
                 </Grid>
 
             <Grid item xs={6} sx={{ padding: "1em 1em 0em 1em !important" }}>
-                <FormControlLabel control={<Checkbox />} label="Psychiatric illness" />
+                <FormControlLabel control={<Checkbox />} label="Psychiatric illness" style={{color:"black"}}/>
                 </Grid>
 
             <Grid item xs={6} sx={{ padding: "1em 1em 0em 1em !important" }}>
-                <FormControlLabel control={<Checkbox />} label="Epilepsy" />
+                <FormControlLabel control={<Checkbox />} label="Epilepsy" style={{color:"black"}}/>
                 </Grid>
 
             <Grid item xs={6} sx={{ padding: "1em 1em 0em 1em !important" }}>
-                <FormControlLabel control={<Checkbox />} label="Malignancies" />
+                <FormControlLabel control={<Checkbox />} label="Malignancies" style={{color:"black"}}/>
                 </Grid>
 
             <Grid item xs={6} sx={{ padding: "1em 1em 0em 1em !important" }}>
-                <FormControlLabel control={<Checkbox />} label="Haematological diseases" />
+                <FormControlLabel control={<Checkbox />} label="Haematological diseases" style={{color:"black"}}/>
                 </Grid>
 
             <Grid item xs={6} sx={{ padding: "1em 1em 0em 1em !important" }}>
-                <FormControlLabel control={<Checkbox />} label="Tuberculosis" />
+                <FormControlLabel control={<Checkbox />} label="Tuberculosis" style={{color:"black"}}/>
                 </Grid>
 
             <Grid item xs={6} sx={{ padding: "1em 1em 0em 1em !important" }}>
-                <FormControlLabel control={<Checkbox />} label="Thyroid diseases" />
+                <FormControlLabel control={<Checkbox />} label="Thyroid diseases" style={{color:"black"}}/>
                 </Grid>
 
             <Grid item xs={6} sx={{ padding: "1em 1em 0em 1em !important" }}>
-                <FormControlLabel control={<Checkbox />} label="Bronchial asthma" />
+                <FormControlLabel control={<Checkbox />} label="Bronchial asthma" style={{color:"black"}}/>
                 </Grid>
 
             <Grid item xs={6} sx={{ padding: "1em 1em 0em 1em !important" }}>
-                <FormControlLabel control={<Checkbox />} label="Previous DVT" />
+                <FormControlLabel control={<Checkbox />} label="Previous DVT" style={{color:"black"}}/>
             
             </Grid>
             <Grid item xs={12} sx={{ padding: "1em 1em 0em 1em !important" }}>

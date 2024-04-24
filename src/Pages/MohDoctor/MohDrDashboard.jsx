@@ -70,18 +70,7 @@ const MohDrDashboard = () => {
                     </div>
                 </div>
                 
-                <div className="cards">
-                    <div className="card-inner">
-                        <h6>BABIES</h6>
-                        <Lottie style={{height:90}} animationData={baby}/>
-                    </div>
-                </div>
-                <div className="cards">
-                    <div className="card-inner">
-                        <h6>REFERALS</h6>
-                        <Lottie style={{height:80}} animationData={referal}/>
-                    </div>
-                </div>
+                
 
                 
             </div>

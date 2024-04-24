@@ -9,10 +9,8 @@ import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
-import Nav from "../../Components/Nav";
-import DisplaySidebar from "../../Components/DisplaySidebar";
+import DisplaySidebar from "../../../Components/DisplaySidebar";
 import { useParams } from "react-router-dom";
-import Header from "../../Components/Header";
 
 const columns = [
   { id: "id", label: "Id", minWidth: 170 },
@@ -50,7 +48,7 @@ const rows = [
   ),
 ];
 
-const RegisteredPregMothers = () => {
+const RegisteredPregnantMothersMoh = () => {
   const navigate = useNavigate();
   const [value, setValue] = React.useState("one");
   const { id } = useParams();
@@ -131,7 +129,7 @@ const RegisteredPregMothers = () => {
                                 <Button 
                                   variant="contained" 
                                   color="primary"
-                                  onClick={() => handleNavigation("/midwife/registeredPregMothers/profileView")}
+                                  onClick={() => handleNavigation("/mohdrdash/pregnat_moms/profileView")}
                                   >
                                   View More
                                 </Button>
@@ -167,4 +165,5 @@ const RegisteredPregMothers = () => {
   );
 };
 
-export default RegisteredPregMothers;
+export default RegisteredPregnantMothersMoh;
+
