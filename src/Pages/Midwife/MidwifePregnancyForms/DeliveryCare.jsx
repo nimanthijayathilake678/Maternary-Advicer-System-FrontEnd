@@ -13,7 +13,7 @@ function RadioInputGroup({ label, options, disabled }) {
       <Grid item xs={6} sx={{ padding: "1em 1em 0em 1em !important" }}>
         <FormControl>
           <FormLabel id={`radio-group-label-${label}`}>{label}</FormLabel>
-          <RadioGroup row aria-labelledby={`radio-group-label-${label}`} name={`row-radio-buttons-group-${label}`} 
+          <RadioGroup row aria-labelledby={`radio-group-label-${label}`} style={{color:"black"}} name={`row-radio-buttons-group-${label}`} 
            disabled={disabled}>
             {options.map((option, index) => (
               <FormControlLabel key={index} value={option.value} control={<Radio />} label={option.label} disabled={disabled}/>
@@ -90,6 +90,7 @@ const DeliveryCare = () => {
                             row
                             aria-labelledby="deliveryPlace"
                             name="deliveryPlace"
+                            style={{color:"black"}}
                         >
                             <FormControlLabel value="home" control={<Radio />} label="Home" />
                             <FormControlLabel value="hospital" control={<Radio />} label="Hospital" />

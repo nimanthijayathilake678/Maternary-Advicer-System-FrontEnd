@@ -96,6 +96,7 @@ const ScreeningForm = () => {
                         row
                         aria-labelledby="syphilisResult"
                         name="row-radio-buttons-group"
+                        style={{color:"black"}}
                     >
                         <FormControlLabel value="nr" control={<Radio />} label="NR" />
                         <FormControlLabel value="r" control={<Radio />} label="R" />

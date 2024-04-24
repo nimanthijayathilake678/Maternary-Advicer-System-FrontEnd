@@ -71,8 +71,13 @@ import PostpartumFieldCare from "../Pages/Midwife/MidwifePregnancyForms/Postpart
 import IECMaterial from "../Pages/Midwife/MidwifePregnancyForms/IECMaterial";
 import ChatForum from "../Pages/ChatForum";
 import MidwifeRemarkEligibleForm from "../Pages/Midwife/MidwifeRemarkEligibleForm";
+
 import MOHRemarkEligibleForm from "../Pages/MohDoctor/MOHDoctorRemarkEligibleForm";
 import FilledByMidwife from "../Pages/Midwife/FilledByMidwifeRemark";
+
+import RegisteredPregnantMothersMoh from "../Pages/MohDoctor/MohDrPregnancyForms/RegisteredPregnantMothersMoh";
+import PregnantMotherProfileMoh from "../Pages/MohDoctor/MohDrPregnancyForms/PregnantMotherProfileMoh";
+
 
 export const AppRoutes = {
   login: { path: "/login", component: <Login /> },
@@ -263,11 +268,7 @@ export const AppRoutes = {
     component: <FieldClinicInformationForm />,
   },
 
-  midwife_clinic_care: {
-    path: "/midwife/registeredPregMothers/profileView/clinicCare",
-    component: <ClinicCareInformationForm />,
-  },
-
+  
   midwife_chart_view: {
     path: "/midwife/registeredPregMothers/profileView/chartView",
     component: <ChartView />,
@@ -298,10 +299,7 @@ export const AppRoutes = {
     component: <FamilyPlanningForm />,
   },
 
-  midwife_delivery_care: {
-    path: "/midwife/registeredPregMothers/profileView/deliveryCare",
-    component: <DeliveryCare />,
-  },
+  
 
   midwife_postpartum_care: {
     path: "/midwife/registeredPregMothers/profileView/postpartumCare",
@@ -385,10 +383,19 @@ export const AppRoutes = {
   },
   mohdoc_pregnat_moms: {
     path: "/mohdrdash/pregnat_moms",
-    component: <MohDrDashboard />,
+    component: <RegisteredPregnantMothersMoh />,
   },
-  mohdoc_babies: {
-    path: "/mohdrdash/babies",
-    component: <MohDrDashboard />,
+  mohdoc_pregnat_moms_profile_view:{
+    path:"/mohdrdash/pregnat_moms/profileView",
+    component:<PregnantMotherProfileMoh/>
   },
+  mohdoc_clinic_care: {
+    path: "/mohdrdash/pregnat_moms/profileView/clinicCare",
+    component: <ClinicCareInformationForm />,
+  },
+  mohdoc_delivery_care: {
+    path: "/mohdrdash/pregnat_moms/profileView/deliveryCare",
+    component: <DeliveryCare />,
+  },
+
 };

@@ -1,7 +1,7 @@
 import { apiClient } from "../API/ApiServer";
 export const addClinicDetails = async (values) => {
     try {
-      const response = await apiClient.post("/hospitalClinicCare", values);
+      const response = await apiClient.post("/hospital_clinic_care", values);
       console.log(response);
       return response;
     } catch (err) {
@@ -12,7 +12,7 @@ export const addClinicDetails = async (values) => {
 
   export const getClinicDetails = async (values) => {
     try {
-      const response = await apiClient.get("/hospitalClinicCare", values);
+      const response = await apiClient.get("/hospital_clinic_care", values);
       console.log(response);
       return response;
     } catch (err) {
