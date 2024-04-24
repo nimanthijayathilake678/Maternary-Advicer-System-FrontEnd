@@ -36,7 +36,6 @@ const MidwifeEligibleFamilies = () => {
   const columns = [
     { id: 'id', label: 'Reference No', minWidth: 170 },
     { id: 'fullName', label: "Wife's name", minWidth: 170 },
-    { id: 'nic', label: 'NIC', minWidth: 170 },
     { id: 'email', label: 'Email', minWidth: 170 },
     { id: 'contactNo', label: 'Telephone No', minWidth: 170 },
     { id: 'actions', label: 'Actions', minWidth: 170 }, // New column for actions
@@ -52,7 +51,7 @@ const MidwifeEligibleFamilies = () => {
   };
 
   return (
-    <Box style={{ display: "flex" }}>
+    <Box sx={{ display: "flex" , minHeight :"100vh" }}>
       <DisplaySidebar />
       <Box className="pt-10 px-10 c bg-white" sx={{ flexGrow: 1 }}>
         <div className="flex relative items-center">
@@ -99,15 +98,9 @@ const MidwifeEligibleFamilies = () => {
                             <TableCell key={column.id} align="center">
                               {column.id === 'actions' ? (
                                 <div>
-                                  {row.referenceNo === "4" ? (
-                                    <Button variant="contained" color="primary" component={Link} to={`/addRemark/${row.referenceNo}`} style={{ backgroundColor: "#00A9BB", marginRight: '10px' }}>
+                                 <Button variant="contained" disabled={!row.familyFlag} color="primary" component={Link} to={`./remark/${row.id}`} style={{ backgroundColor: "#00A9BB", marginRight: '10px' }}>
                                       Add Remark
                                     </Button>
-                                  ) : (
-                                    <Button variant="contained" color="primary" disabled style={{ marginRight: '10px' }}>
-                                      Add Remark
-                                    </Button>
-                                  )}
                                   <Button variant="contained" color="secondary" component={Link} to={`./familyProfile/${row.id}`} style={{ backgroundColor: "#00A9BB" }}>
                                     View Profile
                                   </Button>

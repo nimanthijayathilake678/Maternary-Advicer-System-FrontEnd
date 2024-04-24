@@ -11,14 +11,13 @@ import useAuth from "../../Hooks/useAuth";
 import Theme from "../../Components/Theme";
 
 const rows = [
-  { name: "Registration No", key: "id" }, // Assuming "id" is the correct property for Registration No
-  { name: "NIC", key: "nic" },
-  { name: "MOH Area", key: "area" },
-  { name: "Telephone No", key: "contactNo" },
-  { name: "Email", key: "email" },
+  { name: "Registration No", key: "id" ,column:"registrationRemarkByMidwife"}, // Assuming "id" is the correct property for Registration No
+  { name: "MOH Area", key: "area",column:"mohRemarkByMidwife" },
+  { name: "Telephone No", key: "contactNo", column:"telephoneRemarkByMidwife" },
+  { name: "Email", key: "email" , column:"emailRemarkByMidwife"},
 ];
 
-export default function GeneralInformationRemark(prop) {
+export default function GeneralInformationRemark({size,id}) {
   const [hoveredRow, setHoveredRow] = useState(null);
   const [generalInformationData, setGeneralInformationData] = useState({});
   const auth = useAuth();
@@ -34,7 +33,7 @@ export default function GeneralInformationRemark(prop) {
   useEffect(() => {
     const getFormData = async () => {
       try {
-        const response = await apiClient.get("/newuser/" + auth.user.id);
+        const response = await apiClient.get("/newuser/" + id);
         const userData = response?.data;
         setGeneralInformationData(userData);
         console.log("General Information ", userData);
@@ -43,7 +42,7 @@ export default function GeneralInformationRemark(prop) {
       }
     };
     getFormData();
-  }, [auth.user.id]);
+  }, [id]);
 
   return (
     <TableContainer component={Paper}>
@@ -70,7 +69,10 @@ export default function GeneralInformationRemark(prop) {
                   <RemarkModal
                     name={row.name}
                     detail={generalInformationData[row.key]}
-                    size={prop.size}
+                    size={size}
+                    url="/midwifeRemark/"
+                    id={id}
+                    column={row.column}
                   />
                 )}
               </TableCell>

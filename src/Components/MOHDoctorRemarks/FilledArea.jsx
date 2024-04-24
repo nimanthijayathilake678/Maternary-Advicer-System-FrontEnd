@@ -68,61 +68,68 @@ export default function FilledArea() {
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <Item>
-            <Grid container spacing={2} alignItems="center">
-              <Grid
-                item
-                container
-                direction="column"
-                sx={{ display: "flex" }}
-                xs={8}
-              >
-                <Grid item xs={12}>
+            <Grid container spacing={2} alignItems="center" direction="row">
+              <Grid item xs={12} paddingBottom="4">
+                <TextField
+                  required
+                  name="General Examination"
+                  label="General Examination"
+                  sx={{ width: "100%", paddingTop: "1em" }}
+                />
+              </Grid>
+
+              <Grid item xs={6} paddingBottom="4">
+                <TextField
+                  required
+                  name="Breast"
+                  label="Breast"
+                  sx={{ width: "100%", paddingTop: "1em" }}
+                />
+              </Grid>
+
+              <Grid item xs={6} paddingBottom="4">
+                <TextField
+                  required
+                  name="BP"
+                  label="BP"
+                  sx={{ width: "100%", paddingTop: "1em" }}
+                />
+              </Grid>
+
+              <Grid item xs={6} paddingBottom="4">
+                <TextField
+                  required
+                  name="CVS"
+                  label="CVS"
+                  sx={{ width: "100%", paddingTop: "1em" }}
+                />
+              </Grid>
+
+              <Grid item xs={6} paddingBottom="4">
                   <TextField
                     required
-                    name="Weight"
-                    label="Weight (kg)"
-                    type="number"
-                    inputProps={{ min: 1 }}
+                    name="RS"
+                    label="RS"
                     sx={{ width: "100%", paddingTop: "1em" }}
-                    value={weight}
-                    onChange={handleWeightChange}
                   />
-                </Grid>
+              </Grid>
 
-                <Grid item xs={12} sx={{ paddingTop: "2em" }}>
+              <Grid item xs={6} paddingBottom="4">
                   <TextField
                     required
-                    name="Height"
-                    label="Height (cm)"
-                    type="number"
-                    inputProps={{ min: 1 }}
-                    sx={{ width: "100%" }}
-                    value={height}
-                    onChange={handleHeightChange}
+                    name="Abd"
+                    label="Abd"
+                    sx={{ width: "100%", paddingTop: "1em" }}
                   />
-                </Grid>
               </Grid>
 
-              <Grid item xs={4} sx={{ paddingTop: "1em" }}>
-                <SquareBox>{status}</SquareBox>
-              </Grid>
-
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  name="Blood type"
-                  label="Blood type"
-                  sx={{ width: "100%", paddingTop: "1em" }}
-                />
-              </Grid>
-
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  name="Hemoglobin Value"
-                  label="Hemoglobin Value"
-                  sx={{ width: "100%", paddingTop: "1em" }}
-                />
+              <Grid item xs={6} paddingBottom="4">
+                  <TextField
+                    required
+                    name="CNS"
+                    label="CNS"
+                    sx={{ width: "100%", paddingTop: "1em" }}
+                  />
               </Grid>
             </Grid>
           </Item>

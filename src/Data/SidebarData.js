@@ -26,11 +26,6 @@ export const family = [
     icon: <CgProfile />,
   },
   {
-    name: "Eligible Families",
-    path: "/family/eligibleFamilies",
-    icon: <MdOutlineFamilyRestroom />,
-  },
-  {
     name: "Pregnancies",
     path: "/family/pregnancies",
     icon: <MdPregnantWoman />,

@@ -1,4 +1,4 @@
-import * as React from "react";
+import {useState,useEffect} from "react";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
@@ -7,11 +7,28 @@ import { Typography } from "@mui/material";
 import GeneralProfileDetails from "../../Components/FamilyProfile/GeneralProfileDetails";
 import OtherInformation from "../../Components/FamilyProfile/OtherInformation";
 import DisplaySidebar from "../../Components/DisplaySidebar";
-import { Link } from "react-router-dom";
+import { Link,useParams } from "react-router-dom";
 import Button from "@mui/material/Button";
+import { apiClient } from "../../API/ApiServer";
 
 
 export default function Profile() {
+  const {id} = useParams();
+  const [generalData,setGeneralData]=useState(null);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await apiClient.get("/newuser/" + id);
+        setGeneralData(response?.data);
+        console.log("General data " + response.data);
+
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    fetchData();
+  }, [id]);
+
   return (
     <div className="text-black bg-white w-full ">
       <Box sx={{ paddingLeft: 6, display: "flex", alignItems: "center" }}>
@@ -42,6 +59,7 @@ export default function Profile() {
                 to="./print"
                 component={Link}
                 variant="contained"
+                sx={{ backgroundColor: "#00A9BB" }}
               >
                 Print Document
               </Button>
@@ -72,7 +90,7 @@ export default function Profile() {
                     }}
                   >
                     <Grid item xs={12} sx={{ paddingLeft: 3 }}>
-                      Eligible Registration No - 121
+                       Eligible Registration No - {generalData?.id}
                     </Grid>
                   </Grid>
                 </Grid>
@@ -90,8 +108,8 @@ export default function Profile() {
                     <Grid item xs={12}>
                       Division of Regional Ministry of Health Service - Matara
                     </Grid>
-                    <Grid item xs={12}>MOH Area - Dikwalla</Grid>
-                    <Grid item xs={12}>PHM Area - Dikwalla</Grid>
+                    <Grid item xs={12}>MOH Area - Matara</Grid>
+                    <Grid item xs={12}>PHM Area - {generalData?.area}</Grid>
                   </Grid>
                 </Grid>
               </Grid>
@@ -106,7 +124,7 @@ export default function Profile() {
                   xs={3}
                   sx={{ paddingTop: 3, paddingBottom: 3, paddingLeft: 1 }}
                 >
-                  <GeneralProfileDetails />
+                  <GeneralProfileDetails data={generalData}/>
                 </Grid>
                 <Grid
                   item
@@ -118,7 +136,7 @@ export default function Profile() {
                     paddingRight: 3,
                   }}
                 >
-                  <OtherInformation />
+                  <OtherInformation id={id} data={generalData?.fullName} />
                 </Grid>
               </Grid>
             </Grid>

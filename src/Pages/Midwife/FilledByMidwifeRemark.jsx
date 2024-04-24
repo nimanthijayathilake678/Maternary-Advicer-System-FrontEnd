@@ -25,7 +25,10 @@ import { IconButton, TextField, useMediaQuery } from "@mui/material";
 import Theme from "../../Components/Theme";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import AddMultiple from "../../Components/MidwifeRemarks/AddMultiple";
-
+import DisplaySidebar from "../../Components/DisplaySidebar";
+import Box from "@mui/material/Box";
+import {useParams} from "react-router-dom";
+import { apiClient } from "../../API/ApiServer";
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
@@ -34,10 +37,132 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
+const SquareBox = styled(Paper)(({ theme }) => ({
+  backgroundColor: "#E4FEFF",
+  height: "7em",
+  textAlign: "center",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  color: "black",
+  fontWeight: "bold",
+}));
+
 const FilledByMidwife = () => {
+  const {id} = useParams();
   const theme = Theme();
   const [expanded, setExpanded] = useState(false);
+  const [weightW, setWeightW] = React.useState("");
+  const [heightW, setHeightW] = React.useState("");
+  const [weightH, setWeightH] = React.useState("");
+  const [heightH, setHeightH] = React.useState("");
+  const [bmiW, setBmiW] = React.useState("");
+  const [bmiH, setBmiH] = React.useState("");
+  const [filldata,setFilldata] = React.useState(
+    {
+      "user_id": id,
+      "w_weight": null,
+      "w_height": null,
+      "w_bloodType": "",
+      "w_hemoglobinValue": null,
+      "h_weight": null,
+      "h_height": null,
+      "h_bloodType": "",
+      "h_hemoglobinValue": null
+    }
+    
+  );
+  const [statusW, setStatusW] = React.useState("Enter weight and height");
+  const [statusH, setStatusH] = React.useState("Enter weight and height");
 
+  const handleWeightWChange = (event) => {
+    const newWeight = event.target.value;
+    setFilldata(
+      {
+        ...filldata,
+      "w_weight":newWeight
+      }
+    );
+  };
+
+  
+  const handleWeightHChange = (event) => {
+    const newWeight = event.target.value;
+    setFilldata(
+      {
+        ...filldata,
+      "h_weight":newWeight
+      }
+    );
+  };
+
+  const handleHeightWChange = (event) => {
+    const newHeight = event.target.value;
+    setFilldata(
+      {
+        ...filldata,
+      "w_height":newHeight
+      }
+    );
+  };
+
+  
+  const handleHeightHChange = (event) => {
+    const newHeight = event.target.value;
+    setFilldata(
+      {
+        ...filldata,
+      "h_height":newHeight
+      }
+    );
+  };
+  React.useEffect(() => {
+    // Calculate BMI when weight or height changes
+    if (filldata?.w_height && filldata?.w_weight) {
+      const weightNum = parseFloat(filldata?.w_weight);
+      const heightNum = parseFloat(filldata?.w_height) / 100; // Convert height to meters
+      const bmiValue = weightNum / (heightNum * heightNum);
+      const newBmi = bmiValue.toFixed(2);
+      setBmiW(newBmi);
+      if (bmiValue >= 30) {
+        setStatusW(`BMI :${newBmi}  Bellow D`);
+      } else if (bmiValue >= 25 && bmiValue <= 29.9) {
+        setStatusW(`BMI :${newBmi}  C & D`);
+      } else if (bmiValue >= 18.5 && bmiValue <= 24.9) {
+        setStatusW(`BMI :${newBmi}  A & C`);
+      } else {
+        setStatusW(`BMI :${newBmi}  A & B`);
+      }
+    } else {
+      setBmiW(""); // Clear BMI if weight or height is empty
+      setStatusW("Enter weight and height");
+    }
+  }, [filldata?.w_height, filldata?.w_weight]);
+
+
+  React.useEffect(() => {
+    // Calculate BMI when weight or height changes
+    if (filldata?.h_height && filldata?.h_weight) {
+      const weightNum = parseFloat(filldata?.h_weight);
+      const heightNum = parseFloat(filldata?.h_height) / 100; // Convert height to meters
+      const bmiValue = weightNum / (heightNum * heightNum);
+      const newBmi = bmiValue.toFixed(2);
+      setBmiH(newBmi);
+      if (bmiValue >= 30) {
+        setStatusH(`BMI :${newBmi}  Bellow D`);
+      } else if (bmiValue >= 25 && bmiValue <= 29.9) {
+        setStatusH(`BMI :${newBmi}  C & D`);
+      } else if (bmiValue >= 18.5 && bmiValue <= 24.9) {
+        setStatusH(`BMI :${newBmi}  A & C`);
+      } else {
+        setStatusH(`BMI :${newBmi}  A & B`);
+      }
+    } else {
+      setBmiH(""); // Clear BMI if weight or height is empty
+      setStatusH("Enter weight and height");
+    }
+  }, [filldata?.h_height , filldata?.h_weight]);
+  
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
@@ -56,6 +181,20 @@ const FilledByMidwife = () => {
     setValues([...values, ""]);
   };
 
+  const handleClick= async()=>{
+
+    try{
+      const response = await apiClient.post(
+        "/filledByMidwife/" + id,filldata
+       
+      )
+      
+
+    }catch(err){
+      console.error(err)
+    }
+  }
+
   // Function to remove a text field
   const handleRemoveField = (index) => {
     const newValues = [...values];
@@ -70,9 +209,11 @@ const FilledByMidwife = () => {
   };
 
   const islgScreen = useMediaQuery(() => theme.breakpoints.down("lg"));
+  
 
   return (
-    <div className="text-black w-full bg-white">
+    <div className="text-black w-full min-h-screen flex bg-white">
+      <DisplaySidebar />
       <Grid container spacing={2} sx={{ marginTop: 1, marginRight: 2 }}>
         <Grid
           container
@@ -82,6 +223,7 @@ const FilledByMidwife = () => {
             paddingLeft: 10,
             paddingTop: 0,
             alignItems: "center",
+            flexGrow: 1,
           }}
         >
           <Grid item xs={12} lg={7} spacing={2}>
@@ -97,7 +239,79 @@ const FilledByMidwife = () => {
                       }}
                     >
                       Husband
-                      <FilledArea />
+                      <Box sx={{ flexGrow: 1 }}>
+                        <Grid container spacing={2}>
+                          <Grid item xs={12}>
+                            <Item>
+                              <Grid container spacing={2} alignItems="center">
+                                <Grid
+                                  item
+                                  container
+                                  direction="column"
+                                  sx={{ display: "flex" }}
+                                  xs={8}
+                                >
+                                  <Grid item xs={12}>
+                                    <TextField
+                                      required
+                                      name="Weight"
+                                      label="Weight (kg)"
+                                      type="number"
+                                      inputProps={{ min: 1 }}
+                                      sx={{ width: "100%", paddingTop: "1em" }}
+                                      onChange={handleWeightHChange}
+                                      value={filldata?.h_weight}
+                                      
+
+                                    />
+                                  </Grid>
+
+                                  <Grid item xs={12} sx={{ paddingTop: "2em" }}>
+                                    <TextField
+                                      required
+                                      name="Height"
+                                      label="Height (cm)"
+                                      type="number"
+                                      inputProps={{ min: 1 }}
+                                      sx={{ width: "100%" }}
+                                      onChange={handleHeightHChange}
+                                      value={filldata?.h_height}
+                                     
+                                    />
+                                  </Grid>
+                                </Grid>
+
+                                <Grid item xs={4} sx={{ paddingTop: "1em" }}>
+                                  <SquareBox>{statusH}</SquareBox>
+                                </Grid>
+
+                                <Grid item xs={12}>
+                                  <TextField
+                                    required
+                                    name="Blood type"
+                                    label="Blood type"
+                                    sx={{ width: "100%", paddingTop: "1em" }}
+                                    value={filldata?.h_bloodType}
+                                    onChange={handleChange}
+                                  />
+
+                                </Grid>
+
+                                <Grid item xs={12}>
+                                  <TextField
+                                    required
+                                    name="Hemoglobin Value"
+                                    label="Hemoglobin Value"
+                                    sx={{ width: "100%", paddingTop: "1em" }}
+                                    value={filldata?.h_hemoglobinValue}
+                                    onChange={handleChange}
+                                  />
+                                </Grid>
+                              </Grid>
+                            </Item>
+                          </Grid>
+                        </Grid>
+                      </Box>
                     </Typography>
                   </Grid>
                 </Grid>
@@ -110,31 +324,78 @@ const FilledByMidwife = () => {
                     }}
                   >
                     Wife
-                    <FilledArea />
+                    <Box sx={{ flexGrow: 1 }}>
+                      <Grid container spacing={2}>
+                        <Grid item xs={12}>
+                          <Item>
+                            <Grid container spacing={2} alignItems="center">
+                              <Grid
+                                item
+                                container
+                                direction="column"
+                                sx={{ display: "flex" }}
+                                xs={8}
+                              >
+                                <Grid item xs={12}>
+                                  <TextField
+                                    required
+                                    name="Weight"
+                                    label="Weight (kg)"
+                                    type="number"
+                                    inputProps={{ min: 1 }}
+                                    sx={{ width: "100%", paddingTop: "1em" }}
+                                    onChange={handleWeightWChange}
+                                    value={filldata?.w_weight}
+                                   
+                                  />
+                                </Grid>
+
+                                <Grid item xs={12} sx={{ paddingTop: "2em" }}>
+                                  <TextField
+                                    required
+                                    name="Height"
+                                    label="Height (cm)"
+                                    type="number"
+                                    inputProps={{ min: 1 }}
+                                    sx={{ width: "100%" }}
+                                    onChange={handleHeightWChange}
+                                    value={filldata?.w_height}
+                                   
+                                  />
+                                </Grid>
+                              </Grid>
+
+                              <Grid item xs={4} sx={{ paddingTop: "1em" }}>
+                                <SquareBox>{statusW}</SquareBox>
+                              </Grid>
+
+                              <Grid item xs={12}>
+                                <TextField
+                                  required
+                                  name="Blood type"
+                                  label="Blood type"
+                                  sx={{ width: "100%", paddingTop: "1em" }}
+                                  value={filldata?.w_bloodType}
+                                  onChange={handleChange}
+                                />
+                              </Grid>
+
+                              <Grid item xs={12}>
+                                <TextField
+                                  required
+                                  name="Hemoglobin Value"
+                                  label="Hemoglobin Value"
+                                  sx={{ width: "100%", paddingTop: "1em" }}
+                                  value={filldata?.w_hemoglobinValue}
+                                  onChange={handleChange}
+                                />
+                              </Grid>
+                            </Grid>
+                          </Item>
+                        </Grid>
+                      </Grid>
+                    </Box>
                   </Typography>
-                </Grid>
-              </Grid>
-
-              <Grid item xs={12} inputMode={10} spacing={2}>
-                <Grid
-                  container
-                  direction="row"
-                  spacing={2}
-                  sx={{ padding: "1em 1em 0em !important", textAlign: "left" }}
-                >
-                  <Grid item xs={12}>
-                    <Typography sx={{ fontWeight: "bold", color: "#00A9BB",paddingBottom:"1em" }}>
-                      Special Cases Identified
-                    </Typography>
-                    <AddMultiple dataType="text" labelName="Special Cases" />
-                  </Grid>
-
-                  <Grid item xs={12}>
-                    <Typography sx={{ fontWeight: "bold", color: "#00A9BB",paddingBottom:"1em" }}>
-                      Counselling Sessions
-                    </Typography>
-                    <AddMultiple dataType="date" labelName="Dates attended for Counselling Sessions" />
-                  </Grid>
                 </Grid>
               </Grid>
 
@@ -145,12 +406,10 @@ const FilledByMidwife = () => {
                   mt: 2,
                   background: "#00A9BB",
                   alignItems: "center",
-                  marginBottom:"5"
+                  marginBottom: "5",
                 }}
-                onClick={() => {
-                  console.log("Finish Reviewing button clicked");
-                }}
-                to="./filledByMOHDoctor"
+                onClick={handleClick}
+                to="/midwife"
                 component={Link}
               >
                 Submit

@@ -58,13 +58,14 @@ export default function DetailsOfMedicalCondiitions({
   const url = "/CoupleMedicalConditions/";
   const inputRef = useRef(null);
   const [user, setUser] = useState(auth.user.id);
+  const state = false;
 
   useEffect(() => {
     const getFormData = async () => {
       try {
         const response = await apiClient.get("/CoupleMedicalConditions/" + auth.user.id);
         setMedicalInfo(response?.data);
-        if (response.data.h_name) {
+        if (response?.data.user_id) {
           setMethod("put");
         }
         console.log("Medical Information " + response.data);
@@ -90,7 +91,7 @@ export default function DetailsOfMedicalCondiitions({
   };
 
   const handleClick = () => {
-    handleNext(url, method, medicalInfo, user);
+    handleNext(url, method, medicalInfo, user,state);
   };
 
   const theme = Theme();

@@ -11,14 +11,14 @@ import { apiClient } from "../../API/ApiServer";
 import useAuth from "../../Hooks/useAuth";
 
 const rows = [
-  { name: "Date of Birth", wife: "w_dob", husband: "h_dob" },
-  { name: "Educational Level", wife: "w_educationalLevel", husband: "h_educationalLevel" },
-  { name: "Occupation", wife: "w_occupation", husband: "h_occupation" },
-  { name: "Married Date", wife: "marriedDate" },
-  { name: "Address", wife: "address"},
+  { name: "Date of Birth", wife: "w_dob", husband: "h_dob", column:"dobRemarkByMidwife" },
+  { name: "Educational Level", wife: "w_educationalLevel", husband: "h_educationalLevel", column:"educationalLevelRemarkByMidwife"  },
+  { name: "Occupation", wife: "w_occupation", husband: "h_occupation", column:"occupationRemarkByMidwife" },
+  { name: "Married Date", wife: "marriedDate",husband:null, column:"marriedDateRemarkByMidwife" },
+  { name: "Address", wife: "address", husband:null,column:"addressRemarkByMidwife" },
 ];
 
-export default function FamilyHealthInformationRemark(prop) {
+export default function FamilyHealthInformationRemark({size,id}) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [hoveredRow, setHoveredRow] = useState(null);
   const [personalInformationData, setPersonalInformationData] = useState({});
@@ -35,7 +35,7 @@ export default function FamilyHealthInformationRemark(prop) {
   useEffect(() => {
     const getFormData = async () => {
       try {
-        const response = await apiClient.get("/personalInfo/" + auth.user.id);
+        const response = await apiClient.get("/personalInfo/" + id);
         const userData = response?.data;
         setPersonalInformationData(userData);
         console.log("Personal Info Information ", userData);
@@ -44,7 +44,7 @@ export default function FamilyHealthInformationRemark(prop) {
       }
     };
     getFormData();
-  }, [auth.user.id]);
+  }, [id]);
 
   return (
     <TableContainer component={Paper}>
@@ -85,9 +85,11 @@ export default function FamilyHealthInformationRemark(prop) {
                 {hoveredRow === index && (
                   <RemarkModal
                     name={row.name}
-                    wife={personalInformationData[row.wife]}
-                    husband={personalInformationData[row.husband]}
-                    size={prop.size}
+                    detail = {personalInformationData[row.wife]+"     " + (personalInformationData[row.husband]?personalInformationData[row.husband]:"")}
+                    size={size}
+                    url="/midwifeRemark/"
+                    id={id}
+                    column={row.column}
                   />
                 )}
               </TableCell>

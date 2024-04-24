@@ -22,6 +22,8 @@ import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 import { apiClient } from "../../API/ApiServer";
 import {useNavigate} from "react-router-dom";
+import LifeStyle from "../../Components/EligibleFamilyForms/LifeStyle";
+import HousingAndWorkspace from "../../Components/EligibleFamilyForms/HousingAndWorkspace";
 
 
 
@@ -76,11 +78,11 @@ export default function FamilyEligibleFamilyForm() {
     // url:"/CoupleMedicalConditions/"
   },
 
-  // {
-  //   label: "Sexual And Reproductive Health",
-  //   description: <SexualAndReproductiveHealth  handleNext={handleNext} handleBack={handleBack} />,
+ {
+    label: "Sexual And Reproductive Health",
+    description: <SexualAndReproductiveHealth  handleNext={handleNext} handleBack={handleBack} />,
   //   // url:"/sexualAndReproductiveHealthInfo/"
-  // },
+  },
   {
     label: "Family Health Information",
     description: <FamilyHealthInformation handleNext={handleNext} handleBack={handleBack}/>,
