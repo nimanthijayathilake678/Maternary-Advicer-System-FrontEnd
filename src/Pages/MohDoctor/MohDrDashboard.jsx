@@ -85,12 +85,7 @@ const MohDrDashboard = () => {
                   
                 </div>
                 
-                <div className="cards">
-                    <div className="card-inner">
-                        <h8>SUMMARY REPORTS</h8>
-                        <Lottie style={{height:100}} animationData={reports}/>
-                    </div>
-            </div>
+               
 
             </div>
 
