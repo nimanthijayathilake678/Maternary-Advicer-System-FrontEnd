@@ -1,3 +1,4 @@
+import React from "react";
 import { Box, IconButton } from "@mui/material";
 import Header from "../../Components/Header";
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -14,9 +15,20 @@ import reports from '../../Assest/Lottie/reports.json';
 import pregnant from '../../Assest/Lottie/pregnant.json';
 import Lottie from 'lottie-react';
 import "../../css/MohDoctor/MohDrDash.css"
+import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
+
 
 const MohDrDashboard = () => {
-    
+    const navigate = useNavigate();
+    const [value, setValue] = React.useState("one");
+    const { id } = useParams();
+    const handleChange = (event, newValue) => {
+      setValue(newValue);
+    };
+    const handleNavigation = (url) => {
+      navigate(url);
+    };
   
     return (
         <Box ml="20px"  >
@@ -41,29 +53,33 @@ const MohDrDashboard = () => {
 
                 <div className="cards">
                     <div className="card-inner">
-                        <h8>ELIGIBLE FAMILIES</h8>
-                        <Lottie style={{height:110}} animationData={HappyFamily}/>
+                        <h6>ELIGIBLE FAMILIES</h6>
+                        <Lottie style={{height:80}} animationData={HappyFamily}/>
                     </div>
                 </div>
                 
 
                 <div className="cards">
                     <div className="card-inner">
-                        <h8>REGISTERED PREGNANT MOTHERS</h8>
-                        <Lottie style={{height:120}} animationData={pregnant}/>
+                        <h6 
+                            onClick={() =>
+                                handleNavigation("/mohdrdash/pregnat_moms")
+                              }
+                        >REGISTERED PREGNANT MOTHERS</h6>
+                        <Lottie style={{height:80}} animationData={pregnant}/>
                     </div>
                 </div>
                 
                 <div className="cards">
                     <div className="card-inner">
-                        <h8>BABIES</h8>
+                        <h6>BABIES</h6>
                         <Lottie style={{height:90}} animationData={baby}/>
                     </div>
                 </div>
                 <div className="cards">
                     <div className="card-inner">
-                        <h8>REFERALS</h8>
-                        <Lottie style={{height:100}} animationData={referal}/>
+                        <h6>REFERALS</h6>
+                        <Lottie style={{height:80}} animationData={referal}/>
                     </div>
                 </div>
 
@@ -77,20 +93,20 @@ const MohDrDashboard = () => {
                         <DateCalendar />
                     </LocalizationProvider>
                 </div>
-                <div className="upcomingClinics">
+                {/* <div className="upcomingClinics">
                     <div marginLeft= "20px">
                     <h3 > Upcoming Clinics</h3>
                     </div>
                     <div><Upcomings/></div>
                   
-                </div>
+                </div> */}
                 
-                <div className="cards">
+                {/* <div className="cards">
                     <div className="card-inner">
-                        <h8>SUMMARY REPORTS</h8>
-                        <Lottie style={{height:100}} animationData={reports}/>
+                        <h6>SUMMARY REPORTS</h6>
+                        <Lottie style={{height:80}} animationData={reports}/>
                     </div>
-            </div>
+            </div> */}
 
             </div>
 

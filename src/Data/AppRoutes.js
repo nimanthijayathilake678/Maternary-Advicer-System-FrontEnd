@@ -372,7 +372,7 @@ export const AppRoutes = {
   },
   mohdoc_pregnat_moms: {
     path: "/mohdrdash/pregnat_moms",
-    component: <MohDrDashboard />,
+    component: <RegisteredPregMothers />,
   },
   mohdoc_babies: {
     path: "/mohdrdash/babies",
