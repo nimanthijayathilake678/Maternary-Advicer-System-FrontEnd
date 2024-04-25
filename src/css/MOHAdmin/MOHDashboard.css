@@ -34,9 +34,10 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr ;
   flex-direction: column;
-  column-gap: 200px;
+  column-gap: 500px;
   row-gap: 20px;
   margin-top: 20px;
+  
   
   
   
@@ -52,7 +53,7 @@ body {
   margin-top: 10px;
   border-radius: 20px;
   margin-bottom: 10px;
-  height : 80px; 
+  height : 100px; 
   color:aliceblue;
   background-color: #00a9bb;
 }
@@ -89,16 +90,19 @@ body {
 }
 .dashbottom{
   display: flex;
-  
+}
+
+.animation-part{
+  margin-left: 20px;
+
 }
 .calender{
   
   margin-top: 70px;
-  margin-left: 5px;
   background-color: #e4feff;
   border-radius: 15%;
   color: #d50000;
-  margin-left: 10px;
+  margin-left: 50px;
   border: 5px solid #00a9bb;
 }
 
@@ -106,17 +110,41 @@ body {
   margin-left: 100px;
   margin-top: 60px;
   color: black;
-  background-color: aquamarine;
+  background-color: #59b1bb;
   background-origin: padding-box;
   padding-left: 20px;
   padding-top: 20px;
   padding-right: 20px;
+  border-radius: 30px;
+  margin-right: 100px;
   
 }
 
+.table1 {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  color: black;
+  margin-left: 20px;
+}
 
+.th1{
 
+  padding: 8px;
+  border: 1px solid #ddd;
+}
 
+*
+.table1 th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.animation-part{
+  size: 10%;
+}
 /*
   
 @media screen and (max-width: 900px) {

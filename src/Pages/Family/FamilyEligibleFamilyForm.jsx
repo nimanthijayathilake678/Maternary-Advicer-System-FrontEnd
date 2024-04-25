@@ -1,121 +1,136 @@
-import * as React from "react";
+import {useState} from "react";
 import Box from "@mui/material/Box";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import StepContent from "@mui/material/StepContent";
-import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
-import Typography from "@mui/material/Typography";
 import { Grid } from "@mui/material";
-import { TextField } from "@mui/material";
-import SuccessAlert from "../../Components/SuccessAlert";
-import Alert from "@mui/material/Alert";
 import AlertTitle from "@mui/material/AlertTitle";
 import ChildFriendlyIcon from "@mui/icons-material/ChildFriendly";
 import Theme from "../../Components/Theme";
-import { StepIconProps } from "@mui/material/StepIcon";
 import GeneralInformation from "../../Components/EligibleFamilyForms/GeneralInformation";
 import PersonalInformation from "../../Components/EligibleFamilyForms/PersonalInformation";
 import DetailsOfMedicalConditions from "../../Components/EligibleFamilyForms/DetailsOfMedicalConditions";
 import SexualAndReproductiveHealth from "../../Components/EligibleFamilyForms/SexualAndReproductiveHealth";
 import FamilyHealthInformation from "../../Components/EligibleFamilyForms/FamilyHealthInformation";
 import FamilyNutrition from "../../Components/EligibleFamilyForms/FamilyNutrition";
-import LifeStyle from "../../Components/EligibleFamilyForms/LifeStyle";
-import HousingAndWorkspace from "../../Components/EligibleFamilyForms/HousingAndWorkspace";
-import Nav from "../../Components/Nav";
 import Footer from "../../Components/Footer";
 import DisplaySidebar from "../../Components/DisplaySidebar";
+import useAuth from "../../Hooks/useAuth";
+import Snackbar from "@mui/material/Snackbar";
+import Alert from "@mui/material/Alert";
+import { apiClient } from "../../API/ApiServer";
+import {useNavigate} from "react-router-dom";
+import LifeStyle from "../../Components/EligibleFamilyForms/LifeStyle";
+import HousingAndWorkspace from "../../Components/EligibleFamilyForms/HousingAndWorkspace";
 
-function CustomStepIcon(props) {
-  const { active, completed, icon } = props;
 
-  return (
-    <div
-      style={{
-        fontSize: 22,
-        color: active
-          ? theme.palette.primary.main
-          : completed
-          ? theme.palette.primary.main
-          : "gray",
-      }}
-    >
-      {icon}
-    </div>
-  );
-}
-
-const theme = Theme();
-
-const steps = [
-  {
-    label: "General Information",
-    description: <GeneralInformation />,
-  },
-  {
-    label: "Personal Information",
-    description: <PersonalInformation />,
-  },
-  {
-    label: "Details of Medical Conditions",
-    description: <DetailsOfMedicalConditions />,
-  },
-
-  {
-    label: "Sexual And Reproductive Health",
-    description: <SexualAndReproductiveHealth />,
-  },
-  {
-    label: "Family Health Information",
-    description: <FamilyHealthInformation />,
-  },
-  {
-    label: "Family Nutrition",
-    description: <FamilyNutrition />,
-  },
-  {
-    label: "Life Style",
-    description: <LifeStyle />,
-  },
-  {
-    label: "Housing And Workspace",
-    description: <HousingAndWorkspace />,
-  },
-];
 
 export default function FamilyEligibleFamilyForm() {
-  const [activeStep, setActiveStep] = React.useState(0);
+  const [activeStep, setActiveStep] = useState(0);
+  const theme = Theme();
+  const auth = useAuth();
+  const navigate = useNavigate();
+  const handleNext = async(url,method,data,user,state) => {
+    
+    try{
+      const response = await apiClient[method](url+user,data)
+      if(response.status===200 || response.status===201){
+        if(state){
+          const res = await apiClient.put(`/newuser/${user}`,{...auth?.user , "familyFlag":true})
+          if(response.status===200){
+            navigate("/family")
+          }
+          else{
+            setOpen(true);
+          }
+         
+        }
+        setActiveStep((prevActiveStep) => prevActiveStep + 1);
+      }else{
+        setOpen(true);
+      }
+    }catch(err){
+      console.error(err);
+      setOpen(true);
 
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    }
   };
 
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
-  const handleReset = () => {
-    setActiveStep(0);
-  };
+  const steps = [
+  {
+    label: "General Information",
+    description: <GeneralInformation handleNext={handleNext} />,
+ },
+  {
+    label: "Personal Information",
+    description: <PersonalInformation  handleNext={handleNext} handleBack={handleBack}/>,
+    // url:"/personalInfo/"
+  },
+  {
+    label: "Details of Medical Conditions",
+    description: <DetailsOfMedicalConditions  handleNext={handleNext} handleBack={handleBack} />,
+    // url:"/CoupleMedicalConditions/"
+  },
+
+ {
+    label: "Sexual And Reproductive Health",
+    description: <SexualAndReproductiveHealth  handleNext={handleNext} handleBack={handleBack} />,
+  //   // url:"/sexualAndReproductiveHealthInfo/"
+  },
+  {
+    label: "Family Health Information",
+    description: <FamilyHealthInformation handleNext={handleNext} handleBack={handleBack}/>,
+    // url:"/familyHealth/"
+  },
+  {
+    label: "Family Nutrition",
+    description: <FamilyNutrition  handleNext={handleNext} handleBack={handleBack}/>,
+    // url:"/familyNutrition/"
+  
+  },
+  // {
+  //   label: "Life Style",
+  //   description: <LifeStyle />,
+  //   // url:"/lifeStyle/"
+  // },
+  // {
+  //   label: "Housing And Workspace",
+  //   description: <HousingAndWorkspace />,
+  //   // url:"/housingAndWorkspace/"
+  // },
+];
+
+  const [open, setOpen] = useState(false);
+  const handleClose = (event, reason) => {
+  if (reason === "clickaway") {
+    return;
+  }
+
+  setOpen(false);
+};
 
   return (
     <>
-    <div style={{ display: 'flex' }}>
-      <div><DisplaySidebar/></div>
-            
-      <div className="bg-white ">
+      <Box style={{ display: "flex" }}>
         <Box
           sx={{
             "& .MuiTextField-root": { m: 1 },
             "& .MuiButton-root": { m: 1 },
+            flexGrow: 1,
+            backgroundColor:"white"
           }}
           noValidate
           autoComplete="off"
           display="flex"
           justifyContent="center"
           alignItems="center"
-          height="100%"
+          width="100%"
           flexDirection="column"
         >
           <Grid container spacing={2} sx={{ width: "100%", margin: "auto" }}>
@@ -145,57 +160,13 @@ export default function FamilyEligibleFamilyForm() {
                   {steps.map((step, index) => (
                     <Step key={step.label}>
                       <StepLabel
-                        optional={
-                          index === 4 ? (
-                            <Typography variant="caption">Last step</Typography>
-                          ) : null
-                        }
                         style={{ color: theme.palette.primary.main }}
                       >
                         {step.label}
                       </StepLabel>
                       <StepContent>
                         {step.description}
-                        <Box sx={{ mb: 2 }}>
-                          <div>
-                            <Button
-                              variant="contained"
-                              onClick={handleNext}
-                              sx={{
-                                mt: 1,
-                                mr: 1,
-                                color: "White",
-                                "&": {
-                                  backgroundColor: theme.palette.primary.main,
-                                },
-                                "&:hover": {
-                                  backgroundColor: theme.palette.secondary.main,
-                                },
-                              }}
-                            >
-                              {index === steps.length - 1
-                                ? "Submit"
-                                : "Continue"}
-                            </Button>
-                            <Button
-                              disabled={index === 0}
-                              onClick={handleBack}
-                              sx={{
-                                mt: 1,
-                                mr: 1,
-                                color: "White",
-                                "&": {
-                                  backgroundColor: theme.palette.primary.main,
-                                },
-                                "&:hover": {
-                                  backgroundColor: theme.palette.secondary.main,
-                                },
-                              }}
-                            >
-                              Back
-                            </Button>
-                          </div>
-                        </Box>
+                        
                       </StepContent>
                     </Step>
                   ))}
@@ -207,7 +178,7 @@ export default function FamilyEligibleFamilyForm() {
                 </Typography> */}
                     <Alert severity="success">
                       <AlertTitle>Success</AlertTitle>
-                      Baby Registration is Successfull ! <br></br>
+                      All your information are saved Successfully!! ! <br></br>
                       <ChildFriendlyIcon />
                     </Alert>
                   </Paper>
@@ -216,10 +187,25 @@ export default function FamilyEligibleFamilyForm() {
             </Grid>
           </Grid>
         </Box>
-      </div>
-      </div>
+      </Box>
 
       <Footer />
+      <Snackbar
+      open={open}
+      autoHideDuration={6000}
+      onClose={handleClose}
+      anchorOrigin={{ vertical:"top" , horizontal:"right" }}
+    >
+      <Alert
+        onClose={handleClose}
+        severity="error"
+        variant="filled"
+        sx={{ width: "100%" }}
+      >
+        An error occured! Try again...      
+      </Alert>
+    </Snackbar>
     </>
+
   );
 }

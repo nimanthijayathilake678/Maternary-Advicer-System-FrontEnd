@@ -171,14 +171,14 @@ const MidwifeDashboard = () => {
                   <DateCalendar />
                 </LocalizationProvider>
               </div>
-              <div className="upcomingClinics">
+              {/* <div className="upcomingClinics">
                 <div marginLeft="20px">
                   <h3> Upcoming Clinics</h3>
                 </div>
                 <div>
                   <Upcomings />
                 </div>
-              </div>
+              </div> */}
 
               <div className="cards">
                 <div className="card-inner">

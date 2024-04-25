@@ -12,13 +12,11 @@ import FamilyPregnancies from "../Pages/Family/FamilyPregnancies";
 import Login from "../Pages/LoginPage/Login";
 import AuthContext, { AuthProvider } from "../Contexts/AuthProvider";
 import SideBarContent from "../Components/SideBarContent";
-import FamilyProfile from "../Pages/Family/FamilyProfile";
 import Unauthorized from "../Pages/Unauthorized";
 import MidwifeEligibleCoupleRegistrationForm from "../Pages/Midwife/MidwifeEligibleCoupleRegistrationForm";
 import FamilyEligibleFamilyForm from "../Pages/Family/FamilyEligibleFamilyForm";
 import BabyRegistrationStepper from "../Pages/Family/Baby/RegistrationPage/BabyRegistration/BabyRegistrationStepper";
 import BabyProfile from "../Pages/Family/Baby/BabyProfile";
-
 import VogMessages from "../Pages/VOGDoctor/Messages";
 import VogPatients from "../Pages/VOGDoctor/PatientHistory";
 import VogDashboard from "../Pages/VOGDoctor/VogDashboard";
@@ -49,11 +47,13 @@ import Home from "../Pages/Home";
 import BabyNewBornHelath from "../Pages/Family/Baby/BabyNewBornHelath";
 import BabyProfileForm1 from "../Components/BabyProfileComponents/BabyProfileForm1";
 import BabyDetails from "../Pages/Family/Baby/BabyDetails";
-
 import PregnancyRegistration from "../Pages/Midwife/PregnancyRegistration";
 import BabyRegistrationForm2 from "../Pages/Family/Baby/RegistrationPage/BabyRegistration/BabyRegistrationForm2";
 import BabyRegistrationForms from "../Pages/Family/Baby/RegistrationPage/BabyRegistration/BabyRegistrationForms";
 import VogRegisterdBabies from "../Pages/VOGDoctor/VogRegisterdBabies";
+import Profile from "../Pages/Family/Profile";
+import Print from "../Pages/Family/Print";
+import FamilyProfile from "../Pages/Midwife/FamilyProfile";
 import AddRefferal from "../Pages/VOGDoctor/AddRefferal";
 import SpecialMsgDisplay from "../Pages/SpecialMsgDisplay";
 import RegisteredPregMothers from "../Pages/Midwife/RegisteredPregnancyMothers";
@@ -70,13 +70,24 @@ import DeliveryCare from "../Pages/Midwife/MidwifePregnancyForms/DeliveryCare";
 import PostpartumFieldCare from "../Pages/Midwife/MidwifePregnancyForms/PostpartumFieldCare";
 import IECMaterial from "../Pages/Midwife/MidwifePregnancyForms/IECMaterial";
 import ChatForum from "../Pages/ChatForum";
+
 import DentistDashbord from "../Pages/dentist/DentistDashbord";
 import DentalCare from "../Pages/dentist/DentalCare";
 import DentalShow from "../Pages/dentist/DentalShow";
 
+import MidwifeRemarkEligibleForm from "../Pages/Midwife/MidwifeRemarkEligibleForm";
+
+import MOHRemarkEligibleForm from "../Pages/MohDoctor/MOHDoctorRemarkEligibleForm";
+import FilledByMidwife from "../Pages/Midwife/FilledByMidwifeRemark";
+
+import RegisteredPregnantMothersMoh from "../Pages/MohDoctor/MohDrPregnancyForms/RegisteredPregnantMothersMoh";
+import PregnantMotherProfileMoh from "../Pages/MohDoctor/MohDrPregnancyForms/PregnantMotherProfileMoh";
+
+
 
 export const AppRoutes = {
   login: { path: "/login", component: <Login /> },
+  contactUsDetails:{path:"/contactUs", component:<ContactUs/>},
 
   // Home page routes
   home: { path: "/", component: <Home /> },
@@ -113,9 +124,15 @@ export const AppRoutes = {
     component: <FamilyPregnancies />,
   },
   family_Profile: {
-    path: "/family/familyProfile",
-    component: <FamilyProfile />,
+    path: "/family/profile/:id",
+    component: <Profile/>,
   },
+
+  family_print:{
+    path: "/family/profile/print",
+    component: <Print/>,
+  },
+ 
 
   family_baby_profile: {
     path: `/family/babyDashboard/babyProfile/:id`,
@@ -173,6 +190,21 @@ export const AppRoutes = {
     component: <MidwifeEligibleFamilies />,
   },
 
+  midwife_eligible_families_view_family_profile:{
+    path:"/midwife/eligibleFamilies/familyProfile/:id",
+    component:<FamilyProfile/>,
+  },
+
+  midwife_eligible_families_view_family_remark:{
+    path:"midwife/eligibleFamilies/remark/:id",
+    component:<MidwifeRemarkEligibleForm/>,
+  },
+
+  midwife_eligible_families_view_family_filled_by:{
+    path:"midwife/eligibleFamilies/remark/fill/:id",
+    component:<FilledByMidwife/>,
+  },
+
   midwife_pregnancy_registration: {
     path: "/midwife/pregnancyRegistration",
     component: <PregnancyRegistration />,
@@ -180,7 +212,7 @@ export const AppRoutes = {
 
   midwife_registered_pregnant_mothers: {
     path: "/midwife/registeredPregMothers",
-    component: <RegisteredPregMothers />,
+    component: <MidwifePregnancies />,
   },
 
   midwife_pregnant_mother_profile_view: {
@@ -242,11 +274,7 @@ export const AppRoutes = {
     component: <FieldClinicInformationForm />,
   },
 
-  midwife_clinic_care: {
-    path: "/midwife/registeredPregMothers/profileView/clinicCare",
-    component: <ClinicCareInformationForm />,
-  },
-
+  
   midwife_chart_view: {
     path: "/midwife/registeredPregMothers/profileView/chartView",
     component: <ChartView />,
@@ -277,10 +305,7 @@ export const AppRoutes = {
     component: <FamilyPlanningForm />,
   },
 
-  midwife_delivery_care: {
-    path: "/midwife/registeredPregMothers/profileView/deliveryCare",
-    component: <DeliveryCare />,
-  },
+  
 
   midwife_postpartum_care: {
     path: "/midwife/registeredPregMothers/profileView/postpartumCare",
@@ -290,7 +315,7 @@ export const AppRoutes = {
   //moh page routes
   moh: {
     path: "/moh",
-    component: <MOHDashboard />,
+    component: <MOHRemarkEligibleForm/>,
   },
   moh_register: {
     path: "/moh/register",
@@ -364,12 +389,17 @@ export const AppRoutes = {
   },
   mohdoc_pregnat_moms: {
     path: "/mohdrdash/pregnat_moms",
-    component: <MohDrDashboard />,
+    component: <RegisteredPregnantMothersMoh />,
   },
-  mohdoc_babies: {
-    path: "/mohdrdash/babies",
-    component: <MohDrDashboard />,
+  mohdoc_pregnat_moms_profile_view:{
+    path:"/mohdrdash/pregnat_moms/profileView",
+    component:<PregnantMotherProfileMoh/>
   },
+  mohdoc_clinic_care: {
+    path: "/mohdrdash/pregnat_moms/profileView/clinicCare",
+    component: <ClinicCareInformationForm />,
+  },
+
 
   // dental doctor
 
@@ -384,4 +414,11 @@ export const AppRoutes = {
   DentalCare: { 
       path: "/DentistDashbord/DentalShow", 
       component: <DentalShow/> },
+
+  mohdoc_delivery_care: {
+    path: "/mohdrdash/pregnat_moms/profileView/deliveryCare",
+    component: <DeliveryCare />,
+  },
+
+
 };

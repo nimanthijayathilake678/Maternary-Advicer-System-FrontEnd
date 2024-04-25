@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { MdOutlineFamilyRestroom } from "react-icons/md";
 import { MdPregnantWoman } from "react-icons/md";
 import { useLocation } from "react-router-dom";
+import { CgProfile } from "react-icons/cg";
 
 export const family = [
   {
@@ -20,9 +21,9 @@ export const family = [
     icon: <RxDashboard />,
   },
   {
-    name: "Eligible Families",
-    path: "/family/eligibleFamilies",
-    icon: <MdOutlineFamilyRestroom />,
+    name: "My Profile",
+    path: "/family/profile",
+    icon: <CgProfile />,
   },
   {
     name: "Pregnancies",
@@ -78,6 +79,21 @@ export const vog = [
     path: "/vog/add_patients_details",
     icon: <MdPregnantWoman />,
   },
+  {
+    name: "Registerd Babies",
+    path: "/vog/show_registerd_babies",
+    icon: <MdPregnantWoman />,
+  },
+  {
+    name: "New Born Baby",
+    path: "/vog/newbaby",
+    icon: <MdPregnantWoman />,
+  },
+  {
+    name: "New Baby Health",
+    path: "/vog/newbabyhealth",
+    icon: <MdPregnantWoman />,
+  },
 ];
 
 export const midwife = [
@@ -104,24 +120,25 @@ export const midwife = [
 ];
 
 export const moh = [
-  {
-    name: "Home",
-    icon: <HomeRoundedIcon />,
-    path: "/admin",
-  },
+ 
   {
     name: "Dashboard",
     path: "/moh",
     icon: <RxDashboard />,
   },
   {
-    name: "Messeges",
-    path: "/midwife/eligibleFamilies",
+    name: "Register Users",
+    path: "/moh/register",
     icon: <MdOutlineFamilyRestroom />,
   },
   {
-    name: "Summery",
-    path: "/midwife/pregnancies",
+    name: "View Users",
+    path: "/moh/view",
+    icon: <MdPregnantWoman />,
+  },
+  {
+    name: "Clinic Schedule",
+    path: "/moh/clinic",
     icon: <MdPregnantWoman />,
   },
 ];

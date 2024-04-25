@@ -1,127 +1,350 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Stepper from '@mui/material/Stepper';
-import Step from '@mui/material/Step';
-import StepLabel from '@mui/material/StepLabel';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import WifeFamilyHealthInformation from './WifeFamilyHealthInformation';
-import HusbandFamilyHealthInformation from './HusbandFamilyHealthInformation';
+import { useState, useEffect, useRef } from "react";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import { Grid } from "@mui/material";
+import Theme from "../../Components/Theme";
+import { apiClient } from "../../API/ApiServer";
+import useAuth from "../../Hooks/useAuth";
+import Button from "@mui/material/Button";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
 
-const steps = [
-  {
-    label: "Wife's Information",
-    content: <WifeFamilyHealthInformation/>,
-  },
-  {
-    label: "Husband's Information",
-    content:<HusbandFamilyHealthInformation/>,
-  }
-  
-];
+export default function FamilyHealthInformation({
+  handleNext,
+  handleBack,
+}) {
+  const auth = useAuth();
+  const [familyHealthInfo, setFamilyHealthInfo] = useState({
+    w_hypertension: null,
+    w_diabetesMellitus: null,
+    w_heartDiseases: null,
+    w_nervousDisorders: null,
+    w_hemophilia: null,
+    w_thalassemia: null,
+    w_mentalProblems: null,
+    w_twins: null,
+    h_hypertension: null,
+    h_diabetesMellitus: null,
+    h_heartDiseases: null,
+    h_nervousDisorders: null,
+    h_hemophilia: null,
+    h_thalassemia: null,
+    h_mentalProblems: null,
+    h_twins: null,
+    user_id:auth.user.id
+  });
+  const [method, setMethod] = useState("post");
+  const url = "/familyHealth/";
+  const inputRef = useRef(null);
+  const [user, setUser] = useState(auth.user.id);
+  const state = false;
 
-export default function FamilyHealthInformation() {
-  const [activeStep, setActiveStep] = React.useState(0);
-  const [skipped, setSkipped] = React.useState(new Set());
+  useEffect(() => {
+    const getFormData = async () => {
+      try {
+        const response = await apiClient.get("/familyHealth/" + auth.user.id);
+        setFamilyHealthInfo(response?.data);
+        if (response?.data.user_id) {
+          setMethod("put");
+          
+        }
+        console.log("Family Health " + response.data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    getFormData();
+  }, [auth.user.id]);
 
-  const isStepOptional = (step) => {
-    return step === 1;
-  };
+  useEffect(() => {
 
-  const isStepSkipped = (step) => {
-    return skipped.has(step);
-  };
-
-  const handleNext = () => {
-    let newSkipped = skipped;
-    if (isStepSkipped(activeStep)) {
-      newSkipped = new Set(newSkipped.values());
-      newSkipped.delete(activeStep);
+    if (inputRef.current && inputRef.current.value !== "") {
+      inputRef.current.focus();
     }
+  }, [familyHealthInfo]);
 
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    setSkipped(newSkipped);
-  };
-
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
-
-  const handleSkip = () => {
-    if (!isStepOptional(activeStep)) {
-      throw new Error("You can't skip a step that isn't optional.");
-    }
-
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    setSkipped((prevSkipped) => {
-      const newSkipped = new Set(prevSkipped.values());
-      newSkipped.add(activeStep);
-      return newSkipped;
+  const handleChange = (e) => {
+    const { name, checked } = e.target;
+    setFamilyHealthInfo({
+      ...familyHealthInfo ,
+      [name]: checked,
     });
   };
 
-  const handleReset = () => {
-    setActiveStep(0);
+  console.log("Method " +method);
+  const handleClick = () => {
+    handleNext(url, method, familyHealthInfo, user,state);
   };
 
+  const theme = Theme();
+  
   return (
-    <Box sx={{ width: '100%' }}>
-      <Stepper activeStep={activeStep} alternativeLabel>
-        {steps.map((step, index) => {
-          const stepProps = {};
-          const labelProps = {};
-          if (isStepOptional(index)) {
-            labelProps.optional = (
-              <Typography variant="caption">Optional</Typography>
-            );
-          }
-          if (isStepSkipped(index)) {
-            stepProps.completed = false;
-          }
-          return (
-            <Step key={index} {...stepProps}>
-              <StepLabel {...labelProps}>{step.label}</StepLabel>
-            </Step>
-          );
-        })}
-      </Stepper>
-      <Box>
-        {activeStep === steps.length ? (
-          <React.Fragment>
-            <Typography sx={{ mt: 2, mb: 1 }}>
-              All steps completed - you&apos;re finished
-            </Typography>
-            <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
-              <Box sx={{ flex: '1 1 auto' }} />
-              <Button onClick={handleReset}>Reset</Button>
-            </Box>
-          </React.Fragment>
-        ) : (
-          <React.Fragment>
-            <Typography sx={{ mt: 2, mb: 1 }}>{steps[activeStep].content}</Typography>
-            <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
-              <Button
-                color="inherit"
-                disabled={activeStep === 0}
-                onClick={handleBack}
-                sx={{ mr: 1 }}
-              >
-                Back
-              </Button>
-              <Box sx={{ flex: '1 1 auto' }} />
-              {isStepOptional(activeStep) && (
-                <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
-                  Skip
-                </Button>
-              )}
+    <div>
+      {/* Personal Information Form */}
+      <Box
+        component="form"
+        sx={{
+          "& .MuiTextField-root": { m: 1 },
+          paddingY: 10,
+        }}
+        noValidate
+        autoComplete="off"
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        height="auto"
+        flexDirection="column"
+      >
+        <Typography variant="h6" sx={{ fontWeight: "bold", color: "#00A9BB",paddingBottom:"1em", paddingTop: "3em"  }}>
+          Wife Information
+        </Typography>
+        <Grid container spacing={6} sx={{ width: "90%" }}>
+            <Grid
+              item
+              xs={12}
+              sx={{
+                fontStyle: "italic",
+                fontSize: "0.7rem",
+                fontWeight: "bold",
+                padding: "4em 1em 0em 1em !important",
+              }}
+            >
+              <span>
+                {" "}
+                It is important to know about certain medical conditions that
+                your mother, father or blood relatives have had because you may
+                be at risk of developing the same condition. It will allow you
+                to pay special attention to it during pregnancy and in addition,
+                it will help you and your children to avoid or minimize these
+                disesses.
+              </span>
+            </Grid>
 
-              <Button onClick={handleNext}>
-                {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-              </Button>
-            </Box>
-          </React.Fragment>
-        )}
+            <Grid
+              item
+              xs={12}
+              sx={{
+                fontStyle: "italic",
+                fontSize: "0.7rem",
+                fontWeight: "bold",
+                padding: "1em 1em 0em 1em !important",
+              }}
+            >
+              <span>
+                {" "}
+                Are your parents or siblings suffering from the following
+                diseases ?
+              </span>
+            </Grid>
+            <Grid item xs={6} sx={{ padding: "1em 1em 0em 1em !important" }}>
+              <FormControlLabel
+                control={<Checkbox size="small" />}
+                label="Hypertension"
+                onChange={handleChange}
+                name="w_hypertension"
+              />
+            </Grid>
+
+            <Grid item xs={6} sx={{ padding: "1em 1em 0em 1em !important" }}>
+              <FormControlLabel
+                control={<Checkbox size="small" />}
+                label="Diabetes Mellitus"
+                onChange={handleChange}
+                name="w_diabetesMellitus"
+              />
+            </Grid>
+
+            <Grid item xs={6} sx={{ padding: "1em 1em 0em 1em !important" }}>
+              <FormControlLabel
+                control={<Checkbox size="small" />}
+                label="Heart Diseases"
+                onChange={handleChange}
+                name="w_heartDiseases"
+              />
+            </Grid>
+
+            <Grid item xs={6} sx={{ padding: "1em 1em 0em 1em !important" }}>
+              <FormControlLabel
+                control={<Checkbox size="small" />}
+                label="Nervous disorders"
+                onChange={handleChange}
+                name="w_nervousDisorders"
+              />
+            </Grid>
+
+            <Grid item xs={6} sx={{ padding: "1em 1em 0em 1em !important" }}>
+              <FormControlLabel
+                control={<Checkbox size="small" />}
+                label="Hemophilia"
+                onChange={handleChange}
+                name="w_hemophilia"
+              />
+            </Grid>
+
+            <Grid item xs={6} sx={{ padding: "1em 1em 0em 1em !important" }}>
+              <FormControlLabel
+                control={<Checkbox size="small" />}
+                label="Thalassemia"
+                onChange={handleChange}
+                name="w_thalassemia"
+              />
+            </Grid>
+
+            <Grid item xs={6} sx={{ padding: "1em 1em 0em 1em !important" }}>
+              <FormControlLabel
+                control={<Checkbox size="small" />}
+                label="A history of mental illness or suicide"
+                onChange={handleChange}
+                name="w_mentalProblems"
+              />
+            </Grid>
+
+            <Grid item xs={6} sx={{ padding: "1em 1em 0em 1em !important" }}>
+              <FormControlLabel
+                control={<Checkbox size="small" />}
+                label="Twins"
+                onChange={handleChange}
+                name="w_twins"
+              />
+            </Grid>
+          </Grid>
+
+          <Typography variant="h6"sx={{ fontWeight: "bold", color: "#00A9BB",paddingBottom:"3em", paddingTop: "3em"  }}>
+          Husband Information
+        </Typography>
+        <Grid container spacing={6} sx={{ width: "90%" }}>
+
+            <Grid
+              item
+              xs={12}
+              sx={{
+                fontStyle: "italic",
+                fontSize: "0.7rem",
+                fontWeight: "bold",
+                padding: "1em 1em 0em 1em !important",
+              }}
+            >
+              <span>
+                {" "}
+                Are your parents or siblings suffering from the following
+                diseases ?
+              </span>
+            </Grid>
+            <Grid item xs={6} sx={{ padding: "1em 1em 0em 1em !important" }}>
+              <FormControlLabel
+                control={<Checkbox size="small" />}
+                label="Hypertension"
+                onChange={handleChange}
+                name="h_hypertension"
+              />
+            </Grid>
+
+            <Grid item xs={6} sx={{ padding: "1em 1em 0em 1em !important" }}>
+              <FormControlLabel
+                control={<Checkbox size="small" />}
+                label="Diabetes Mellitus"
+                onChange={handleChange}
+                name="h_diabetesMellitus"
+              />
+            </Grid>
+
+            <Grid item xs={6} sx={{ padding: "1em 1em 0em 1em !important" }}>
+              <FormControlLabel
+                control={<Checkbox size="small" />}
+                label="Heart Diseases"
+                onChange={handleChange}
+                name="h_heartDiseases"
+              />
+            </Grid>
+
+            <Grid item xs={6} sx={{ padding: "1em 1em 0em 1em !important" }}>
+              <FormControlLabel
+                control={<Checkbox size="small" />}
+                label="Nervous disorders"
+                onChange={handleChange}
+                name="h_nervousDisorders"
+              />
+            </Grid>
+
+            <Grid item xs={6} sx={{ padding: "1em 1em 0em 1em !important" }}>
+              <FormControlLabel
+                control={<Checkbox size="small" />}
+                label="Hemophilia"
+                onChange={handleChange}
+                name="h_hemophilia"
+              />
+            </Grid>
+
+            <Grid item xs={6} sx={{ padding: "1em 1em 0em 1em !important" }}>
+              <FormControlLabel
+                control={<Checkbox size="small" />}
+                label="Thalassemia"
+                onChange={handleChange}
+                name="h_thalassemia"
+              />
+            </Grid>
+
+            <Grid item xs={6} sx={{ padding: "1em 1em 0em 1em !important" }}>
+              <FormControlLabel
+                control={<Checkbox size="small" />}
+                label="A history of mental illness or suicide"
+                onChange={handleChange}
+                name="h_mentalProblems"
+              />
+            </Grid>
+
+            <Grid item xs={6} sx={{ padding: "1em 1em 0em 1em !important" }}>
+              <FormControlLabel
+                control={<Checkbox size="small" />}
+                label="Twins"
+                onChange={handleChange}
+                name="h_twins"
+              />
+            </Grid>
+          </Grid>
+
+
+
       </Box>
-    </Box>
+      <Box sx={{ mb: 2 }}>
+        <div>
+          <Button
+            variant="contained"
+            onClick={handleClick}
+            sx={{
+              mt: 1,
+              mr: 1,
+              color: "White",
+              "&": {
+                backgroundColor: theme.palette.primary.main,
+              },
+              "&:hover": {
+                backgroundColor: theme.palette.secondary.main,
+              },
+            }}
+          >
+            Continue
+          </Button>
+          <Button
+            onClick={handleBack}
+            sx={{
+              mt: 1,
+              mr: 1,
+              color: "White",
+              "&": {
+                backgroundColor: theme.palette.primary.main,
+              },
+              "&:hover": {
+                backgroundColor: theme.palette.secondary.main,
+              },
+            }}
+          >
+            Back
+          </Button>
+        </div>
+      </Box>
+    </div>
   );
 }

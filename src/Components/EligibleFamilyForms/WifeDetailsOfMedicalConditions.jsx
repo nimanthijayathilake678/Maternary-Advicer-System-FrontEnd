@@ -65,7 +65,7 @@ function WifeDetailsOfMedicalConditions() {
   //onSubmit={handleSubmit}
   return (
     <div>
-      <form>
+   
         <Box
           component="form"
           sx={{
@@ -409,7 +409,7 @@ function WifeDetailsOfMedicalConditions() {
             </Grid>
           </Grid>
         </Box>
-      </form>
+      
     </div>
   );
 }

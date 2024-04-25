@@ -12,8 +12,10 @@ import { useNavigate } from "react-router-dom";
 import Nav from "../../Components/Nav";
 import DisplaySidebar from "../../Components/DisplaySidebar";
 import { useParams } from "react-router-dom";
+import Header from "../../Components/Header";
 
 const columns = [
+  { id: "id", label: "Id", minWidth: 170 },
   { id: "pId", label: "Pregnancy Id", minWidth: 170 },
   { id: "cId", label: "Couple Id", minWidth: 170 },
   { id: "motherName", label: "Mother Name", minWidth: 170 },
@@ -23,18 +25,28 @@ const columns = [
   { id: "action", label: "Action", minWidth: 170 }, // New column for action button
 ];
 
-function createData(pId, cId, motherName, address, email, telephoneNo) {
-  return { pId, cId, motherName, address, email, telephoneNo };
+function createData(id,pId, cId, motherName, address, email, telephoneNo) {
+  return { id,pId, cId, motherName, address, email, telephoneNo };
 }
 
 const rows = [
   createData(
+    "1",
     "12345",
     "27203",
-    "Jhon Deo",
-    "A67/1,Wallamadama,Mathara",
-    "jhondeo@gmail.com",
+    "Asani Fernando",
+    "67/1,Wallamadama,Matara",
+    "asani@gmail.com",
     "0771234567"
+  ),
+  createData(
+    "2",
+    "5641",
+    "12563",
+    "Wasana Perera",
+    "124,Meddawatte,Matara",
+    "wasanap@gmail.com",
+    "0772051833"
   ),
 ];
 
@@ -63,20 +75,24 @@ const RegisteredPregMothers = () => {
 
   return (
     <div>
-      {/* <DisplaySidebar/> */}
+      <DisplaySidebar/>
+      
       <div className="pt-10 px-10 c">
-      <DisplaySidebar />
+      {/* <DisplaySidebar /> */}
         <div className="flex relative items-center">
-          <div>
+        {/* <div>
+        <Header title="Registered Pregnant Mothers"/>
+        </div> */}
+          <div ml={20}>
             <span className=" text-xl  text-[#2A777C] text-center font-bold ">
-              Eligible Families
+            Registered Pregnant 
             </span>
           </div>
         </div>
 
         <div className="bottom-0 right-0"></div>
 
-        <Paper className="mt-5" sx={{ width: "100%", overflow: "hidden" }}>
+        <Paper className="mt-5" sx={{ width: "100%", overflow: "hidden" , marginLeft:"20px"}}>
           <TableContainer sx={{ maxHeight: 440 }}>
             <Table stickyHeader aria-label="sticky table">
               <TableHead>

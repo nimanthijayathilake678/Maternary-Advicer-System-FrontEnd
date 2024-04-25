@@ -15,7 +15,7 @@ function RadioInputGroup({ label, options, disabled }) {
       <Grid item xs={6} sx={{ padding: "1em 1em 0em 1em !important" }}>
         <FormControl>
           <FormLabel id={`radio-group-label-${label}`}>{label}</FormLabel>
-          <RadioGroup row aria-labelledby={`radio-group-label-${label}`} name={`row-radio-buttons-group-${label}`} 
+          <RadioGroup row aria-labelledby={`radio-group-label-${label}`} style={{color:"black"}} name={`row-radio-buttons-group-${label}`} 
            disabled={disabled}>
             {options.map((option, index) => (
               <FormControlLabel key={index} value={option.value} control={<Radio />} label={option.label} disabled={disabled}/>
@@ -80,7 +80,7 @@ const ClinicCareInformationForm = () => {
             flexDirection="column"
         >
 
-        <Grid container spacing={2}   sx={{ width: "90%" }}>
+        <Grid container spacing={2}   sx={{ width: "90%" }} border={1} borderColor="primary.main" borderRadius={3}>
 
             <Grid item xs={12} sx={{ padding: "1em 1em 0em 1em !important" }}>
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -117,7 +117,7 @@ const ClinicCareInformationForm = () => {
             </Grid>
         
             <Grid container spacing={1} item xs={12} mt={1} sx={{ padding: "1em 1em 0em 1em !important" }}>
-                    <Typography ml={1}>Urine</Typography>
+                    <Typography ml={1} style={{color:"black"}}>Urine</Typography>
                     <Grid item xs={3} sx={{ padding: "1em 1em 0em 1em !important" }}>
                         <TextField
                         required
@@ -145,7 +145,7 @@ const ClinicCareInformationForm = () => {
                 </Grid>
 
                 <Grid item xs={6} sx={{ padding: "1em 1em 0em 1em !important" }}>
-                    <Typography  mb={5}>Blood Pressure</Typography>
+                    <Typography  mb={5} style={{color:"black"}}>Blood Pressure</Typography>
                     <Slider
       
                         aria-label="Temperature"

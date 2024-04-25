@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 
-export default function EducationalDropDown() {
+export default function BloodDropDown() {
   return (
     <Autocomplete
       id="country-select-demo"
@@ -20,7 +20,7 @@ export default function EducationalDropDown() {
       renderInput={(params) => (
         <TextField
           {...params}
-          label="Educational Level"
+          label="Blood Type and Rhesus Factor "
           inputProps={{
             ...params.inputProps,
             autoComplete: 'new-password', // disable autocomplete and autofill
@@ -32,11 +32,13 @@ export default function EducationalDropDown() {
 }
 
 const countries = [
-  {label: 'No Education'},
-  {label: 'Until 0-5 years'},
-  {label: 'Until 6-11 years'},
-  {label: 'Over 11 years'},
-  {label: 'Until 6-11 years'},
-  {label: 'Higher Education (Graduate or Diploma)'},
+  {label: 'A+'},
+  {label: 'A-'},
+  {label: 'B+'},
+  {label: 'B-'},
+  {label: 'O+'},
+  {label: 'O-'},
+  {label: 'AB+'},
+  {label: 'AB-'},
   
 ];

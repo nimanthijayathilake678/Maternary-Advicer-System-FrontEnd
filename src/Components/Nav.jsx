@@ -150,7 +150,7 @@ const Nav = () => {
                 </div>
                 {!user ? (
                   <Button
-                    to="./login"
+                    to="/login"
                     component={Link}
                     variant="contained"
                     sx={{ backgroundColor: "#00A9BB" }}

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { TextField, Button, Box } from "@mui/material";
 import Grid from "@mui/material/Grid";
-import SideBar from "../../Components/SideBar";
+
 import { Formik, Form, } from "formik";
 import { hospitalCareSchema } from "../Validations/validation";
 import { Link } from "react-router-dom";
@@ -9,6 +9,7 @@ import  {
   addClinicDetails
 } from "../../Services/addClinicDetails";
 import SuccessAlert from "../../Components/SuccessMsg";
+import SideBar from "../../Components/DisplaySidebar";
 
 function AddPatientsDetails() {
   const [showSuccessAlert, setShowSuccessAlert] = useState(false);
@@ -16,35 +17,54 @@ function AddPatientsDetails() {
     <>
     <Formik
       initialValues={{
-        pregnancyRegNo: "",
-        eligibilityRegNo: "",
+        pregnancyId: "",
+        eligibleId: "",
         poa: "",
         urine: "",
         oedema: "",
-        bloodPressure: "",
-        fundalHeight: "",
+        bloodpressure: "",
+        fundalheight: "",
         foetalLie: "",
         presentation: "",
         fm: "",
         fhs: "",
         ebw: "",
         crl: "",
-        gestSac: "",
+        gestsac: "",
         bpd: "",
         hc: "",
         ac: "",
         fl: "",
         liqour: "",
         placenta: "",
-        averagePOA: "",
+        averagepoa: "",
         anyother: "",
-        nextVisitDate: "",
-        doctorId: "",
+        nextvisitdate: "",
+        doctorid: "",
         designation: "",
       }}
       enableReinitialize={true}
       validationSchema={hospitalCareSchema}
       validateOnChange={false}
+      onSubmit={async (values, { setSubmitting, resetForm }) => {
+        try {
+          const response = await addClinicDetails(values);
+
+          if (response.status === 200) {
+            console.log("success");
+            setShowSuccessAlert(true);
+            resetForm(); // Reset the form after successful submission
+          }
+          console.log(response);
+        } catch (error) {
+          console.error("Error submitting form:", error.message);
+        } finally {
+          setSubmitting(false);
+        }
+      }}
+
+/*
+
       onSubmit={async (values, { setSubmitting }) => {
         try {
           const response = await addClinicDetails(values);
@@ -57,8 +77,8 @@ function AddPatientsDetails() {
         } catch (error) {
           console.error("Error submitting form:", error.message);
         }
-      }}
-    >
+      }} */
+    >     
       {({
         handleChange,
         values,
@@ -105,14 +125,14 @@ function AddPatientsDetails() {
                     <TextField
                       fullWidth
                       label="Pregnancy Registration Number"
-                      name="pregnancyRegNo"
-                      value={values.pregnancyRegNo}
+                      name="pregnancyId"
+                      value={values.pregnancyId}
                       onChange={handleChange}
                       error={
-                        touched.pregnancyRegNo && Boolean(errors.pregnancyRegNo)
+                        touched.pregnancyId && Boolean(errors.pregnancyId)
                       }
                       helperText={
-                        touched.pregnancyRegNo && errors.pregnancyRegNo
+                        touched.pregnancyId && errors.pregnancyId
                       }
                     />
                   </Grid>
@@ -120,15 +140,15 @@ function AddPatientsDetails() {
                     <TextField
                       fullWidth
                       label="Eligibility Registration Number"
-                      name="eligibilityRegNo"
-                      value={values.eligibilityRegNo}
+                      name="eligibleId"
+                      value={values.eligibleId}
                       onChange={handleChange}
                       error={
-                        touched.eligibilityRegNo &&
-                        Boolean(errors.eligibilityRegNo)
+                        touched.eligibleId &&
+                        Boolean(errors.eligibleId)
                       }
                       helperText={
-                        touched.eligibilityRegNo && errors.eligibilityRegNo
+                        touched.eligibleId && errors.eligibleId
                       }
                     />
                   </Grid>
@@ -170,26 +190,26 @@ function AddPatientsDetails() {
                     <TextField
                       fullWidth
                       label="Blood Pressure"
-                      name="bloodPressure"
-                      value={values.bloodPressure}
+                      name="bloodpressure"
+                      value={values.bloodpressure}
                       onChange={handleChange}
                       error={
-                        touched.bloodPressure && Boolean(errors.bloodPressure)
+                        touched.bloodpressure && Boolean(errors.bloodpressure)
                       }
-                      helperText={touched.bloodPressure && errors.bloodPressure}
+                      helperText={touched.bloodpressure && errors.bloodpressure}
                     />
                   </Grid>
                   <Grid item xs={12} sm={4}>
                     <TextField
                       fullWidth
                       label="Fundal Height"
-                      name="fundalHeight"
-                      value={values.fundalHeight}
+                      name="fundalheight"
+                      value={values.fundalheight}
                       onChange={handleChange}
                       error={
-                        touched.fundalHeight && Boolean(errors.fundalHeight)
+                        touched.fundalheight && Boolean(errors.fundalheight)
                       }
-                      helperText={touched.fundalHeight && errors.fundalHeight}
+                      helperText={touched.fundalheight && errors.fundalheight}
                     />
                   </Grid>
                   <Grid item xs={12} sm={4}>
@@ -264,11 +284,11 @@ function AddPatientsDetails() {
                     <TextField
                       fullWidth
                       label="GestSac (Gestational Sac)"
-                      name="gestSac"
-                      value={values.gestSac}
+                      name="gestsac"
+                      value={values.gestsac}
                       onChange={handleChange}
-                      error={touched.gestSac && Boolean(errors.gestSac)}
-                      helperText={touched.gestSac && errors.gestSac}
+                      error={touched.gestsac && Boolean(errors.gestsac)}
+                      helperText={touched.gestsac && errors.gestsac}
                     />
                   </Grid>
                   <Grid item xs={12} sm={4}>
@@ -341,11 +361,11 @@ function AddPatientsDetails() {
                     <TextField
                       fullWidth
                       label="AveragePOA"
-                      name="averagePOA"
-                      value={values.averagePOA}
+                      name="averagepoa"
+                      value={values.averagepoa}
                       onChange={handleChange}
-                      error={touched.averagePOA && Boolean(errors.averagePOA)}
-                      helperText={touched.averagePOA && errors.averagePOA}
+                      error={touched.averagepoa && Boolean(errors.averagepoa)}
+                      helperText={touched.averagepoa && errors.averagepoa}
                     />
                   </Grid>
                   <Grid item xs={12} sm={4}>
@@ -364,25 +384,25 @@ function AddPatientsDetails() {
                     <TextField
                       fullWidth
                       label="NextVisitDate "
-                      name="nextVisitDate"
+                      name="nextvisitdate"
                       type="date"
-                      value={values.nextVisitDate}
+                      value={values.nextvisitdate}
                       onChange={handleChange}
                       error={
-                        touched.nextVisitDate && Boolean(errors.nextVisitDate)
+                        touched.nextvisitdate && Boolean(errors.nextvisitdate)
                       }
-                      helperText={touched.nextVisitDate && errors.nextVisitDate}
+                      helperText={touched.nextvisitdate && errors.nextvisitdate}
                     />
                   </Grid>
                   <Grid item xs={12} sm={4}>
                     <TextField
                       fullWidth
                       label="DoctorId"
-                      name="doctorId"
-                      value={values.doctorId}
+                      name="doctorid"
+                      value={values.doctorid}
                       onChange={handleChange}
-                      error={touched.doctorId && Boolean(errors.doctorId)}
-                      helperText={touched.doctorId && errors.doctorId}
+                      error={touched.doctorid && Boolean(errors.doctorid)}
+                      helperText={touched.doctorid && errors.doctorid}
                     />
                   </Grid>
 

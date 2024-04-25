@@ -45,15 +45,15 @@ export const userRegistrationSchema = Yup.object({
 });
 
 export const hospitalCareSchema = Yup.object({
-  pregnancyRegNo: Yup.string().required(
+  pregnancyId: Yup.string().required(
     "Pregnancy Registration Number is required"
   ),
-  eligibilityRegNo: Yup.string().required(
+  eligibleId: Yup.string().required(
     "Eligibility Registration Number is required"
   ),
-  nextVisitDate: Yup.string().required("Date is required"),
+  nextvisitdate: Yup.string().required("Date is required"),
 
- doctorId: Yup.string().required("Doctor ID is required"),
+ doctorid: Yup.string().required("Doctor ID is required"),
  designation: Yup.string().required("Designation is required"),
 });
 
@@ -63,6 +63,12 @@ export const babyRegistrationSchema2 = Yup.object({
   wayOfBirth: Yup.string().required("Birth way is required"),
   headSizeAtBirth: Yup.string().required("Birth head size is required"),
   lengthAtBirth: Yup.string().required("Birth length is required"),
+});
+
+
+export const wifePersonalInfoSchema = Yup.object({
+  w_date_of_birth: Yup.date().required("Date of birth required"),
+  w_Occupation: Yup.string().required("Occupation is required"),
 });
 
 export const addRefferalSchema = Yup.object({
