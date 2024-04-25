@@ -1,11 +1,10 @@
  
-
+/*
   .element{
-  /* justify-content: center;
-  align-items: center; */
+  
   margin-left: auto;
   margin-right: auto;
-  /* padding-left: 4.6vw; */
+ 
 }
 
 .MuiFormControl-root {
@@ -16,7 +15,7 @@
 .MuiStack-root .MuiFormControl-root .MuiFormLabel-root {
   font-weight:400;
   font-size: 1.3rem;
-  /* color: rgb(21, 10, 6); */
+ 
   line-height: 10.em;
 }
 
@@ -37,8 +36,8 @@
 
 .MuiFormControl-root .MuiInputBase-root{
   border-radius: 10px;
-  /* border-color: black; */
-  /* background-color:RGB(253, 245, 246); */
+  
   background-color: #e4feff;
   border: 3px solid #00a9bb;
 }
+*/

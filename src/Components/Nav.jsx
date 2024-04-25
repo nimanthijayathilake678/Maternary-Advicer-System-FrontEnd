@@ -30,8 +30,8 @@ const Nav = () => {
     },
     {
       name: "Resource",
-      href: "/resource",
-      current: location.pathname === "/resource",
+      href: "/pregnancy",
+      current: location.pathname === "/pregnancy",
     },
   ];
 
@@ -226,7 +226,7 @@ const Nav = () => {
                         <Menu.Item>
                           {({ active }) => (
                             <a
-                              href="#"
+                              href="/login"
                               className={classNames(
                                 active ? "bg-[#00A9BB]" : "",
                                 "block px-4 py-2 text-sm text-gray-700"

@@ -180,12 +180,7 @@ const MidwifeDashboard = () => {
                 </div>
               </div> */}
 
-              <div className="cards">
-                <div className="card-inner">
-                  <h6>SUMMARY REPORTS</h6>
-                  <Lottie style={{ height: 70 }} animationData={reports} />
-                </div>
-              </div>
+              
             </div>
           </Box>
         </div>
