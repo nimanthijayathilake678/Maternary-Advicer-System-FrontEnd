@@ -23,10 +23,10 @@ const rows = [
   createData("Diabetes Mellitus",<ClearSharpIcon sx={{color:'red'}}/>,<ClearSharpIcon sx={{color:'red'}}/>),
   createData("Heart Diseases",<DoneSharpIcon sx={{color:'green'}}/>,<ClearSharpIcon sx={{color:'red'}}/>),
   createData("Nervous Disorders",<DoneSharpIcon sx={{color:'green'}}/>,<ClearSharpIcon sx={{color:'red'}}/>),
-  createData("Hemophilia"),
-  createData("Thalassemia"),
-  createData("A history of mental illness or suicide"),
-  createData("Twins")
+  createData("Hemophilia",<DoneSharpIcon sx={{color:'green'}}/>,<ClearSharpIcon sx={{color:'red'}}/>),
+  createData("Thalassemia",<DoneSharpIcon sx={{color:'green'}}/>,<ClearSharpIcon sx={{color:'red'}}/>),
+  createData("A history of mental illness or suicide",<DoneSharpIcon sx={{color:'green'}}/>,<ClearSharpIcon sx={{color:'red'}}/>),
+  createData("Twins",<DoneSharpIcon sx={{color:'green'}}/>,<ClearSharpIcon sx={{color:'red'}}/>),
 ];
 
 export default function ProfileFamilyHealth(prop) {
