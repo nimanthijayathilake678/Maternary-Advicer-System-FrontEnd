@@ -70,6 +70,11 @@ import DeliveryCare from "../Pages/Midwife/MidwifePregnancyForms/DeliveryCare";
 import PostpartumFieldCare from "../Pages/Midwife/MidwifePregnancyForms/PostpartumFieldCare";
 import IECMaterial from "../Pages/Midwife/MidwifePregnancyForms/IECMaterial";
 import ChatForum from "../Pages/ChatForum";
+
+import DentistDashbord from "../Pages/dentist/DentistDashbord";
+import DentalCare from "../Pages/dentist/DentalCare";
+import DentalShow from "../Pages/dentist/DentalShow";
+
 import MidwifeRemarkEligibleForm from "../Pages/Midwife/MidwifeRemarkEligibleForm";
 
 import MOHRemarkEligibleForm from "../Pages/MohDoctor/MOHDoctorRemarkEligibleForm";
@@ -77,6 +82,7 @@ import FilledByMidwife from "../Pages/Midwife/FilledByMidwifeRemark";
 
 import RegisteredPregnantMothersMoh from "../Pages/MohDoctor/MohDrPregnancyForms/RegisteredPregnantMothersMoh";
 import PregnantMotherProfileMoh from "../Pages/MohDoctor/MohDrPregnancyForms/PregnantMotherProfileMoh";
+
 
 
 export const AppRoutes = {
@@ -393,9 +399,26 @@ export const AppRoutes = {
     path: "/mohdrdash/pregnat_moms/profileView/clinicCare",
     component: <ClinicCareInformationForm />,
   },
+
+
+  // dental doctor
+
+  DentistDashbord: {
+     path: "/DentistDashbord",
+     component: <DentistDashbord/> },
+
+  DentalCare: { 
+     path: "/DentistDashbord/DentalCare", 
+     component: <DentalCare/> },
+  
+  DentalCare: { 
+      path: "/DentistDashbord/DentalShow", 
+      component: <DentalShow/> },
+
   mohdoc_delivery_care: {
     path: "/mohdrdash/pregnat_moms/profileView/deliveryCare",
     component: <DeliveryCare />,
   },
+
 
 };
