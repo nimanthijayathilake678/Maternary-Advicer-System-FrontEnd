@@ -25,12 +25,12 @@ const rows = [
   createData("Exposed to Metals like lead",<ClearSharpIcon sx={{color:'red'}}/>,<ClearSharpIcon sx={{color:'red'}}/>),
   createData("Exposed to radiant like X ray",<DoneSharpIcon sx={{color:'green'}}/>,<ClearSharpIcon sx={{color:'red'}}/>),
   createData("Exposed to temperature conditions",<DoneSharpIcon sx={{color:'green'}}/>,<ClearSharpIcon sx={{color:'red'}}/>),
-  createData("Live or work in a noisy environment with lots of noise"),
-  createData("Have financial management"),
-  createData("Clean Water"),
-  createData("Toilet facilities"),
-  createData("Facilities for proper waste disposal"),
-  createData("Hazardous conditions in the environment around your home or in the garden that could cause accidents")
+  createData("Live or work in a noisy environment with lots of noise",<ClearSharpIcon sx={{color:'red'}}/>),
+  createData("Have financial management",<ClearSharpIcon sx={{color:'red'}}/>),
+  createData("Clean Water",<ClearSharpIcon sx={{color:'red'}}/>),
+  createData("Toilet facilities",<ClearSharpIcon sx={{color:'red'}}/>),
+  createData("Facilities for proper waste disposal",<ClearSharpIcon sx={{color:'red'}}/>),
+  createData("Hazardous conditions in the environment around your home or in the garden that could cause accidents",<ClearSharpIcon sx={{color:'red'}}/>)
 ];
 
 export default function ProfileHousingAndWorkspace(prop) {
