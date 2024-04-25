@@ -49,7 +49,7 @@ const MidwifeDashboard = () => {
               alignItems="center"
             >
               <Header
-                title="Hello - midwife"
+                title="Hello Midwife"
                 subtitle="Welcome to your dashboard"
               />
 

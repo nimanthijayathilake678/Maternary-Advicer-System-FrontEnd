@@ -34,7 +34,7 @@ const MohDrDashboard = () => {
         <Box ml="20px"  >
             {/* HEADER */}
             <Box display="flex" justifyContent="space-between" alignItems="center">
-                <Header title="Hello - MOH Dr" subtitle="Welcome to your dashboard" />
+                <Header title="Hello MOH Doctor" subtitle="Welcome to your dashboard" />
 
                 {/* SEARCH BOX */}
             <Box display="flex" bgcolor={"#e4e5e2"} borderRadius={"3px"} marginRight={"20px"}>
