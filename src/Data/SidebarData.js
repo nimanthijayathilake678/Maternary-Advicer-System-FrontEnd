@@ -22,7 +22,7 @@ export const family = [
   },
   {
     name: "My Profile",
-    path: "/family/profile",
+    path: "/family/profile/:id",
     icon: <CgProfile />,
   },
   {
