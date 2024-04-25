@@ -66,9 +66,9 @@ const PregnantMotherProfileMoh = () => {
       <Box sx={{ flex: "80%"}}>
             <Grid container item spacing={2}>
                 {/* profile view */}
-                <Grid item xs={4} border={1}  borderRadius={2} mt={0} m={5} bgcolor={'white'}>
+                {/* <Grid item xs={4} border={1}  borderRadius={2} mt={0} m={5} bgcolor={'white'}>
                     <Typography>Profile View</Typography>
-                </Grid>
+                </Grid> */}
 
                 <Grid container  spacing={2} item xs={6} border={1}  borderRadius={2} mt={0} m={5}  bgcolor={'white'}>
 

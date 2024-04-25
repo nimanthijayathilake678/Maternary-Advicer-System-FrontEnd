@@ -30,7 +30,7 @@ const DentistDashbord = () => {
             {/* Main boxes */}
             <div className="main-cards-j">
             
-                <NavLink to="/DentalCare">
+                <NavLink to="/DentistDashbord/DentalCare">
                 <div className="cards-j">
                     <div className="card-inner-j">
                         <h8>ADD DENTAL CARE DETAILS</h8>
@@ -39,7 +39,7 @@ const DentistDashbord = () => {
                 </div>
                 </NavLink>
 
-                <NavLink to="/DentalShow">
+                <NavLink to="/DentistDashbord/DentalShow">
                 <div className="cards-j">
                     <div className="card-inner-j">
                         <h8>SHOW DENTAL CARE DETAILS</h8>

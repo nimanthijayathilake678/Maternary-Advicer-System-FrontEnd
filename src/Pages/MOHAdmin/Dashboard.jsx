@@ -19,8 +19,27 @@ import { getClinicDates } from "../../Services/ClinicSchedule";
 import SuccessAlert from "../../Components/SuccessMsg";
 import admin from "../../Assest/Lottie/adminPanel.json";
 import { FaTrashAlt } from "react-icons/fa";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
+import SideBar from "../../Components/SideBar";
+import { Typography } from "@mui/material";
+import DisplaySidebar from "../../Components/DisplaySidebar";
+
+
+
+
+
+
 
 function MOHDashboard() {
+
+  const VISIBLE_FIELDS = [
+    
+      
+    "area",
+    "description",
+    "starttime",
+    "date"
+];
   const dummyClinicDates = [
     {
       id: 1,
@@ -46,45 +65,48 @@ function MOHDashboard() {
     // Add more dummy data as needed
   ];
 
-  const [clinicDates, setclinicDates] = useState(dummyClinicDates);
+  //const [clinicDates, setclinicDates] = useState(dummyClinicDates);
   const [showSuccessAlert, setShowSuccessAlert] = useState(false);
   //const [search, setSearch] = useState("");
 
+  
+
+  const [customDataset, setCustomDataset] = useState([]);
+
+
   useEffect(() => {
-    loadClinicDates();
-  }, []);
-
-  const loadClinicDates = async () => {
-    try {
-      const response = await getClinicDates();
-
-      if (response.status === 302) {
-        console.log("success");
-        setShowSuccessAlert(true);
+    const fetchData = async () => {
+      try {
+        const response = await getClinicDates();
+        // Check if the response is a redirection (status code 3xx)
+        if (response.status >= 300 && response.status < 400) {
+          // Get the new location from the "Location" header
+          const newLocation = response.headers.location;
+          // Make another request to the new location
+          const newDataResponse = await axios.get(newLocation);
+          // Process the new data response
+          const newData = newDataResponse.data;
+          // Update state or do other actions with the new data
+          setCustomDataset(newData);
+        } else {
+          // If it's not a redirection, process the response as usual
+          const data = response.data.map((row, index) => ({
+            id: index + 1,
+            ...row,
+          }));
+          setCustomDataset(data);
+        }
+      } catch (error) {
+        console.log("Error getting data:", error);
       }
-      console.log(response);
-    } catch (error) {
-      console.error("Error submitting form:", error.message);
-    }
-
-    const result = await axios.get("http://localhost:8080/clinicDate", {
-      validateStatus: () => {
-        return true;
-      },
-    });
-    if (result.status === 302) {
-      setclinicDates(result.data);
-    }
-  };
-
-  const handleDelete = async (id) => {
-    await axios.delete(`http://localhost:8080/clinicDate/delete/${id}`);
-    loadClinicDates();
-  };
+    };
+    fetchData();
+  }, []);
+ 
 
   return (
-    <>
-      <Nav />
+    <div style={{display:"flex"}}>
+      <DisplaySidebar />
       <Box ml="20px">
         {/* HEADER */}
         <Box display="flex" justifyContent="space-between" alignItems="center">
@@ -104,7 +126,7 @@ function MOHDashboard() {
           <div className="main-cards">
             <NavLink to="/moh/register" className="card">
               <div className="card-inner">
-                <h3>Register Users</h3>
+                <h3>User Register</h3>
                 <div>
                   <Lottie style={{ height: 80 }} animationData={DBMS} />
                 </div>
@@ -134,53 +156,47 @@ function MOHDashboard() {
             <div className="calender">
               <Calendar />
             </div>
-            <div className="table-clinicDate">
-              <div style={{color:"#fff" , fontSize:"25px", paddingLeft:"160px"}}>
-                <h1>Clinic Details</h1>
-              </div>
-              <table className="table table-bordered table-hover shadow">
-                <thead>
-                  <tr className="text-center">
-                    <th className="th1">ID</th>
-                    <th className="th1">Area</th>
-                    <th className="th1">Description</th>
-                    <th className="th1">Date</th>
-                    <th className="th1">Start Time</th>
-                    <th className="th1" colSpan="3">Actions</th>
-                  </tr>
-                </thead>
 
-                <tbody className="text-center">
-                  {clinicDates.map((clinicdate, index) => (
-                    <tr key={clinicdate.id}>
-                      <th className="th1" scope="row" key={index}>
-                        {index + 1}
-                      </th>
-                      <td className="th1">{clinicdate.area}</td>
-                      <td className="th1">{clinicdate.description}</td>
-                      <td className="th1">{clinicdate.date}</td>
-                      <td className="th1">{clinicdate.starttime}</td>
+          
+            <div style={{ flex: 1, overflowX: "hidden" }}>
+          <div style={{ height: "20vh", width: "85%", marginLeft:"50px"}}>
+            <Typography
+              variant="h5"
+              style={{
+                marginBottom: "10px",
+                color: "#2A777C",
+                paddingBottom: "60px",
+                paddingLeft: "10px",
+                paddingTop: "40px",
+              }}
+            >
+              Clinic Dates
+            </Typography>
 
-                      <td className="th1">
-                        <button
-                          className="btn btn-danger"
-                          onClick={() => handleDelete(clinicdate.id)}
-                        >
-                          <FaTrashAlt />
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+            <DataGrid
+              autoHeight
+              rows={customDataset}
+              columns={VISIBLE_FIELDS.map((field) => ({
+                field,
+                headerName: field,
+                width: 130, // Adjust width as needed
+              }))}
+              components={{ Toolbar: GridToolbar }}
+            />
+          </div>
+        </div>
+
+
+
+
+
             <div>
               <Lottie animationData={admin} />
             </div>
           </div>
         </div>
       </Box>
-    </>
+    </div>
   );
 }
 

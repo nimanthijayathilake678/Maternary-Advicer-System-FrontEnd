@@ -10,3 +10,14 @@ export const registerNewUser = async (values) => {
       throw err;
     }
   };
+
+  export const registerUsersView = async (values) => {
+    try {
+      const response = await apiClient.get("/newuser", values);
+      console.log(response);
+      return response;
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
+  };
