@@ -23,10 +23,10 @@ const rows = [
   createData("Take Liquor",<ClearSharpIcon sx={{color:'red'}}/>,<ClearSharpIcon sx={{color:'red'}}/>),
   createData("Take Drugs",<DoneSharpIcon sx={{color:'green'}}/>,<ClearSharpIcon sx={{color:'red'}}/>),
   createData("Passively exposed to other people's smoke at home or at work - Two types of vegetables",<DoneSharpIcon sx={{color:'green'}}/>,<ClearSharpIcon sx={{color:'red'}}/>),
-  createData("An atmosphere at home that is not physically or mentally abusive to you"),
-  createData("Participate daily religious rituals"),
-  createData("Make time for regular exercise"),
-  createData("Make time for hobbies"),
+  createData("An atmosphere at home that is not physically or mentally abusive to you",<DoneSharpIcon sx={{color:'green'}}/>,<ClearSharpIcon sx={{color:'red'}}/>),
+  createData("Participate daily religious rituals",<DoneSharpIcon sx={{color:'green'}}/>,<ClearSharpIcon sx={{color:'red'}}/>),
+  createData("Make time for regular exercise",<DoneSharpIcon sx={{color:'green'}}/>,<ClearSharpIcon sx={{color:'red'}}/>),
+  createData("Make time for hobbies", <DoneSharpIcon sx={{color:'green'}}/>,<ClearSharpIcon sx={{color:'red'}}/>),
 
 ];
 

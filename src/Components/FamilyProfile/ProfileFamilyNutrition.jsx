@@ -23,12 +23,12 @@ const rows = [
   createData("Diet Include - Animal Proteins",<ClearSharpIcon sx={{color:'red'}}/>,<ClearSharpIcon sx={{color:'red'}}/>),
   createData("Diet Include - Plant Protein/Grains",<DoneSharpIcon sx={{color:'green'}}/>,<ClearSharpIcon sx={{color:'red'}}/>),
   createData("Diet Include - Two types of vegetables",<DoneSharpIcon sx={{color:'green'}}/>,<ClearSharpIcon sx={{color:'red'}}/>),
-  createData("Diet Include - A type of Greens"),
-  createData("Diet Include - A type of Fruit"),
-  createData("All sit down and have one meal together as a family"),
-  createData("Diet include anything from the garden"),
-  createData("Consuming too much sugar"),
-  createData("Eat too much oil")
+  createData("Diet Include - A type of Greens",<DoneSharpIcon sx={{color:'green'}}/>,<ClearSharpIcon sx={{color:'red'}}/>),
+  createData("Diet Include - A type of Fruit",<DoneSharpIcon sx={{color:'green'}}/>,<ClearSharpIcon sx={{color:'red'}}/>),
+  createData("All sit down and have one meal together as a family",<DoneSharpIcon sx={{color:'green'}}/>,<ClearSharpIcon sx={{color:'red'}}/>),
+  createData("Diet include anything from the garden",<DoneSharpIcon sx={{color:'green'}}/>,<ClearSharpIcon sx={{color:'red'}}/>),
+  createData("Consuming too much sugar",<DoneSharpIcon sx={{color:'green'}}/>,<ClearSharpIcon sx={{color:'red'}}/>),
+  createData("Eat too much oil",<DoneSharpIcon sx={{color:'green'}}/>,<ClearSharpIcon sx={{color:'red'}}/>)
 ];
 
 export default function ProfileFamilyNutrition(prop) {
