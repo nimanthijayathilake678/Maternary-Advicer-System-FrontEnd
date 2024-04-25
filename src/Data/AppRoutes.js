@@ -70,6 +70,10 @@ import DeliveryCare from "../Pages/Midwife/MidwifePregnancyForms/DeliveryCare";
 import PostpartumFieldCare from "../Pages/Midwife/MidwifePregnancyForms/PostpartumFieldCare";
 import IECMaterial from "../Pages/Midwife/MidwifePregnancyForms/IECMaterial";
 import ChatForum from "../Pages/ChatForum";
+import DentistDashbord from "../Pages/dentist/DentistDashbord";
+import DentalCare from "../Pages/dentist/DentalCare";
+import DentalShow from "../Pages/dentist/DentalShow";
+
 
 export const AppRoutes = {
   login: { path: "/login", component: <Login /> },
@@ -366,4 +370,18 @@ export const AppRoutes = {
     path: "/mohdrdash/babies",
     component: <MohDrDashboard />,
   },
+
+  // dental doctor
+
+  DentistDashbord: {
+     path: "/DentistDashbord",
+     component: <DentistDashbord/> },
+
+  DentalCare: { 
+     path: "/DentistDashbord/DentalCare", 
+     component: <DentalCare/> },
+  
+  DentalCare: { 
+      path: "/DentistDashbord/DentalShow", 
+      component: <DentalShow/> },
 };
