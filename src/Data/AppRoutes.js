@@ -82,6 +82,8 @@ import FilledByMidwife from "../Pages/Midwife/FilledByMidwifeRemark";
 
 import RegisteredPregnantMothersMoh from "../Pages/MohDoctor/MohDrPregnancyForms/RegisteredPregnantMothersMoh";
 import PregnantMotherProfileMoh from "../Pages/MohDoctor/MohDrPregnancyForms/PregnantMotherProfileMoh";
+import { Dashboard } from "@mui/icons-material";
+import Mohadmindashboard from "../Pages/MOHAdmin/Dashboard"
 
 
 
@@ -183,7 +185,7 @@ export const AppRoutes = {
   midwife_home: { path: "/midwife", component: <MidwifeDashboard /> },
   midwife_eligible_couple_register: {
     path: "/midwife/eligibleFamilies/createAccountForNewCouple",
-    component: <MidwifeEligibleCoupleRegistrationForm />,
+    component: <Register />,
   },
   midwife_eligible_families_register: {
     path: "/midwife/eligibleFamilies",
@@ -315,7 +317,7 @@ export const AppRoutes = {
   //moh page routes
   moh: {
     path: "/moh",
-    component: <MOHRemarkEligibleForm/>,
+    component: <Mohadmindashboard/>,
   },
   moh_register: {
     path: "/moh/register",
