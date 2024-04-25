@@ -35,7 +35,7 @@ const FamilyDashboard = () => {
             justifyContent="space-between"
             alignItems="center"
           >
-            <Header title="Hello" subtitle="Welcome to your dashboard" />
+            <Header title="Hello Family" subtitle="Welcome to your dashboard" />
 
             {/* SEARCH BOX */}
             <Box
@@ -59,12 +59,12 @@ const FamilyDashboard = () => {
             <div>
               <Lottie animationData={HappyFamily} />
             </div>
-            <div className="cards">
+            {/* <div className="cards">
               <div className="card-inner">
                 <h6>MY PREGNANCIES</h6>
                 <Lottie style={{ height: 60 }} animationData={pregnant} />
               </div>
-            </div>
+            </div> */}
             <div className="cards">
               <div className="card-inner">
                 <h6 onClick={() => handleNavigation("/family/mybabies")}>
@@ -97,7 +97,7 @@ const FamilyDashboard = () => {
                 <DateCalendar />
               </LocalizationProvider>
             </div>
-            <div className="upcomingClinics">
+            {/* <div className="upcomingClinics">
               <div sx={{ marginLeft: "20px" }}>
                 <h6> UPCOMING CLINICS</h6>
               </div>
@@ -105,7 +105,7 @@ const FamilyDashboard = () => {
               <div>
                 <Upcomings />
               </div>
-            </div>
+            </div> */}
             <div>
               <h6>Grab Your Favourite Articles From Here!</h6>
               <Lottie animationData={clinic} />
